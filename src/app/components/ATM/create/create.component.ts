@@ -1,0 +1,44 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ATMService } from '../../../services/ATM.service';
+import { ATM } from '../../../models/aTM';
+
+@Component({
+    selector: 'app-create-aTM',
+    templateUrl: './create.component.html',
+    styleUrls: ['./create.component.css']
+})
+export class CreateATMComponent implements OnInit {
+
+    title = 'Add ATM';
+
+    aTMForm: FormGroup;
+    aTM: ATM;
+
+    constructor(
+        private aTMService: ATMService,
+        private fb: FormBuilder,
+        private router: Router
+) {
+        this.aTMForm = this.createForm();
+    }
+
+    createForm(): FormGroup {
+        return this.fb.group({
+            #outputDataValidators()
+        });
+    }
+
+    
+    addATM(terminalId, location, Branch, Status): void {
+        this.aTMService
+        .addATM(terminalId, location, Branch, Status)
+.then(() => {
+        this.router.navigate(['/indexATM']);
+    });
+}
+
+    ngOnInit(): void {
+    }
+}

@@ -1,0 +1,44 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ConsentService } from '../../../services/Consent.service';
+import { Consent } from '../../../models/consent';
+
+@Component({
+    selector: 'app-create-consent',
+    templateUrl: './create.component.html',
+    styleUrls: ['./create.component.css']
+})
+export class CreateConsentComponent implements OnInit {
+
+    title = 'Add Consent';
+
+    consentForm: FormGroup;
+    consent: Consent;
+
+    constructor(
+        private consentService: ConsentService,
+        private fb: FormBuilder,
+        private router: Router
+) {
+        this.consentForm = this.createForm();
+    }
+
+    createForm(): FormGroup {
+        return this.fb.group({
+            #outputDataValidators()
+        });
+    }
+
+    
+    addConsent(grantedOn, expiresOn, Customer, Bank, AuthorizedAccounts, ThirdPartyProvider, ConsentType, Status): void {
+        this.consentService
+        .addConsent(grantedOn, expiresOn, Customer, Bank, AuthorizedAccounts, ThirdPartyProvider, ConsentType, Status)
+.then(() => {
+        this.router.navigate(['/indexConsent']);
+    });
+}
+
+    ngOnInit(): void {
+    }
+}

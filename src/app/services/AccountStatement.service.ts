@@ -1,0 +1,164 @@
+import { Injectable } from '@angular/core';
+import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/toPromise';
+import {AccountStatement} from '../models/AccountStatement';
+import {AccountService} from '../services/Account.service';
+import { HelperBaseService } from './helperbase.service';
+
+@Injectable({
+	providedIn: 'root'
+  })
+    
+export class AccountStatementService extends HelperBaseService {
+
+	//********************************************************************
+	// general holder 
+	//********************************************************************
+	accountStatement : any;
+	
+	//********************************************************************
+	// Catch all for the return value of a service call
+	//********************************************************************
+	result: any;
+
+	//********************************************************************
+	// sole constructor, injected with the HttpClient
+	//********************************************************************
+ 	constructor(private http: HttpClient) {
+ 	    super();
+    }
+ 	
+	//********************************************************************
+	// add a AccountStatement 
+	// returns the results untouched as a JSON representation 
+	// delegates via URI to an ORM handler
+	//********************************************************************
+  	addAccountStatement(statementNumber, periodStart, periodEnd, openingBalance, closingBalance, Account, DeliveryMethod) : Promise<any> {
+    	const uri = this.ormUrl + '/AccountStatement/add';
+    	const obj = {
+#attributeStructDecl(${classObject})
+    	};
+    	
+    	return this.http.post(uri, obj).toPromise();
+  	}
+
+	//********************************************************************
+	// gets all AccountStatement 
+	// returns the results untouched as JSON representation of an
+	// array of AccountStatement models
+	// delegates via URI to an ORM handler
+	//********************************************************************
+	getAccountStatements() {
+    	const uri = this.ormUrl + '/AccountStatement';
+    	
+    	return this
+            	.http.get(uri).map(res => {
+              						return res;
+            					});
+  	}
+
+	//********************************************************************
+	// edit a AccountStatement 
+	// returns the results untouched as a JSON representation of a
+	// AccountStatement model
+	// delegates via URI to an ORM handler
+	//********************************************************************
+  	editAccountStatement(id) {
+    	const uri = this.ormUrl + '/AccountStatement/edit/' + id;
+    	
+    	return this.http.get(uri).map(res => {
+              							return res;
+            						});
+  	}
+
+	//********************************************************************
+	// update a AccountStatement 
+	// returns a Promise
+	// delegates via URI to an ORM handler
+	//********************************************************************
+	updateAccountStatement(statementNumber, periodStart, periodEnd, openingBalance, closingBalance, Account, DeliveryMethod, id)  : Promise<any>  {
+    	const uri = this.ormUrl + '/AccountStatement/update/' + id;
+    	const obj = {
+#attributeStructDecl(${classObject})
+    	};
+    	
+    	return this.http.post(uri, obj).toPromise();
+  	}
+
+	//********************************************************************
+	// delete a AccountStatement 
+	// returns a Promise
+	// delegates via URI to an ORM handler
+	//********************************************************************
+	deleteAccountStatement(id)  : Promise<any> {
+    	const uri = this.ormUrl + '/AccountStatement/delete/' + id;
+
+        return this.http.get(uri).toPromise();
+  }
+  
+    		//********************************************************************
+	// assigns a Account on a AccountStatement
+	// returns a Promise
+	// delegates via URI to an ORM handler
+	//********************************************************************
+	assignAccount( accountStatementId, _accountId ): Promise<any> {
+
+		// get the AccountStatement from storage
+		this.loadHelper( accountStatementId );
+		
+		// get the Account from storage
+		var tmp 	= new AccountService(this.http).editAccount(_accountId);
+		
+		// assign the Account		
+		this.accountStatement.account = tmp;
+      		
+		// save the AccountStatement
+		return this.saveHelper();		
+	}
+
+	//********************************************************************
+	// unassigns a Account on a AccountStatement
+	// returns a Promise
+	// delegates via URI to an ORM handler
+	//********************************************************************				
+	unassignAccount( accountStatementId ): Promise<any> {
+
+		// get the AccountStatement from storage
+        this.loadHelper( accountStatementId );
+		
+		// assign Account to null		
+		this.accountStatement.account = null;
+      		
+		// save the AccountStatement
+		return this.saveHelper();
+	}
+	
+
+
+	//********************************************************************
+	// saveHelper - internal helper to save a AccountStatement
+	//********************************************************************
+	saveHelper() : Promise<any> {
+		
+		const uri = this.ormUrl + '/AccountStatement/update/' + this.accountStatement._id;		
+		
+    	return this
+      			.http
+      			.post(uri, this.accountStatement)
+				.toPromise();			
+	}
+
+	//********************************************************************
+	// loadHelper - internal helper to load a AccountStatement
+	//********************************************************************	
+	loadHelper( id ) {
+		this.editAccountStatement(id)
+        		.subscribe(res => {
+        			this.accountStatement = res;
+      			});
+	}
+}

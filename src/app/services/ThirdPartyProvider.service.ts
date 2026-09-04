@@ -1,0 +1,223 @@
+import { Injectable } from '@angular/core';
+import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/toPromise';
+import {ThirdPartyProvider} from '../models/ThirdPartyProvider';
+import {BankService} from '../services/Bank.service';
+import {ConsentService} from '../services/Consent.service';
+import { HelperBaseService } from './helperbase.service';
+
+@Injectable({
+	providedIn: 'root'
+  })
+    
+export class ThirdPartyProviderService extends HelperBaseService {
+
+	//********************************************************************
+	// general holder 
+	//********************************************************************
+	thirdPartyProvider : any;
+	
+	//********************************************************************
+	// Catch all for the return value of a service call
+	//********************************************************************
+	result: any;
+
+	//********************************************************************
+	// sole constructor, injected with the HttpClient
+	//********************************************************************
+ 	constructor(private http: HttpClient) {
+ 	    super();
+    }
+ 	
+	//********************************************************************
+	// add a ThirdPartyProvider 
+	// returns the results untouched as a JSON representation 
+	// delegates via URI to an ORM handler
+	//********************************************************************
+  	addThirdPartyProvider(name, registrationId, website, Bank, Consents) : Promise<any> {
+    	const uri = this.ormUrl + '/ThirdPartyProvider/add';
+    	const obj = {
+#attributeStructDecl(${classObject})
+    	};
+    	
+    	return this.http.post(uri, obj).toPromise();
+  	}
+
+	//********************************************************************
+	// gets all ThirdPartyProvider 
+	// returns the results untouched as JSON representation of an
+	// array of ThirdPartyProvider models
+	// delegates via URI to an ORM handler
+	//********************************************************************
+	getThirdPartyProviders() {
+    	const uri = this.ormUrl + '/ThirdPartyProvider';
+    	
+    	return this
+            	.http.get(uri).map(res => {
+              						return res;
+            					});
+  	}
+
+	//********************************************************************
+	// edit a ThirdPartyProvider 
+	// returns the results untouched as a JSON representation of a
+	// ThirdPartyProvider model
+	// delegates via URI to an ORM handler
+	//********************************************************************
+  	editThirdPartyProvider(id) {
+    	const uri = this.ormUrl + '/ThirdPartyProvider/edit/' + id;
+    	
+    	return this.http.get(uri).map(res => {
+              							return res;
+            						});
+  	}
+
+	//********************************************************************
+	// update a ThirdPartyProvider 
+	// returns a Promise
+	// delegates via URI to an ORM handler
+	//********************************************************************
+	updateThirdPartyProvider(name, registrationId, website, Bank, Consents, id)  : Promise<any>  {
+    	const uri = this.ormUrl + '/ThirdPartyProvider/update/' + id;
+    	const obj = {
+#attributeStructDecl(${classObject})
+    	};
+    	
+    	return this.http.post(uri, obj).toPromise();
+  	}
+
+	//********************************************************************
+	// delete a ThirdPartyProvider 
+	// returns a Promise
+	// delegates via URI to an ORM handler
+	//********************************************************************
+	deleteThirdPartyProvider(id)  : Promise<any> {
+    	const uri = this.ormUrl + '/ThirdPartyProvider/delete/' + id;
+
+        return this.http.get(uri).toPromise();
+  }
+  
+    		//********************************************************************
+	// assigns a Bank on a ThirdPartyProvider
+	// returns a Promise
+	// delegates via URI to an ORM handler
+	//********************************************************************
+	assignBank( thirdPartyProviderId, _bankId ): Promise<any> {
+
+		// get the ThirdPartyProvider from storage
+		this.loadHelper( thirdPartyProviderId );
+		
+		// get the Bank from storage
+		var tmp 	= new BankService(this.http).editBank(_bankId);
+		
+		// assign the Bank		
+		this.thirdPartyProvider.bank = tmp;
+      		
+		// save the ThirdPartyProvider
+		return this.saveHelper();		
+	}
+
+	//********************************************************************
+	// unassigns a Bank on a ThirdPartyProvider
+	// returns a Promise
+	// delegates via URI to an ORM handler
+	//********************************************************************				
+	unassignBank( thirdPartyProviderId ): Promise<any> {
+
+		// get the ThirdPartyProvider from storage
+        this.loadHelper( thirdPartyProviderId );
+		
+		// assign Bank to null		
+		this.thirdPartyProvider.bank = null;
+      		
+		// save the ThirdPartyProvider
+		return this.saveHelper();
+	}
+	
+
+	//********************************************************************
+	// adds one or more consentsIds as a Consents 
+	// to a ThirdPartyProvider
+	// returns a Promise
+	// delegates via URI to an ORM handler
+	//********************************************************************				
+	addConsents( thirdPartyProviderId, consentsIds ): Promise<any> {
+
+		// get the ThirdPartyProvider
+		this.loadHelper( thirdPartyProviderId );
+				
+		// split on a comma with no spaces
+		var idList = consentsIds.split(',')
+
+		// iterate over array of consents ids
+		idList.forEach(function (id) {
+			// read the Consent		
+			var consent = new ConsentService(this.http).editConsent(id);	
+			// add the Consent if not already assigned
+			if ( this.thirdPartyProvider.consents.indexOf(consent) == -1 )
+				this.thirdPartyProvider.consents.push(consent);
+		});
+				
+		// save it		
+		return this.saveHelper();
+	}			
+	
+	//********************************************************************
+	// removes one or more consentsIds as a Consents 
+	// from a ThirdPartyProvider
+	// returns a Promise
+	// delegates via URI to an ORM handler
+	//********************************************************************						
+	removeConsents( thirdPartyProviderId, consentsIds ): Promise<any> {
+		
+		// get the ThirdPartyProvider
+		this.loadHelper( thirdPartyProviderId );
+
+				
+		// split on a comma with no spaces
+		var idList 					= consentsIds.split(',');
+		var consents 	= this.thirdPartyProvider.consents;
+		
+		if ( consents != null && consentsIds != null ) {
+		
+			// iterate over array of consents ids
+			consents.forEach(function (obj) {				
+				if ( consentsIds.indexOf(obj._id) > -1 ) {
+					 // remove the Consent
+					this.thirdPartyProvider.consents.pop(obj);
+				}
+			});
+					
+		    // save it		
+			return this.saveHelper();
+		}
+	}
+			
+
+	//********************************************************************
+	// saveHelper - internal helper to save a ThirdPartyProvider
+	//********************************************************************
+	saveHelper() : Promise<any> {
+		
+		const uri = this.ormUrl + '/ThirdPartyProvider/update/' + this.thirdPartyProvider._id;		
+		
+    	return this
+      			.http
+      			.post(uri, this.thirdPartyProvider)
+				.toPromise();			
+	}
+
+	//********************************************************************
+	// loadHelper - internal helper to load a ThirdPartyProvider
+	//********************************************************************	
+	loadHelper( id ) {
+		this.editThirdPartyProvider(id)
+        		.subscribe(res => {
+        			this.thirdPartyProvider = res;
+      			});
+	}
+}

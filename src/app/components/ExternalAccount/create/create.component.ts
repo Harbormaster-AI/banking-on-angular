@@ -1,0 +1,44 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ExternalAccountService } from '../../../services/ExternalAccount.service';
+import { ExternalAccount } from '../../../models/externalAccount';
+
+@Component({
+    selector: 'app-create-externalAccount',
+    templateUrl: './create.component.html',
+    styleUrls: ['./create.component.css']
+})
+export class CreateExternalAccountComponent implements OnInit {
+
+    title = 'Add ExternalAccount';
+
+    externalAccountForm: FormGroup;
+    externalAccount: ExternalAccount;
+
+    constructor(
+        private externalAccountService: ExternalAccountService,
+        private fb: FormBuilder,
+        private router: Router
+) {
+        this.externalAccountForm = this.createForm();
+    }
+
+    createForm(): FormGroup {
+        return this.fb.group({
+            #outputDataValidators()
+        });
+    }
+
+    
+    addExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions): void {
+        this.externalAccountService
+        .addExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions)
+.then(() => {
+        this.router.navigate(['/indexExternalAccount']);
+    });
+}
+
+    ngOnInit(): void {
+    }
+}
