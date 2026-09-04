@@ -25,7 +25,8 @@
     "languages": {
        "language": [
         {
-          "name": "typescript"
+          "name": "nodejs",
+          "version": "22.22.3"
         },
         {
           "name": "javascript"
