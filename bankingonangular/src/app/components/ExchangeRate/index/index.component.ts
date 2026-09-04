@@ -1,0 +1,37 @@
+
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ExchangeRateService } from '../../../services/ExchangeRate.service';
+import { ExchangeRate } from '../../../models/ExchangeRate';
+
+@Component({
+    selector: 'app-index-exchangeRate',
+    templateUrl: './index.component.html',
+    styleUrls: ['./index.component.css']
+})
+export class IndexExchangeRateComponent implements OnInit {
+
+    exchangeRates: ExchangeRate[] = [];
+
+    constructor(
+        private router: Router,
+        private service: ExchangeRateService
+) {}
+
+    ngOnInit(): void {
+        this.getExchangeRates();
+}
+
+    getExchangeRates(): void {
+        this.service.getExchangeRates().subscribe(res => {
+        this.exchangeRates = res;
+    });
+}
+
+    deleteExchangeRate(id: any): void {
+        this.service.deleteExchangeRate(id)
+            .then(() => {
+                this.getExchangeRates();
+            });
+    }
+}

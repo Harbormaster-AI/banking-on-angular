@@ -1,0 +1,45 @@
+{
+    "name": "Angular-22",
+    "shortName": "Angular22",
+    "description": "Angular uses a component-based architecture, which allows developers to build reusable and modular components.  This blueprint uses Angular on only the front end, to use a backend framework of your choice.",
+    "summary": "From a domain model, generate a fully functional Angular based front end system, to support common entity lifecycle commands to issue to a supportive backend",
+    "iconUrl": "blueprints/angular22-blueprint-header-image.png",
+    "infoPageUrl": "http://www.harbormaster.net/Angular22.blueprint",
+    "version": "0.5",
+    "type": "FirstClass",
+    "appType": "webapp",
+    "releaseStatus": "production",
+    "techSourceType": "opensource",
+    "majorTechnology" : "Angular",
+    "supportsDocker": "true",
+    "supportsKubernetes": "true",
+    "category": "frontend_framework",
+    "level": "basic",
+    "primaryVendor": "Angular",
+    "published": "true",
+    "designPattern": "ComponentComposition",
+    "architectureStyle": "ComponentBased",
+    "useCases": "Portals,SaaS Platforms,Marketplace,Workflow Management Systems,Supply Chain,Dashboards",
+    "architecturePreviewUrl": "blueprints/architecture.diagrams/angular-blueprint-system-diagram.png",
+    "metadata": "Angular,TypeScript,Component-Based Architecture,MVVM,Dependency Injection,Angular Material,Single Page Application,Responsive Design,Production Ready",
+    "languages": {
+       "language": [
+        {
+          "name": "typescript"
+        },
+        {
+          "name": "javascript"
+        }
+      ]
+    },
+    "techStack": {
+      "techStackComponents": [
+        {
+          "tech": "Angular",
+          "description": "front-end",
+          "appLayerType": "presentation"
+        }
+      ]
+    }
+
+}

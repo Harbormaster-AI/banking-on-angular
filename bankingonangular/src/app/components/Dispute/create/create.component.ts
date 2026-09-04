@@ -1,0 +1,44 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DisputeService } from '../../../services/Dispute.service';
+import { Dispute } from '../../../models/dispute';
+
+@Component({
+    selector: 'app-create-dispute',
+    templateUrl: './create.component.html',
+    styleUrls: ['./create.component.css']
+})
+export class CreateDisputeComponent implements OnInit {
+
+    title = 'Add Dispute';
+
+    disputeForm: FormGroup;
+    dispute: Dispute;
+
+    constructor(
+        private disputeService: DisputeService,
+        private fb: FormBuilder,
+        private router: Router
+) {
+        this.disputeForm = this.createForm();
+    }
+
+    createForm(): FormGroup {
+        return this.fb.group({
+            #outputDataValidators()
+        });
+    }
+
+    
+    addDispute(disputeReference, raisedOn, reason, Transaction, Customer, Account, PaymentCard, Status): void {
+        this.disputeService
+        .addDispute(disputeReference, raisedOn, reason, Transaction, Customer, Account, PaymentCard, Status)
+.then(() => {
+        this.router.navigate(['/indexDispute']);
+    });
+}
+
+    ngOnInit(): void {
+    }
+}

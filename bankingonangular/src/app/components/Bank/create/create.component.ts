@@ -1,0 +1,44 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BankService } from '../../../services/Bank.service';
+import { Bank } from '../../../models/bank';
+
+@Component({
+    selector: 'app-create-bank',
+    templateUrl: './create.component.html',
+    styleUrls: ['./create.component.css']
+})
+export class CreateBankComponent implements OnInit {
+
+    title = 'Add Bank';
+
+    bankForm: FormGroup;
+    bank: Bank;
+
+    constructor(
+        private bankService: BankService,
+        private fb: FormBuilder,
+        private router: Router
+) {
+        this.bankForm = this.createForm();
+    }
+
+    createForm(): FormGroup {
+        return this.fb.group({
+            #outputDataValidators()
+        });
+    }
+
+    
+    addBank(name, legalName, swiftBic, headquartersCountry, website, Branches, Products, Customers, Accounts, PaymentCards, LoanAccounts, ExchangeRates, Consents, ThirdPartyProviders): void {
+        this.bankService
+        .addBank(name, legalName, swiftBic, headquartersCountry, website, Branches, Products, Customers, Accounts, PaymentCards, LoanAccounts, ExchangeRates, Consents, ThirdPartyProviders)
+.then(() => {
+        this.router.navigate(['/indexBank']);
+    });
+}
+
+    ngOnInit(): void {
+    }
+}

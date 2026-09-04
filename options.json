@@ -1,0 +1,12 @@
+ {
+    "name": "angular",
+    "options": [
+      {
+        "name": "backendUrl",
+        "value": "",
+        "required": "true",
+        "description": "the backend to issue commands to be handled on behalf of this frontend",
+        "type": "input"
+      }
+    ]
+  }

@@ -1,0 +1,44 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ScreeningResultService } from '../../../services/ScreeningResult.service';
+import { ScreeningResult } from '../../../models/screeningResult';
+
+@Component({
+    selector: 'app-create-screeningResult',
+    templateUrl: './create.component.html',
+    styleUrls: ['./create.component.css']
+})
+export class CreateScreeningResultComponent implements OnInit {
+
+    title = 'Add ScreeningResult';
+
+    screeningResultForm: FormGroup;
+    screeningResult: ScreeningResult;
+
+    constructor(
+        private screeningResultService: ScreeningResultService,
+        private fb: FormBuilder,
+        private router: Router
+) {
+        this.screeningResultForm = this.createForm();
+    }
+
+    createForm(): FormGroup {
+        return this.fb.group({
+            #outputDataValidators()
+        });
+    }
+
+    
+    addScreeningResult(screeningDate, provider, KycProfile, Outcome): void {
+        this.screeningResultService
+        .addScreeningResult(screeningDate, provider, KycProfile, Outcome)
+.then(() => {
+        this.router.navigate(['/indexScreeningResult']);
+    });
+}
+
+    ngOnInit(): void {
+    }
+}

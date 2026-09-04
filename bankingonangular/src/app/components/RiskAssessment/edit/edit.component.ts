@@ -1,0 +1,51 @@
+
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RiskAssessmentService } from '../../../services/RiskAssessment.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+@Component({
+    selector: 'app-edit-riskAssessment',
+    templateUrl: './edit.component.html',
+    styleUrls: ['./edit.component.css']
+})
+export class EditRiskAssessmentComponent implements OnInit {
+
+    title = 'Edit RiskAssessment';
+
+    riskAssessmentForm: FormGroup;
+    riskAssessment: any;
+
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        private service: RiskAssessmentService,
+        private fb: FormBuilder
+) {
+        this.riskAssessmentForm = this.createForm();
+    }
+
+    createForm(): FormGroup {
+        return this.fb.group({
+            #outputDataValidators()
+        });
+    }
+
+    
+    updateRiskAssessment(score, assessedOn, KycProfile, Rating): void {
+        this.route.params.subscribe(params => {
+                        this.service.updateRiskAssessment(score, assessedOn, KycProfile, Rating, params['id'])
+                            .then(() => {
+                    this.router.navigate(['/indexRiskAssessment']);
+                });
+        });
+    }
+
+    ngOnInit(): void {
+        this.route.params.subscribe(params => {
+            this.service.editRiskAssessment(params['id']).subscribe(res => {
+                this.riskAssessment = res;
+            });
+        });
+    }
+}
