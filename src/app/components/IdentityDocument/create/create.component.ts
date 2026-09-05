@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IdentityDocumentService } from '../../../services/IdentityDocument.service';
 import { IdentityDocument } from '../../../models/IdentityDocument';
+import { SubBaseComponent } from '../../IdentityDocument/sub.base.component';
 
 @Component({
     selector: 'app-create-identityDocument',
@@ -10,7 +11,7 @@ import { IdentityDocument } from '../../../models/IdentityDocument';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateIdentityDocumentComponent implements OnInit {
+export class CreateIdentityDocumentComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add IdentityDocument';
 

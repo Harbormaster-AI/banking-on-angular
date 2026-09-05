@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CollateralService } from '../../../services/Collateral.service';
 import { Collateral } from '../../../models/Collateral';
+import { SubBaseComponent } from '../../Collateral/sub.base.component';
 
 @Component({
     selector: 'app-create-collateral',
@@ -10,7 +11,7 @@ import { Collateral } from '../../../models/Collateral';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateCollateralComponent implements OnInit {
+export class CreateCollateralComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add Collateral';
 

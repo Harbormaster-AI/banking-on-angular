@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConsentService } from '../../../services/Consent.service';
 import { Consent } from '../../../models/Consent';
+import { SubBaseComponent } from '../../Consent/sub.base.component';
 
 @Component({
     selector: 'app-create-consent',
@@ -10,7 +11,7 @@ import { Consent } from '../../../models/Consent';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateConsentComponent implements OnInit {
+export class CreateConsentComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add Consent';
 

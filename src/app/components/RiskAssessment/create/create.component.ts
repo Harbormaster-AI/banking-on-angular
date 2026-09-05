@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RiskAssessmentService } from '../../../services/RiskAssessment.service';
 import { RiskAssessment } from '../../../models/RiskAssessment';
+import { SubBaseComponent } from '../../RiskAssessment/sub.base.component';
 
 @Component({
     selector: 'app-create-riskAssessment',
@@ -10,7 +11,7 @@ import { RiskAssessment } from '../../../models/RiskAssessment';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateRiskAssessmentComponent implements OnInit {
+export class CreateRiskAssessmentComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add RiskAssessment';
 

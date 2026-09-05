@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PaymentCardService } from '../../../services/PaymentCard.service';
 import { PaymentCard } from '../../../models/PaymentCard';
+import { SubBaseComponent } from '../../PaymentCard/sub.base.component';
 
 @Component({
     selector: 'app-create-paymentCard',
@@ -10,7 +11,7 @@ import { PaymentCard } from '../../../models/PaymentCard';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreatePaymentCardComponent implements OnInit {
+export class CreatePaymentCardComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add PaymentCard';
 

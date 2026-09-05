@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ScreeningResultService } from '../../../services/ScreeningResult.service';
 import { ScreeningResult } from '../../../models/ScreeningResult';
+import { SubBaseComponent } from '../../ScreeningResult/sub.base.component';
 
 @Component({
     selector: 'app-create-screeningResult',
@@ -10,7 +11,7 @@ import { ScreeningResult } from '../../../models/ScreeningResult';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateScreeningResultComponent implements OnInit {
+export class CreateScreeningResultComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add ScreeningResult';
 

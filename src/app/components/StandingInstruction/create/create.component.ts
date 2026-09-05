@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StandingInstructionService } from '../../../services/StandingInstruction.service';
 import { StandingInstruction } from '../../../models/StandingInstruction';
+import { SubBaseComponent } from '../../StandingInstruction/sub.base.component';
 
 @Component({
     selector: 'app-create-standingInstruction',
@@ -10,7 +11,7 @@ import { StandingInstruction } from '../../../models/StandingInstruction';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateStandingInstructionComponent implements OnInit {
+export class CreateStandingInstructionComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add StandingInstruction';
 

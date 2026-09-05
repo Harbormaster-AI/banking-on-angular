@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FeeChargeService } from '../../../services/FeeCharge.service';
 import { FeeCharge } from '../../../models/FeeCharge';
+import { SubBaseComponent } from '../../FeeCharge/sub.base.component';
 
 @Component({
     selector: 'app-create-feeCharge',
@@ -10,7 +11,7 @@ import { FeeCharge } from '../../../models/FeeCharge';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateFeeChargeComponent implements OnInit {
+export class CreateFeeChargeComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add FeeCharge';
 

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RepaymentScheduleService } from '../../../services/RepaymentSchedule.service';
 import { RepaymentSchedule } from '../../../models/RepaymentSchedule';
+import { SubBaseComponent } from '../../RepaymentSchedule/sub.base.component';
 
 @Component({
     selector: 'app-create-repaymentSchedule',
@@ -10,7 +11,7 @@ import { RepaymentSchedule } from '../../../models/RepaymentSchedule';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateRepaymentScheduleComponent implements OnInit {
+export class CreateRepaymentScheduleComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add RepaymentSchedule';
 

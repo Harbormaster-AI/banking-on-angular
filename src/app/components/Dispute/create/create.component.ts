@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DisputeService } from '../../../services/Dispute.service';
 import { Dispute } from '../../../models/Dispute';
+import { SubBaseComponent } from '../../Dispute/sub.base.component';
 
 @Component({
     selector: 'app-create-dispute',
@@ -10,7 +11,7 @@ import { Dispute } from '../../../models/Dispute';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateDisputeComponent implements OnInit {
+export class CreateDisputeComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add Dispute';
 

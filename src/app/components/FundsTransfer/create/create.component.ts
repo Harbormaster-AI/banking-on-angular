@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FundsTransferService } from '../../../services/FundsTransfer.service';
 import { FundsTransfer } from '../../../models/FundsTransfer';
+import { SubBaseComponent } from '../../FundsTransfer/sub.base.component';
 
 @Component({
     selector: 'app-create-fundsTransfer',
@@ -10,7 +11,7 @@ import { FundsTransfer } from '../../../models/FundsTransfer';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateFundsTransferComponent implements OnInit {
+export class CreateFundsTransferComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add FundsTransfer';
 

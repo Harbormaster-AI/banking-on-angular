@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../../../services/Account.service';
 import { Account } from '../../../models/Account';
+import { SubBaseComponent } from '../../Account/sub.base.component';
 
 @Component({
     selector: 'app-create-account',
@@ -10,7 +11,7 @@ import { Account } from '../../../models/Account';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateAccountComponent implements OnInit {
+export class CreateAccountComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add Account';
 

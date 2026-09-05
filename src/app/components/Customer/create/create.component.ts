@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomerService } from '../../../services/Customer.service';
 import { Customer } from '../../../models/Customer';
+import { SubBaseComponent } from '../../Customer/sub.base.component';
 
 @Component({
     selector: 'app-create-customer',
@@ -10,7 +11,7 @@ import { Customer } from '../../../models/Customer';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateCustomerComponent implements OnInit {
+export class CreateCustomerComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add Customer';
 

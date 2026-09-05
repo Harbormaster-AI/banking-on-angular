@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoanAccountService } from '../../../services/LoanAccount.service';
 import { LoanAccount } from '../../../models/LoanAccount';
+import { SubBaseComponent } from '../../LoanAccount/sub.base.component';
 
 @Component({
     selector: 'app-create-loanAccount',
@@ -10,7 +11,7 @@ import { LoanAccount } from '../../../models/LoanAccount';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateLoanAccountComponent implements OnInit {
+export class CreateLoanAccountComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add LoanAccount';
 

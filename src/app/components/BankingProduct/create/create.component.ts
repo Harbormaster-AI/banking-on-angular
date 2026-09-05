@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BankingProductService } from '../../../services/BankingProduct.service';
 import { BankingProduct } from '../../../models/BankingProduct';
+import { SubBaseComponent } from '../../BankingProduct/sub.base.component';
 
 @Component({
     selector: 'app-create-bankingProduct',
@@ -10,7 +11,7 @@ import { BankingProduct } from '../../../models/BankingProduct';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateBankingProductComponent implements OnInit {
+export class CreateBankingProductComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add BankingProduct';
 

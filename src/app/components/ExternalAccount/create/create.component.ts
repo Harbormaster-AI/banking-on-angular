@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ExternalAccountService } from '../../../services/ExternalAccount.service';
 import { ExternalAccount } from '../../../models/ExternalAccount';
+import { SubBaseComponent } from '../../ExternalAccount/sub.base.component';
 
 @Component({
     selector: 'app-create-externalAccount',
@@ -10,7 +11,7 @@ import { ExternalAccount } from '../../../models/ExternalAccount';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateExternalAccountComponent implements OnInit {
+export class CreateExternalAccountComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add ExternalAccount';
 

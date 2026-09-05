@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ATMService } from '../../../services/ATM.service';
 import { ATM } from '../../../models/ATM';
+import { SubBaseComponent } from '../../ATM/sub.base.component';
 
 @Component({
     selector: 'app-create-aTM',
@@ -10,7 +11,7 @@ import { ATM } from '../../../models/ATM';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateATMComponent implements OnInit {
+export class CreateATMComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add ATM';
 

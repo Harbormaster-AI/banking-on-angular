@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoanPaymentService } from '../../../services/LoanPayment.service';
 import { LoanPayment } from '../../../models/LoanPayment';
+import { SubBaseComponent } from '../../LoanPayment/sub.base.component';
 
 @Component({
     selector: 'app-create-loanPayment',
@@ -10,7 +11,7 @@ import { LoanPayment } from '../../../models/LoanPayment';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateLoanPaymentComponent implements OnInit {
+export class CreateLoanPaymentComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add LoanPayment';
 

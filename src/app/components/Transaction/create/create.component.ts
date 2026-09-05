@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TransactionService } from '../../../services/Transaction.service';
 import { Transaction } from '../../../models/Transaction';
+import { SubBaseComponent } from '../../Transaction/sub.base.component';
 
 @Component({
     selector: 'app-create-transaction',
@@ -10,7 +11,7 @@ import { Transaction } from '../../../models/Transaction';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateTransactionComponent implements OnInit {
+export class CreateTransactionComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add Transaction';
 

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { KycProfileService } from '../../../services/KycProfile.service';
 import { KycProfile } from '../../../models/KycProfile';
+import { SubBaseComponent } from '../../KycProfile/sub.base.component';
 
 @Component({
     selector: 'app-create-kycProfile',
@@ -10,7 +11,7 @@ import { KycProfile } from '../../../models/KycProfile';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateKycProfileComponent implements OnInit {
+export class CreateKycProfileComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add KycProfile';
 

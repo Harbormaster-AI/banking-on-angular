@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ThirdPartyProviderService } from '../../../services/ThirdPartyProvider.service';
 import { ThirdPartyProvider } from '../../../models/ThirdPartyProvider';
+import { SubBaseComponent } from '../../ThirdPartyProvider/sub.base.component';
 
 @Component({
     selector: 'app-create-thirdPartyProvider',
@@ -10,7 +11,7 @@ import { ThirdPartyProvider } from '../../../models/ThirdPartyProvider';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateThirdPartyProviderComponent implements OnInit {
+export class CreateThirdPartyProviderComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add ThirdPartyProvider';
 

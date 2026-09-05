@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ExchangeRateService } from '../../../services/ExchangeRate.service';
 import { ExchangeRate } from '../../../models/ExchangeRate';
+import { SubBaseComponent } from '../../ExchangeRate/sub.base.component';
 
 @Component({
     selector: 'app-create-exchangeRate',
@@ -10,7 +11,7 @@ import { ExchangeRate } from '../../../models/ExchangeRate';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateExchangeRateComponent implements OnInit {
+export class CreateExchangeRateComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add ExchangeRate';
 

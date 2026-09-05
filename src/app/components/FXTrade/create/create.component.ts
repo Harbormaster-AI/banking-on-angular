@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FXTradeService } from '../../../services/FXTrade.service';
 import { FXTrade } from '../../../models/FXTrade';
+import { SubBaseComponent } from '../../FXTrade/sub.base.component';
 
 @Component({
     selector: 'app-create-fXTrade',
@@ -10,7 +11,7 @@ import { FXTrade } from '../../../models/FXTrade';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateFXTradeComponent implements OnInit {
+export class CreateFXTradeComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add FXTrade';
 

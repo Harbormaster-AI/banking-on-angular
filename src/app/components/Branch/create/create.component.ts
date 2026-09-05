@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BranchService } from '../../../services/Branch.service';
 import { Branch } from '../../../models/Branch';
+import { SubBaseComponent } from '../../Branch/sub.base.component';
 
 @Component({
     selector: 'app-create-branch',
@@ -10,7 +11,7 @@ import { Branch } from '../../../models/Branch';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateBranchComponent implements OnInit {
+export class CreateBranchComponent extends SubBaseComponent implements OnInit {
 
     title = 'Add Branch';
 
