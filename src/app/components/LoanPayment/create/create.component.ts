@@ -6,6 +6,7 @@ import { LoanPayment } from '../../../models/loanPayment';
 
 @Component({
     selector: 'app-create-loanPayment',
+    standalone: false,
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })

@@ -6,6 +6,7 @@ import { Branch } from '../../../models/branch';
 
 @Component({
     selector: 'app-create-branch',
+    standalone: false,
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })

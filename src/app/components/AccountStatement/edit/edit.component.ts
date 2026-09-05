@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-edit-accountStatement',
+    standalone: false,
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })

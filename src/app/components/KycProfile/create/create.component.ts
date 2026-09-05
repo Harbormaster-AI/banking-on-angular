@@ -6,6 +6,7 @@ import { KycProfile } from '../../../models/kycProfile';
 
 @Component({
     selector: 'app-create-kycProfile',
+    standalone: false,
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })

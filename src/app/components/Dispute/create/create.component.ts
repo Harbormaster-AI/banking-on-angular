@@ -6,6 +6,7 @@ import { Dispute } from '../../../models/dispute';
 
 @Component({
     selector: 'app-create-dispute',
+    standalone: false,
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })

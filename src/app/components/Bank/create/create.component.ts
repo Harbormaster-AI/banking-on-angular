@@ -6,6 +6,7 @@ import { Bank } from '../../../models/bank';
 
 @Component({
     selector: 'app-create-bank',
+    standalone: false,
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })

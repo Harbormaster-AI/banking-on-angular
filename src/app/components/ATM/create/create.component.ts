@@ -6,6 +6,7 @@ import { ATM } from '../../../models/aTM';
 
 @Component({
     selector: 'app-create-aTM',
+    standalone: false,
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })

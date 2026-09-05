@@ -6,6 +6,7 @@ import { Consent } from '../../../models/consent';
 
 @Component({
     selector: 'app-create-consent',
+    standalone: false,
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })

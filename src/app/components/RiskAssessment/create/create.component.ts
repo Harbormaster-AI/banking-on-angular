@@ -6,6 +6,7 @@ import { RiskAssessment } from '../../../models/riskAssessment';
 
 @Component({
     selector: 'app-create-riskAssessment',
+    standalone: false,
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })

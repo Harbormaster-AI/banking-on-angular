@@ -6,6 +6,7 @@ import { FundsTransfer } from '../../../models/fundsTransfer';
 
 @Component({
     selector: 'app-create-fundsTransfer',
+    standalone: false,
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })

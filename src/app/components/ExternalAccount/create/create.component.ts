@@ -6,6 +6,7 @@ import { ExternalAccount } from '../../../models/externalAccount';
 
 @Component({
     selector: 'app-create-externalAccount',
+    standalone: false,
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })

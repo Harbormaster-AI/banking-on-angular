@@ -6,6 +6,7 @@ import { FeeCharge } from '../../../models/feeCharge';
 
 @Component({
     selector: 'app-create-feeCharge',
+    standalone: false,
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })

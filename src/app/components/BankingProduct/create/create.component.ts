@@ -6,6 +6,7 @@ import { BankingProduct } from '../../../models/bankingProduct';
 
 @Component({
     selector: 'app-create-bankingProduct',
+    standalone: false,
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })

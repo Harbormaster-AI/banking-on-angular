@@ -6,6 +6,7 @@ import { RepaymentSchedule } from '../../../models/repaymentSchedule';
 
 @Component({
     selector: 'app-create-repaymentSchedule',
+    standalone: false,
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })

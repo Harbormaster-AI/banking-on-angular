@@ -6,6 +6,7 @@ import { Customer } from '../../../models/customer';
 
 @Component({
     selector: 'app-create-customer',
+    standalone: false,
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
