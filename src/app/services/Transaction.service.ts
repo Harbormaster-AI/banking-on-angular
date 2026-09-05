@@ -86,7 +86,7 @@ export class TransactionService extends HelperBaseService {
 	editTransaction(id) : Observable<Transaction> {
 		const uri = this.apiUrl + '/Transaction/edit/' + id;
 
-		return this.http.get(Observable<Transaction>)(uri);
+		return this.http.get(<Transaction>)(uri);
 	}
 
 	//********************************************************************
@@ -95,9 +95,9 @@ export class TransactionService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updateTransaction(bookingDate, valueDate, amount, description, Account, ExternalCounterparty, PaymentCard, FundsTransfer, FxTrade, Dispute, Direction, TransactionType, Status, Channel, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/Transaction/update/' + id;
-		const obj = {
-			      		bookingDate: bookingDate,
+					const uri = this.apiUrl + '/Transaction/update/' + id;
+			const obj = {
+				      		bookingDate: bookingDate,
       		valueDate: valueDate,
       		amount: amount,
       		description: description,
@@ -111,8 +111,8 @@ export class TransactionService extends HelperBaseService {
       		TransactionType: TransactionType,
       		Status: Status,
 			Channel: Channel
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 

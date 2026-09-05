@@ -89,7 +89,7 @@ export class BankService extends HelperBaseService {
 	editBank(id) : Observable<Bank> {
 		const uri = this.apiUrl + '/Bank/edit/' + id;
 
-		return this.http.get(Observable<Bank>)(uri);
+		return this.http.get(<Bank>)(uri);
 	}
 
 	//********************************************************************
@@ -98,9 +98,9 @@ export class BankService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updateBank(name, legalName, swiftBic, headquartersCountry, website, Branches, Products, Customers, Accounts, PaymentCards, LoanAccounts, ExchangeRates, Consents, ThirdPartyProviders, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/Bank/update/' + id;
-		const obj = {
-			      		name: name,
+					const uri = this.apiUrl + '/Bank/update/' + id;
+			const obj = {
+				      		name: name,
       		legalName: legalName,
       		swiftBic: swiftBic,
       		headquartersCountry: headquartersCountry,
@@ -114,8 +114,8 @@ export class BankService extends HelperBaseService {
       		ExchangeRates: ExchangeRates != null && ExchangeRates.length > 0 ? ExchangeRates : null,
       		Consents: Consents != null && Consents.length > 0 ? Consents : null,
 			ThirdPartyProviders: ThirdPartyProviders != null && ThirdPartyProviders.length > 0 ? ThirdPartyProviders : null
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 

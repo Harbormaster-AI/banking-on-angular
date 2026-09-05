@@ -74,7 +74,7 @@ export class FeeChargeService extends HelperBaseService {
 	editFeeCharge(id) : Observable<FeeCharge> {
 		const uri = this.apiUrl + '/FeeCharge/edit/' + id;
 
-		return this.http.get(Observable<FeeCharge>)(uri);
+		return this.http.get(<FeeCharge>)(uri);
 	}
 
 	//********************************************************************
@@ -83,16 +83,16 @@ export class FeeChargeService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updateFeeCharge(feeCode, amount, appliedOn, Account, LoanAccount, FeeType, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/FeeCharge/update/' + id;
-		const obj = {
-			      		feeCode: feeCode,
+					const uri = this.apiUrl + '/FeeCharge/update/' + id;
+			const obj = {
+				      		feeCode: feeCode,
       		amount: amount,
       		appliedOn: appliedOn,
       		Account: Account != null && Account.length > 0 ? Account : null,
       		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
 			FeeType: FeeType
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 

@@ -81,7 +81,7 @@ export class PaymentCardService extends HelperBaseService {
 	editPaymentCard(id) : Observable<PaymentCard> {
 		const uri = this.apiUrl + '/PaymentCard/edit/' + id;
 
-		return this.http.get(Observable<PaymentCard>)(uri);
+		return this.http.get(<PaymentCard>)(uri);
 	}
 
 	//********************************************************************
@@ -90,9 +90,9 @@ export class PaymentCardService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updatePaymentCard(cardNumber, embossedName, expiryMonth, expiryYear, Bank, Account, Customer, Transactions, CardType, CardStatus, Network, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/PaymentCard/update/' + id;
-		const obj = {
-			      		cardNumber: cardNumber,
+					const uri = this.apiUrl + '/PaymentCard/update/' + id;
+			const obj = {
+				      		cardNumber: cardNumber,
       		embossedName: embossedName,
       		expiryMonth: expiryMonth,
       		expiryYear: expiryYear,
@@ -103,8 +103,8 @@ export class PaymentCardService extends HelperBaseService {
       		CardType: CardType,
       		CardStatus: CardStatus,
 			Network: Network
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 

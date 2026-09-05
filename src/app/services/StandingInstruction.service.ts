@@ -75,7 +75,7 @@ export class StandingInstructionService extends HelperBaseService {
 	editStandingInstruction(id) : Observable<StandingInstruction> {
 		const uri = this.apiUrl + '/StandingInstruction/edit/' + id;
 
-		return this.http.get(Observable<StandingInstruction>)(uri);
+		return this.http.get(<StandingInstruction>)(uri);
 	}
 
 	//********************************************************************
@@ -84,17 +84,17 @@ export class StandingInstructionService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updateStandingInstruction(instructionId, amount, nextExecutionDate, Account, Beneficiary, Frequency, Status, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/StandingInstruction/update/' + id;
-		const obj = {
-			      		instructionId: instructionId,
+					const uri = this.apiUrl + '/StandingInstruction/update/' + id;
+			const obj = {
+				      		instructionId: instructionId,
       		amount: amount,
       		nextExecutionDate: nextExecutionDate,
       		Account: Account != null && Account.length > 0 ? Account : null,
       		Beneficiary: Beneficiary != null && Beneficiary.length > 0 ? Beneficiary : null,
       		Frequency: Frequency,
 			Status: Status
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 

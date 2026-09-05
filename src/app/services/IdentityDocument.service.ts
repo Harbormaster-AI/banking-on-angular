@@ -72,7 +72,7 @@ export class IdentityDocumentService extends HelperBaseService {
 	editIdentityDocument(id) : Observable<IdentityDocument> {
 		const uri = this.apiUrl + '/IdentityDocument/edit/' + id;
 
-		return this.http.get(Observable<IdentityDocument>)(uri);
+		return this.http.get(<IdentityDocument>)(uri);
 	}
 
 	//********************************************************************
@@ -81,15 +81,15 @@ export class IdentityDocumentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updateIdentityDocument(documentNumber, issuingCountry, expirationDate, KycProfile, DocumentType, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/IdentityDocument/update/' + id;
-		const obj = {
-			      		documentNumber: documentNumber,
+					const uri = this.apiUrl + '/IdentityDocument/update/' + id;
+			const obj = {
+				      		documentNumber: documentNumber,
       		issuingCountry: issuingCountry,
       		expirationDate: expirationDate,
       		KycProfile: KycProfile != null && KycProfile.length > 0 ? KycProfile : null,
 			DocumentType: DocumentType
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 

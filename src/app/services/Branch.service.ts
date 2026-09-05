@@ -79,7 +79,7 @@ export class BranchService extends HelperBaseService {
 	editBranch(id) : Observable<Branch> {
 		const uri = this.apiUrl + '/Branch/edit/' + id;
 
-		return this.http.get(Observable<Branch>)(uri);
+		return this.http.get(<Branch>)(uri);
 	}
 
 	//********************************************************************
@@ -88,9 +88,9 @@ export class BranchService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updateBranch(name, branchCode, address, phone, openingHours, Bank, Accounts, LoanAccounts, Atms, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/Branch/update/' + id;
-		const obj = {
-			      		name: name,
+					const uri = this.apiUrl + '/Branch/update/' + id;
+			const obj = {
+				      		name: name,
       		branchCode: branchCode,
       		address: address,
       		phone: phone,
@@ -99,8 +99,8 @@ export class BranchService extends HelperBaseService {
       		Accounts: Accounts != null && Accounts.length > 0 ? Accounts : null,
       		LoanAccounts: LoanAccounts != null && LoanAccounts.length > 0 ? LoanAccounts : null,
 			Atms: Atms != null && Atms.length > 0 ? Atms : null
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 

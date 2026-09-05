@@ -78,7 +78,7 @@ export class DisputeService extends HelperBaseService {
 	editDispute(id) : Observable<Dispute> {
 		const uri = this.apiUrl + '/Dispute/edit/' + id;
 
-		return this.http.get(Observable<Dispute>)(uri);
+		return this.http.get(<Dispute>)(uri);
 	}
 
 	//********************************************************************
@@ -87,9 +87,9 @@ export class DisputeService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updateDispute(disputeReference, raisedOn, reason, Transaction, Customer, Account, PaymentCard, Status, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/Dispute/update/' + id;
-		const obj = {
-			      		disputeReference: disputeReference,
+					const uri = this.apiUrl + '/Dispute/update/' + id;
+			const obj = {
+				      		disputeReference: disputeReference,
       		raisedOn: raisedOn,
       		reason: reason,
       		Transaction: Transaction != null && Transaction.length > 0 ? Transaction : null,
@@ -97,8 +97,8 @@ export class DisputeService extends HelperBaseService {
       		Account: Account != null && Account.length > 0 ? Account : null,
       		PaymentCard: PaymentCard != null && PaymentCard.length > 0 ? PaymentCard : null,
 			Status: Status
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 

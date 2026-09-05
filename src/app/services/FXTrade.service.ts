@@ -84,7 +84,7 @@ export class FXTradeService extends HelperBaseService {
 	editFXTrade(id) : Observable<FXTrade> {
 		const uri = this.apiUrl + '/FXTrade/edit/' + id;
 
-		return this.http.get(Observable<FXTrade>)(uri);
+		return this.http.get(<FXTrade>)(uri);
 	}
 
 	//********************************************************************
@@ -93,9 +93,9 @@ export class FXTradeService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updateFXTrade(tradeReference, tradeDate, settlementDate, amountSold, amountBought, rate, Customer, Bank, ExchangeRate, SourceAccount, DestinationAccount, Transaction, Status, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/FXTrade/update/' + id;
-		const obj = {
-			      		tradeReference: tradeReference,
+					const uri = this.apiUrl + '/FXTrade/update/' + id;
+			const obj = {
+				      		tradeReference: tradeReference,
       		tradeDate: tradeDate,
       		settlementDate: settlementDate,
       		amountSold: amountSold,
@@ -108,8 +108,8 @@ export class FXTradeService extends HelperBaseService {
       		DestinationAccount: DestinationAccount != null && DestinationAccount.length > 0 ? DestinationAccount : null,
       		Transaction: Transaction != null && Transaction.length > 0 ? Transaction : null,
 			Status: Status
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 

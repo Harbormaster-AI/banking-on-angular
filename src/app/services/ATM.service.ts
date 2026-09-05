@@ -71,7 +71,7 @@ export class ATMService extends HelperBaseService {
 	editATM(id) : Observable<ATM> {
 		const uri = this.apiUrl + '/ATM/edit/' + id;
 
-		return this.http.get(Observable<ATM>)(uri);
+		return this.http.get(<ATM>)(uri);
 	}
 
 	//********************************************************************
@@ -80,14 +80,14 @@ export class ATMService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updateATM(terminalId, location, Branch, Status, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/ATM/update/' + id;
-		const obj = {
-			      		terminalId: terminalId,
+					const uri = this.apiUrl + '/ATM/update/' + id;
+			const obj = {
+				      		terminalId: terminalId,
       		location: location,
       		Branch: Branch != null && Branch.length > 0 ? Branch : null,
 			Status: Status
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 

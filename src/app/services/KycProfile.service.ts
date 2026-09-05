@@ -77,7 +77,7 @@ export class KycProfileService extends HelperBaseService {
 	editKycProfile(id) : Observable<KycProfile> {
 		const uri = this.apiUrl + '/KycProfile/edit/' + id;
 
-		return this.http.get(Observable<KycProfile>)(uri);
+		return this.http.get(<KycProfile>)(uri);
 	}
 
 	//********************************************************************
@@ -86,17 +86,17 @@ export class KycProfileService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updateKycProfile(profileId, lastReviewedOn, Customer, IdentityDocuments, RiskAssessments, Screenings, Status, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/KycProfile/update/' + id;
-		const obj = {
-			      		profileId: profileId,
+					const uri = this.apiUrl + '/KycProfile/update/' + id;
+			const obj = {
+				      		profileId: profileId,
       		lastReviewedOn: lastReviewedOn,
       		Customer: Customer != null && Customer.length > 0 ? Customer : null,
       		IdentityDocuments: IdentityDocuments != null && IdentityDocuments.length > 0 ? IdentityDocuments : null,
       		RiskAssessments: RiskAssessments != null && RiskAssessments.length > 0 ? RiskAssessments : null,
       		Screenings: Screenings != null && Screenings.length > 0 ? Screenings : null,
 			Status: Status
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 

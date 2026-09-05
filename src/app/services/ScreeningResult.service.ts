@@ -71,7 +71,7 @@ export class ScreeningResultService extends HelperBaseService {
 	editScreeningResult(id) : Observable<ScreeningResult> {
 		const uri = this.apiUrl + '/ScreeningResult/edit/' + id;
 
-		return this.http.get(Observable<ScreeningResult>)(uri);
+		return this.http.get(<ScreeningResult>)(uri);
 	}
 
 	//********************************************************************
@@ -80,14 +80,14 @@ export class ScreeningResultService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updateScreeningResult(screeningDate, provider, KycProfile, Outcome, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/ScreeningResult/update/' + id;
-		const obj = {
-			      		screeningDate: screeningDate,
+					const uri = this.apiUrl + '/ScreeningResult/update/' + id;
+			const obj = {
+				      		screeningDate: screeningDate,
       		provider: provider,
       		KycProfile: KycProfile != null && KycProfile.length > 0 ? KycProfile : null,
 			Outcome: Outcome
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 

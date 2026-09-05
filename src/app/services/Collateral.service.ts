@@ -72,7 +72,7 @@ export class CollateralService extends HelperBaseService {
 	editCollateral(id) : Observable<Collateral> {
 		const uri = this.apiUrl + '/Collateral/edit/' + id;
 
-		return this.http.get(Observable<Collateral>)(uri);
+		return this.http.get(<Collateral>)(uri);
 	}
 
 	//********************************************************************
@@ -81,15 +81,15 @@ export class CollateralService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updateCollateral(appraisedValue, description, location, LoanAccount, CollateralType, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/Collateral/update/' + id;
-		const obj = {
-			      		appraisedValue: appraisedValue,
+					const uri = this.apiUrl + '/Collateral/update/' + id;
+			const obj = {
+				      		appraisedValue: appraisedValue,
       		description: description,
       		location: location,
       		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
 			CollateralType: CollateralType
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 

@@ -83,7 +83,7 @@ export class FundsTransferService extends HelperBaseService {
 	editFundsTransfer(id) : Observable<FundsTransfer> {
 		const uri = this.apiUrl + '/FundsTransfer/edit/' + id;
 
-		return this.http.get(Observable<FundsTransfer>)(uri);
+		return this.http.get(<FundsTransfer>)(uri);
 	}
 
 	//********************************************************************
@@ -92,9 +92,9 @@ export class FundsTransferService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updateFundsTransfer(transferReference, amount, requestedDate, executionDate, purpose, feeAmount, SourceAccount, DestinationAccount, ExternalBeneficiary, InitiatedBy, Transactions, Method, Status, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/FundsTransfer/update/' + id;
-		const obj = {
-			      		transferReference: transferReference,
+					const uri = this.apiUrl + '/FundsTransfer/update/' + id;
+			const obj = {
+				      		transferReference: transferReference,
       		amount: amount,
       		requestedDate: requestedDate,
       		executionDate: executionDate,
@@ -107,8 +107,8 @@ export class FundsTransferService extends HelperBaseService {
       		Transactions: Transactions != null && Transactions.length > 0 ? Transactions : null,
       		Method: Method,
 			Status: Status
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 

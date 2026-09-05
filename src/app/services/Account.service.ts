@@ -91,7 +91,7 @@ export class AccountService extends HelperBaseService {
 	editAccount(id) : Observable<Account> {
 		const uri = this.apiUrl + '/Account/edit/' + id;
 
-		return this.http.get(Observable<Account>)(uri);
+		return this.http.get(<Account>)(uri);
 	}
 
 	//********************************************************************
@@ -100,9 +100,9 @@ export class AccountService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updateAccount(accountNumber, iban, accountName, currency, openedOn, closedOn, Bank, Branch, Product, Owners, Transactions, Statements, StandingInstructions, FeeCharges, AccountType, OwnershipType, Status, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/Account/update/' + id;
-		const obj = {
-			      		accountNumber: accountNumber,
+					const uri = this.apiUrl + '/Account/update/' + id;
+			const obj = {
+				      		accountNumber: accountNumber,
       		iban: iban,
       		accountName: accountName,
       		currency: currency,
@@ -119,8 +119,8 @@ export class AccountService extends HelperBaseService {
       		AccountType: AccountType,
       		OwnershipType: OwnershipType,
 			Status: Status
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 

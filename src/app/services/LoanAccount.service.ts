@@ -94,7 +94,7 @@ export class LoanAccountService extends HelperBaseService {
 	editLoanAccount(id) : Observable<LoanAccount> {
 		const uri = this.apiUrl + '/LoanAccount/edit/' + id;
 
-		return this.http.get(Observable<LoanAccount>)(uri);
+		return this.http.get(<LoanAccount>)(uri);
 	}
 
 	//********************************************************************
@@ -103,9 +103,9 @@ export class LoanAccountService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updateLoanAccount(loanNumber, principalAmount, outstandingPrincipal, interestRate, originationDate, maturityDate, paymentDayOfMonth, currency, Bank, Branch, Product, Borrowers, RepaymentSchedule, Payments, Collateral, FeeCharges, LoanType, RateType, Compounding, Status, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/LoanAccount/update/' + id;
-		const obj = {
-			      		loanNumber: loanNumber,
+					const uri = this.apiUrl + '/LoanAccount/update/' + id;
+			const obj = {
+				      		loanNumber: loanNumber,
       		principalAmount: principalAmount,
       		outstandingPrincipal: outstandingPrincipal,
       		interestRate: interestRate,
@@ -125,8 +125,8 @@ export class LoanAccountService extends HelperBaseService {
       		RateType: RateType,
       		Compounding: Compounding,
 			Status: Status
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 

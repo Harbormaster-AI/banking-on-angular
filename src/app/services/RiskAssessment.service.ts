@@ -71,7 +71,7 @@ export class RiskAssessmentService extends HelperBaseService {
 	editRiskAssessment(id) : Observable<RiskAssessment> {
 		const uri = this.apiUrl + '/RiskAssessment/edit/' + id;
 
-		return this.http.get(Observable<RiskAssessment>)(uri);
+		return this.http.get(<RiskAssessment>)(uri);
 	}
 
 	//********************************************************************
@@ -80,14 +80,14 @@ export class RiskAssessmentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updateRiskAssessment(score, assessedOn, KycProfile, Rating, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/RiskAssessment/update/' + id;
-		const obj = {
-			      		score: score,
+					const uri = this.apiUrl + '/RiskAssessment/update/' + id;
+			const obj = {
+				      		score: score,
       		assessedOn: assessedOn,
       		KycProfile: KycProfile != null && KycProfile.length > 0 ? KycProfile : null,
 			Rating: Rating
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 

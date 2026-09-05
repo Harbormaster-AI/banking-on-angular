@@ -95,7 +95,7 @@ export class CustomerService extends HelperBaseService {
 	editCustomer(id) : Observable<Customer> {
 		const uri = this.apiUrl + '/Customer/edit/' + id;
 
-		return this.http.get(Observable<Customer>)(uri);
+		return this.http.get(<Customer>)(uri);
 	}
 
 	//********************************************************************
@@ -104,9 +104,9 @@ export class CustomerService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updateCustomer(firstName, lastName, legalName, dateOfBirth, taxId, email, phone, address, Bank, Accounts, LoanAccounts, PaymentCards, ExternalAccounts, FundsTransfers, Disputes, KycProfiles, Consents, CustomerType, RiskRating, KycStatus, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/Customer/update/' + id;
-		const obj = {
-			      		firstName: firstName,
+					const uri = this.apiUrl + '/Customer/update/' + id;
+			const obj = {
+				      		firstName: firstName,
       		lastName: lastName,
       		legalName: legalName,
       		dateOfBirth: dateOfBirth,
@@ -126,8 +126,8 @@ export class CustomerService extends HelperBaseService {
       		CustomerType: CustomerType,
       		RiskRating: RiskRating,
 			KycStatus: KycStatus
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 

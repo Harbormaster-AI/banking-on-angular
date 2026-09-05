@@ -76,7 +76,7 @@ export class ExternalAccountService extends HelperBaseService {
 	editExternalAccount(id) : Observable<ExternalAccount> {
 		const uri = this.apiUrl + '/ExternalAccount/edit/' + id;
 
-		return this.http.get(Observable<ExternalAccount>)(uri);
+		return this.http.get(<ExternalAccount>)(uri);
 	}
 
 	//********************************************************************
@@ -85,9 +85,9 @@ export class ExternalAccountService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updateExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/ExternalAccount/update/' + id;
-		const obj = {
-			      		name: name,
+					const uri = this.apiUrl + '/ExternalAccount/update/' + id;
+			const obj = {
+				      		name: name,
       		iban: iban,
       		accountNumber: accountNumber,
       		bic: bic,
@@ -95,8 +95,8 @@ export class ExternalAccountService extends HelperBaseService {
       		country: country,
       		Customer: Customer != null && Customer.length > 0 ? Customer : null,
 			Transactions: Transactions != null && Transactions.length > 0 ? Transactions : null
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 

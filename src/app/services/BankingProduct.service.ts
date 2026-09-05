@@ -78,7 +78,7 @@ export class BankingProductService extends HelperBaseService {
 	editBankingProduct(id) : Observable<BankingProduct> {
 		const uri = this.apiUrl + '/BankingProduct/edit/' + id;
 
-		return this.http.get(Observable<BankingProduct>)(uri);
+		return this.http.get(<BankingProduct>)(uri);
 	}
 
 	//********************************************************************
@@ -87,9 +87,9 @@ export class BankingProductService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updateBankingProduct(productCode, name, description, Bank, Accounts, LoanAccounts, PaymentCards, ProductCategory, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/BankingProduct/update/' + id;
-		const obj = {
-			      		productCode: productCode,
+					const uri = this.apiUrl + '/BankingProduct/update/' + id;
+			const obj = {
+				      		productCode: productCode,
       		name: name,
       		description: description,
       		Bank: Bank != null && Bank.length > 0 ? Bank : null,
@@ -97,8 +97,8 @@ export class BankingProductService extends HelperBaseService {
       		LoanAccounts: LoanAccounts != null && LoanAccounts.length > 0 ? LoanAccounts : null,
       		PaymentCards: PaymentCards != null && PaymentCards.length > 0 ? PaymentCards : null,
 			ProductCategory: ProductCategory
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 

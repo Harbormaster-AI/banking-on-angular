@@ -76,7 +76,7 @@ export class RepaymentScheduleService extends HelperBaseService {
 	editRepaymentSchedule(id) : Observable<RepaymentSchedule> {
 		const uri = this.apiUrl + '/RepaymentSchedule/edit/' + id;
 
-		return this.http.get(Observable<RepaymentSchedule>)(uri);
+		return this.http.get(<RepaymentSchedule>)(uri);
 	}
 
 	//********************************************************************
@@ -85,9 +85,9 @@ export class RepaymentScheduleService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updateRepaymentSchedule(installmentNumber, dueDate, principalDue, interestDue, totalDue, LoanAccount, Payment, Status, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/RepaymentSchedule/update/' + id;
-		const obj = {
-			      		installmentNumber: installmentNumber,
+					const uri = this.apiUrl + '/RepaymentSchedule/update/' + id;
+			const obj = {
+				      		installmentNumber: installmentNumber,
       		dueDate: dueDate,
       		principalDue: principalDue,
       		interestDue: interestDue,
@@ -95,8 +95,8 @@ export class RepaymentScheduleService extends HelperBaseService {
       		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
       		Payment: Payment != null && Payment.length > 0 ? Payment : null,
 			Status: Status
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 

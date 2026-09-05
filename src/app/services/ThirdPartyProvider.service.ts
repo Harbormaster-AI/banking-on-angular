@@ -73,7 +73,7 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	editThirdPartyProvider(id) : Observable<ThirdPartyProvider> {
 		const uri = this.apiUrl + '/ThirdPartyProvider/edit/' + id;
 
-		return this.http.get(Observable<ThirdPartyProvider>)(uri);
+		return this.http.get(<ThirdPartyProvider>)(uri);
 	}
 
 	//********************************************************************
@@ -82,15 +82,15 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 			updateThirdPartyProvider(name, registrationId, website, Bank, Consents, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/ThirdPartyProvider/update/' + id;
-		const obj = {
-			      		name: name,
+					const uri = this.apiUrl + '/ThirdPartyProvider/update/' + id;
+			const obj = {
+				      		name: name,
       		registrationId: registrationId,
       		website: website,
       		Bank: Bank != null && Bank.length > 0 ? Bank : null,
 			Consents: Consents != null && Consents.length > 0 ? Consents : null
-		};
-
+			};
+		}
 		return this.http.post(uri, obj);
 	}
 
