@@ -1,0 +1,88 @@
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+	<h5 class="mb-0">Transaction List</h5>
+
+	<a
+			[routerLink]="['/createTransaction']"
+			class="btn btn-primary btn-sm">
+		Create Transaction
+	</a>
+</div>
+
+<div class="table-responsive">
+	<table class="table table-hover table-striped table-bordered table-sm">
+		<thead>
+		<tr class="table-dark text-center">
+									<th scope="col">bookingDate</th>
+						<th scope="col">valueDate</th>
+						<th scope="col">amount</th>
+						<th scope="col">description</th>
+						<th scope="col">Direction</th>
+						<th scope="col">TransactionType</th>
+						<th scope="col">Status</th>
+						<th scope="col">Channel</th>
+						<th scope="col" colspan="2">Actions</th>
+		</tr>
+		</thead>
+
+		<tbody>
+			<tr
+				*ngFor="let transaction of transactions"
+				class="text-center">
+
+								<td class="align-middle">
+					{{ transaction.bookingDate }}
+				</td>
+								<td class="align-middle">
+					{{ transaction.valueDate }}
+				</td>
+								<td class="align-middle">
+					{{ transaction.amount }}
+				</td>
+								<td class="align-middle">
+					{{ transaction.description }}
+				</td>
+								<td class="align-middle">
+					{{ transaction.Direction }}
+				</td>
+								<td class="align-middle">
+					{{ transaction.TransactionType }}
+				</td>
+								<td class="align-middle">
+					{{ transaction.Status }}
+				</td>
+								<td class="align-middle">
+					{{ transaction.Channel }}
+				</td>
+				
+				<td class="align-middle">
+					<a
+							[routerLink]="['/editTransaction', transactiontransactionId]"
+							class="btn btn-primary btn-sm">
+						Edit
+					</a>
+				</td>
+
+				<td class="align-middle">
+					<button
+							type="button"
+							(click)="deleteTransaction(transaction.transactionId)"
+							class="btn btn-danger btn-sm">
+						Delete
+					</button>
+				</td>
+
+			</tr>
+
+			
+			<tr *ngIf="transactions?.length === 0">
+				<td
+						colspan="10"
+						class="text-center">
+					No transactions found.
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>

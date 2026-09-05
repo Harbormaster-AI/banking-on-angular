@@ -1,0 +1,72 @@
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+	<h5 class="mb-0">BankingProduct List</h5>
+
+	<a
+			[routerLink]="['/createBankingProduct']"
+			class="btn btn-primary btn-sm">
+		Create BankingProduct
+	</a>
+</div>
+
+<div class="table-responsive">
+	<table class="table table-hover table-striped table-bordered table-sm">
+		<thead>
+		<tr class="table-dark text-center">
+									<th scope="col">productCode</th>
+						<th scope="col">name</th>
+						<th scope="col">description</th>
+						<th scope="col">ProductCategory</th>
+						<th scope="col" colspan="2">Actions</th>
+		</tr>
+		</thead>
+
+		<tbody>
+			<tr
+				*ngFor="let bankingProduct of bankingProducts"
+				class="text-center">
+
+								<td class="align-middle">
+					{{ bankingProduct.productCode }}
+				</td>
+								<td class="align-middle">
+					{{ bankingProduct.name }}
+				</td>
+								<td class="align-middle">
+					{{ bankingProduct.description }}
+				</td>
+								<td class="align-middle">
+					{{ bankingProduct.ProductCategory }}
+				</td>
+				
+				<td class="align-middle">
+					<a
+							[routerLink]="['/editBankingProduct', bankingProductbankingProductId]"
+							class="btn btn-primary btn-sm">
+						Edit
+					</a>
+				</td>
+
+				<td class="align-middle">
+					<button
+							type="button"
+							(click)="deleteBankingProduct(bankingProduct.bankingProductId)"
+							class="btn btn-danger btn-sm">
+						Delete
+					</button>
+				</td>
+
+			</tr>
+
+			
+			<tr *ngIf="bankingProducts?.length === 0">
+				<td
+						colspan="6"
+						class="text-center">
+					No bankingProducts found.
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>

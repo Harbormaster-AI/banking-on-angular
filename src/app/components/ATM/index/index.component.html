@@ -1,0 +1,68 @@
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+	<h5 class="mb-0">ATM List</h5>
+
+	<a
+			[routerLink]="['/createATM']"
+			class="btn btn-primary btn-sm">
+		Create ATM
+	</a>
+</div>
+
+<div class="table-responsive">
+	<table class="table table-hover table-striped table-bordered table-sm">
+		<thead>
+		<tr class="table-dark text-center">
+									<th scope="col">terminalId</th>
+						<th scope="col">location</th>
+						<th scope="col">Status</th>
+						<th scope="col" colspan="2">Actions</th>
+		</tr>
+		</thead>
+
+		<tbody>
+			<tr
+				*ngFor="let aTM of aTMs"
+				class="text-center">
+
+								<td class="align-middle">
+					{{ aTM.terminalId }}
+				</td>
+								<td class="align-middle">
+					{{ aTM.location }}
+				</td>
+								<td class="align-middle">
+					{{ aTM.Status }}
+				</td>
+				
+				<td class="align-middle">
+					<a
+							[routerLink]="['/editATM', aTMaTMId]"
+							class="btn btn-primary btn-sm">
+						Edit
+					</a>
+				</td>
+
+				<td class="align-middle">
+					<button
+							type="button"
+							(click)="deleteATM(aTM.aTMId)"
+							class="btn btn-danger btn-sm">
+						Delete
+					</button>
+				</td>
+
+			</tr>
+
+			
+			<tr *ngIf="aTMs?.length === 0">
+				<td
+						colspan="5"
+						class="text-center">
+					No aTMs found.
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>

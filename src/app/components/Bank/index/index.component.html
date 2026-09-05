@@ -1,0 +1,76 @@
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+	<h5 class="mb-0">Bank List</h5>
+
+	<a
+			[routerLink]="['/createBank']"
+			class="btn btn-primary btn-sm">
+		Create Bank
+	</a>
+</div>
+
+<div class="table-responsive">
+	<table class="table table-hover table-striped table-bordered table-sm">
+		<thead>
+		<tr class="table-dark text-center">
+									<th scope="col">name</th>
+						<th scope="col">legalName</th>
+						<th scope="col">swiftBic</th>
+						<th scope="col">headquartersCountry</th>
+						<th scope="col">website</th>
+						<th scope="col" colspan="2">Actions</th>
+		</tr>
+		</thead>
+
+		<tbody>
+			<tr
+				*ngFor="let bank of banks"
+				class="text-center">
+
+								<td class="align-middle">
+					{{ bank.name }}
+				</td>
+								<td class="align-middle">
+					{{ bank.legalName }}
+				</td>
+								<td class="align-middle">
+					{{ bank.swiftBic }}
+				</td>
+								<td class="align-middle">
+					{{ bank.headquartersCountry }}
+				</td>
+								<td class="align-middle">
+					{{ bank.website }}
+				</td>
+				
+				<td class="align-middle">
+					<a
+							[routerLink]="['/editBank', bankbankId]"
+							class="btn btn-primary btn-sm">
+						Edit
+					</a>
+				</td>
+
+				<td class="align-middle">
+					<button
+							type="button"
+							(click)="deleteBank(bank.bankId)"
+							class="btn btn-danger btn-sm">
+						Delete
+					</button>
+				</td>
+
+			</tr>
+
+			
+			<tr *ngIf="banks?.length === 0">
+				<td
+						colspan="7"
+						class="text-center">
+					No banks found.
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>

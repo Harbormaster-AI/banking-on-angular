@@ -1,0 +1,80 @@
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+	<h5 class="mb-0">ExternalAccount List</h5>
+
+	<a
+			[routerLink]="['/createExternalAccount']"
+			class="btn btn-primary btn-sm">
+		Create ExternalAccount
+	</a>
+</div>
+
+<div class="table-responsive">
+	<table class="table table-hover table-striped table-bordered table-sm">
+		<thead>
+		<tr class="table-dark text-center">
+									<th scope="col">name</th>
+						<th scope="col">iban</th>
+						<th scope="col">accountNumber</th>
+						<th scope="col">bic</th>
+						<th scope="col">bankName</th>
+						<th scope="col">country</th>
+						<th scope="col" colspan="2">Actions</th>
+		</tr>
+		</thead>
+
+		<tbody>
+			<tr
+				*ngFor="let externalAccount of externalAccounts"
+				class="text-center">
+
+								<td class="align-middle">
+					{{ externalAccount.name }}
+				</td>
+								<td class="align-middle">
+					{{ externalAccount.iban }}
+				</td>
+								<td class="align-middle">
+					{{ externalAccount.accountNumber }}
+				</td>
+								<td class="align-middle">
+					{{ externalAccount.bic }}
+				</td>
+								<td class="align-middle">
+					{{ externalAccount.bankName }}
+				</td>
+								<td class="align-middle">
+					{{ externalAccount.country }}
+				</td>
+				
+				<td class="align-middle">
+					<a
+							[routerLink]="['/editExternalAccount', externalAccountexternalAccountId]"
+							class="btn btn-primary btn-sm">
+						Edit
+					</a>
+				</td>
+
+				<td class="align-middle">
+					<button
+							type="button"
+							(click)="deleteExternalAccount(externalAccount.externalAccountId)"
+							class="btn btn-danger btn-sm">
+						Delete
+					</button>
+				</td>
+
+			</tr>
+
+			
+			<tr *ngIf="externalAccounts?.length === 0">
+				<td
+						colspan="8"
+						class="text-center">
+					No externalAccounts found.
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>

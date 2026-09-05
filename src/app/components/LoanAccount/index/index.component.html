@@ -1,0 +1,104 @@
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+	<h5 class="mb-0">LoanAccount List</h5>
+
+	<a
+			[routerLink]="['/createLoanAccount']"
+			class="btn btn-primary btn-sm">
+		Create LoanAccount
+	</a>
+</div>
+
+<div class="table-responsive">
+	<table class="table table-hover table-striped table-bordered table-sm">
+		<thead>
+		<tr class="table-dark text-center">
+									<th scope="col">loanNumber</th>
+						<th scope="col">principalAmount</th>
+						<th scope="col">outstandingPrincipal</th>
+						<th scope="col">interestRate</th>
+						<th scope="col">originationDate</th>
+						<th scope="col">maturityDate</th>
+						<th scope="col">paymentDayOfMonth</th>
+						<th scope="col">currency</th>
+						<th scope="col">LoanType</th>
+						<th scope="col">RateType</th>
+						<th scope="col">Compounding</th>
+						<th scope="col">Status</th>
+						<th scope="col" colspan="2">Actions</th>
+		</tr>
+		</thead>
+
+		<tbody>
+			<tr
+				*ngFor="let loanAccount of loanAccounts"
+				class="text-center">
+
+								<td class="align-middle">
+					{{ loanAccount.loanNumber }}
+				</td>
+								<td class="align-middle">
+					{{ loanAccount.principalAmount }}
+				</td>
+								<td class="align-middle">
+					{{ loanAccount.outstandingPrincipal }}
+				</td>
+								<td class="align-middle">
+					{{ loanAccount.interestRate }}
+				</td>
+								<td class="align-middle">
+					{{ loanAccount.originationDate }}
+				</td>
+								<td class="align-middle">
+					{{ loanAccount.maturityDate }}
+				</td>
+								<td class="align-middle">
+					{{ loanAccount.paymentDayOfMonth }}
+				</td>
+								<td class="align-middle">
+					{{ loanAccount.currency }}
+				</td>
+								<td class="align-middle">
+					{{ loanAccount.LoanType }}
+				</td>
+								<td class="align-middle">
+					{{ loanAccount.RateType }}
+				</td>
+								<td class="align-middle">
+					{{ loanAccount.Compounding }}
+				</td>
+								<td class="align-middle">
+					{{ loanAccount.Status }}
+				</td>
+				
+				<td class="align-middle">
+					<a
+							[routerLink]="['/editLoanAccount', loanAccountloanAccountId]"
+							class="btn btn-primary btn-sm">
+						Edit
+					</a>
+				</td>
+
+				<td class="align-middle">
+					<button
+							type="button"
+							(click)="deleteLoanAccount(loanAccount.loanAccountId)"
+							class="btn btn-danger btn-sm">
+						Delete
+					</button>
+				</td>
+
+			</tr>
+
+			
+			<tr *ngIf="loanAccounts?.length === 0">
+				<td
+						colspan="14"
+						class="text-center">
+					No loanAccounts found.
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>

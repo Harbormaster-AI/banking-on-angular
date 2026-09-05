@@ -1,0 +1,76 @@
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+	<h5 class="mb-0">StandingInstruction List</h5>
+
+	<a
+			[routerLink]="['/createStandingInstruction']"
+			class="btn btn-primary btn-sm">
+		Create StandingInstruction
+	</a>
+</div>
+
+<div class="table-responsive">
+	<table class="table table-hover table-striped table-bordered table-sm">
+		<thead>
+		<tr class="table-dark text-center">
+									<th scope="col">instructionId</th>
+						<th scope="col">amount</th>
+						<th scope="col">nextExecutionDate</th>
+						<th scope="col">Frequency</th>
+						<th scope="col">Status</th>
+						<th scope="col" colspan="2">Actions</th>
+		</tr>
+		</thead>
+
+		<tbody>
+			<tr
+				*ngFor="let standingInstruction of standingInstructions"
+				class="text-center">
+
+								<td class="align-middle">
+					{{ standingInstruction.instructionId }}
+				</td>
+								<td class="align-middle">
+					{{ standingInstruction.amount }}
+				</td>
+								<td class="align-middle">
+					{{ standingInstruction.nextExecutionDate }}
+				</td>
+								<td class="align-middle">
+					{{ standingInstruction.Frequency }}
+				</td>
+								<td class="align-middle">
+					{{ standingInstruction.Status }}
+				</td>
+				
+				<td class="align-middle">
+					<a
+							[routerLink]="['/editStandingInstruction', standingInstructionstandingInstructionId]"
+							class="btn btn-primary btn-sm">
+						Edit
+					</a>
+				</td>
+
+				<td class="align-middle">
+					<button
+							type="button"
+							(click)="deleteStandingInstruction(standingInstruction.standingInstructionId)"
+							class="btn btn-danger btn-sm">
+						Delete
+					</button>
+				</td>
+
+			</tr>
+
+			
+			<tr *ngIf="standingInstructions?.length === 0">
+				<td
+						colspan="7"
+						class="text-center">
+					No standingInstructions found.
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>

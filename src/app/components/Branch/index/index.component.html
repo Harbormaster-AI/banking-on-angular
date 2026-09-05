@@ -1,0 +1,76 @@
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+	<h5 class="mb-0">Branch List</h5>
+
+	<a
+			[routerLink]="['/createBranch']"
+			class="btn btn-primary btn-sm">
+		Create Branch
+	</a>
+</div>
+
+<div class="table-responsive">
+	<table class="table table-hover table-striped table-bordered table-sm">
+		<thead>
+		<tr class="table-dark text-center">
+									<th scope="col">name</th>
+						<th scope="col">branchCode</th>
+						<th scope="col">address</th>
+						<th scope="col">phone</th>
+						<th scope="col">openingHours</th>
+						<th scope="col" colspan="2">Actions</th>
+		</tr>
+		</thead>
+
+		<tbody>
+			<tr
+				*ngFor="let branch of branchs"
+				class="text-center">
+
+								<td class="align-middle">
+					{{ branch.name }}
+				</td>
+								<td class="align-middle">
+					{{ branch.branchCode }}
+				</td>
+								<td class="align-middle">
+					{{ branch.address }}
+				</td>
+								<td class="align-middle">
+					{{ branch.phone }}
+				</td>
+								<td class="align-middle">
+					{{ branch.openingHours }}
+				</td>
+				
+				<td class="align-middle">
+					<a
+							[routerLink]="['/editBranch', branchbranchId]"
+							class="btn btn-primary btn-sm">
+						Edit
+					</a>
+				</td>
+
+				<td class="align-middle">
+					<button
+							type="button"
+							(click)="deleteBranch(branch.branchId)"
+							class="btn btn-danger btn-sm">
+						Delete
+					</button>
+				</td>
+
+			</tr>
+
+			
+			<tr *ngIf="branchs?.length === 0">
+				<td
+						colspan="7"
+						class="text-center">
+					No branchs found.
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>

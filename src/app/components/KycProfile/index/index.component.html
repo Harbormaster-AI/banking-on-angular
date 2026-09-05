@@ -1,0 +1,68 @@
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+	<h5 class="mb-0">KycProfile List</h5>
+
+	<a
+			[routerLink]="['/createKycProfile']"
+			class="btn btn-primary btn-sm">
+		Create KycProfile
+	</a>
+</div>
+
+<div class="table-responsive">
+	<table class="table table-hover table-striped table-bordered table-sm">
+		<thead>
+		<tr class="table-dark text-center">
+									<th scope="col">profileId</th>
+						<th scope="col">lastReviewedOn</th>
+						<th scope="col">Status</th>
+						<th scope="col" colspan="2">Actions</th>
+		</tr>
+		</thead>
+
+		<tbody>
+			<tr
+				*ngFor="let kycProfile of kycProfiles"
+				class="text-center">
+
+								<td class="align-middle">
+					{{ kycProfile.profileId }}
+				</td>
+								<td class="align-middle">
+					{{ kycProfile.lastReviewedOn }}
+				</td>
+								<td class="align-middle">
+					{{ kycProfile.Status }}
+				</td>
+				
+				<td class="align-middle">
+					<a
+							[routerLink]="['/editKycProfile', kycProfilekycProfileId]"
+							class="btn btn-primary btn-sm">
+						Edit
+					</a>
+				</td>
+
+				<td class="align-middle">
+					<button
+							type="button"
+							(click)="deleteKycProfile(kycProfile.kycProfileId)"
+							class="btn btn-danger btn-sm">
+						Delete
+					</button>
+				</td>
+
+			</tr>
+
+			
+			<tr *ngIf="kycProfiles?.length === 0">
+				<td
+						colspan="5"
+						class="text-center">
+					No kycProfiles found.
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>

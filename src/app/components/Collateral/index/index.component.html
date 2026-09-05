@@ -1,0 +1,72 @@
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+	<h5 class="mb-0">Collateral List</h5>
+
+	<a
+			[routerLink]="['/createCollateral']"
+			class="btn btn-primary btn-sm">
+		Create Collateral
+	</a>
+</div>
+
+<div class="table-responsive">
+	<table class="table table-hover table-striped table-bordered table-sm">
+		<thead>
+		<tr class="table-dark text-center">
+									<th scope="col">appraisedValue</th>
+						<th scope="col">description</th>
+						<th scope="col">location</th>
+						<th scope="col">CollateralType</th>
+						<th scope="col" colspan="2">Actions</th>
+		</tr>
+		</thead>
+
+		<tbody>
+			<tr
+				*ngFor="let collateral of collaterals"
+				class="text-center">
+
+								<td class="align-middle">
+					{{ collateral.appraisedValue }}
+				</td>
+								<td class="align-middle">
+					{{ collateral.description }}
+				</td>
+								<td class="align-middle">
+					{{ collateral.location }}
+				</td>
+								<td class="align-middle">
+					{{ collateral.CollateralType }}
+				</td>
+				
+				<td class="align-middle">
+					<a
+							[routerLink]="['/editCollateral', collateralcollateralId]"
+							class="btn btn-primary btn-sm">
+						Edit
+					</a>
+				</td>
+
+				<td class="align-middle">
+					<button
+							type="button"
+							(click)="deleteCollateral(collateral.collateralId)"
+							class="btn btn-danger btn-sm">
+						Delete
+					</button>
+				</td>
+
+			</tr>
+
+			
+			<tr *ngIf="collaterals?.length === 0">
+				<td
+						colspan="6"
+						class="text-center">
+					No collaterals found.
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>
