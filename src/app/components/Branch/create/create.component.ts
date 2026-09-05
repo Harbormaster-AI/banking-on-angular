@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BranchService } from '../../../services/Branch.service';
 import { Branch } from '../../../models/Branch';
@@ -18,7 +19,7 @@ export class CreateBranchComponent extends SubBaseComponent implements OnInit {
     branchForm: FormGroup;
     branch: Branch;
 
-    constructor(
+    constructor( http: HttpClient,
         private branchService: BranchService,
         private fb: FormBuilder,
         private router: Router

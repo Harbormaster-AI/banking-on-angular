@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ExchangeRateService } from '../../../services/ExchangeRate.service';
 import { ExchangeRate } from '../../../models/ExchangeRate';
@@ -18,7 +19,7 @@ export class CreateExchangeRateComponent extends SubBaseComponent implements OnI
     exchangeRateForm: FormGroup;
     exchangeRate: ExchangeRate;
 
-    constructor(
+    constructor( http: HttpClient,
         private exchangeRateService: ExchangeRateService,
         private fb: FormBuilder,
         private router: Router

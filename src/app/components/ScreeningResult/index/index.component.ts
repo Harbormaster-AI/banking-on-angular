@@ -10,7 +10,7 @@ import { ScreeningResult } from '../../../models/ScreeningResult';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexScreeningResultComponent extemds BaseComponent {
+export class IndexScreeningResultComponent implements OnInit {
 
     screeningResults: ScreeningResult[] = [];
 

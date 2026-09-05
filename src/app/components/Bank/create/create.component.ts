@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BankService } from '../../../services/Bank.service';
 import { Bank } from '../../../models/Bank';
@@ -18,7 +19,7 @@ export class CreateBankComponent extends SubBaseComponent implements OnInit {
     bankForm: FormGroup;
     bank: Bank;
 
-    constructor(
+    constructor( http: HttpClient,
         private bankService: BankService,
         private fb: FormBuilder,
         private router: Router

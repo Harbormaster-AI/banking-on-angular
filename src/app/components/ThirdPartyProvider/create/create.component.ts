@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ThirdPartyProviderService } from '../../../services/ThirdPartyProvider.service';
 import { ThirdPartyProvider } from '../../../models/ThirdPartyProvider';
@@ -18,7 +19,7 @@ export class CreateThirdPartyProviderComponent extends SubBaseComponent implemen
     thirdPartyProviderForm: FormGroup;
     thirdPartyProvider: ThirdPartyProvider;
 
-    constructor(
+    constructor( http: HttpClient,
         private thirdPartyProviderService: ThirdPartyProviderService,
         private fb: FormBuilder,
         private router: Router

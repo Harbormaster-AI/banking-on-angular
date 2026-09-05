@@ -10,7 +10,7 @@ import { Account } from '../../../models/Account';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexAccountComponent extemds BaseComponent {
+export class IndexAccountComponent implements OnInit {
 
     accounts: Account[] = [];
 

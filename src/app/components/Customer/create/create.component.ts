@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomerService } from '../../../services/Customer.service';
 import { Customer } from '../../../models/Customer';
@@ -18,7 +19,7 @@ export class CreateCustomerComponent extends SubBaseComponent implements OnInit 
     customerForm: FormGroup;
     customer: Customer;
 
-    constructor(
+    constructor( http: HttpClient,
         private customerService: CustomerService,
         private fb: FormBuilder,
         private router: Router

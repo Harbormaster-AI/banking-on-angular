@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DisputeService } from '../../../services/Dispute.service';
 import { Dispute } from '../../../models/Dispute';
@@ -18,7 +19,7 @@ export class CreateDisputeComponent extends SubBaseComponent implements OnInit {
     disputeForm: FormGroup;
     dispute: Dispute;
 
-    constructor(
+    constructor( http: HttpClient,
         private disputeService: DisputeService,
         private fb: FormBuilder,
         private router: Router

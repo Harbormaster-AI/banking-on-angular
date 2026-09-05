@@ -10,7 +10,7 @@ import { Bank } from '../../../models/Bank';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexBankComponent extemds BaseComponent {
+export class IndexBankComponent implements OnInit {
 
     banks: Bank[] = [];
 

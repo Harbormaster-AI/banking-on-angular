@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ATMService } from '../../../services/ATM.service';
 import { ATM } from '../../../models/ATM';
@@ -18,7 +19,7 @@ export class CreateATMComponent extends SubBaseComponent implements OnInit {
     aTMForm: FormGroup;
     aTM: ATM;
 
-    constructor(
+    constructor( http: HttpClient,
         private aTMService: ATMService,
         private fb: FormBuilder,
         private router: Router

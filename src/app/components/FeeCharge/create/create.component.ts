@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FeeChargeService } from '../../../services/FeeCharge.service';
 import { FeeCharge } from '../../../models/FeeCharge';
@@ -18,7 +19,7 @@ export class CreateFeeChargeComponent extends SubBaseComponent implements OnInit
     feeChargeForm: FormGroup;
     feeCharge: FeeCharge;
 
-    constructor(
+    constructor( http: HttpClient,
         private feeChargeService: FeeChargeService,
         private fb: FormBuilder,
         private router: Router

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PaymentCardService } from '../../../services/PaymentCard.service';
 import { PaymentCard } from '../../../models/PaymentCard';
@@ -18,7 +19,7 @@ export class CreatePaymentCardComponent extends SubBaseComponent implements OnIn
     paymentCardForm: FormGroup;
     paymentCard: PaymentCard;
 
-    constructor(
+    constructor( http: HttpClient,
         private paymentCardService: PaymentCardService,
         private fb: FormBuilder,
         private router: Router

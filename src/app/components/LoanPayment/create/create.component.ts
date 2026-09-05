@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoanPaymentService } from '../../../services/LoanPayment.service';
 import { LoanPayment } from '../../../models/LoanPayment';
@@ -18,7 +19,7 @@ export class CreateLoanPaymentComponent extends SubBaseComponent implements OnIn
     loanPaymentForm: FormGroup;
     loanPayment: LoanPayment;
 
-    constructor(
+    constructor( http: HttpClient,
         private loanPaymentService: LoanPaymentService,
         private fb: FormBuilder,
         private router: Router

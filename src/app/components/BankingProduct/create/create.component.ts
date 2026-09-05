@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BankingProductService } from '../../../services/BankingProduct.service';
 import { BankingProduct } from '../../../models/BankingProduct';
@@ -18,7 +19,7 @@ export class CreateBankingProductComponent extends SubBaseComponent implements O
     bankingProductForm: FormGroup;
     bankingProduct: BankingProduct;
 
-    constructor(
+    constructor( http: HttpClient,
         private bankingProductService: BankingProductService,
         private fb: FormBuilder,
         private router: Router

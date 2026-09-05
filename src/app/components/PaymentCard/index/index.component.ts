@@ -10,7 +10,7 @@ import { PaymentCard } from '../../../models/PaymentCard';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexPaymentCardComponent extemds BaseComponent {
+export class IndexPaymentCardComponent implements OnInit {
 
     paymentCards: PaymentCard[] = [];
 

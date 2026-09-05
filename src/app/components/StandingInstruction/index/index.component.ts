@@ -10,7 +10,7 @@ import { StandingInstruction } from '../../../models/StandingInstruction';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexStandingInstructionComponent extemds BaseComponent {
+export class IndexStandingInstructionComponent implements OnInit {
 
     standingInstructions: StandingInstruction[] = [];
 

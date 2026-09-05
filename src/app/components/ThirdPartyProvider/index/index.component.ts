@@ -10,7 +10,7 @@ import { ThirdPartyProvider } from '../../../models/ThirdPartyProvider';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexThirdPartyProviderComponent extemds BaseComponent {
+export class IndexThirdPartyProviderComponent implements OnInit {
 
     thirdPartyProviders: ThirdPartyProvider[] = [];
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CollateralService } from '../../../services/Collateral.service';
 import { Collateral } from '../../../models/Collateral';
@@ -18,7 +19,7 @@ export class CreateCollateralComponent extends SubBaseComponent implements OnIni
     collateralForm: FormGroup;
     collateral: Collateral;
 
-    constructor(
+    constructor( http: HttpClient,
         private collateralService: CollateralService,
         private fb: FormBuilder,
         private router: Router

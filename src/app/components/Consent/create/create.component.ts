@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConsentService } from '../../../services/Consent.service';
 import { Consent } from '../../../models/Consent';
@@ -18,7 +19,7 @@ export class CreateConsentComponent extends SubBaseComponent implements OnInit {
     consentForm: FormGroup;
     consent: Consent;
 
-    constructor(
+    constructor( http: HttpClient,
         private consentService: ConsentService,
         private fb: FormBuilder,
         private router: Router

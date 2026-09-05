@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ScreeningResultService } from '../../../services/ScreeningResult.service';
 import { ScreeningResult } from '../../../models/ScreeningResult';
@@ -18,7 +19,7 @@ export class CreateScreeningResultComponent extends SubBaseComponent implements 
     screeningResultForm: FormGroup;
     screeningResult: ScreeningResult;
 
-    constructor(
+    constructor( http: HttpClient,
         private screeningResultService: ScreeningResultService,
         private fb: FormBuilder,
         private router: Router

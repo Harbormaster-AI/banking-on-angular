@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RepaymentScheduleService } from '../../../services/RepaymentSchedule.service';
 import { RepaymentSchedule } from '../../../models/RepaymentSchedule';
@@ -18,7 +19,7 @@ export class CreateRepaymentScheduleComponent extends SubBaseComponent implement
     repaymentScheduleForm: FormGroup;
     repaymentSchedule: RepaymentSchedule;
 
-    constructor(
+    constructor( http: HttpClient,
         private repaymentScheduleService: RepaymentScheduleService,
         private fb: FormBuilder,
         private router: Router

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IdentityDocumentService } from '../../../services/IdentityDocument.service';
 import { IdentityDocument } from '../../../models/IdentityDocument';
@@ -18,7 +19,7 @@ export class CreateIdentityDocumentComponent extends SubBaseComponent implements
     identityDocumentForm: FormGroup;
     identityDocument: IdentityDocument;
 
-    constructor(
+    constructor( http: HttpClient,
         private identityDocumentService: IdentityDocumentService,
         private fb: FormBuilder,
         private router: Router

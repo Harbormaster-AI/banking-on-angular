@@ -10,7 +10,7 @@ import { Consent } from '../../../models/Consent';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexConsentComponent extemds BaseComponent {
+export class IndexConsentComponent implements OnInit {
 
     consents: Consent[] = [];
 

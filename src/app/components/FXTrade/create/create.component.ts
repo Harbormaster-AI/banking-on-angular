@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FXTradeService } from '../../../services/FXTrade.service';
 import { FXTrade } from '../../../models/FXTrade';
@@ -18,7 +19,7 @@ export class CreateFXTradeComponent extends SubBaseComponent implements OnInit {
     fXTradeForm: FormGroup;
     fXTrade: FXTrade;
 
-    constructor(
+    constructor( http: HttpClient,
         private fXTradeService: FXTradeService,
         private fb: FormBuilder,
         private router: Router

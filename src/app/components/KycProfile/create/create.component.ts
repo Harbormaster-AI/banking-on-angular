@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { KycProfileService } from '../../../services/KycProfile.service';
 import { KycProfile } from '../../../models/KycProfile';
@@ -18,7 +19,7 @@ export class CreateKycProfileComponent extends SubBaseComponent implements OnIni
     kycProfileForm: FormGroup;
     kycProfile: KycProfile;
 
-    constructor(
+    constructor( http: HttpClient,
         private kycProfileService: KycProfileService,
         private fb: FormBuilder,
         private router: Router

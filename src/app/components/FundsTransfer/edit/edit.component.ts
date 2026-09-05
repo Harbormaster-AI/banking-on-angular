@@ -1,4 +1,4 @@
-
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -20,12 +20,13 @@ export class EditFundsTransferComponent extends SubBaseComponent implements OnIn
     fundsTransferForm: FormGroup;
     fundsTransfer: any;
 
-    constructor(
+    constructor( http: HttpClient,
         private route: ActivatedRoute,
         private router: Router,
         private service: FundsTransferService,
         private fb: FormBuilder
 ) {
+        super(http);
         this.fundsTransferForm = this.createForm();
     }
 

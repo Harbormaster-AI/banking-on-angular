@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountStatementService } from '../../../services/AccountStatement.service';
 import { AccountStatement } from '../../../models/AccountStatement';
@@ -18,7 +19,7 @@ export class CreateAccountStatementComponent extends SubBaseComponent implements
     accountStatementForm: FormGroup;
     accountStatement: AccountStatement;
 
-    constructor(
+    constructor( http: HttpClient,
         private accountStatementService: AccountStatementService,
         private fb: FormBuilder,
         private router: Router

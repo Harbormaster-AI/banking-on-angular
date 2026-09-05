@@ -10,7 +10,7 @@ import { FXTrade } from '../../../models/FXTrade';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexFXTradeComponent extemds BaseComponent {
+export class IndexFXTradeComponent implements OnInit {
 
     fXTrades: FXTrade[] = [];
 

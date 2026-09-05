@@ -1,4 +1,4 @@
-
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -20,12 +20,13 @@ export class EditAccountStatementComponent extends SubBaseComponent implements O
     accountStatementForm: FormGroup;
     accountStatement: any;
 
-    constructor(
+    constructor( http: HttpClient,
         private route: ActivatedRoute,
         private router: Router,
         private service: AccountStatementService,
         private fb: FormBuilder
 ) {
+        super(http);
         this.accountStatementForm = this.createForm();
     }
 

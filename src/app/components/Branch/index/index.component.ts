@@ -10,7 +10,7 @@ import { Branch } from '../../../models/Branch';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexBranchComponent extemds BaseComponent {
+export class IndexBranchComponent implements OnInit {
 
     branchs: Branch[] = [];
 

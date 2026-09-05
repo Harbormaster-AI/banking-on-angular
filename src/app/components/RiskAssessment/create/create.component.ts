@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RiskAssessmentService } from '../../../services/RiskAssessment.service';
 import { RiskAssessment } from '../../../models/RiskAssessment';
@@ -18,7 +19,7 @@ export class CreateRiskAssessmentComponent extends SubBaseComponent implements O
     riskAssessmentForm: FormGroup;
     riskAssessment: RiskAssessment;
 
-    constructor(
+    constructor( http: HttpClient,
         private riskAssessmentService: RiskAssessmentService,
         private fb: FormBuilder,
         private router: Router

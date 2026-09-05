@@ -1,4 +1,4 @@
-
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -20,12 +20,13 @@ export class EditExternalAccountComponent extends SubBaseComponent implements On
     externalAccountForm: FormGroup;
     externalAccount: any;
 
-    constructor(
+    constructor( http: HttpClient,
         private route: ActivatedRoute,
         private router: Router,
         private service: ExternalAccountService,
         private fb: FormBuilder
 ) {
+        super(http);
         this.externalAccountForm = this.createForm();
     }
 
