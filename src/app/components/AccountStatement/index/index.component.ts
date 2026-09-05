@@ -6,6 +6,7 @@ import { AccountStatement } from '../../../models/AccountStatement';
 
 @Component({
     selector: 'app-index-accountStatement',
+    standalone: false,
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })

@@ -6,6 +6,7 @@ import { Branch } from '../../../models/Branch';
 
 @Component({
     selector: 'app-index-branch',
+    standalone: false,
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })

@@ -6,6 +6,7 @@ import { RepaymentSchedule } from '../../../models/RepaymentSchedule';
 
 @Component({
     selector: 'app-index-repaymentSchedule',
+    standalone: false,
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })

@@ -6,6 +6,7 @@ import { ExchangeRate } from '../../../models/ExchangeRate';
 
 @Component({
     selector: 'app-index-exchangeRate',
+    standalone: false,
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })

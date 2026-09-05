@@ -6,6 +6,7 @@ import { Consent } from '../../../models/Consent';
 
 @Component({
     selector: 'app-index-consent',
+    standalone: false,
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })

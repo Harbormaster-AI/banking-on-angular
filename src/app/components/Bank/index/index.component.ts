@@ -6,6 +6,7 @@ import { Bank } from '../../../models/Bank';
 
 @Component({
     selector: 'app-index-bank',
+    standalone: false,
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })

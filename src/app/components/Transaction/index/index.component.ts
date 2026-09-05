@@ -6,6 +6,7 @@ import { Transaction } from '../../../models/Transaction';
 
 @Component({
     selector: 'app-index-transaction',
+    standalone: false,
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })

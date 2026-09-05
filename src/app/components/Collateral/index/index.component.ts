@@ -6,6 +6,7 @@ import { Collateral } from '../../../models/Collateral';
 
 @Component({
     selector: 'app-index-collateral',
+    standalone: false,
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })

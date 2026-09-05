@@ -6,6 +6,7 @@ import { LoanAccount } from '../../../models/LoanAccount';
 
 @Component({
     selector: 'app-index-loanAccount',
+    standalone: false,
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })

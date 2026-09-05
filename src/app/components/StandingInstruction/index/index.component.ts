@@ -6,6 +6,7 @@ import { StandingInstruction } from '../../../models/StandingInstruction';
 
 @Component({
     selector: 'app-index-standingInstruction',
+    standalone: false,
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })

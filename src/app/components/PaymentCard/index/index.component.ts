@@ -6,6 +6,7 @@ import { PaymentCard } from '../../../models/PaymentCard';
 
 @Component({
     selector: 'app-index-paymentCard',
+    standalone: false,
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })

@@ -6,6 +6,7 @@ import { FXTrade } from '../../../models/FXTrade';
 
 @Component({
     selector: 'app-index-fXTrade',
+    standalone: false,
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })

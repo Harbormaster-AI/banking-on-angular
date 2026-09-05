@@ -6,6 +6,7 @@ import { Customer } from '../../../models/Customer';
 
 @Component({
     selector: 'app-index-customer',
+    standalone: false,
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })

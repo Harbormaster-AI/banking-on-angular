@@ -6,6 +6,7 @@ import { BankingProduct } from '../../../models/BankingProduct';
 
 @Component({
     selector: 'app-index-bankingProduct',
+    standalone: false,
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })

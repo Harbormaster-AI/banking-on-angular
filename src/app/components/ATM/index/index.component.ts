@@ -6,6 +6,7 @@ import { ATM } from '../../../models/ATM';
 
 @Component({
     selector: 'app-index-aTM',
+    standalone: false,
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })

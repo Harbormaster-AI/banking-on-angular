@@ -6,6 +6,7 @@ import { FundsTransfer } from '../../../models/FundsTransfer';
 
 @Component({
     selector: 'app-index-fundsTransfer',
+    standalone: false,
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })

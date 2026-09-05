@@ -6,6 +6,7 @@ import { Dispute } from '../../../models/Dispute';
 
 @Component({
     selector: 'app-index-dispute',
+    standalone: false,
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })

@@ -6,6 +6,7 @@ import { ThirdPartyProvider } from '../../../models/ThirdPartyProvider';
 
 @Component({
     selector: 'app-index-thirdPartyProvider',
+    standalone: false,
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })

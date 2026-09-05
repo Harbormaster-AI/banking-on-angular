@@ -6,6 +6,7 @@ import { IdentityDocument } from '../../../models/IdentityDocument';
 
 @Component({
     selector: 'app-index-identityDocument',
+    standalone: false,
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })

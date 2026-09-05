@@ -6,6 +6,7 @@ import { ScreeningResult } from '../../../models/ScreeningResult';
 
 @Component({
     selector: 'app-index-screeningResult',
+    standalone: false,
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
