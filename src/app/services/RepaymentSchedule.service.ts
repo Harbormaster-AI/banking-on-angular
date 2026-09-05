@@ -38,7 +38,7 @@ export class RepaymentScheduleService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addRepaymentSchedule(installmentNumber, dueDate, principalDue, interestDue, totalDue, LoanAccount, Payment, Status) : Promise<any> {
+	addRepaymentSchedule(installmentNumber, dueDate, principalDue, interestDue, totalDue, LoanAccount, Payment, Status) : Observable<any> {
 		const uri = this.apiUrl + '/RepaymentSchedule/add';
 		const obj = {
 			      		installmentNumber: installmentNumber,
@@ -49,10 +49,10 @@ export class RepaymentScheduleService extends HelperBaseService {
       		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
       		Payment: Payment != null && Payment.length > 0 ? Payment : null,
 			Status: Status
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all RepaymentSchedule
@@ -60,11 +60,11 @@ export class RepaymentScheduleService extends HelperBaseService {
 	// array of RepaymentSchedule models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getRepaymentSchedules() {
+	getRepaymentSchedules() ): Observable<RepaymentSchedule[]> {
 		const uri = this.apiUrl + '/RepaymentSchedule';
 
 		return this
-			.http.get(uri);
+			.http.get<RepaymentSchedule[]>(uri);
 	}
 
 	//********************************************************************
@@ -73,10 +73,10 @@ export class RepaymentScheduleService extends HelperBaseService {
 	// RepaymentSchedule model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editRepaymentSchedule(id) {
+	editRepaymentSchedule(id) : Observable<RepaymentSchedule> {
 		const uri = this.apiUrl + '/RepaymentSchedule/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<RepaymentSchedule>)(uri);
 	}
 
 	//********************************************************************

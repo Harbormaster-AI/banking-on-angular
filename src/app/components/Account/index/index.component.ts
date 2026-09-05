@@ -24,7 +24,7 @@ export class IndexAccountComponent implements OnInit {
 }
 
     getAccounts(): void {
-        this.service.getAccounts().subscribe(res : Account[] => {
+        this.service.getAccounts().subscribe(res => {
         this.accounts = res;
     });
 }

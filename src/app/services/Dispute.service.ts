@@ -40,7 +40,7 @@ export class DisputeService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addDispute(disputeReference, raisedOn, reason, Transaction, Customer, Account, PaymentCard, Status) : Promise<any> {
+	addDispute(disputeReference, raisedOn, reason, Transaction, Customer, Account, PaymentCard, Status) : Observable<any> {
 		const uri = this.apiUrl + '/Dispute/add';
 		const obj = {
 			      		disputeReference: disputeReference,
@@ -51,10 +51,10 @@ export class DisputeService extends HelperBaseService {
       		Account: Account != null && Account.length > 0 ? Account : null,
       		PaymentCard: PaymentCard != null && PaymentCard.length > 0 ? PaymentCard : null,
 			Status: Status
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all Dispute
@@ -62,11 +62,11 @@ export class DisputeService extends HelperBaseService {
 	// array of Dispute models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getDisputes() {
+	getDisputes() ): Observable<Dispute[]> {
 		const uri = this.apiUrl + '/Dispute';
 
 		return this
-			.http.get(uri);
+			.http.get<Dispute[]>(uri);
 	}
 
 	//********************************************************************
@@ -75,10 +75,10 @@ export class DisputeService extends HelperBaseService {
 	// Dispute model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editDispute(id) {
+	editDispute(id) : Observable<Dispute> {
 		const uri = this.apiUrl + '/Dispute/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<Dispute>)(uri);
 	}
 
 	//********************************************************************

@@ -37,7 +37,7 @@ export class IdentityDocumentService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addIdentityDocument(documentNumber, issuingCountry, expirationDate, KycProfile, DocumentType) : Promise<any> {
+	addIdentityDocument(documentNumber, issuingCountry, expirationDate, KycProfile, DocumentType) : Observable<any> {
 		const uri = this.apiUrl + '/IdentityDocument/add';
 		const obj = {
 			      		documentNumber: documentNumber,
@@ -45,10 +45,10 @@ export class IdentityDocumentService extends HelperBaseService {
       		expirationDate: expirationDate,
       		KycProfile: KycProfile != null && KycProfile.length > 0 ? KycProfile : null,
 			DocumentType: DocumentType
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all IdentityDocument
@@ -56,11 +56,11 @@ export class IdentityDocumentService extends HelperBaseService {
 	// array of IdentityDocument models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getIdentityDocuments() {
+	getIdentityDocuments() ): Observable<IdentityDocument[]> {
 		const uri = this.apiUrl + '/IdentityDocument';
 
 		return this
-			.http.get(uri);
+			.http.get<IdentityDocument[]>(uri);
 	}
 
 	//********************************************************************
@@ -69,10 +69,10 @@ export class IdentityDocumentService extends HelperBaseService {
 	// IdentityDocument model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editIdentityDocument(id) {
+	editIdentityDocument(id) : Observable<IdentityDocument> {
 		const uri = this.apiUrl + '/IdentityDocument/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<IdentityDocument>)(uri);
 	}
 
 	//********************************************************************

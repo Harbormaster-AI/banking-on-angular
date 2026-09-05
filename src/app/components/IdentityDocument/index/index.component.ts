@@ -24,7 +24,7 @@ export class IndexIdentityDocumentComponent implements OnInit {
 }
 
     getIdentityDocuments(): void {
-        this.service.getIdentityDocuments().subscribe(res : IdentityDocument[] => {
+        this.service.getIdentityDocuments().subscribe(res => {
         this.identityDocuments = res;
     });
 }

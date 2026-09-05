@@ -38,7 +38,7 @@ export class LoanPaymentService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addLoanPayment(paymentReference, amount, paymentDate, LoanAccount, Transaction, Method, Status) : Promise<any> {
+	addLoanPayment(paymentReference, amount, paymentDate, LoanAccount, Transaction, Method, Status) : Observable<any> {
 		const uri = this.apiUrl + '/LoanPayment/add';
 		const obj = {
 			      		paymentReference: paymentReference,
@@ -48,10 +48,10 @@ export class LoanPaymentService extends HelperBaseService {
       		Transaction: Transaction != null && Transaction.length > 0 ? Transaction : null,
       		Method: Method,
 			Status: Status
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all LoanPayment
@@ -59,11 +59,11 @@ export class LoanPaymentService extends HelperBaseService {
 	// array of LoanPayment models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getLoanPayments() {
+	getLoanPayments() ): Observable<LoanPayment[]> {
 		const uri = this.apiUrl + '/LoanPayment';
 
 		return this
-			.http.get(uri);
+			.http.get<LoanPayment[]>(uri);
 	}
 
 	//********************************************************************
@@ -72,10 +72,10 @@ export class LoanPaymentService extends HelperBaseService {
 	// LoanPayment model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editLoanPayment(id) {
+	editLoanPayment(id) : Observable<LoanPayment> {
 		const uri = this.apiUrl + '/LoanPayment/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<LoanPayment>)(uri);
 	}
 
 	//********************************************************************

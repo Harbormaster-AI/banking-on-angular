@@ -38,7 +38,7 @@ export class ExchangeRateService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addExchangeRate(baseCurrency, counterCurrency, rate, asOf, source, Bank, FxTrades) : Promise<any> {
+	addExchangeRate(baseCurrency, counterCurrency, rate, asOf, source, Bank, FxTrades) : Observable<any> {
 		const uri = this.apiUrl + '/ExchangeRate/add';
 		const obj = {
 			      		baseCurrency: baseCurrency,
@@ -48,10 +48,10 @@ export class ExchangeRateService extends HelperBaseService {
       		source: source,
       		Bank: Bank != null && Bank.length > 0 ? Bank : null,
 			FxTrades: FxTrades != null && FxTrades.length > 0 ? FxTrades : null
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all ExchangeRate
@@ -59,11 +59,11 @@ export class ExchangeRateService extends HelperBaseService {
 	// array of ExchangeRate models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getExchangeRates() {
+	getExchangeRates() ): Observable<ExchangeRate[]> {
 		const uri = this.apiUrl + '/ExchangeRate';
 
 		return this
-			.http.get(uri);
+			.http.get<ExchangeRate[]>(uri);
 	}
 
 	//********************************************************************
@@ -72,10 +72,10 @@ export class ExchangeRateService extends HelperBaseService {
 	// ExchangeRate model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editExchangeRate(id) {
+	editExchangeRate(id) : Observable<ExchangeRate> {
 		const uri = this.apiUrl + '/ExchangeRate/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<ExchangeRate>)(uri);
 	}
 
 	//********************************************************************

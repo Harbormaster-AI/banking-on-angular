@@ -24,7 +24,7 @@ export class IndexBranchComponent implements OnInit {
 }
 
     getBranchs(): void {
-        this.service.getBranchs().subscribe(res : Branch[] => {
+        this.service.getBranchs().subscribe(res => {
         this.branchs = res;
     });
 }

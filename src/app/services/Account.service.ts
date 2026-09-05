@@ -44,7 +44,7 @@ export class AccountService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addAccount(accountNumber, iban, accountName, currency, openedOn, closedOn, Bank, Branch, Product, Owners, Transactions, Statements, StandingInstructions, FeeCharges, AccountType, OwnershipType, Status) : Promise<any> {
+	addAccount(accountNumber, iban, accountName, currency, openedOn, closedOn, Bank, Branch, Product, Owners, Transactions, Statements, StandingInstructions, FeeCharges, AccountType, OwnershipType, Status) : Observable<any> {
 		const uri = this.apiUrl + '/Account/add';
 		const obj = {
 			      		accountNumber: accountNumber,
@@ -64,10 +64,10 @@ export class AccountService extends HelperBaseService {
       		AccountType: AccountType,
       		OwnershipType: OwnershipType,
 			Status: Status
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all Account
@@ -75,11 +75,11 @@ export class AccountService extends HelperBaseService {
 	// array of Account models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getAccounts() {
+	getAccounts() ): Observable<Account[]> {
 		const uri = this.apiUrl + '/Account';
 
 		return this
-			.http.get(uri);
+			.http.get<Account[]>(uri);
 	}
 
 	//********************************************************************
@@ -88,10 +88,10 @@ export class AccountService extends HelperBaseService {
 	// Account model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editAccount(id) {
+	editAccount(id) : Observable<Account> {
 		const uri = this.apiUrl + '/Account/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<Account>)(uri);
 	}
 
 	//********************************************************************

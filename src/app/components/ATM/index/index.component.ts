@@ -24,7 +24,7 @@ export class IndexATMComponent implements OnInit {
 }
 
     getATMs(): void {
-        this.service.getATMs().subscribe(res : ATM[] => {
+        this.service.getATMs().subscribe(res => {
         this.aTMs = res;
     });
 }

@@ -45,7 +45,7 @@ export class CustomerService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addCustomer(firstName, lastName, legalName, dateOfBirth, taxId, email, phone, address, Bank, Accounts, LoanAccounts, PaymentCards, ExternalAccounts, FundsTransfers, Disputes, KycProfiles, Consents, CustomerType, RiskRating, KycStatus) : Promise<any> {
+	addCustomer(firstName, lastName, legalName, dateOfBirth, taxId, email, phone, address, Bank, Accounts, LoanAccounts, PaymentCards, ExternalAccounts, FundsTransfers, Disputes, KycProfiles, Consents, CustomerType, RiskRating, KycStatus) : Observable<any> {
 		const uri = this.apiUrl + '/Customer/add';
 		const obj = {
 			      		firstName: firstName,
@@ -68,10 +68,10 @@ export class CustomerService extends HelperBaseService {
       		CustomerType: CustomerType,
       		RiskRating: RiskRating,
 			KycStatus: KycStatus
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all Customer
@@ -79,11 +79,11 @@ export class CustomerService extends HelperBaseService {
 	// array of Customer models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getCustomers() {
+	getCustomers() ): Observable<Customer[]> {
 		const uri = this.apiUrl + '/Customer';
 
 		return this
-			.http.get(uri);
+			.http.get<Customer[]>(uri);
 	}
 
 	//********************************************************************
@@ -92,10 +92,10 @@ export class CustomerService extends HelperBaseService {
 	// Customer model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editCustomer(id) {
+	editCustomer(id) : Observable<Customer> {
 		const uri = this.apiUrl + '/Customer/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<Customer>)(uri);
 	}
 
 	//********************************************************************

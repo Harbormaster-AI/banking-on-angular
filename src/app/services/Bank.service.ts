@@ -45,7 +45,7 @@ export class BankService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addBank(name, legalName, swiftBic, headquartersCountry, website, Branches, Products, Customers, Accounts, PaymentCards, LoanAccounts, ExchangeRates, Consents, ThirdPartyProviders) : Promise<any> {
+	addBank(name, legalName, swiftBic, headquartersCountry, website, Branches, Products, Customers, Accounts, PaymentCards, LoanAccounts, ExchangeRates, Consents, ThirdPartyProviders) : Observable<any> {
 		const uri = this.apiUrl + '/Bank/add';
 		const obj = {
 			      		name: name,
@@ -62,10 +62,10 @@ export class BankService extends HelperBaseService {
       		ExchangeRates: ExchangeRates != null && ExchangeRates.length > 0 ? ExchangeRates : null,
       		Consents: Consents != null && Consents.length > 0 ? Consents : null,
 			ThirdPartyProviders: ThirdPartyProviders != null && ThirdPartyProviders.length > 0 ? ThirdPartyProviders : null
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all Bank
@@ -73,11 +73,11 @@ export class BankService extends HelperBaseService {
 	// array of Bank models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getBanks() {
+	getBanks() ): Observable<Bank[]> {
 		const uri = this.apiUrl + '/Bank';
 
 		return this
-			.http.get(uri);
+			.http.get<Bank[]>(uri);
 	}
 
 	//********************************************************************
@@ -86,10 +86,10 @@ export class BankService extends HelperBaseService {
 	// Bank model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editBank(id) {
+	editBank(id) : Observable<Bank> {
 		const uri = this.apiUrl + '/Bank/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<Bank>)(uri);
 	}
 
 	//********************************************************************

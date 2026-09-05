@@ -38,7 +38,7 @@ export class ExternalAccountService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions) : Promise<any> {
+	addExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions) : Observable<any> {
 		const uri = this.apiUrl + '/ExternalAccount/add';
 		const obj = {
 			      		name: name,
@@ -49,10 +49,10 @@ export class ExternalAccountService extends HelperBaseService {
       		country: country,
       		Customer: Customer != null && Customer.length > 0 ? Customer : null,
 			Transactions: Transactions != null && Transactions.length > 0 ? Transactions : null
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all ExternalAccount
@@ -60,11 +60,11 @@ export class ExternalAccountService extends HelperBaseService {
 	// array of ExternalAccount models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getExternalAccounts() {
+	getExternalAccounts() ): Observable<ExternalAccount[]> {
 		const uri = this.apiUrl + '/ExternalAccount';
 
 		return this
-			.http.get(uri);
+			.http.get<ExternalAccount[]>(uri);
 	}
 
 	//********************************************************************
@@ -73,10 +73,10 @@ export class ExternalAccountService extends HelperBaseService {
 	// ExternalAccount model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editExternalAccount(id) {
+	editExternalAccount(id) : Observable<ExternalAccount> {
 		const uri = this.apiUrl + '/ExternalAccount/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<ExternalAccount>)(uri);
 	}
 
 	//********************************************************************

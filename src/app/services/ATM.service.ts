@@ -37,17 +37,17 @@ export class ATMService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addATM(terminalId, location, Branch, Status) : Promise<any> {
+	addATM(terminalId, location, Branch, Status) : Observable<any> {
 		const uri = this.apiUrl + '/ATM/add';
 		const obj = {
 			      		terminalId: terminalId,
       		location: location,
       		Branch: Branch != null && Branch.length > 0 ? Branch : null,
 			Status: Status
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all ATM
@@ -55,11 +55,11 @@ export class ATMService extends HelperBaseService {
 	// array of ATM models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getATMs() {
+	getATMs() ): Observable<ATM[]> {
 		const uri = this.apiUrl + '/ATM';
 
 		return this
-			.http.get(uri);
+			.http.get<ATM[]>(uri);
 	}
 
 	//********************************************************************
@@ -68,10 +68,10 @@ export class ATMService extends HelperBaseService {
 	// ATM model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editATM(id) {
+	editATM(id) : Observable<ATM> {
 		const uri = this.apiUrl + '/ATM/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<ATM>)(uri);
 	}
 
 	//********************************************************************

@@ -42,7 +42,7 @@ export class TransactionService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addTransaction(bookingDate, valueDate, amount, description, Account, ExternalCounterparty, PaymentCard, FundsTransfer, FxTrade, Dispute, Direction, TransactionType, Status, Channel) : Promise<any> {
+	addTransaction(bookingDate, valueDate, amount, description, Account, ExternalCounterparty, PaymentCard, FundsTransfer, FxTrade, Dispute, Direction, TransactionType, Status, Channel) : Observable<any> {
 		const uri = this.apiUrl + '/Transaction/add';
 		const obj = {
 			      		bookingDate: bookingDate,
@@ -59,10 +59,10 @@ export class TransactionService extends HelperBaseService {
       		TransactionType: TransactionType,
       		Status: Status,
 			Channel: Channel
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all Transaction
@@ -70,11 +70,11 @@ export class TransactionService extends HelperBaseService {
 	// array of Transaction models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getTransactions() {
+	getTransactions() ): Observable<Transaction[]> {
 		const uri = this.apiUrl + '/Transaction';
 
 		return this
-			.http.get(uri);
+			.http.get<Transaction[]>(uri);
 	}
 
 	//********************************************************************
@@ -83,10 +83,10 @@ export class TransactionService extends HelperBaseService {
 	// Transaction model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editTransaction(id) {
+	editTransaction(id) : Observable<Transaction> {
 		const uri = this.apiUrl + '/Transaction/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<Transaction>)(uri);
 	}
 
 	//********************************************************************

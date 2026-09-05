@@ -24,7 +24,7 @@ export class IndexPaymentCardComponent implements OnInit {
 }
 
     getPaymentCards(): void {
-        this.service.getPaymentCards().subscribe(res : PaymentCard[] => {
+        this.service.getPaymentCards().subscribe(res => {
         this.paymentCards = res;
     });
 }

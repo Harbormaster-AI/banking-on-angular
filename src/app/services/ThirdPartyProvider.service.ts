@@ -38,7 +38,7 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addThirdPartyProvider(name, registrationId, website, Bank, Consents) : Promise<any> {
+	addThirdPartyProvider(name, registrationId, website, Bank, Consents) : Observable<any> {
 		const uri = this.apiUrl + '/ThirdPartyProvider/add';
 		const obj = {
 			      		name: name,
@@ -46,10 +46,10 @@ export class ThirdPartyProviderService extends HelperBaseService {
       		website: website,
       		Bank: Bank != null && Bank.length > 0 ? Bank : null,
 			Consents: Consents != null && Consents.length > 0 ? Consents : null
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all ThirdPartyProvider
@@ -57,11 +57,11 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	// array of ThirdPartyProvider models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getThirdPartyProviders() {
+	getThirdPartyProviders() ): Observable<ThirdPartyProvider[]> {
 		const uri = this.apiUrl + '/ThirdPartyProvider';
 
 		return this
-			.http.get(uri);
+			.http.get<ThirdPartyProvider[]>(uri);
 	}
 
 	//********************************************************************
@@ -70,10 +70,10 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	// ThirdPartyProvider model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editThirdPartyProvider(id) {
+	editThirdPartyProvider(id) : Observable<ThirdPartyProvider> {
 		const uri = this.apiUrl + '/ThirdPartyProvider/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<ThirdPartyProvider>)(uri);
 	}
 
 	//********************************************************************

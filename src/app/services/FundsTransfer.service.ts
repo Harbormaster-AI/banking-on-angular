@@ -40,7 +40,7 @@ export class FundsTransferService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addFundsTransfer(transferReference, amount, requestedDate, executionDate, purpose, feeAmount, SourceAccount, DestinationAccount, ExternalBeneficiary, InitiatedBy, Transactions, Method, Status) : Promise<any> {
+	addFundsTransfer(transferReference, amount, requestedDate, executionDate, purpose, feeAmount, SourceAccount, DestinationAccount, ExternalBeneficiary, InitiatedBy, Transactions, Method, Status) : Observable<any> {
 		const uri = this.apiUrl + '/FundsTransfer/add';
 		const obj = {
 			      		transferReference: transferReference,
@@ -56,10 +56,10 @@ export class FundsTransferService extends HelperBaseService {
       		Transactions: Transactions != null && Transactions.length > 0 ? Transactions : null,
       		Method: Method,
 			Status: Status
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all FundsTransfer
@@ -67,11 +67,11 @@ export class FundsTransferService extends HelperBaseService {
 	// array of FundsTransfer models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getFundsTransfers() {
+	getFundsTransfers() ): Observable<FundsTransfer[]> {
 		const uri = this.apiUrl + '/FundsTransfer';
 
 		return this
-			.http.get(uri);
+			.http.get<FundsTransfer[]>(uri);
 	}
 
 	//********************************************************************
@@ -80,10 +80,10 @@ export class FundsTransferService extends HelperBaseService {
 	// FundsTransfer model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editFundsTransfer(id) {
+	editFundsTransfer(id) : Observable<FundsTransfer> {
 		const uri = this.apiUrl + '/FundsTransfer/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<FundsTransfer>)(uri);
 	}
 
 	//********************************************************************

@@ -40,7 +40,7 @@ export class ConsentService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addConsent(grantedOn, expiresOn, Customer, Bank, AuthorizedAccounts, ThirdPartyProvider, ConsentType, Status) : Promise<any> {
+	addConsent(grantedOn, expiresOn, Customer, Bank, AuthorizedAccounts, ThirdPartyProvider, ConsentType, Status) : Observable<any> {
 		const uri = this.apiUrl + '/Consent/add';
 		const obj = {
 			      		grantedOn: grantedOn,
@@ -51,10 +51,10 @@ export class ConsentService extends HelperBaseService {
       		ThirdPartyProvider: ThirdPartyProvider != null && ThirdPartyProvider.length > 0 ? ThirdPartyProvider : null,
       		ConsentType: ConsentType,
 			Status: Status
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all Consent
@@ -62,11 +62,11 @@ export class ConsentService extends HelperBaseService {
 	// array of Consent models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getConsents() {
+	getConsents() ): Observable<Consent[]> {
 		const uri = this.apiUrl + '/Consent';
 
 		return this
-			.http.get(uri);
+			.http.get<Consent[]>(uri);
 	}
 
 	//********************************************************************
@@ -75,10 +75,10 @@ export class ConsentService extends HelperBaseService {
 	// Consent model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editConsent(id) {
+	editConsent(id) : Observable<Consent> {
 		const uri = this.apiUrl + '/Consent/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<Consent>)(uri);
 	}
 
 	//********************************************************************

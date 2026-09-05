@@ -40,7 +40,7 @@ export class KycProfileService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addKycProfile(profileId, lastReviewedOn, Customer, IdentityDocuments, RiskAssessments, Screenings, Status) : Promise<any> {
+	addKycProfile(profileId, lastReviewedOn, Customer, IdentityDocuments, RiskAssessments, Screenings, Status) : Observable<any> {
 		const uri = this.apiUrl + '/KycProfile/add';
 		const obj = {
 			      		profileId: profileId,
@@ -50,10 +50,10 @@ export class KycProfileService extends HelperBaseService {
       		RiskAssessments: RiskAssessments != null && RiskAssessments.length > 0 ? RiskAssessments : null,
       		Screenings: Screenings != null && Screenings.length > 0 ? Screenings : null,
 			Status: Status
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all KycProfile
@@ -61,11 +61,11 @@ export class KycProfileService extends HelperBaseService {
 	// array of KycProfile models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getKycProfiles() {
+	getKycProfiles() ): Observable<KycProfile[]> {
 		const uri = this.apiUrl + '/KycProfile';
 
 		return this
-			.http.get(uri);
+			.http.get<KycProfile[]>(uri);
 	}
 
 	//********************************************************************
@@ -74,10 +74,10 @@ export class KycProfileService extends HelperBaseService {
 	// KycProfile model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editKycProfile(id) {
+	editKycProfile(id) : Observable<KycProfile> {
 		const uri = this.apiUrl + '/KycProfile/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<KycProfile>)(uri);
 	}
 
 	//********************************************************************

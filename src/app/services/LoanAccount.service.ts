@@ -44,7 +44,7 @@ export class LoanAccountService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addLoanAccount(loanNumber, principalAmount, outstandingPrincipal, interestRate, originationDate, maturityDate, paymentDayOfMonth, currency, Bank, Branch, Product, Borrowers, RepaymentSchedule, Payments, Collateral, FeeCharges, LoanType, RateType, Compounding, Status) : Promise<any> {
+	addLoanAccount(loanNumber, principalAmount, outstandingPrincipal, interestRate, originationDate, maturityDate, paymentDayOfMonth, currency, Bank, Branch, Product, Borrowers, RepaymentSchedule, Payments, Collateral, FeeCharges, LoanType, RateType, Compounding, Status) : Observable<any> {
 		const uri = this.apiUrl + '/LoanAccount/add';
 		const obj = {
 			      		loanNumber: loanNumber,
@@ -67,10 +67,10 @@ export class LoanAccountService extends HelperBaseService {
       		RateType: RateType,
       		Compounding: Compounding,
 			Status: Status
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all LoanAccount
@@ -78,11 +78,11 @@ export class LoanAccountService extends HelperBaseService {
 	// array of LoanAccount models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getLoanAccounts() {
+	getLoanAccounts() ): Observable<LoanAccount[]> {
 		const uri = this.apiUrl + '/LoanAccount';
 
 		return this
-			.http.get(uri);
+			.http.get<LoanAccount[]>(uri);
 	}
 
 	//********************************************************************
@@ -91,10 +91,10 @@ export class LoanAccountService extends HelperBaseService {
 	// LoanAccount model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editLoanAccount(id) {
+	editLoanAccount(id) : Observable<LoanAccount> {
 		const uri = this.apiUrl + '/LoanAccount/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<LoanAccount>)(uri);
 	}
 
 	//********************************************************************

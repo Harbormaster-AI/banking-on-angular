@@ -38,7 +38,7 @@ export class StandingInstructionService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addStandingInstruction(instructionId, amount, nextExecutionDate, Account, Beneficiary, Frequency, Status) : Promise<any> {
+	addStandingInstruction(instructionId, amount, nextExecutionDate, Account, Beneficiary, Frequency, Status) : Observable<any> {
 		const uri = this.apiUrl + '/StandingInstruction/add';
 		const obj = {
 			      		instructionId: instructionId,
@@ -48,10 +48,10 @@ export class StandingInstructionService extends HelperBaseService {
       		Beneficiary: Beneficiary != null && Beneficiary.length > 0 ? Beneficiary : null,
       		Frequency: Frequency,
 			Status: Status
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all StandingInstruction
@@ -59,11 +59,11 @@ export class StandingInstructionService extends HelperBaseService {
 	// array of StandingInstruction models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getStandingInstructions() {
+	getStandingInstructions() ): Observable<StandingInstruction[]> {
 		const uri = this.apiUrl + '/StandingInstruction';
 
 		return this
-			.http.get(uri);
+			.http.get<StandingInstruction[]>(uri);
 	}
 
 	//********************************************************************
@@ -72,10 +72,10 @@ export class StandingInstructionService extends HelperBaseService {
 	// StandingInstruction model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editStandingInstruction(id) {
+	editStandingInstruction(id) : Observable<StandingInstruction> {
 		const uri = this.apiUrl + '/StandingInstruction/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<StandingInstruction>)(uri);
 	}
 
 	//********************************************************************

@@ -24,7 +24,7 @@ export class IndexTransactionComponent implements OnInit {
 }
 
     getTransactions(): void {
-        this.service.getTransactions().subscribe(res : Transaction[] => {
+        this.service.getTransactions().subscribe(res => {
         this.transactions = res;
     });
 }

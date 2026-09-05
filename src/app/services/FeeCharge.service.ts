@@ -38,7 +38,7 @@ export class FeeChargeService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addFeeCharge(feeCode, amount, appliedOn, Account, LoanAccount, FeeType) : Promise<any> {
+	addFeeCharge(feeCode, amount, appliedOn, Account, LoanAccount, FeeType) : Observable<any> {
 		const uri = this.apiUrl + '/FeeCharge/add';
 		const obj = {
 			      		feeCode: feeCode,
@@ -47,10 +47,10 @@ export class FeeChargeService extends HelperBaseService {
       		Account: Account != null && Account.length > 0 ? Account : null,
       		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
 			FeeType: FeeType
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all FeeCharge
@@ -58,11 +58,11 @@ export class FeeChargeService extends HelperBaseService {
 	// array of FeeCharge models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getFeeCharges() {
+	getFeeCharges() ): Observable<FeeCharge[]> {
 		const uri = this.apiUrl + '/FeeCharge';
 
 		return this
-			.http.get(uri);
+			.http.get<FeeCharge[]>(uri);
 	}
 
 	//********************************************************************
@@ -71,10 +71,10 @@ export class FeeChargeService extends HelperBaseService {
 	// FeeCharge model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editFeeCharge(id) {
+	editFeeCharge(id) : Observable<FeeCharge> {
 		const uri = this.apiUrl + '/FeeCharge/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<FeeCharge>)(uri);
 	}
 
 	//********************************************************************

@@ -37,17 +37,17 @@ export class ScreeningResultService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addScreeningResult(screeningDate, provider, KycProfile, Outcome) : Promise<any> {
+	addScreeningResult(screeningDate, provider, KycProfile, Outcome) : Observable<any> {
 		const uri = this.apiUrl + '/ScreeningResult/add';
 		const obj = {
 			      		screeningDate: screeningDate,
       		provider: provider,
       		KycProfile: KycProfile != null && KycProfile.length > 0 ? KycProfile : null,
 			Outcome: Outcome
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all ScreeningResult
@@ -55,11 +55,11 @@ export class ScreeningResultService extends HelperBaseService {
 	// array of ScreeningResult models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getScreeningResults() {
+	getScreeningResults() ): Observable<ScreeningResult[]> {
 		const uri = this.apiUrl + '/ScreeningResult';
 
 		return this
-			.http.get(uri);
+			.http.get<ScreeningResult[]>(uri);
 	}
 
 	//********************************************************************
@@ -68,10 +68,10 @@ export class ScreeningResultService extends HelperBaseService {
 	// ScreeningResult model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editScreeningResult(id) {
+	editScreeningResult(id) : Observable<ScreeningResult> {
 		const uri = this.apiUrl + '/ScreeningResult/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<ScreeningResult>)(uri);
 	}
 
 	//********************************************************************

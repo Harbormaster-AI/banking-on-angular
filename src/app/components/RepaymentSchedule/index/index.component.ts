@@ -24,7 +24,7 @@ export class IndexRepaymentScheduleComponent implements OnInit {
 }
 
     getRepaymentSchedules(): void {
-        this.service.getRepaymentSchedules().subscribe(res : RepaymentSchedule[] => {
+        this.service.getRepaymentSchedules().subscribe(res => {
         this.repaymentSchedules = res;
     });
 }

@@ -37,7 +37,7 @@ export class AccountStatementService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addAccountStatement(statementNumber, periodStart, periodEnd, openingBalance, closingBalance, Account, DeliveryMethod) : Promise<any> {
+	addAccountStatement(statementNumber, periodStart, periodEnd, openingBalance, closingBalance, Account, DeliveryMethod) : Observable<any> {
 		const uri = this.apiUrl + '/AccountStatement/add';
 		const obj = {
 			      		statementNumber: statementNumber,
@@ -47,10 +47,10 @@ export class AccountStatementService extends HelperBaseService {
       		closingBalance: closingBalance,
       		Account: Account != null && Account.length > 0 ? Account : null,
 			DeliveryMethod: DeliveryMethod
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all AccountStatement
@@ -58,11 +58,11 @@ export class AccountStatementService extends HelperBaseService {
 	// array of AccountStatement models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getAccountStatements() {
+	getAccountStatements() ): Observable<AccountStatement[]> {
 		const uri = this.apiUrl + '/AccountStatement';
 
 		return this
-			.http.get(uri);
+			.http.get<AccountStatement[]>(uri);
 	}
 
 	//********************************************************************
@@ -71,10 +71,10 @@ export class AccountStatementService extends HelperBaseService {
 	// AccountStatement model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editAccountStatement(id) {
+	editAccountStatement(id) : Observable<AccountStatement> {
 		const uri = this.apiUrl + '/AccountStatement/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<AccountStatement>)(uri);
 	}
 
 	//********************************************************************

@@ -41,7 +41,7 @@ export class FXTradeService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addFXTrade(tradeReference, tradeDate, settlementDate, amountSold, amountBought, rate, Customer, Bank, ExchangeRate, SourceAccount, DestinationAccount, Transaction, Status) : Promise<any> {
+	addFXTrade(tradeReference, tradeDate, settlementDate, amountSold, amountBought, rate, Customer, Bank, ExchangeRate, SourceAccount, DestinationAccount, Transaction, Status) : Observable<any> {
 		const uri = this.apiUrl + '/FXTrade/add';
 		const obj = {
 			      		tradeReference: tradeReference,
@@ -57,10 +57,10 @@ export class FXTradeService extends HelperBaseService {
       		DestinationAccount: DestinationAccount != null && DestinationAccount.length > 0 ? DestinationAccount : null,
       		Transaction: Transaction != null && Transaction.length > 0 ? Transaction : null,
 			Status: Status
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all FXTrade
@@ -68,11 +68,11 @@ export class FXTradeService extends HelperBaseService {
 	// array of FXTrade models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getFXTrades() {
+	getFXTrades() ): Observable<FXTrade[]> {
 		const uri = this.apiUrl + '/FXTrade';
 
 		return this
-			.http.get(uri);
+			.http.get<FXTrade[]>(uri);
 	}
 
 	//********************************************************************
@@ -81,10 +81,10 @@ export class FXTradeService extends HelperBaseService {
 	// FXTrade model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editFXTrade(id) {
+	editFXTrade(id) : Observable<FXTrade> {
 		const uri = this.apiUrl + '/FXTrade/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<FXTrade>)(uri);
 	}
 
 	//********************************************************************

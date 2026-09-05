@@ -40,7 +40,7 @@ export class BankingProductService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addBankingProduct(productCode, name, description, Bank, Accounts, LoanAccounts, PaymentCards, ProductCategory) : Promise<any> {
+	addBankingProduct(productCode, name, description, Bank, Accounts, LoanAccounts, PaymentCards, ProductCategory) : Observable<any> {
 		const uri = this.apiUrl + '/BankingProduct/add';
 		const obj = {
 			      		productCode: productCode,
@@ -51,10 +51,10 @@ export class BankingProductService extends HelperBaseService {
       		LoanAccounts: LoanAccounts != null && LoanAccounts.length > 0 ? LoanAccounts : null,
       		PaymentCards: PaymentCards != null && PaymentCards.length > 0 ? PaymentCards : null,
 			ProductCategory: ProductCategory
-};
+		};
 
-	return this.http.post(uri, obj).toPromise();
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// gets all BankingProduct
@@ -62,11 +62,11 @@ export class BankingProductService extends HelperBaseService {
 	// array of BankingProduct models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getBankingProducts() {
+	getBankingProducts() ): Observable<BankingProduct[]> {
 		const uri = this.apiUrl + '/BankingProduct';
 
 		return this
-			.http.get(uri);
+			.http.get<BankingProduct[]>(uri);
 	}
 
 	//********************************************************************
@@ -75,10 +75,10 @@ export class BankingProductService extends HelperBaseService {
 	// BankingProduct model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	editBankingProduct(id) {
+	editBankingProduct(id) : Observable<BankingProduct> {
 		const uri = this.apiUrl + '/BankingProduct/edit/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(Observable<BankingProduct>)(uri);
 	}
 
 	//********************************************************************
