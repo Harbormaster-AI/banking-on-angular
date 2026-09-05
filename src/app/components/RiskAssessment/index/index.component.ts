@@ -24,7 +24,7 @@ export class IndexRiskAssessmentComponent implements OnInit {
 }
 
     getRiskAssessments(): void {
-        this.service.getRiskAssessments().subscribe(res => {
+        this.service.getRiskAssessments().subscribe(res : RiskAssessment[] => {
         this.riskAssessments = res;
     });
 }

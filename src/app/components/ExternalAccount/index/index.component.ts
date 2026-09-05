@@ -24,7 +24,7 @@ export class IndexExternalAccountComponent implements OnInit {
 }
 
     getExternalAccounts(): void {
-        this.service.getExternalAccounts().subscribe(res => {
+        this.service.getExternalAccounts().subscribe(res : ExternalAccount[] => {
         this.externalAccounts = res;
     });
 }

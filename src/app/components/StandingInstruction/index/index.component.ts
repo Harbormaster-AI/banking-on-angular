@@ -24,7 +24,7 @@ export class IndexStandingInstructionComponent implements OnInit {
 }
 
     getStandingInstructions(): void {
-        this.service.getStandingInstructions().subscribe(res => {
+        this.service.getStandingInstructions().subscribe(res : StandingInstruction[] => {
         this.standingInstructions = res;
     });
 }

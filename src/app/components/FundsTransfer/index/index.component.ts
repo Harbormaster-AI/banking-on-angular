@@ -24,7 +24,7 @@ export class IndexFundsTransferComponent implements OnInit {
 }
 
     getFundsTransfers(): void {
-        this.service.getFundsTransfers().subscribe(res => {
+        this.service.getFundsTransfers().subscribe(res : FundsTransfer[] => {
         this.fundsTransfers = res;
     });
 }

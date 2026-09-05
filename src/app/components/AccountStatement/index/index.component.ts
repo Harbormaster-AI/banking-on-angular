@@ -24,7 +24,7 @@ export class IndexAccountStatementComponent implements OnInit {
 }
 
     getAccountStatements(): void {
-        this.service.getAccountStatements().subscribe(res => {
+        this.service.getAccountStatements().subscribe(res : AccountStatement[] => {
         this.accountStatements = res;
     });
 }

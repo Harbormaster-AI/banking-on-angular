@@ -24,7 +24,7 @@ export class IndexBankComponent implements OnInit {
 }
 
     getBanks(): void {
-        this.service.getBanks().subscribe(res => {
+        this.service.getBanks().subscribe(res : Bank[] => {
         this.banks = res;
     });
 }
