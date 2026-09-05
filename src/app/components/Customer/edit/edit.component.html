@@ -1,188 +1,203 @@
-<div class="panel panel-primary">
-	<div class="panel-heading">
-    	<h5>{{ title }}</h5>
+<div class="card">
+	<div class="card-header">
+		<h5 class="mb-0">{{ title }}</h5>
 	</div>
-	
-	<div class="panel-body">
- 		<mat-form-field appearance="legacy">
-    		<mat-label>firstName</mat-label>
-		    <input matInput ngDefaultControl placeholder="firstName" name="customer.firstName" [(ngModel)]="customer.firstName">
-    		<mat-hint></mat-hint>
-  		</mat-form-field>
-<p>
- 		<mat-form-field appearance="legacy">
-    		<mat-label>lastName</mat-label>
-		    <input matInput ngDefaultControl placeholder="lastName" name="customer.lastName" [(ngModel)]="customer.lastName">
-    		<mat-hint></mat-hint>
-  		</mat-form-field>
-<p>
- 		<mat-form-field appearance="legacy">
-    		<mat-label>legalName</mat-label>
-		    <input matInput ngDefaultControl placeholder="legalName" name="customer.legalName" [(ngModel)]="customer.legalName">
-    		<mat-hint></mat-hint>
-  		</mat-form-field>
-<p>
- 		<mat-form-field appearance="legacy">
-		    <mat-label>dateOfBirth</mat-label>
-		  	<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="dateOfBirth" name="customer.dateOfBirth" [(ngModel)]="customer.dateOfBirth">
-			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-			<mat-datepicker #picker></mat-datepicker>
-			<mat-hint></mat-hint>
-		</mat-form-field>
-<p>
- 		<mat-form-field appearance="legacy">
-    		<mat-label>taxId</mat-label>
-		    <input matInput ngDefaultControl placeholder="taxId" name="customer.taxId" [(ngModel)]="customer.taxId">
-    		<mat-hint></mat-hint>
-  		</mat-form-field>
-<p>
- 		<mat-form-field appearance="legacy">
-    		<mat-label>email</mat-label>
-		    <input matInput ngDefaultControl placeholder="email" name="customer.email" [(ngModel)]="customer.email">
-    		<mat-hint></mat-hint>
-  		</mat-form-field>
-<p>
- 		<mat-form-field appearance="legacy">
-    		<mat-label>phone</mat-label>
-		    <input matInput ngDefaultControl placeholder="phone" name="customer.phone" [(ngModel)]="customer.phone">
-    		<mat-hint></mat-hint>
-  		</mat-form-field>
-<p>
- 		<mat-form-field appearance="legacy">
-    		<mat-label>address</mat-label>
-		    <input matInput ngDefaultControl placeholder="address" name="customer.address" [(ngModel)]="customer.address">
-    		<mat-hint></mat-hint>
-  		</mat-form-field>
-<p>
-   		<mat-form-field appearance="legacy">
-    		<mat-label>Bank</mat-label>
-			<mat-select placeholder="Bank"   [compareWith]="compareFn"  [(ngModel)]="customer.Bank">
-		    	<mat-option name="customer.Bank" ngDefaultControl  
-		    		*ngFor="let bank of banks"		    		 
-		    		[value]="bank._id">
-		      		{{bank.name}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
-   		<mat-form-field appearance="legacy">
-    		<mat-label>Accounts</mat-label>
-			<mat-select placeholder="Accounts" multiple  [compareWith]="compareFn"  [(ngModel)]="customer.Accounts">
-		    	<mat-option name="customer.Accounts" ngDefaultControl  
-		    		*ngFor="let account of accounts"		    		 
-		    		[value]="account._id">
-		      		{{account.accountName}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
-   		<mat-form-field appearance="legacy">
-    		<mat-label>LoanAccounts</mat-label>
-			<mat-select placeholder="LoanAccounts" multiple  [compareWith]="compareFn"  [(ngModel)]="customer.LoanAccounts">
-		    	<mat-option name="customer.LoanAccounts" ngDefaultControl  
-		    		*ngFor="let loanAccount of loanAccounts"		    		 
-		    		[value]="loanAccount._id">
-		      		{{loanAccount.loanNumber}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
-   		<mat-form-field appearance="legacy">
-    		<mat-label>PaymentCards</mat-label>
-			<mat-select placeholder="PaymentCards" multiple  [compareWith]="compareFn"  [(ngModel)]="customer.PaymentCards">
-		    	<mat-option name="customer.PaymentCards" ngDefaultControl  
-		    		*ngFor="let paymentCard of paymentCards"		    		 
-		    		[value]="paymentCard._id">
-		      		{{paymentCard.embossedName}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
-   		<mat-form-field appearance="legacy">
-    		<mat-label>ExternalAccounts</mat-label>
-			<mat-select placeholder="ExternalAccounts" multiple  [compareWith]="compareFn"  [(ngModel)]="customer.ExternalAccounts">
-		    	<mat-option name="customer.ExternalAccounts" ngDefaultControl  
-		    		*ngFor="let externalAccount of externalAccounts"		    		 
-		    		[value]="externalAccount._id">
-		      		{{externalAccount.name}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
-   		<mat-form-field appearance="legacy">
-    		<mat-label>FundsTransfers</mat-label>
-			<mat-select placeholder="FundsTransfers" multiple  [compareWith]="compareFn"  [(ngModel)]="customer.FundsTransfers">
-		    	<mat-option name="customer.FundsTransfers" ngDefaultControl  
-		    		*ngFor="let fundsTransfer of fundsTransfers"		    		 
-		    		[value]="fundsTransfer._id">
-		      		{{fundsTransfer.transferReference}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
-   		<mat-form-field appearance="legacy">
-    		<mat-label>Disputes</mat-label>
-			<mat-select placeholder="Disputes" multiple  [compareWith]="compareFn"  [(ngModel)]="customer.Disputes">
-		    	<mat-option name="customer.Disputes" ngDefaultControl  
-		    		*ngFor="let dispute of disputes"		    		 
-		    		[value]="dispute._id">
-		      		{{dispute.disputeReference}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
-   		<mat-form-field appearance="legacy">
-    		<mat-label>KycProfiles</mat-label>
-			<mat-select placeholder="KycProfiles" multiple  [compareWith]="compareFn"  [(ngModel)]="customer.KycProfiles">
-		    	<mat-option name="customer.KycProfiles" ngDefaultControl  
-		    		*ngFor="let kycProfile of kycProfiles"		    		 
-		    		[value]="kycProfile._id">
-		      		{{kycProfile.profileId}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
-   		<mat-form-field appearance="legacy">
-    		<mat-label>Consents</mat-label>
-			<mat-select placeholder="Consents" multiple  [compareWith]="compareFn"  [(ngModel)]="customer.Consents">
-		    	<mat-option name="customer.Consents" ngDefaultControl  
-		    		*ngFor="let consent of consents"		    		 
-		    		[value]="consent._id">
-		      		{{consent.grantedOn}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
- 		<mat-form-field appearance="legacy">
-		    <mat-label>CustomerType</mat-label>
-			<mat-select placeholder="CustomerType" name="customer.CustomerType" [(ngModel)]="customer.CustomerType">
-		    	<mat-option ngDefaultControl *ngFor="let CustomerType of CustomerTypes" [value]="CustomerType">
-		      		{{CustomerType}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
- 		<mat-form-field appearance="legacy">
-		    <mat-label>RiskRating</mat-label>
-			<mat-select placeholder="RiskRating" name="customer.RiskRating" [(ngModel)]="customer.RiskRating">
-		    	<mat-option ngDefaultControl *ngFor="let RiskRating of RiskRatings" [value]="RiskRating">
-		      		{{RiskRating}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
- 		<mat-form-field appearance="legacy">
-		    <mat-label>KycStatus</mat-label>
-			<mat-select placeholder="KycStatus" name="customer.KycStatus" [(ngModel)]="customer.KycStatus">
-		    	<mat-option ngDefaultControl *ngFor="let KycStatus of KycStatuss" [value]="KycStatus">
-		      		{{KycStatus}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
-                                                <button 
-		    (click)="updateCustomer(customer.firstName, customer.lastName, customer.legalName, customer.dateOfBirth, customer.taxId, customer.email, customer.phone, customer.address, customer.Bank, customer.Accounts, customer.LoanAccounts, customer.PaymentCards, customer.ExternalAccounts, customer.FundsTransfers, customer.Disputes, customer.KycProfiles, customer.Consents, customer.CustomerType, customer.RiskRating, customer.KycStatus)" 
-		    class="btn btn-primary">update
+
+	<div class="card-body">
+																	 																																																																															<mat-form-field appearance="legacy">
+								<mat-label>firstName</mat-label>
+								<input matInput ngDefaultControl placeholder="firstName" name="customer.firstName" [(ngModel)]="customer.firstName">
+								<mat-hint></mat-hint>
+							</mat-form-field>
+																																												<p>
+					 																																																																															<mat-form-field appearance="legacy">
+								<mat-label>lastName</mat-label>
+								<input matInput ngDefaultControl placeholder="lastName" name="customer.lastName" [(ngModel)]="customer.lastName">
+								<mat-hint></mat-hint>
+							</mat-form-field>
+																																												<p>
+					 																																																																															<mat-form-field appearance="legacy">
+								<mat-label>legalName</mat-label>
+								<input matInput ngDefaultControl placeholder="legalName" name="customer.legalName" [(ngModel)]="customer.legalName">
+								<mat-hint></mat-hint>
+							</mat-form-field>
+																																												<p>
+					 																																																																															<mat-form-field appearance="legacy">
+								<mat-label>dateOfBirth</mat-label>
+								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="dateOfBirth" name="customer.dateOfBirth" [(ngModel)]="customer.dateOfBirth">
+								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+								<mat-datepicker #picker></mat-datepicker>
+								<mat-hint></mat-hint>
+							</mat-form-field>
+																																																																	<p>
+					 																																																																															<mat-form-field appearance="legacy">
+								<mat-label>taxId</mat-label>
+								<input matInput ngDefaultControl placeholder="taxId" name="customer.taxId" [(ngModel)]="customer.taxId">
+								<mat-hint></mat-hint>
+							</mat-form-field>
+																																												<p>
+					 																																																																															<mat-form-field appearance="legacy">
+								<mat-label>email</mat-label>
+								<input matInput ngDefaultControl placeholder="email" name="customer.email" [(ngModel)]="customer.email">
+								<mat-hint></mat-hint>
+							</mat-form-field>
+																																												<p>
+					 																																																																															<mat-form-field appearance="legacy">
+								<mat-label>phone</mat-label>
+								<input matInput ngDefaultControl placeholder="phone" name="customer.phone" [(ngModel)]="customer.phone">
+								<mat-hint></mat-hint>
+							</mat-form-field>
+																																												<p>
+					 																																																																															<mat-form-field appearance="legacy">
+								<mat-label>address</mat-label>
+								<input matInput ngDefaultControl placeholder="address" name="customer.address" [(ngModel)]="customer.address">
+								<mat-hint></mat-hint>
+							</mat-form-field>
+																																												<p>
+					 																																							 								 								<mat-form-field appearance="legacy">
+					<mat-label>Bank</mat-label>
+					<mat-select placeholder="Bank"   [compareWith]="compareFn"  [(ngModel)]="customer.Bank">
+						@for (bank of banks; track bank.bankId) {
+							<mat-option name="customer.Bank" ngDefaultControl
+							            [value]="bank.bankId">
+								{{bank.name}}
+							</mat-option>
+						}
+					</mat-select>
+				</mat-form-field>
+																	<p>
+					 																																																						 								 								<mat-form-field appearance="legacy">
+					<mat-label>Accounts</mat-label>
+					<mat-select placeholder="Accounts" multiple  [compareWith]="compareFn"  [(ngModel)]="customer.Accounts">
+						@for (account of accounts; track account.accountId) {
+							<mat-option name="customer.Accounts" ngDefaultControl
+							            [value]="account.accountId">
+								{{account.accountName}}
+							</mat-option>
+						}
+					</mat-select>
+				</mat-form-field>
+																	<p>
+					 																																																						 								 								<mat-form-field appearance="legacy">
+					<mat-label>LoanAccounts</mat-label>
+					<mat-select placeholder="LoanAccounts" multiple  [compareWith]="compareFn"  [(ngModel)]="customer.LoanAccounts">
+						@for (loanAccount of loanAccounts; track loanAccount.loanAccountId) {
+							<mat-option name="customer.LoanAccounts" ngDefaultControl
+							            [value]="loanAccount.loanAccountId">
+								{{loanAccount.loanNumber}}
+							</mat-option>
+						}
+					</mat-select>
+				</mat-form-field>
+																	<p>
+					 																																																						 								 								<mat-form-field appearance="legacy">
+					<mat-label>PaymentCards</mat-label>
+					<mat-select placeholder="PaymentCards" multiple  [compareWith]="compareFn"  [(ngModel)]="customer.PaymentCards">
+						@for (paymentCard of paymentCards; track paymentCard.paymentCardId) {
+							<mat-option name="customer.PaymentCards" ngDefaultControl
+							            [value]="paymentCard.paymentCardId">
+								{{paymentCard.embossedName}}
+							</mat-option>
+						}
+					</mat-select>
+				</mat-form-field>
+																	<p>
+					 																																																						 								 								<mat-form-field appearance="legacy">
+					<mat-label>ExternalAccounts</mat-label>
+					<mat-select placeholder="ExternalAccounts" multiple  [compareWith]="compareFn"  [(ngModel)]="customer.ExternalAccounts">
+						@for (externalAccount of externalAccounts; track externalAccount.externalAccountId) {
+							<mat-option name="customer.ExternalAccounts" ngDefaultControl
+							            [value]="externalAccount.externalAccountId">
+								{{externalAccount.name}}
+							</mat-option>
+						}
+					</mat-select>
+				</mat-form-field>
+																	<p>
+					 																																																						 								 								<mat-form-field appearance="legacy">
+					<mat-label>FundsTransfers</mat-label>
+					<mat-select placeholder="FundsTransfers" multiple  [compareWith]="compareFn"  [(ngModel)]="customer.FundsTransfers">
+						@for (fundsTransfer of fundsTransfers; track fundsTransfer.fundsTransferId) {
+							<mat-option name="customer.FundsTransfers" ngDefaultControl
+							            [value]="fundsTransfer.fundsTransferId">
+								{{fundsTransfer.transferReference}}
+							</mat-option>
+						}
+					</mat-select>
+				</mat-form-field>
+																	<p>
+					 																																																						 								 								<mat-form-field appearance="legacy">
+					<mat-label>Disputes</mat-label>
+					<mat-select placeholder="Disputes" multiple  [compareWith]="compareFn"  [(ngModel)]="customer.Disputes">
+						@for (dispute of disputes; track dispute.disputeId) {
+							<mat-option name="customer.Disputes" ngDefaultControl
+							            [value]="dispute.disputeId">
+								{{dispute.disputeReference}}
+							</mat-option>
+						}
+					</mat-select>
+				</mat-form-field>
+																	<p>
+					 																																																						 								 								<mat-form-field appearance="legacy">
+					<mat-label>KycProfiles</mat-label>
+					<mat-select placeholder="KycProfiles" multiple  [compareWith]="compareFn"  [(ngModel)]="customer.KycProfiles">
+						@for (kycProfile of kycProfiles; track kycProfile.kycProfileId) {
+							<mat-option name="customer.KycProfiles" ngDefaultControl
+							            [value]="kycProfile.kycProfileId">
+								{{kycProfile.profileId}}
+							</mat-option>
+						}
+					</mat-select>
+				</mat-form-field>
+																	<p>
+					 																																																						 								 								<mat-form-field appearance="legacy">
+					<mat-label>Consents</mat-label>
+					<mat-select placeholder="Consents" multiple  [compareWith]="compareFn"  [(ngModel)]="customer.Consents">
+						@for (consent of consents; track consent.consentId) {
+							<mat-option name="customer.Consents" ngDefaultControl
+							            [value]="consent.consentId">
+								{{consent.grantedOn}}
+							</mat-option>
+						}
+					</mat-select>
+				</mat-form-field>
+																	<p>
+					 																																				<mat-form-field appearance="legacy">
+						<mat-label>CustomerType</mat-label>
+						<mat-select placeholder="CustomerType" name="customer.CustomerType" [(ngModel)]="customer.CustomerType">
+							@for (CustomerType of CustomerTypes; track CustomerType) {
+								<mat-option ngDefaultControl [value]="CustomerType">
+									{{CustomerType}}
+								</mat-option>
+							}
+						</mat-select>
+					</mat-form-field>
+																																	<p>
+					 																																				<mat-form-field appearance="legacy">
+						<mat-label>RiskRating</mat-label>
+						<mat-select placeholder="RiskRating" name="customer.RiskRating" [(ngModel)]="customer.RiskRating">
+							@for (RiskRating of RiskRatings; track RiskRating) {
+								<mat-option ngDefaultControl [value]="RiskRating">
+									{{RiskRating}}
+								</mat-option>
+							}
+						</mat-select>
+					</mat-form-field>
+																																	<p>
+					 																																				<mat-form-field appearance="legacy">
+						<mat-label>KycStatus</mat-label>
+						<mat-select placeholder="KycStatus" name="customer.KycStatus" [(ngModel)]="customer.KycStatus">
+							@for (KycStatus of KycStatuss; track KycStatus) {
+								<mat-option ngDefaultControl [value]="KycStatus">
+									{{KycStatus}}
+								</mat-option>
+							}
+						</mat-select>
+					</mat-form-field>
+																																	<p>
+																 						 																	 						 																	 						 																	 						 																	 						 																	 						 																	 						 																	 						 																				 						 																				 						 																				 						 																				 						 																				 						 																				 						 																				 						 																				 						 																				 						 																	 						 																	 						 																	 						 										<button
+				(click)="updateCustomer(customer.firstName, customer.lastName, customer.legalName, customer.dateOfBirth, customer.taxId, customer.email, customer.phone, customer.address, customer.Bank, customer.Accounts, customer.LoanAccounts, customer.PaymentCards, customer.ExternalAccounts, customer.FundsTransfers, customer.Disputes, customer.KycProfiles, customer.Consents, customer.CustomerType, customer.RiskRating, customer.KycStatus)"
+							class="btn btn-primary">update
 		</button>
-	</div> <!-- panel body -->	
+	</div> <!-- panel body -->
 </div> <!-- panel panel-primary -->

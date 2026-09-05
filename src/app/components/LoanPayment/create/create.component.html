@@ -1,72 +1,78 @@
-<div class="panel panel-primary">
-	<div class="panel-heading">
-    	<h5>{{ title }}</h5>
+<div class="card">
+	<div class="card-header">
+		<h5 class="mb-0">{{ title }}</h5>
 	</div>
-	
-	<div class="panel-body">
-		<mat-form-field appearance="legacy">
-    		<mat-label>paymentReference</mat-label>
-		    <input matInput ngDefaultControl placeholder="paymentReference" name="loanPayment.paymentReference" [(ngModel)]="loanPayment.paymentReference">
-    		<mat-hint></mat-hint>
-  		</mat-form-field>
-<p>
-		<mat-form-field appearance="legacy">
-    		<mat-label>amount</mat-label>
-		    <input matInput ngDefaultControl placeholder="amount" name="loanPayment.amount" [(ngModel)]="loanPayment.amount">
-    		<mat-hint></mat-hint>
-  		</mat-form-field>
-<p>
-		<mat-form-field appearance="legacy">
-		    <mat-label>paymentDate</mat-label>
-		  	<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="paymentDate" name="loanPayment.paymentDate" [(ngModel)]="loanPayment.paymentDate">
-			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-			<mat-datepicker #picker></mat-datepicker>
-			<mat-hint></mat-hint>
-		</mat-form-field>
-<p>
-		<mat-form-field appearance="legacy">
-    		<mat-label>LoanAccount</mat-label>
-			<mat-select placeholder="LoanAccount"  [(ngModel)]="loanPayment.LoanAccount">
-		    	<mat-option name="loanPayment.LoanAccount" ngDefaultControl  
-		    		*ngFor="let loanAccount of loanAccounts"		    		 
-		    		[value]="loanAccount._id">
-		      		{{loanAccount.loanNumber}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
-		<mat-form-field appearance="legacy">
-    		<mat-label>Transaction</mat-label>
-			<mat-select placeholder="Transaction"  [(ngModel)]="loanPayment.Transaction">
-		    	<mat-option name="loanPayment.Transaction" ngDefaultControl  
-		    		*ngFor="let transaction of transactions"		    		 
-		    		[value]="transaction._id">
-		      		{{transaction.bookingDate}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
-		<mat-form-field appearance="legacy">
-		    <mat-label>Method</mat-label>
-			<mat-select placeholder="Method" name="loanPayment.Method" [(ngModel)]="loanPayment.Method">
-		    	<mat-option ngDefaultControl *ngFor="let PaymentMethod of PaymentMethods" [value]="PaymentMethod">
-		      		{{PaymentMethod}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
-		<mat-form-field appearance="legacy">
-		    <mat-label>Status</mat-label>
-			<mat-select placeholder="Status" name="loanPayment.Status" [(ngModel)]="loanPayment.Status">
-		    	<mat-option ngDefaultControl *ngFor="let PaymentStatus of PaymentStatuss" [value]="PaymentStatus">
-		      		{{PaymentStatus}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
-               <button 
-		    (click)="addLoanPayment(loanPayment.paymentReference, loanPayment.amount, loanPayment.paymentDate, loanPayment.LoanAccount, loanPayment.Transaction, loanPayment.Method, loanPayment.Status)" 
-		    class="btn btn-primary">add
+
+	<div class="card-body">
+																																																																																																<mat-form-field appearance="legacy">
+								<mat-label>paymentReference</mat-label>
+								<input matInput ngDefaultControl placeholder="paymentReference" name="loanPayment.paymentReference" [(ngModel)]="loanPayment.paymentReference">
+								<mat-hint></mat-hint>
+							</mat-form-field>
+																																												<p>
+																																																																																				<mat-form-field appearance="legacy">
+								<mat-label>amount</mat-label>
+								<input matInput ngDefaultControl placeholder="amount" name="loanPayment.amount" [(ngModel)]="loanPayment.amount">
+								<mat-hint></mat-hint>
+							</mat-form-field>
+																																												<p>
+																																																																																				<mat-form-field appearance="legacy">
+								<mat-label>paymentDate</mat-label>
+								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="paymentDate" name="loanPayment.paymentDate" [(ngModel)]="loanPayment.paymentDate">
+								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+								<mat-datepicker #picker></mat-datepicker>
+								<mat-hint></mat-hint>
+							</mat-form-field>
+																																																																	<p>
+																																																								<mat-form-field appearance="legacy">
+					<mat-label>LoanAccount</mat-label>
+					<mat-select placeholder="LoanAccount"  [(ngModel)]="loanPayment.LoanAccount">
+						@for (loanAccount of loanAccounts; track loanAccount.loanAccountId) {
+							<mat-option name="loanPayment.LoanAccount" ngDefaultControl
+							            [value]="loanAccount.loanAccountId">
+								{{loanAccount.loanNumber}}
+							</mat-option>
+						}
+					</mat-select>
+				</mat-form-field>
+																	<p>
+																																																								<mat-form-field appearance="legacy">
+					<mat-label>Transaction</mat-label>
+					<mat-select placeholder="Transaction"  [(ngModel)]="loanPayment.Transaction">
+						@for (transaction of transactions; track transaction.transactionId) {
+							<mat-option name="loanPayment.Transaction" ngDefaultControl
+							            [value]="transaction.transactionId">
+								{{transaction.bookingDate}}
+							</mat-option>
+						}
+					</mat-select>
+				</mat-form-field>
+																	<p>
+																																									<mat-form-field appearance="legacy">
+						<mat-label>Method</mat-label>
+						<mat-select placeholder="Method" name="loanPayment.Method" [(ngModel)]="loanPayment.Method">
+							@for (PaymentMethod of PaymentMethods; track PaymentMethod) {
+								<mat-option ngDefaultControl [value]="PaymentMethod">
+									{{PaymentMethod}}
+								</mat-option>
+							}
+						</mat-select>
+					</mat-form-field>
+																																	<p>
+																																									<mat-form-field appearance="legacy">
+						<mat-label>Status</mat-label>
+						<mat-select placeholder="Status" name="loanPayment.Status" [(ngModel)]="loanPayment.Status">
+							@for (PaymentStatus of PaymentStatuss; track PaymentStatus) {
+								<mat-option ngDefaultControl [value]="PaymentStatus">
+									{{PaymentStatus}}
+								</mat-option>
+							}
+						</mat-select>
+					</mat-form-field>
+																																	<p>
+																						 																							 																							 																										 																										 																							 																							 										<button
+				(click)="addLoanPayment(loanPayment.paymentReference, loanPayment.amount, loanPayment.paymentDate, loanPayment.LoanAccount, loanPayment.Transaction, loanPayment.Method, loanPayment.Status)"
+							class="btn btn-primary">add
 		</button>
-	</div> <!-- panel body -->	
+	</div> <!-- panel body -->
 </div> <!-- panel panel-primary -->

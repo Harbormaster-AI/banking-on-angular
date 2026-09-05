@@ -1,42 +1,45 @@
-<div class="panel panel-primary">
-	<div class="panel-heading">
-    	<h5>{{ title }}</h5>
+<div class="card">
+	<div class="card-header">
+		<h5 class="mb-0">{{ title }}</h5>
 	</div>
-	
-	<div class="panel-body">
- 		<input matInput placeholder="score" name="riskAssessment.score "[(ngModel)]="riskAssessment.score">
-<p>
- 		<mat-form-field appearance="legacy">
-		    <mat-label>assessedOn</mat-label>
-		  	<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="assessedOn" name="riskAssessment.assessedOn" [(ngModel)]="riskAssessment.assessedOn">
-			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-			<mat-datepicker #picker></mat-datepicker>
-			<mat-hint></mat-hint>
-		</mat-form-field>
-<p>
-   		<mat-form-field appearance="legacy">
-    		<mat-label>KycProfile</mat-label>
-			<mat-select placeholder="KycProfile"   [compareWith]="compareFn"  [(ngModel)]="riskAssessment.KycProfile">
-		    	<mat-option name="riskAssessment.KycProfile" ngDefaultControl  
-		    		*ngFor="let kycProfile of kycProfiles"		    		 
-		    		[value]="kycProfile._id">
-		      		{{kycProfile.profileId}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
- 		<mat-form-field appearance="legacy">
-		    <mat-label>Rating</mat-label>
-			<mat-select placeholder="Rating" name="riskAssessment.Rating" [(ngModel)]="riskAssessment.Rating">
-		    	<mat-option ngDefaultControl *ngFor="let RiskRating of RiskRatings" [value]="RiskRating">
-		      		{{RiskRating}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
-                <button 
-		    (click)="updateRiskAssessment(riskAssessment.score, riskAssessment.assessedOn, riskAssessment.KycProfile, riskAssessment.Rating)" 
-		    class="btn btn-primary">update
+
+	<div class="card-body">
+																	 																																																																															<input matInput placeholder="score" name="riskAssessment.score" [(ngModel)]="riskAssessment.score">
+																																																																	<p>
+					 																																																																															<mat-form-field appearance="legacy">
+								<mat-label>assessedOn</mat-label>
+								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="assessedOn" name="riskAssessment.assessedOn" [(ngModel)]="riskAssessment.assessedOn">
+								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+								<mat-datepicker #picker></mat-datepicker>
+								<mat-hint></mat-hint>
+							</mat-form-field>
+																																																																	<p>
+					 																																							 								 								<mat-form-field appearance="legacy">
+					<mat-label>KycProfile</mat-label>
+					<mat-select placeholder="KycProfile"   [compareWith]="compareFn"  [(ngModel)]="riskAssessment.KycProfile">
+						@for (kycProfile of kycProfiles; track kycProfile.kycProfileId) {
+							<mat-option name="riskAssessment.KycProfile" ngDefaultControl
+							            [value]="kycProfile.kycProfileId">
+								{{kycProfile.profileId}}
+							</mat-option>
+						}
+					</mat-select>
+				</mat-form-field>
+																	<p>
+					 																																				<mat-form-field appearance="legacy">
+						<mat-label>Rating</mat-label>
+						<mat-select placeholder="Rating" name="riskAssessment.Rating" [(ngModel)]="riskAssessment.Rating">
+							@for (RiskRating of RiskRatings; track RiskRating) {
+								<mat-option ngDefaultControl [value]="RiskRating">
+									{{RiskRating}}
+								</mat-option>
+							}
+						</mat-select>
+					</mat-form-field>
+																																	<p>
+																 						 																	 						 																				 						 																	 						 										<button
+				(click)="updateRiskAssessment(riskAssessment.score, riskAssessment.assessedOn, riskAssessment.KycProfile, riskAssessment.Rating)"
+							class="btn btn-primary">update
 		</button>
-	</div> <!-- panel body -->	
+	</div> <!-- panel body -->
 </div> <!-- panel panel-primary -->

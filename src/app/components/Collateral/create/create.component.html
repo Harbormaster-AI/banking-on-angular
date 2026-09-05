@@ -1,50 +1,53 @@
-<div class="panel panel-primary">
-	<div class="panel-heading">
-    	<h5>{{ title }}</h5>
+<div class="card">
+	<div class="card-header">
+		<h5 class="mb-0">{{ title }}</h5>
 	</div>
-	
-	<div class="panel-body">
-		<mat-form-field appearance="legacy">
-    		<mat-label>appraisedValue</mat-label>
-		    <input matInput ngDefaultControl placeholder="appraisedValue" name="collateral.appraisedValue" [(ngModel)]="collateral.appraisedValue">
-    		<mat-hint></mat-hint>
-  		</mat-form-field>
-<p>
-		<mat-form-field appearance="legacy">
-    		<mat-label>description</mat-label>
-		    <input matInput ngDefaultControl placeholder="description" name="collateral.description" [(ngModel)]="collateral.description">
-    		<mat-hint></mat-hint>
-  		</mat-form-field>
-<p>
-		<mat-form-field appearance="legacy">
-    		<mat-label>location</mat-label>
-		    <input matInput ngDefaultControl placeholder="location" name="collateral.location" [(ngModel)]="collateral.location">
-    		<mat-hint></mat-hint>
-  		</mat-form-field>
-<p>
-		<mat-form-field appearance="legacy">
-    		<mat-label>LoanAccount</mat-label>
-			<mat-select placeholder="LoanAccount"  [(ngModel)]="collateral.LoanAccount">
-		    	<mat-option name="collateral.LoanAccount" ngDefaultControl  
-		    		*ngFor="let loanAccount of loanAccounts"		    		 
-		    		[value]="loanAccount._id">
-		      		{{loanAccount.loanNumber}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
-		<mat-form-field appearance="legacy">
-		    <mat-label>CollateralType</mat-label>
-			<mat-select placeholder="CollateralType" name="collateral.CollateralType" [(ngModel)]="collateral.CollateralType">
-		    	<mat-option ngDefaultControl *ngFor="let CollateralType of CollateralTypes" [value]="CollateralType">
-		      		{{CollateralType}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
-             <button 
-		    (click)="addCollateral(collateral.appraisedValue, collateral.description, collateral.location, collateral.LoanAccount, collateral.CollateralType)" 
-		    class="btn btn-primary">add
+
+	<div class="card-body">
+																																																																																																<mat-form-field appearance="legacy">
+								<mat-label>appraisedValue</mat-label>
+								<input matInput ngDefaultControl placeholder="appraisedValue" name="collateral.appraisedValue" [(ngModel)]="collateral.appraisedValue">
+								<mat-hint></mat-hint>
+							</mat-form-field>
+																																												<p>
+																																																																																				<mat-form-field appearance="legacy">
+								<mat-label>description</mat-label>
+								<input matInput ngDefaultControl placeholder="description" name="collateral.description" [(ngModel)]="collateral.description">
+								<mat-hint></mat-hint>
+							</mat-form-field>
+																																												<p>
+																																																																																				<mat-form-field appearance="legacy">
+								<mat-label>location</mat-label>
+								<input matInput ngDefaultControl placeholder="location" name="collateral.location" [(ngModel)]="collateral.location">
+								<mat-hint></mat-hint>
+							</mat-form-field>
+																																												<p>
+																																																								<mat-form-field appearance="legacy">
+					<mat-label>LoanAccount</mat-label>
+					<mat-select placeholder="LoanAccount"  [(ngModel)]="collateral.LoanAccount">
+						@for (loanAccount of loanAccounts; track loanAccount.loanAccountId) {
+							<mat-option name="collateral.LoanAccount" ngDefaultControl
+							            [value]="loanAccount.loanAccountId">
+								{{loanAccount.loanNumber}}
+							</mat-option>
+						}
+					</mat-select>
+				</mat-form-field>
+																	<p>
+																																									<mat-form-field appearance="legacy">
+						<mat-label>CollateralType</mat-label>
+						<mat-select placeholder="CollateralType" name="collateral.CollateralType" [(ngModel)]="collateral.CollateralType">
+							@for (CollateralType of CollateralTypes; track CollateralType) {
+								<mat-option ngDefaultControl [value]="CollateralType">
+									{{CollateralType}}
+								</mat-option>
+							}
+						</mat-select>
+					</mat-form-field>
+																																	<p>
+																						 																							 																							 																										 																							 										<button
+				(click)="addCollateral(collateral.appraisedValue, collateral.description, collateral.location, collateral.LoanAccount, collateral.CollateralType)"
+							class="btn btn-primary">add
 		</button>
-	</div> <!-- panel body -->	
+	</div> <!-- panel body -->
 </div> <!-- panel panel-primary -->

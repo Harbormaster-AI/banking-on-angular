@@ -1,71 +1,75 @@
-<div class="panel panel-primary">
-	<div class="panel-heading">
-    	<h5>{{ title }}</h5>
+<div class="card">
+	<div class="card-header">
+		<h5 class="mb-0">{{ title }}</h5>
 	</div>
-	
-	<div class="panel-body">
-		<input matInput placeholder="installmentNumber" name="repaymentSchedule.installmentNumber "[(ngModel)]="repaymentSchedule.installmentNumber">
-<p>
-		<mat-form-field appearance="legacy">
-		    <mat-label>dueDate</mat-label>
-		  	<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="dueDate" name="repaymentSchedule.dueDate" [(ngModel)]="repaymentSchedule.dueDate">
-			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-			<mat-datepicker #picker></mat-datepicker>
-			<mat-hint></mat-hint>
-		</mat-form-field>
-<p>
-		<mat-form-field appearance="legacy">
-    		<mat-label>principalDue</mat-label>
-		    <input matInput ngDefaultControl placeholder="principalDue" name="repaymentSchedule.principalDue" [(ngModel)]="repaymentSchedule.principalDue">
-    		<mat-hint></mat-hint>
-  		</mat-form-field>
-<p>
-		<mat-form-field appearance="legacy">
-    		<mat-label>interestDue</mat-label>
-		    <input matInput ngDefaultControl placeholder="interestDue" name="repaymentSchedule.interestDue" [(ngModel)]="repaymentSchedule.interestDue">
-    		<mat-hint></mat-hint>
-  		</mat-form-field>
-<p>
-		<mat-form-field appearance="legacy">
-    		<mat-label>totalDue</mat-label>
-		    <input matInput ngDefaultControl placeholder="totalDue" name="repaymentSchedule.totalDue" [(ngModel)]="repaymentSchedule.totalDue">
-    		<mat-hint></mat-hint>
-  		</mat-form-field>
-<p>
-		<mat-form-field appearance="legacy">
-    		<mat-label>LoanAccount</mat-label>
-			<mat-select placeholder="LoanAccount"  [(ngModel)]="repaymentSchedule.LoanAccount">
-		    	<mat-option name="repaymentSchedule.LoanAccount" ngDefaultControl  
-		    		*ngFor="let loanAccount of loanAccounts"		    		 
-		    		[value]="loanAccount._id">
-		      		{{loanAccount.loanNumber}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
-		<mat-form-field appearance="legacy">
-    		<mat-label>Payment</mat-label>
-			<mat-select placeholder="Payment"  [(ngModel)]="repaymentSchedule.Payment">
-		    	<mat-option name="repaymentSchedule.Payment" ngDefaultControl  
-		    		*ngFor="let loanPayment of loanPayments"		    		 
-		    		[value]="loanPayment._id">
-		      		{{loanPayment.paymentReference}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
-		<mat-form-field appearance="legacy">
-		    <mat-label>Status</mat-label>
-			<mat-select placeholder="Status" name="repaymentSchedule.Status" [(ngModel)]="repaymentSchedule.Status">
-		    	<mat-option ngDefaultControl *ngFor="let InstallmentStatus of InstallmentStatuss" [value]="InstallmentStatus">
-		      		{{InstallmentStatus}}
-		    	</mat-option>
-		  	</mat-select>
-		</mat-form-field>
-<p>
-                <button 
-		    (click)="addRepaymentSchedule(repaymentSchedule.installmentNumber, repaymentSchedule.dueDate, repaymentSchedule.principalDue, repaymentSchedule.interestDue, repaymentSchedule.totalDue, repaymentSchedule.LoanAccount, repaymentSchedule.Payment, repaymentSchedule.Status)" 
-		    class="btn btn-primary">add
+
+	<div class="card-body">
+																																																																																																<input matInput placeholder="installmentNumber" name="repaymentSchedule.installmentNumber" [(ngModel)]="repaymentSchedule.installmentNumber">
+																																																																	<p>
+																																																																																				<mat-form-field appearance="legacy">
+								<mat-label>dueDate</mat-label>
+								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="dueDate" name="repaymentSchedule.dueDate" [(ngModel)]="repaymentSchedule.dueDate">
+								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+								<mat-datepicker #picker></mat-datepicker>
+								<mat-hint></mat-hint>
+							</mat-form-field>
+																																																																	<p>
+																																																																																				<mat-form-field appearance="legacy">
+								<mat-label>principalDue</mat-label>
+								<input matInput ngDefaultControl placeholder="principalDue" name="repaymentSchedule.principalDue" [(ngModel)]="repaymentSchedule.principalDue">
+								<mat-hint></mat-hint>
+							</mat-form-field>
+																																												<p>
+																																																																																				<mat-form-field appearance="legacy">
+								<mat-label>interestDue</mat-label>
+								<input matInput ngDefaultControl placeholder="interestDue" name="repaymentSchedule.interestDue" [(ngModel)]="repaymentSchedule.interestDue">
+								<mat-hint></mat-hint>
+							</mat-form-field>
+																																												<p>
+																																																																																				<mat-form-field appearance="legacy">
+								<mat-label>totalDue</mat-label>
+								<input matInput ngDefaultControl placeholder="totalDue" name="repaymentSchedule.totalDue" [(ngModel)]="repaymentSchedule.totalDue">
+								<mat-hint></mat-hint>
+							</mat-form-field>
+																																												<p>
+																																																								<mat-form-field appearance="legacy">
+					<mat-label>LoanAccount</mat-label>
+					<mat-select placeholder="LoanAccount"  [(ngModel)]="repaymentSchedule.LoanAccount">
+						@for (loanAccount of loanAccounts; track loanAccount.loanAccountId) {
+							<mat-option name="repaymentSchedule.LoanAccount" ngDefaultControl
+							            [value]="loanAccount.loanAccountId">
+								{{loanAccount.loanNumber}}
+							</mat-option>
+						}
+					</mat-select>
+				</mat-form-field>
+																	<p>
+																																																								<mat-form-field appearance="legacy">
+					<mat-label>Payment</mat-label>
+					<mat-select placeholder="Payment"  [(ngModel)]="repaymentSchedule.Payment">
+						@for (loanPayment of loanPayments; track loanPayment.loanPaymentId) {
+							<mat-option name="repaymentSchedule.Payment" ngDefaultControl
+							            [value]="loanPayment.loanPaymentId">
+								{{loanPayment.paymentReference}}
+							</mat-option>
+						}
+					</mat-select>
+				</mat-form-field>
+																	<p>
+																																									<mat-form-field appearance="legacy">
+						<mat-label>Status</mat-label>
+						<mat-select placeholder="Status" name="repaymentSchedule.Status" [(ngModel)]="repaymentSchedule.Status">
+							@for (InstallmentStatus of InstallmentStatuss; track InstallmentStatus) {
+								<mat-option ngDefaultControl [value]="InstallmentStatus">
+									{{InstallmentStatus}}
+								</mat-option>
+							}
+						</mat-select>
+					</mat-form-field>
+																																	<p>
+																						 																							 																							 																							 																							 																										 																										 																							 										<button
+				(click)="addRepaymentSchedule(repaymentSchedule.installmentNumber, repaymentSchedule.dueDate, repaymentSchedule.principalDue, repaymentSchedule.interestDue, repaymentSchedule.totalDue, repaymentSchedule.LoanAccount, repaymentSchedule.Payment, repaymentSchedule.Status)"
+							class="btn btn-primary">add
 		</button>
-	</div> <!-- panel body -->	
+	</div> <!-- panel body -->
 </div> <!-- panel panel-primary -->
