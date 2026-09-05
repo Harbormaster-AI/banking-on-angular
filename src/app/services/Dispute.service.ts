@@ -21,7 +21,7 @@ export class DisputeService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	dispute : any;
+	dispute : Dispute;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -281,7 +281,7 @@ export class DisputeService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editDispute(id)
-			.subscribe(res => {
+			.subscribe(res : Dispute => {
 				this.dispute = res;
 			});
 	}

@@ -21,7 +21,7 @@ export class KycProfileService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	kycProfile : any;
+	kycProfile : KycProfile;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -342,7 +342,7 @@ export class KycProfileService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editKycProfile(id)
-			.subscribe(res => {
+			.subscribe(res : KycProfile => {
 				this.kycProfile = res;
 			});
 	}

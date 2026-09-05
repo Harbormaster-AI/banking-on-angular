@@ -19,7 +19,7 @@ export class ExchangeRateService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	exchangeRate : any;
+	exchangeRate : ExchangeRate;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -224,7 +224,7 @@ export class ExchangeRateService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editExchangeRate(id)
-			.subscribe(res => {
+			.subscribe(res : ExchangeRate => {
 				this.exchangeRate = res;
 			});
 	}

@@ -25,7 +25,7 @@ export class AccountService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	account : any;
+	account : Account;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -556,7 +556,7 @@ export class AccountService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editAccount(id)
-			.subscribe(res => {
+			.subscribe(res : Account => {
 				this.account = res;
 			});
 	}

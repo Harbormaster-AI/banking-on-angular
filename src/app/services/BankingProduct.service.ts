@@ -21,7 +21,7 @@ export class BankingProductService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	bankingProduct : any;
+	bankingProduct : BankingProduct;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -344,7 +344,7 @@ export class BankingProductService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editBankingProduct(id)
-			.subscribe(res => {
+			.subscribe(res : BankingProduct => {
 				this.bankingProduct = res;
 			});
 	}

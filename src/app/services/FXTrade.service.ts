@@ -22,7 +22,7 @@ export class FXTradeService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	fXTrade : any;
+	fXTrade : FXTrade;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -366,7 +366,7 @@ export class FXTradeService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editFXTrade(id)
-			.subscribe(res => {
+			.subscribe(res : FXTrade => {
 				this.fXTrade = res;
 			});
 	}

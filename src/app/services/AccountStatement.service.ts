@@ -18,7 +18,7 @@ export class AccountStatementService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	accountStatement : any;
+	accountStatement : AccountStatement;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -165,7 +165,7 @@ export class AccountStatementService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editAccountStatement(id)
-			.subscribe(res => {
+			.subscribe(res : AccountStatement => {
 				this.accountStatement = res;
 			});
 	}

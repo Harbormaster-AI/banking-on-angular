@@ -19,7 +19,7 @@ export class RepaymentScheduleService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	repaymentSchedule : any;
+	repaymentSchedule : RepaymentSchedule;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -205,7 +205,7 @@ export class RepaymentScheduleService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editRepaymentSchedule(id)
-			.subscribe(res => {
+			.subscribe(res : RepaymentSchedule => {
 				this.repaymentSchedule = res;
 			});
 	}

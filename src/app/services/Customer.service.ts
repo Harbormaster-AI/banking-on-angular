@@ -26,7 +26,7 @@ export class CustomerService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	customer : any;
+	customer : Customer;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -663,7 +663,7 @@ export class CustomerService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editCustomer(id)
-			.subscribe(res => {
+			.subscribe(res : Customer => {
 				this.customer = res;
 			});
 	}

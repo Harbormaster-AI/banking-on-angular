@@ -19,7 +19,7 @@ export class ExternalAccountService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	externalAccount : any;
+	externalAccount : ExternalAccount;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -226,7 +226,7 @@ export class ExternalAccountService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editExternalAccount(id)
-			.subscribe(res => {
+			.subscribe(res : ExternalAccount => {
 				this.externalAccount = res;
 			});
 	}

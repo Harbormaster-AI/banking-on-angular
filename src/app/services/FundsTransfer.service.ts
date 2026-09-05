@@ -21,7 +21,7 @@ export class FundsTransferService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	fundsTransfer : any;
+	fundsTransfer : FundsTransfer;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -349,7 +349,7 @@ export class FundsTransferService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editFundsTransfer(id)
-			.subscribe(res => {
+			.subscribe(res : FundsTransfer => {
 				this.fundsTransfer = res;
 			});
 	}

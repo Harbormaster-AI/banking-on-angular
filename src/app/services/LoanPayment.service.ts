@@ -19,7 +19,7 @@ export class LoanPaymentService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	loanPayment : any;
+	loanPayment : LoanPayment;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -203,7 +203,7 @@ export class LoanPaymentService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editLoanPayment(id)
-			.subscribe(res => {
+			.subscribe(res : LoanPayment => {
 				this.loanPayment = res;
 			});
 	}

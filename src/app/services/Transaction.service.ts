@@ -23,7 +23,7 @@ export class TransactionService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	transaction : any;
+	transaction : Transaction;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -369,7 +369,7 @@ export class TransactionService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editTransaction(id)
-			.subscribe(res => {
+			.subscribe(res : Transaction => {
 				this.transaction = res;
 			});
 	}

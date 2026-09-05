@@ -21,7 +21,7 @@ export class ConsentService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	consent : any;
+	consent : Consent;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -302,7 +302,7 @@ export class ConsentService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editConsent(id)
-			.subscribe(res => {
+			.subscribe(res : Consent => {
 				this.consent = res;
 			});
 	}

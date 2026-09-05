@@ -18,7 +18,7 @@ export class ATMService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	aTM : any;
+	aTM : ATM;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -159,7 +159,7 @@ export class ATMService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editATM(id)
-			.subscribe(res => {
+			.subscribe(res : ATM => {
 				this.aTM = res;
 			});
 	}

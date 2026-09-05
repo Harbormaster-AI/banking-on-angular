@@ -21,7 +21,7 @@ export class BranchService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	branch : any;
+	branch : Branch;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -346,7 +346,7 @@ export class BranchService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editBranch(id)
-			.subscribe(res => {
+			.subscribe(res : Branch => {
 				this.branch = res;
 			});
 	}

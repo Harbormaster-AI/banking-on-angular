@@ -18,7 +18,7 @@ export class ScreeningResultService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	screeningResult : any;
+	screeningResult : ScreeningResult;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -159,7 +159,7 @@ export class ScreeningResultService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editScreeningResult(id)
-			.subscribe(res => {
+			.subscribe(res : ScreeningResult => {
 				this.screeningResult = res;
 			});
 	}

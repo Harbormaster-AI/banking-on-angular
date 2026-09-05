@@ -18,7 +18,7 @@ export class RiskAssessmentService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	riskAssessment : any;
+	riskAssessment : RiskAssessment;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -159,7 +159,7 @@ export class RiskAssessmentService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editRiskAssessment(id)
-			.subscribe(res => {
+			.subscribe(res : RiskAssessment => {
 				this.riskAssessment = res;
 			});
 	}

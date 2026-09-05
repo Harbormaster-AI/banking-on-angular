@@ -18,7 +18,7 @@ export class IdentityDocumentService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	identityDocument : any;
+	identityDocument : IdentityDocument;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -161,7 +161,7 @@ export class IdentityDocumentService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editIdentityDocument(id)
-			.subscribe(res => {
+			.subscribe(res : IdentityDocument => {
 				this.identityDocument = res;
 			});
 	}

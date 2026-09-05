@@ -19,7 +19,7 @@ export class FeeChargeService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	feeCharge : any;
+	feeCharge : FeeCharge;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -201,7 +201,7 @@ export class FeeChargeService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editFeeCharge(id)
-			.subscribe(res => {
+			.subscribe(res : FeeCharge => {
 				this.feeCharge = res;
 			});
 	}

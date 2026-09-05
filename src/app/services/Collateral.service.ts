@@ -18,7 +18,7 @@ export class CollateralService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	collateral : any;
+	collateral : Collateral;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -161,7 +161,7 @@ export class CollateralService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editCollateral(id)
-			.subscribe(res => {
+			.subscribe(res : Collateral => {
 				this.collateral = res;
 			});
 	}

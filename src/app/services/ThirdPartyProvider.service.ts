@@ -19,7 +19,7 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	thirdPartyProvider : any;
+	thirdPartyProvider : ThirdPartyProvider;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -220,7 +220,7 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editThirdPartyProvider(id)
-			.subscribe(res => {
+			.subscribe(res : ThirdPartyProvider => {
 				this.thirdPartyProvider = res;
 			});
 	}

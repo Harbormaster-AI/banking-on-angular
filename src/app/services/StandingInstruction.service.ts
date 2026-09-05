@@ -19,7 +19,7 @@ export class StandingInstructionService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	standingInstruction : any;
+	standingInstruction : StandingInstruction;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -203,7 +203,7 @@ export class StandingInstructionService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editStandingInstruction(id)
-			.subscribe(res => {
+			.subscribe(res : StandingInstruction => {
 				this.standingInstruction = res;
 			});
 	}

@@ -21,7 +21,7 @@ export class PaymentCardService extends HelperBaseService {
 	//********************************************************************
 	// general holder 
 	//********************************************************************
-	paymentCard : any;
+	paymentCard : PaymentCard;
 
 	//********************************************************************
 	// Catch all for the return value of a service call
@@ -308,7 +308,7 @@ export class PaymentCardService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editPaymentCard(id)
-			.subscribe(res => {
+			.subscribe(res : PaymentCard => {
 				this.paymentCard = res;
 			});
 	}
