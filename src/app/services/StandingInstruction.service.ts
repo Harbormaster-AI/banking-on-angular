@@ -72,7 +72,7 @@ export class StandingInstructionService extends HelperBaseService {
 	editStandingInstruction(id) : Observable<StandingInstruction> {
 		const uri = this.apiUrl + '/StandingInstruction/edit/' + id;
 
-		return this.http.get(<StandingInstruction>)(uri);
+		return this.http.get<StandingInstruction>(uri);
 	}
 
 	//********************************************************************

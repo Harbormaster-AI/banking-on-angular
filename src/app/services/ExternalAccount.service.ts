@@ -73,7 +73,7 @@ export class ExternalAccountService extends HelperBaseService {
 	editExternalAccount(id) : Observable<ExternalAccount> {
 		const uri = this.apiUrl + '/ExternalAccount/edit/' + id;
 
-		return this.http.get(<ExternalAccount>)(uri);
+		return this.http.get<ExternalAccount>(uri);
 	}
 
 	//********************************************************************

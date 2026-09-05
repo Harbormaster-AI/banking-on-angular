@@ -41,7 +41,8 @@ export class EditATMComponent extends SubBaseComponent implements OnInit {
 
     
     updateATM(terminalId, location, Branch, Status): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
+
                         this.service.updateATM(terminalId, location, Branch, Status, params['id'])
                             .subscribe(() => {
                     this.router.navigate(['/indexATM']);
@@ -50,7 +51,7 @@ export class EditATMComponent extends SubBaseComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
             this.service.editATM(params['id']).subscribe(res => {
                 this.aTM = res;
             });

@@ -24,7 +24,7 @@ export class IndexConsentComponent implements OnInit {
 }
 
     getConsents(): void {
-        this.service.getConsents().subscribe(res => {
+        this.service.getConsents().subscribe((res) => {
         this.consents = res;
     });
 }

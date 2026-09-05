@@ -44,7 +44,8 @@ export class EditKycProfileComponent extends SubBaseComponent implements OnInit 
 
     
     updateKycProfile(profileId, lastReviewedOn, Customer, IdentityDocuments, RiskAssessments, Screenings, Status): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
+
                         this.service.updateKycProfile(profileId, lastReviewedOn, Customer, IdentityDocuments, RiskAssessments, Screenings, Status, params['id'])
                             .subscribe(() => {
                     this.router.navigate(['/indexKycProfile']);
@@ -53,7 +54,7 @@ export class EditKycProfileComponent extends SubBaseComponent implements OnInit 
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
             this.service.editKycProfile(params['id']).subscribe(res => {
                 this.kycProfile = res;
             });

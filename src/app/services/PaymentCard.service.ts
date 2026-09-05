@@ -78,7 +78,7 @@ export class PaymentCardService extends HelperBaseService {
 	editPaymentCard(id) : Observable<PaymentCard> {
 		const uri = this.apiUrl + '/PaymentCard/edit/' + id;
 
-		return this.http.get(<PaymentCard>)(uri);
+		return this.http.get<PaymentCard>(uri);
 	}
 
 	//********************************************************************

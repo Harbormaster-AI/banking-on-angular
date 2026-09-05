@@ -45,7 +45,8 @@ export class EditBankingProductComponent extends SubBaseComponent implements OnI
 
     
     updateBankingProduct(productCode, name, description, Bank, Accounts, LoanAccounts, PaymentCards, ProductCategory): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
+
                         this.service.updateBankingProduct(productCode, name, description, Bank, Accounts, LoanAccounts, PaymentCards, ProductCategory, params['id'])
                             .subscribe(() => {
                     this.router.navigate(['/indexBankingProduct']);
@@ -54,7 +55,7 @@ export class EditBankingProductComponent extends SubBaseComponent implements OnI
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
             this.service.editBankingProduct(params['id']).subscribe(res => {
                 this.bankingProduct = res;
             });

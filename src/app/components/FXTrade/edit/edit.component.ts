@@ -50,7 +50,8 @@ export class EditFXTradeComponent extends SubBaseComponent implements OnInit {
 
     
     updateFXTrade(tradeReference, tradeDate, settlementDate, amountSold, amountBought, rate, Customer, Bank, ExchangeRate, SourceAccount, DestinationAccount, Transaction, Status): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
+
                         this.service.updateFXTrade(tradeReference, tradeDate, settlementDate, amountSold, amountBought, rate, Customer, Bank, ExchangeRate, SourceAccount, DestinationAccount, Transaction, Status, params['id'])
                             .subscribe(() => {
                     this.router.navigate(['/indexFXTrade']);
@@ -59,7 +60,7 @@ export class EditFXTradeComponent extends SubBaseComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
             this.service.editFXTrade(params['id']).subscribe(res => {
                 this.fXTrade = res;
             });

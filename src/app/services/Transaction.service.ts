@@ -83,7 +83,7 @@ export class TransactionService extends HelperBaseService {
 	editTransaction(id) : Observable<Transaction> {
 		const uri = this.apiUrl + '/Transaction/edit/' + id;
 
-		return this.http.get(<Transaction>)(uri);
+		return this.http.get<Transaction>(uri);
 	}
 
 	//********************************************************************

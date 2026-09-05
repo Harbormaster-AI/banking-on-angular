@@ -69,7 +69,7 @@ export class IdentityDocumentService extends HelperBaseService {
 	editIdentityDocument(id) : Observable<IdentityDocument> {
 		const uri = this.apiUrl + '/IdentityDocument/edit/' + id;
 
-		return this.http.get(<IdentityDocument>)(uri);
+		return this.http.get<IdentityDocument>(uri);
 	}
 
 	//********************************************************************

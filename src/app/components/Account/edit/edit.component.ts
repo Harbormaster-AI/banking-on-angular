@@ -54,7 +54,8 @@ export class EditAccountComponent extends SubBaseComponent implements OnInit {
 
     
     updateAccount(accountNumber, iban, accountName, currency, openedOn, closedOn, Bank, Branch, Product, Owners, Transactions, Statements, StandingInstructions, FeeCharges, AccountType, OwnershipType, Status): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
+
                         this.service.updateAccount(accountNumber, iban, accountName, currency, openedOn, closedOn, Bank, Branch, Product, Owners, Transactions, Statements, StandingInstructions, FeeCharges, AccountType, OwnershipType, Status, params['id'])
                             .subscribe(() => {
                     this.router.navigate(['/indexAccount']);
@@ -63,7 +64,7 @@ export class EditAccountComponent extends SubBaseComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
             this.service.editAccount(params['id']).subscribe(res => {
                 this.account = res;
             });

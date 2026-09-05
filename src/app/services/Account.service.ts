@@ -88,7 +88,7 @@ export class AccountService extends HelperBaseService {
 	editAccount(id) : Observable<Account> {
 		const uri = this.apiUrl + '/Account/edit/' + id;
 
-		return this.http.get(<Account>)(uri);
+		return this.http.get<Account>(uri);
 	}
 
 	//********************************************************************

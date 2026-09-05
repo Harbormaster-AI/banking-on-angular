@@ -46,7 +46,8 @@ export class EditBranchComponent extends SubBaseComponent implements OnInit {
 
     
     updateBranch(name, branchCode, address, phone, openingHours, Bank, Accounts, LoanAccounts, Atms): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
+
                         this.service.updateBranch(name, branchCode, address, phone, openingHours, Bank, Accounts, LoanAccounts, Atms, params['id'])
                             .subscribe(() => {
                     this.router.navigate(['/indexBranch']);
@@ -55,7 +56,7 @@ export class EditBranchComponent extends SubBaseComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
             this.service.editBranch(params['id']).subscribe(res => {
                 this.branch = res;
             });

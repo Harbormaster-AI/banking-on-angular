@@ -68,7 +68,7 @@ export class RiskAssessmentService extends HelperBaseService {
 	editRiskAssessment(id) : Observable<RiskAssessment> {
 		const uri = this.apiUrl + '/RiskAssessment/edit/' + id;
 
-		return this.http.get(<RiskAssessment>)(uri);
+		return this.http.get<RiskAssessment>(uri);
 	}
 
 	//********************************************************************

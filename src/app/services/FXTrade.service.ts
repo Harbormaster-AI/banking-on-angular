@@ -81,7 +81,7 @@ export class FXTradeService extends HelperBaseService {
 	editFXTrade(id) : Observable<FXTrade> {
 		const uri = this.apiUrl + '/FXTrade/edit/' + id;
 
-		return this.http.get(<FXTrade>)(uri);
+		return this.http.get<FXTrade>(uri);
 	}
 
 	//********************************************************************

@@ -68,7 +68,7 @@ export class ATMService extends HelperBaseService {
 	editATM(id) : Observable<ATM> {
 		const uri = this.apiUrl + '/ATM/edit/' + id;
 
-		return this.http.get(<ATM>)(uri);
+		return this.http.get<ATM>(uri);
 	}
 
 	//********************************************************************

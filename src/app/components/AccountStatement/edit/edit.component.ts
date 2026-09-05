@@ -44,7 +44,8 @@ export class EditAccountStatementComponent extends SubBaseComponent implements O
 
     
     updateAccountStatement(statementNumber, periodStart, periodEnd, openingBalance, closingBalance, Account, DeliveryMethod): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
+
                         this.service.updateAccountStatement(statementNumber, periodStart, periodEnd, openingBalance, closingBalance, Account, DeliveryMethod, params['id'])
                             .subscribe(() => {
                     this.router.navigate(['/indexAccountStatement']);
@@ -53,7 +54,7 @@ export class EditAccountStatementComponent extends SubBaseComponent implements O
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
             this.service.editAccountStatement(params['id']).subscribe(res => {
                 this.accountStatement = res;
             });

@@ -68,7 +68,7 @@ export class ScreeningResultService extends HelperBaseService {
 	editScreeningResult(id) : Observable<ScreeningResult> {
 		const uri = this.apiUrl + '/ScreeningResult/edit/' + id;
 
-		return this.http.get(<ScreeningResult>)(uri);
+		return this.http.get<ScreeningResult>(uri);
 	}
 
 	//********************************************************************

@@ -41,7 +41,8 @@ export class EditScreeningResultComponent extends SubBaseComponent implements On
 
     
     updateScreeningResult(screeningDate, provider, KycProfile, Outcome): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
+
                         this.service.updateScreeningResult(screeningDate, provider, KycProfile, Outcome, params['id'])
                             .subscribe(() => {
                     this.router.navigate(['/indexScreeningResult']);
@@ -50,7 +51,7 @@ export class EditScreeningResultComponent extends SubBaseComponent implements On
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
             this.service.editScreeningResult(params['id']).subscribe(res => {
                 this.screeningResult = res;
             });

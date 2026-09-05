@@ -42,7 +42,8 @@ export class EditIdentityDocumentComponent extends SubBaseComponent implements O
 
     
     updateIdentityDocument(documentNumber, issuingCountry, expirationDate, KycProfile, DocumentType): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
+
                         this.service.updateIdentityDocument(documentNumber, issuingCountry, expirationDate, KycProfile, DocumentType, params['id'])
                             .subscribe(() => {
                     this.router.navigate(['/indexIdentityDocument']);
@@ -51,7 +52,7 @@ export class EditIdentityDocumentComponent extends SubBaseComponent implements O
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
             this.service.editIdentityDocument(params['id']).subscribe(res => {
                 this.identityDocument = res;
             });

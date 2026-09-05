@@ -75,7 +75,7 @@ export class ConsentService extends HelperBaseService {
 	editConsent(id) : Observable<Consent> {
 		const uri = this.apiUrl + '/Consent/edit/' + id;
 
-		return this.http.get(<Consent>)(uri);
+		return this.http.get<Consent>(uri);
 	}
 
 	//********************************************************************

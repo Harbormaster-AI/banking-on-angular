@@ -86,7 +86,7 @@ export class BankService extends HelperBaseService {
 	editBank(id) : Observable<Bank> {
 		const uri = this.apiUrl + '/Bank/edit/' + id;
 
-		return this.http.get(<Bank>)(uri);
+		return this.http.get<Bank>(uri);
 	}
 
 	//********************************************************************

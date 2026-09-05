@@ -24,7 +24,7 @@ export class IndexBankingProductComponent implements OnInit {
 }
 
     getBankingProducts(): void {
-        this.service.getBankingProducts().subscribe(res => {
+        this.service.getBankingProducts().subscribe((res) => {
         this.bankingProducts = res;
     });
 }

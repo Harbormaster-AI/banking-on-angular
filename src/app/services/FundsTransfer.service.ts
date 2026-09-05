@@ -80,7 +80,7 @@ export class FundsTransferService extends HelperBaseService {
 	editFundsTransfer(id) : Observable<FundsTransfer> {
 		const uri = this.apiUrl + '/FundsTransfer/edit/' + id;
 
-		return this.http.get(<FundsTransfer>)(uri);
+		return this.http.get<FundsTransfer>(uri);
 	}
 
 	//********************************************************************

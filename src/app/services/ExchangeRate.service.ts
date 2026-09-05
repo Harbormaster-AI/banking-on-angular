@@ -72,7 +72,7 @@ export class ExchangeRateService extends HelperBaseService {
 	editExchangeRate(id) : Observable<ExchangeRate> {
 		const uri = this.apiUrl + '/ExchangeRate/edit/' + id;
 
-		return this.http.get(<ExchangeRate>)(uri);
+		return this.http.get<ExchangeRate>(uri);
 	}
 
 	//********************************************************************

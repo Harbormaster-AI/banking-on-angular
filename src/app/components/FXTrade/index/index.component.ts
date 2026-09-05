@@ -24,7 +24,7 @@ export class IndexFXTradeComponent implements OnInit {
 }
 
     getFXTrades(): void {
-        this.service.getFXTrades().subscribe(res => {
+        this.service.getFXTrades().subscribe((res) => {
         this.fXTrades = res;
     });
 }

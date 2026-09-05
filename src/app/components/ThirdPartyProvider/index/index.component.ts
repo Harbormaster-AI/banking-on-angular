@@ -24,7 +24,7 @@ export class IndexThirdPartyProviderComponent implements OnInit {
 }
 
     getThirdPartyProviders(): void {
-        this.service.getThirdPartyProviders().subscribe(res => {
+        this.service.getThirdPartyProviders().subscribe((res) => {
         this.thirdPartyProviders = res;
     });
 }

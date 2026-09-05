@@ -44,7 +44,8 @@ export class EditExchangeRateComponent extends SubBaseComponent implements OnIni
 
     
     updateExchangeRate(baseCurrency, counterCurrency, rate, asOf, source, Bank, FxTrades): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
+
                         this.service.updateExchangeRate(baseCurrency, counterCurrency, rate, asOf, source, Bank, FxTrades, params['id'])
                             .subscribe(() => {
                     this.router.navigate(['/indexExchangeRate']);
@@ -53,7 +54,7 @@ export class EditExchangeRateComponent extends SubBaseComponent implements OnIni
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
             this.service.editExchangeRate(params['id']).subscribe(res => {
                 this.exchangeRate = res;
             });

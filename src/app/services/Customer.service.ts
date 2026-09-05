@@ -92,7 +92,7 @@ export class CustomerService extends HelperBaseService {
 	editCustomer(id) : Observable<Customer> {
 		const uri = this.apiUrl + '/Customer/edit/' + id;
 
-		return this.http.get(<Customer>)(uri);
+		return this.http.get<Customer>(uri);
 	}
 
 	//********************************************************************

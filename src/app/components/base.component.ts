@@ -28,10 +28,14 @@ import {DisputeService} from '../services/Dispute.service';
 import {ConsentService} from '../services/Consent.service';
 import {ThirdPartyProviderService} from '../services/ThirdPartyProvider.service';
 
-/** 
-	Base class of all Components.  
-	For convenience, contains all enums and entity lists 
-**/
+import { Directive } from '@angular/core';
+
+/**
+ Base class of all Components.
+ For convenience, contains all enums and entity lists
+ **/
+
+@Directive()
 export class BaseComponent {
 
     constructor (private http: HttpClient) {}

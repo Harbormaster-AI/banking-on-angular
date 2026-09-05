@@ -74,7 +74,7 @@ export class KycProfileService extends HelperBaseService {
 	editKycProfile(id) : Observable<KycProfile> {
 		const uri = this.apiUrl + '/KycProfile/edit/' + id;
 
-		return this.http.get(<KycProfile>)(uri);
+		return this.http.get<KycProfile>(uri);
 	}
 
 	//********************************************************************

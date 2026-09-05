@@ -41,7 +41,8 @@ export class EditRiskAssessmentComponent extends SubBaseComponent implements OnI
 
     
     updateRiskAssessment(score, assessedOn, KycProfile, Rating): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
+
                         this.service.updateRiskAssessment(score, assessedOn, KycProfile, Rating, params['id'])
                             .subscribe(() => {
                     this.router.navigate(['/indexRiskAssessment']);
@@ -50,7 +51,7 @@ export class EditRiskAssessmentComponent extends SubBaseComponent implements OnI
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
             this.service.editRiskAssessment(params['id']).subscribe(res => {
                 this.riskAssessment = res;
             });

@@ -24,7 +24,7 @@ export class IndexKycProfileComponent implements OnInit {
 }
 
     getKycProfiles(): void {
-        this.service.getKycProfiles().subscribe(res => {
+        this.service.getKycProfiles().subscribe((res) => {
         this.kycProfiles = res;
     });
 }

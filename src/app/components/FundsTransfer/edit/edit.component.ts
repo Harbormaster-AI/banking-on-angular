@@ -50,7 +50,8 @@ export class EditFundsTransferComponent extends SubBaseComponent implements OnIn
 
     
     updateFundsTransfer(transferReference, amount, requestedDate, executionDate, purpose, feeAmount, SourceAccount, DestinationAccount, ExternalBeneficiary, InitiatedBy, Transactions, Method, Status): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
+
                         this.service.updateFundsTransfer(transferReference, amount, requestedDate, executionDate, purpose, feeAmount, SourceAccount, DestinationAccount, ExternalBeneficiary, InitiatedBy, Transactions, Method, Status, params['id'])
                             .subscribe(() => {
                     this.router.navigate(['/indexFundsTransfer']);
@@ -59,7 +60,7 @@ export class EditFundsTransferComponent extends SubBaseComponent implements OnIn
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
             this.service.editFundsTransfer(params['id']).subscribe(res => {
                 this.fundsTransfer = res;
             });

@@ -70,7 +70,7 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	editThirdPartyProvider(id) : Observable<ThirdPartyProvider> {
 		const uri = this.apiUrl + '/ThirdPartyProvider/edit/' + id;
 
-		return this.http.get(<ThirdPartyProvider>)(uri);
+		return this.http.get<ThirdPartyProvider>(uri);
 	}
 
 	//********************************************************************

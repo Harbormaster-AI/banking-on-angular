@@ -76,7 +76,7 @@ export class BranchService extends HelperBaseService {
 	editBranch(id) : Observable<Branch> {
 		const uri = this.apiUrl + '/Branch/edit/' + id;
 
-		return this.http.get(<Branch>)(uri);
+		return this.http.get<Branch>(uri);
 	}
 
 	//********************************************************************

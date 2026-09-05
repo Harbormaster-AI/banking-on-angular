@@ -75,7 +75,7 @@ export class DisputeService extends HelperBaseService {
 	editDispute(id) : Observable<Dispute> {
 		const uri = this.apiUrl + '/Dispute/edit/' + id;
 
-		return this.http.get(<Dispute>)(uri);
+		return this.http.get<Dispute>(uri);
 	}
 
 	//********************************************************************

@@ -24,7 +24,7 @@ export class IndexScreeningResultComponent implements OnInit {
 }
 
     getScreeningResults(): void {
-        this.service.getScreeningResults().subscribe(res => {
+        this.service.getScreeningResults().subscribe((res) => {
         this.screeningResults = res;
     });
 }

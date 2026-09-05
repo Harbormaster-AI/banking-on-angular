@@ -24,7 +24,7 @@ export class IndexDisputeComponent implements OnInit {
 }
 
     getDisputes(): void {
-        this.service.getDisputes().subscribe(res => {
+        this.service.getDisputes().subscribe((res) => {
         this.disputes = res;
     });
 }

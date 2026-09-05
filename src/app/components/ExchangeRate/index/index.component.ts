@@ -24,7 +24,7 @@ export class IndexExchangeRateComponent implements OnInit {
 }
 
     getExchangeRates(): void {
-        this.service.getExchangeRates().subscribe(res => {
+        this.service.getExchangeRates().subscribe((res) => {
         this.exchangeRates = res;
     });
 }

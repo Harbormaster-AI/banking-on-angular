@@ -45,7 +45,8 @@ export class EditRepaymentScheduleComponent extends SubBaseComponent implements 
 
     
     updateRepaymentSchedule(installmentNumber, dueDate, principalDue, interestDue, totalDue, LoanAccount, Payment, Status): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
+
                         this.service.updateRepaymentSchedule(installmentNumber, dueDate, principalDue, interestDue, totalDue, LoanAccount, Payment, Status, params['id'])
                             .subscribe(() => {
                     this.router.navigate(['/indexRepaymentSchedule']);
@@ -54,7 +55,7 @@ export class EditRepaymentScheduleComponent extends SubBaseComponent implements 
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
             this.service.editRepaymentSchedule(params['id']).subscribe(res => {
                 this.repaymentSchedule = res;
             });

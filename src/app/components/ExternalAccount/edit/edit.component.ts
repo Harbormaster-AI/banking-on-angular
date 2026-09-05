@@ -45,7 +45,8 @@ export class EditExternalAccountComponent extends SubBaseComponent implements On
 
     
     updateExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
+
                         this.service.updateExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions, params['id'])
                             .subscribe(() => {
                     this.router.navigate(['/indexExternalAccount']);
@@ -54,7 +55,7 @@ export class EditExternalAccountComponent extends SubBaseComponent implements On
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params) => {
             this.service.editExternalAccount(params['id']).subscribe(res => {
                 this.externalAccount = res;
             });

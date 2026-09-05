@@ -71,7 +71,7 @@ export class AccountStatementService extends HelperBaseService {
 	editAccountStatement(id) : Observable<AccountStatement> {
 		const uri = this.apiUrl + '/AccountStatement/edit/' + id;
 
-		return this.http.get(<AccountStatement>)(uri);
+		return this.http.get<AccountStatement>(uri);
 	}
 
 	//********************************************************************

@@ -73,7 +73,7 @@ export class RepaymentScheduleService extends HelperBaseService {
 	editRepaymentSchedule(id) : Observable<RepaymentSchedule> {
 		const uri = this.apiUrl + '/RepaymentSchedule/edit/' + id;
 
-		return this.http.get(<RepaymentSchedule>)(uri);
+		return this.http.get<RepaymentSchedule>(uri);
 	}
 
 	//********************************************************************

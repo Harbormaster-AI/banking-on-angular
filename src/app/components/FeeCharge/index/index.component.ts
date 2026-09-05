@@ -24,7 +24,7 @@ export class IndexFeeChargeComponent implements OnInit {
 }
 
     getFeeCharges(): void {
-        this.service.getFeeCharges().subscribe(res => {
+        this.service.getFeeCharges().subscribe((res) => {
         this.feeCharges = res;
     });
 }

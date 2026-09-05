@@ -71,7 +71,7 @@ export class FeeChargeService extends HelperBaseService {
 	editFeeCharge(id) : Observable<FeeCharge> {
 		const uri = this.apiUrl + '/FeeCharge/edit/' + id;
 
-		return this.http.get(<FeeCharge>)(uri);
+		return this.http.get<FeeCharge>(uri);
 	}
 
 	//********************************************************************

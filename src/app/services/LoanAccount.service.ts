@@ -91,7 +91,7 @@ export class LoanAccountService extends HelperBaseService {
 	editLoanAccount(id) : Observable<LoanAccount> {
 		const uri = this.apiUrl + '/LoanAccount/edit/' + id;
 
-		return this.http.get(<LoanAccount>)(uri);
+		return this.http.get<LoanAccount>(uri);
 	}
 
 	//********************************************************************

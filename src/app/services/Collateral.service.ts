@@ -69,7 +69,7 @@ export class CollateralService extends HelperBaseService {
 	editCollateral(id) : Observable<Collateral> {
 		const uri = this.apiUrl + '/Collateral/edit/' + id;
 
-		return this.http.get(<Collateral>)(uri);
+		return this.http.get<Collateral>(uri);
 	}
 
 	//********************************************************************

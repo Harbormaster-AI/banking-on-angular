@@ -24,7 +24,7 @@ export class IndexCustomerComponent implements OnInit {
 }
 
     getCustomers(): void {
-        this.service.getCustomers().subscribe(res => {
+        this.service.getCustomers().subscribe((res) => {
         this.customers = res;
     });
 }

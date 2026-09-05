@@ -24,7 +24,7 @@ export class IndexCollateralComponent implements OnInit {
 }
 
     getCollaterals(): void {
-        this.service.getCollaterals().subscribe(res => {
+        this.service.getCollaterals().subscribe((res) => {
         this.collaterals = res;
     });
 }
