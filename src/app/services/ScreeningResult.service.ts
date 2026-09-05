@@ -140,7 +140,7 @@ export class ScreeningResultService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a ScreeningResult
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/ScreeningResult/update/' + this.screeningResult;
 

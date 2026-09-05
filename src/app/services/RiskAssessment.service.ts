@@ -140,7 +140,7 @@ export class RiskAssessmentService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a RiskAssessment
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/RiskAssessment/update/' + this.riskAssessment;
 

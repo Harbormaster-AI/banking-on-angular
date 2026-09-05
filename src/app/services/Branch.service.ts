@@ -327,7 +327,7 @@ export class BranchService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a Branch
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/Branch/update/' + this.branch;
 

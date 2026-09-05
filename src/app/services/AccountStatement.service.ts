@@ -146,7 +146,7 @@ export class AccountStatementService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a AccountStatement
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/AccountStatement/update/' + this.accountStatement;
 

@@ -543,7 +543,7 @@ export class LoanAccountService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a LoanAccount
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/LoanAccount/update/' + this.loanAccount;
 

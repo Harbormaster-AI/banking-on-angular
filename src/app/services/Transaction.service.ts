@@ -350,7 +350,7 @@ export class TransactionService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a Transaction
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/Transaction/update/' + this.transaction;
 

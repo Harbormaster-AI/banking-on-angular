@@ -207,7 +207,7 @@ export class ExternalAccountService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a ExternalAccount
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/ExternalAccount/update/' + this.externalAccount;
 

@@ -289,7 +289,7 @@ export class PaymentCardService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a PaymentCard
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/PaymentCard/update/' + this.paymentCard;
 

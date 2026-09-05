@@ -142,7 +142,7 @@ export class CollateralService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a Collateral
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/Collateral/update/' + this.collateral;
 

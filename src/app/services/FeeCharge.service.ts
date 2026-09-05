@@ -182,7 +182,7 @@ export class FeeChargeService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a FeeCharge
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/FeeCharge/update/' + this.feeCharge;
 

@@ -184,7 +184,7 @@ export class LoanPaymentService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a LoanPayment
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/LoanPayment/update/' + this.loanPayment;
 

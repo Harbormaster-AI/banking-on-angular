@@ -323,7 +323,7 @@ export class KycProfileService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a KycProfile
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/KycProfile/update/' + this.kycProfile;
 

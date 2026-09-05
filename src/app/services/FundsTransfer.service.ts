@@ -330,7 +330,7 @@ export class FundsTransferService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a FundsTransfer
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/FundsTransfer/update/' + this.fundsTransfer;
 

@@ -644,7 +644,7 @@ export class CustomerService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a Customer
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/Customer/update/' + this.customer;
 

@@ -140,7 +140,7 @@ export class ATMService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a ATM
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/ATM/update/' + this.aTM;
 

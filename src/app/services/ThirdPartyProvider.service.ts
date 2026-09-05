@@ -201,7 +201,7 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a ThirdPartyProvider
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/ThirdPartyProvider/update/' + this.thirdPartyProvider;
 

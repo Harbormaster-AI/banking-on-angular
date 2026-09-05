@@ -262,7 +262,7 @@ export class DisputeService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a Dispute
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/Dispute/update/' + this.dispute;
 

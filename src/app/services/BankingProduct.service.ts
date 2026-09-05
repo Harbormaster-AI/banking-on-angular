@@ -325,7 +325,7 @@ export class BankingProductService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a BankingProduct
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/BankingProduct/update/' + this.bankingProduct;
 

@@ -653,7 +653,7 @@ export class BankService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a Bank
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/Bank/update/' + this.bank;
 

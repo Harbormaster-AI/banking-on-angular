@@ -205,7 +205,7 @@ export class ExchangeRateService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a ExchangeRate
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/ExchangeRate/update/' + this.exchangeRate;
 

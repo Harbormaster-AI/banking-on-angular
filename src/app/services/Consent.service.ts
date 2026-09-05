@@ -283,7 +283,7 @@ export class ConsentService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a Consent
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/Consent/update/' + this.consent;
 

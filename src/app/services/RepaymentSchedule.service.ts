@@ -186,7 +186,7 @@ export class RepaymentScheduleService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a RepaymentSchedule
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/RepaymentSchedule/update/' + this.repaymentSchedule;
 

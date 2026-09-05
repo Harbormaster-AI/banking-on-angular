@@ -184,7 +184,7 @@ export class StandingInstructionService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a StandingInstruction
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/StandingInstruction/update/' + this.standingInstruction;
 

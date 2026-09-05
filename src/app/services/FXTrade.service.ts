@@ -347,7 +347,7 @@ export class FXTradeService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a FXTrade
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/FXTrade/update/' + this.fXTrade;
 

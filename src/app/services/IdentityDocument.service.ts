@@ -142,7 +142,7 @@ export class IdentityDocumentService extends HelperBaseService {
 	//********************************************************************
 	// saveHelper - internal helper to save a IdentityDocument
 	//********************************************************************
-	saveHelper() : Promise<any> {
+	saveHelper() : Observable<any> {
 
 		const uri = this.apiUrl + '/IdentityDocument/update/' + this.identityDocument;
 
