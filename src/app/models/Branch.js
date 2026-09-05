@@ -2,23 +2,23 @@
 // Define collection and schema for Branch
 export interface Branch {
     name:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : String
     branchCode:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : String
     address:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : Address
     phone:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : String
     openingHours:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : String
     Bank:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : Schema.Types.ObjectId
     Accounts:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+ 	type : [{ type: Schema.Types.ObjectId, ref: 'Account' }]
     LoanAccounts:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+ 	type : [{ type: Schema.Types.ObjectId, ref: 'LoanAccount' }]
     Atms:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+ 	type : [{ type: Schema.Types.ObjectId, ref: 'ATM' }]
 #
     collection: 'branchs'
 }

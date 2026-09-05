@@ -27,7 +27,13 @@ export class EditExchangeRateComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  baseCurrency: ['', Validators.required],
+      counterCurrency: ['', Validators.required],
+      rate: ['', Validators.required],
+      asOf: ['', Validators.required],
+      source: ['', Validators.required],
+      Bank: ['', ],
+      FxTrades: ['', ]
         });
     }
 

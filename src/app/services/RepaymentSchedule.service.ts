@@ -41,7 +41,14 @@ export class RepaymentScheduleService extends HelperBaseService {
   	addRepaymentSchedule(installmentNumber, dueDate, principalDue, interestDue, totalDue, LoanAccount, Payment, Status) : Promise<any> {
     	const uri = this.ormUrl + '/RepaymentSchedule/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		installmentNumber: installmentNumber,
+      		dueDate: dueDate,
+      		principalDue: principalDue,
+      		interestDue: interestDue,
+      		totalDue: totalDue,
+      		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
+      		Payment: Payment != null && Payment.length > 0 ? Payment : null,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -84,7 +91,14 @@ export class RepaymentScheduleService extends HelperBaseService {
 	updateRepaymentSchedule(installmentNumber, dueDate, principalDue, interestDue, totalDue, LoanAccount, Payment, Status, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/RepaymentSchedule/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		installmentNumber: installmentNumber,
+      		dueDate: dueDate,
+      		principalDue: principalDue,
+      		interestDue: interestDue,
+      		totalDue: totalDue,
+      		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
+      		Payment: Payment != null && Payment.length > 0 ? Payment : null,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();

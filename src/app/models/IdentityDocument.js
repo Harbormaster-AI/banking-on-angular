@@ -2,15 +2,15 @@
 // Define collection and schema for IdentityDocument
 export interface IdentityDocument {
     documentNumber:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : String
     issuingCountry:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : String
     expirationDate:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : Date
     KycProfile:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : Schema.Types.ObjectId
     DocumentType:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+ 	type : String
 #
     collection: 'identityDocuments'
 }

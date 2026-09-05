@@ -27,7 +27,19 @@ export class EditFXTradeComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  tradeReference: ['', Validators.required],
+      tradeDate: ['', Validators.required],
+      settlementDate: ['', Validators.required],
+      amountSold: ['', Validators.required],
+      amountBought: ['', Validators.required],
+      rate: ['', Validators.required],
+      Customer: ['', ],
+      Bank: ['', ],
+      ExchangeRate: ['', ],
+      SourceAccount: ['', ],
+      DestinationAccount: ['', ],
+      Transaction: ['', ],
+      Status: ['', ]
         });
     }
 

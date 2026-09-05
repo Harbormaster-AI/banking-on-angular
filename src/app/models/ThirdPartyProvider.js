@@ -2,15 +2,15 @@
 // Define collection and schema for ThirdPartyProvider
 export interface ThirdPartyProvider {
     name:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : String
     registrationId:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : String
     website:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : String
     Bank:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : Schema.Types.ObjectId
     Consents:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+ 	type : [{ type: Schema.Types.ObjectId, ref: 'Consent' }]
 #
     collection: 'thirdPartyProviders'
 }

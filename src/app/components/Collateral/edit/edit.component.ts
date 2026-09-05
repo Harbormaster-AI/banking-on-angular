@@ -27,7 +27,11 @@ export class EditCollateralComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  appraisedValue: ['', Validators.required],
+      description: ['', Validators.required],
+      location: ['', Validators.required],
+      LoanAccount: ['', ],
+      CollateralType: ['', ]
         });
     }
 

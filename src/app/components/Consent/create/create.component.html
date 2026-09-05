@@ -1,1 +1,90 @@
-#formFields( "add" )
+<div class="panel panel-primary">
+	<div class="panel-heading">
+    	<h5>{{ title }}</h5>
+	</div>
+	
+	<div class="panel-body">
+		<mat-form-field appearance="legacy">
+		    <mat-label>grantedOn</mat-label>
+		  	<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="grantedOn" name="consent.grantedOn" [(ngModel)]="consent.grantedOn">
+			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+			<mat-hint></mat-hint>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+		    <mat-label>expiresOn</mat-label>
+		  	<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="expiresOn" name="consent.expiresOn" [(ngModel)]="consent.expiresOn">
+			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+			<mat-hint></mat-hint>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>Customer</mat-label>
+			<mat-select placeholder="Customer"  [(ngModel)]="consent.Customer">
+		    	<mat-option name="consent.Customer" ngDefaultControl  
+		    		*ngFor="let customer of customers"		    		 
+		    		[value]="customer._id">
+		      		{{customer.firstName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>Bank</mat-label>
+			<mat-select placeholder="Bank"  [(ngModel)]="consent.Bank">
+		    	<mat-option name="consent.Bank" ngDefaultControl  
+		    		*ngFor="let bank of banks"		    		 
+		    		[value]="bank._id">
+		      		{{bank.name}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>AuthorizedAccounts</mat-label>
+			<mat-select placeholder="AuthorizedAccounts" multiple [(ngModel)]="consent.AuthorizedAccounts">
+		    	<mat-option name="consent.AuthorizedAccounts" ngDefaultControl  
+		    		*ngFor="let account of accounts"		    		 
+		    		[value]="account._id">
+		      		{{account.accountName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>ThirdPartyProvider</mat-label>
+			<mat-select placeholder="ThirdPartyProvider"  [(ngModel)]="consent.ThirdPartyProvider">
+		    	<mat-option name="consent.ThirdPartyProvider" ngDefaultControl  
+		    		*ngFor="let thirdPartyProvider of thirdPartyProviders"		    		 
+		    		[value]="thirdPartyProvider._id">
+		      		{{thirdPartyProvider.name}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+		    <mat-label>ConsentType</mat-label>
+			<mat-select placeholder="ConsentType" name="consent.ConsentType" [(ngModel)]="consent.ConsentType">
+		    	<mat-option ngDefaultControl *ngFor="let ConsentType of ConsentTypes" [value]="ConsentType">
+		      		{{ConsentType}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+		    <mat-label>Status</mat-label>
+			<mat-select placeholder="Status" name="consent.Status" [(ngModel)]="consent.Status">
+		    	<mat-option ngDefaultControl *ngFor="let ConsentStatus of ConsentStatuss" [value]="ConsentStatus">
+		      		{{ConsentStatus}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+                <button 
+		    (click)="addConsent(consent.grantedOn, consent.expiresOn, consent.Customer, consent.Bank, consent.AuthorizedAccounts, consent.ThirdPartyProvider, consent.ConsentType, consent.Status)" 
+		    class="btn btn-primary">add
+		</button>
+	</div> <!-- panel body -->	
+</div> <!-- panel panel-primary -->

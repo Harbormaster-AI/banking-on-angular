@@ -41,7 +41,13 @@ export class StandingInstructionService extends HelperBaseService {
   	addStandingInstruction(instructionId, amount, nextExecutionDate, Account, Beneficiary, Frequency, Status) : Promise<any> {
     	const uri = this.ormUrl + '/StandingInstruction/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		instructionId: instructionId,
+      		amount: amount,
+      		nextExecutionDate: nextExecutionDate,
+      		Account: Account != null && Account.length > 0 ? Account : null,
+      		Beneficiary: Beneficiary != null && Beneficiary.length > 0 ? Beneficiary : null,
+      		Frequency: Frequency,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -84,7 +90,13 @@ export class StandingInstructionService extends HelperBaseService {
 	updateStandingInstruction(instructionId, amount, nextExecutionDate, Account, Beneficiary, Frequency, Status, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/StandingInstruction/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		instructionId: instructionId,
+      		amount: amount,
+      		nextExecutionDate: nextExecutionDate,
+      		Account: Account != null && Account.length > 0 ? Account : null,
+      		Beneficiary: Beneficiary != null && Beneficiary.length > 0 ? Beneficiary : null,
+      		Frequency: Frequency,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();

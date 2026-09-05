@@ -26,7 +26,13 @@ export class CreateLoanPaymentComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  paymentReference: ['', Validators.required],
+      amount: ['', Validators.required],
+      paymentDate: ['', Validators.required],
+      LoanAccount: ['', ],
+      Transaction: ['', ],
+      Method: ['', ],
+      Status: ['', ]
         });
     }
 

@@ -2,27 +2,27 @@
 // Define collection and schema for PaymentCard
 export interface PaymentCard {
     cardNumber:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : CardPAN
     embossedName:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : String
     expiryMonth:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : Number
     expiryYear:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : Number
     Bank:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : Schema.Types.ObjectId
     Account:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : Schema.Types.ObjectId
     Customer:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : Schema.Types.ObjectId
     Transactions:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+ 	type : [{ type: Schema.Types.ObjectId, ref: 'Transaction' }]
     CardType:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+ 	type : String
     CardStatus:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+ 	type : String
     Network:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+ 	type : String
 #
     collection: 'paymentCards'
 }

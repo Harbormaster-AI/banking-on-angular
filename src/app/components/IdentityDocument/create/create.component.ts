@@ -26,7 +26,11 @@ export class CreateIdentityDocumentComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  documentNumber: ['', Validators.required],
+      issuingCountry: ['', Validators.required],
+      expirationDate: ['', Validators.required],
+      KycProfile: ['', ],
+      DocumentType: ['', ]
         });
     }
 

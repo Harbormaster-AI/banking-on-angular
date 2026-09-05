@@ -1,1 +1,125 @@
-#formFields( "add" )
+<div class="panel panel-primary">
+	<div class="panel-heading">
+    	<h5>{{ title }}</h5>
+	</div>
+	
+	<div class="panel-body">
+		<mat-form-field appearance="legacy">
+    		<mat-label>transferReference</mat-label>
+		    <input matInput ngDefaultControl placeholder="transferReference" name="fundsTransfer.transferReference" [(ngModel)]="fundsTransfer.transferReference">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>amount</mat-label>
+		    <input matInput ngDefaultControl placeholder="amount" name="fundsTransfer.amount" [(ngModel)]="fundsTransfer.amount">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+		    <mat-label>requestedDate</mat-label>
+		  	<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="requestedDate" name="fundsTransfer.requestedDate" [(ngModel)]="fundsTransfer.requestedDate">
+			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+			<mat-hint></mat-hint>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+		    <mat-label>executionDate</mat-label>
+		  	<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="executionDate" name="fundsTransfer.executionDate" [(ngModel)]="fundsTransfer.executionDate">
+			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+			<mat-hint></mat-hint>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>purpose</mat-label>
+		    <input matInput ngDefaultControl placeholder="purpose" name="fundsTransfer.purpose" [(ngModel)]="fundsTransfer.purpose">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>feeAmount</mat-label>
+		    <input matInput ngDefaultControl placeholder="feeAmount" name="fundsTransfer.feeAmount" [(ngModel)]="fundsTransfer.feeAmount">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>SourceAccount</mat-label>
+			<mat-select placeholder="SourceAccount"  [(ngModel)]="fundsTransfer.SourceAccount">
+		    	<mat-option name="fundsTransfer.SourceAccount" ngDefaultControl  
+		    		*ngFor="let account of accounts"		    		 
+		    		[value]="account._id">
+		      		{{account.accountName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>DestinationAccount</mat-label>
+			<mat-select placeholder="DestinationAccount"  [(ngModel)]="fundsTransfer.DestinationAccount">
+		    	<mat-option name="fundsTransfer.DestinationAccount" ngDefaultControl  
+		    		*ngFor="let account of accounts"		    		 
+		    		[value]="account._id">
+		      		{{account.accountName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>ExternalBeneficiary</mat-label>
+			<mat-select placeholder="ExternalBeneficiary"  [(ngModel)]="fundsTransfer.ExternalBeneficiary">
+		    	<mat-option name="fundsTransfer.ExternalBeneficiary" ngDefaultControl  
+		    		*ngFor="let externalAccount of externalAccounts"		    		 
+		    		[value]="externalAccount._id">
+		      		{{externalAccount.name}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>InitiatedBy</mat-label>
+			<mat-select placeholder="InitiatedBy"  [(ngModel)]="fundsTransfer.InitiatedBy">
+		    	<mat-option name="fundsTransfer.InitiatedBy" ngDefaultControl  
+		    		*ngFor="let customer of customers"		    		 
+		    		[value]="customer._id">
+		      		{{customer.firstName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>Transactions</mat-label>
+			<mat-select placeholder="Transactions" multiple [(ngModel)]="fundsTransfer.Transactions">
+		    	<mat-option name="fundsTransfer.Transactions" ngDefaultControl  
+		    		*ngFor="let transaction of transactions"		    		 
+		    		[value]="transaction._id">
+		      		{{transaction.bookingDate}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+		    <mat-label>Method</mat-label>
+			<mat-select placeholder="Method" name="fundsTransfer.Method" [(ngModel)]="fundsTransfer.Method">
+		    	<mat-option ngDefaultControl *ngFor="let PaymentMethod of PaymentMethods" [value]="PaymentMethod">
+		      		{{PaymentMethod}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+		    <mat-label>Status</mat-label>
+			<mat-select placeholder="Status" name="fundsTransfer.Status" [(ngModel)]="fundsTransfer.Status">
+		    	<mat-option ngDefaultControl *ngFor="let PaymentStatus of PaymentStatuss" [value]="PaymentStatus">
+		      		{{PaymentStatus}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+                     <button 
+		    (click)="addFundsTransfer(fundsTransfer.transferReference, fundsTransfer.amount, fundsTransfer.requestedDate, fundsTransfer.executionDate, fundsTransfer.purpose, fundsTransfer.feeAmount, fundsTransfer.SourceAccount, fundsTransfer.DestinationAccount, fundsTransfer.ExternalBeneficiary, fundsTransfer.InitiatedBy, fundsTransfer.Transactions, fundsTransfer.Method, fundsTransfer.Status)" 
+		    class="btn btn-primary">add
+		</button>
+	</div> <!-- panel body -->	
+</div> <!-- panel panel-primary -->

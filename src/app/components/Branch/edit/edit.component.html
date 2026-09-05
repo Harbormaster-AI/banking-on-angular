@@ -1,1 +1,86 @@
-#formFields( "update" )
+<div class="panel panel-primary">
+	<div class="panel-heading">
+    	<h5>{{ title }}</h5>
+	</div>
+	
+	<div class="panel-body">
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>name</mat-label>
+		    <input matInput ngDefaultControl placeholder="name" name="branch.name" [(ngModel)]="branch.name">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>branchCode</mat-label>
+		    <input matInput ngDefaultControl placeholder="branchCode" name="branch.branchCode" [(ngModel)]="branch.branchCode">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>address</mat-label>
+		    <input matInput ngDefaultControl placeholder="address" name="branch.address" [(ngModel)]="branch.address">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>phone</mat-label>
+		    <input matInput ngDefaultControl placeholder="phone" name="branch.phone" [(ngModel)]="branch.phone">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>openingHours</mat-label>
+		    <input matInput ngDefaultControl placeholder="openingHours" name="branch.openingHours" [(ngModel)]="branch.openingHours">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>Bank</mat-label>
+			<mat-select placeholder="Bank"   [compareWith]="compareFn"  [(ngModel)]="branch.Bank">
+		    	<mat-option name="branch.Bank" ngDefaultControl  
+		    		*ngFor="let bank of banks"		    		 
+		    		[value]="bank._id">
+		      		{{bank.name}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>Accounts</mat-label>
+			<mat-select placeholder="Accounts" multiple  [compareWith]="compareFn"  [(ngModel)]="branch.Accounts">
+		    	<mat-option name="branch.Accounts" ngDefaultControl  
+		    		*ngFor="let account of accounts"		    		 
+		    		[value]="account._id">
+		      		{{account.accountName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>LoanAccounts</mat-label>
+			<mat-select placeholder="LoanAccounts" multiple  [compareWith]="compareFn"  [(ngModel)]="branch.LoanAccounts">
+		    	<mat-option name="branch.LoanAccounts" ngDefaultControl  
+		    		*ngFor="let loanAccount of loanAccounts"		    		 
+		    		[value]="loanAccount._id">
+		      		{{loanAccount.loanNumber}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>Atms</mat-label>
+			<mat-select placeholder="Atms" multiple  [compareWith]="compareFn"  [(ngModel)]="branch.Atms">
+		    	<mat-option name="branch.Atms" ngDefaultControl  
+		    		*ngFor="let aTM of aTMs"		    		 
+		    		[value]="aTM._id">
+		      		{{aTM.terminalId}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+                          <button 
+		    (click)="updateBranch(branch.name, branch.branchCode, branch.address, branch.phone, branch.openingHours, branch.Bank, branch.Accounts, branch.LoanAccounts, branch.Atms)" 
+		    class="btn btn-primary">update
+		</button>
+	</div> <!-- panel body -->	
+</div> <!-- panel panel-primary -->

@@ -2,39 +2,39 @@
 // Define collection and schema for Account
 export interface Account {
     accountNumber:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : AccountNumber
     iban:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : IBAN
     accountName:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : String
     currency:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : String
     openedOn:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : Date
     closedOn:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : Date
     Bank:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : Schema.Types.ObjectId
     Branch:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : Schema.Types.ObjectId
     Product:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+	type : Schema.Types.ObjectId
     Owners:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+ 	type : [{ type: Schema.Types.ObjectId, ref: 'Customer' }]
     Transactions:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+ 	type : [{ type: Schema.Types.ObjectId, ref: 'Transaction' }]
     Statements:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+ 	type : [{ type: Schema.Types.ObjectId, ref: 'AccountStatement' }]
     StandingInstructions:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+ 	type : [{ type: Schema.Types.ObjectId, ref: 'StandingInstruction' }]
     FeeCharges:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+ 	type : [{ type: Schema.Types.ObjectId, ref: 'FeeCharge' }]
     AccountType:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+ 	type : String
     OwnershipType:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+ 	type : String
     Status:
-#attributeTypeDeclaration(${attribute}, ${classObject}, ${outputTheAttributeType})
+ 	type : String
 #
     collection: 'accounts'
 }

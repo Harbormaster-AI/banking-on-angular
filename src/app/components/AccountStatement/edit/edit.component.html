@@ -1,1 +1,66 @@
-#formFields( "update" )
+<div class="panel panel-primary">
+	<div class="panel-heading">
+    	<h5>{{ title }}</h5>
+	</div>
+	
+	<div class="panel-body">
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>statementNumber</mat-label>
+		    <input matInput ngDefaultControl placeholder="statementNumber" name="accountStatement.statementNumber" [(ngModel)]="accountStatement.statementNumber">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+		    <mat-label>periodStart</mat-label>
+		  	<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="periodStart" name="accountStatement.periodStart" [(ngModel)]="accountStatement.periodStart">
+			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+			<mat-hint></mat-hint>
+		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+		    <mat-label>periodEnd</mat-label>
+		  	<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="periodEnd" name="accountStatement.periodEnd" [(ngModel)]="accountStatement.periodEnd">
+			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+			<mat-hint></mat-hint>
+		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>openingBalance</mat-label>
+		    <input matInput ngDefaultControl placeholder="openingBalance" name="accountStatement.openingBalance" [(ngModel)]="accountStatement.openingBalance">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>closingBalance</mat-label>
+		    <input matInput ngDefaultControl placeholder="closingBalance" name="accountStatement.closingBalance" [(ngModel)]="accountStatement.closingBalance">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>Account</mat-label>
+			<mat-select placeholder="Account"   [compareWith]="compareFn"  [(ngModel)]="accountStatement.Account">
+		    	<mat-option name="accountStatement.Account" ngDefaultControl  
+		    		*ngFor="let account of accounts"		    		 
+		    		[value]="account._id">
+		      		{{account.accountName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+		    <mat-label>DeliveryMethod</mat-label>
+			<mat-select placeholder="DeliveryMethod" name="accountStatement.DeliveryMethod" [(ngModel)]="accountStatement.DeliveryMethod">
+		    	<mat-option ngDefaultControl *ngFor="let StatementDeliveryMethod of StatementDeliveryMethods" [value]="StatementDeliveryMethod">
+		      		{{StatementDeliveryMethod}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+                      <button 
+		    (click)="updateAccountStatement(accountStatement.statementNumber, accountStatement.periodStart, accountStatement.periodEnd, accountStatement.openingBalance, accountStatement.closingBalance, accountStatement.Account, accountStatement.DeliveryMethod)" 
+		    class="btn btn-primary">update
+		</button>
+	</div> <!-- panel body -->	
+</div> <!-- panel panel-primary -->

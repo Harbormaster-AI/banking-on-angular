@@ -40,7 +40,13 @@ export class AccountStatementService extends HelperBaseService {
   	addAccountStatement(statementNumber, periodStart, periodEnd, openingBalance, closingBalance, Account, DeliveryMethod) : Promise<any> {
     	const uri = this.ormUrl + '/AccountStatement/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		statementNumber: statementNumber,
+      		periodStart: periodStart,
+      		periodEnd: periodEnd,
+      		openingBalance: openingBalance,
+      		closingBalance: closingBalance,
+      		Account: Account != null && Account.length > 0 ? Account : null,
+			DeliveryMethod: DeliveryMethod
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -83,7 +89,13 @@ export class AccountStatementService extends HelperBaseService {
 	updateAccountStatement(statementNumber, periodStart, periodEnd, openingBalance, closingBalance, Account, DeliveryMethod, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/AccountStatement/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		statementNumber: statementNumber,
+      		periodStart: periodStart,
+      		periodEnd: periodEnd,
+      		openingBalance: openingBalance,
+      		closingBalance: closingBalance,
+      		Account: Account != null && Account.length > 0 ? Account : null,
+			DeliveryMethod: DeliveryMethod
     	};
     	
     	return this.http.post(uri, obj).toPromise();

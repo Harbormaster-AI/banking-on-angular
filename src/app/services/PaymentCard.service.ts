@@ -43,7 +43,17 @@ export class PaymentCardService extends HelperBaseService {
   	addPaymentCard(cardNumber, embossedName, expiryMonth, expiryYear, Bank, Account, Customer, Transactions, CardType, CardStatus, Network) : Promise<any> {
     	const uri = this.ormUrl + '/PaymentCard/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		cardNumber: cardNumber,
+      		embossedName: embossedName,
+      		expiryMonth: expiryMonth,
+      		expiryYear: expiryYear,
+      		Bank: Bank != null && Bank.length > 0 ? Bank : null,
+      		Account: Account != null && Account.length > 0 ? Account : null,
+      		Customer: Customer != null && Customer.length > 0 ? Customer : null,
+      		Transactions: Transactions != null && Transactions.length > 0 ? Transactions : null,
+      		CardType: CardType,
+      		CardStatus: CardStatus,
+			Network: Network
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -86,7 +96,17 @@ export class PaymentCardService extends HelperBaseService {
 	updatePaymentCard(cardNumber, embossedName, expiryMonth, expiryYear, Bank, Account, Customer, Transactions, CardType, CardStatus, Network, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/PaymentCard/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		cardNumber: cardNumber,
+      		embossedName: embossedName,
+      		expiryMonth: expiryMonth,
+      		expiryYear: expiryYear,
+      		Bank: Bank != null && Bank.length > 0 ? Bank : null,
+      		Account: Account != null && Account.length > 0 ? Account : null,
+      		Customer: Customer != null && Customer.length > 0 ? Customer : null,
+      		Transactions: Transactions != null && Transactions.length > 0 ? Transactions : null,
+      		CardType: CardType,
+      		CardStatus: CardStatus,
+			Network: Network
     	};
     	
     	return this.http.post(uri, obj).toPromise();

@@ -43,7 +43,15 @@ export class BranchService extends HelperBaseService {
   	addBranch(name, branchCode, address, phone, openingHours, Bank, Accounts, LoanAccounts, Atms) : Promise<any> {
     	const uri = this.ormUrl + '/Branch/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		name: name,
+      		branchCode: branchCode,
+      		address: address,
+      		phone: phone,
+      		openingHours: openingHours,
+      		Bank: Bank != null && Bank.length > 0 ? Bank : null,
+      		Accounts: Accounts != null && Accounts.length > 0 ? Accounts : null,
+      		LoanAccounts: LoanAccounts != null && LoanAccounts.length > 0 ? LoanAccounts : null,
+			Atms: Atms != null && Atms.length > 0 ? Atms : null
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -86,7 +94,15 @@ export class BranchService extends HelperBaseService {
 	updateBranch(name, branchCode, address, phone, openingHours, Bank, Accounts, LoanAccounts, Atms, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/Branch/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		name: name,
+      		branchCode: branchCode,
+      		address: address,
+      		phone: phone,
+      		openingHours: openingHours,
+      		Bank: Bank != null && Bank.length > 0 ? Bank : null,
+      		Accounts: Accounts != null && Accounts.length > 0 ? Accounts : null,
+      		LoanAccounts: LoanAccounts != null && LoanAccounts.length > 0 ? LoanAccounts : null,
+			Atms: Atms != null && Atms.length > 0 ? Atms : null
     	};
     	
     	return this.http.post(uri, obj).toPromise();

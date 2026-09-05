@@ -40,7 +40,11 @@ export class CollateralService extends HelperBaseService {
   	addCollateral(appraisedValue, description, location, LoanAccount, CollateralType) : Promise<any> {
     	const uri = this.ormUrl + '/Collateral/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		appraisedValue: appraisedValue,
+      		description: description,
+      		location: location,
+      		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
+			CollateralType: CollateralType
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -83,7 +87,11 @@ export class CollateralService extends HelperBaseService {
 	updateCollateral(appraisedValue, description, location, LoanAccount, CollateralType, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/Collateral/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		appraisedValue: appraisedValue,
+      		description: description,
+      		location: location,
+      		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
+			CollateralType: CollateralType
     	};
     	
     	return this.http.post(uri, obj).toPromise();

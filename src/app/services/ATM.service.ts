@@ -40,7 +40,10 @@ export class ATMService extends HelperBaseService {
   	addATM(terminalId, location, Branch, Status) : Promise<any> {
     	const uri = this.ormUrl + '/ATM/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		terminalId: terminalId,
+      		location: location,
+      		Branch: Branch != null && Branch.length > 0 ? Branch : null,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -83,7 +86,10 @@ export class ATMService extends HelperBaseService {
 	updateATM(terminalId, location, Branch, Status, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/ATM/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		terminalId: terminalId,
+      		location: location,
+      		Branch: Branch != null && Branch.length > 0 ? Branch : null,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();

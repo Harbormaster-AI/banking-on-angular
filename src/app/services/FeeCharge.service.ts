@@ -41,7 +41,12 @@ export class FeeChargeService extends HelperBaseService {
   	addFeeCharge(feeCode, amount, appliedOn, Account, LoanAccount, FeeType) : Promise<any> {
     	const uri = this.ormUrl + '/FeeCharge/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		feeCode: feeCode,
+      		amount: amount,
+      		appliedOn: appliedOn,
+      		Account: Account != null && Account.length > 0 ? Account : null,
+      		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
+			FeeType: FeeType
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -84,7 +89,12 @@ export class FeeChargeService extends HelperBaseService {
 	updateFeeCharge(feeCode, amount, appliedOn, Account, LoanAccount, FeeType, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/FeeCharge/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		feeCode: feeCode,
+      		amount: amount,
+      		appliedOn: appliedOn,
+      		Account: Account != null && Account.length > 0 ? Account : null,
+      		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
+			FeeType: FeeType
     	};
     	
     	return this.http.post(uri, obj).toPromise();

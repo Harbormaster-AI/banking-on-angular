@@ -26,7 +26,26 @@ export class CreateLoanAccountComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  loanNumber: ['', Validators.required],
+      principalAmount: ['', Validators.required],
+      outstandingPrincipal: ['', Validators.required],
+      interestRate: ['', Validators.required],
+      originationDate: ['', Validators.required],
+      maturityDate: ['', Validators.required],
+      paymentDayOfMonth: ['', Validators.required],
+      currency: ['', Validators.required],
+      Bank: ['', ],
+      Branch: ['', ],
+      Product: ['', ],
+      Borrowers: ['', ],
+      RepaymentSchedule: ['', ],
+      Payments: ['', ],
+      Collateral: ['', ],
+      FeeCharges: ['', ],
+      LoanType: ['', ],
+      RateType: ['', ],
+      Compounding: ['', ],
+      Status: ['', ]
         });
     }
 

@@ -27,7 +27,10 @@ export class EditATMComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  terminalId: ['', Validators.required],
+      location: ['', Validators.required],
+      Branch: ['', ],
+      Status: ['', ]
         });
     }
 

@@ -1,1 +1,99 @@
-#formFields( "add" )
+<div class="panel panel-primary">
+	<div class="panel-heading">
+    	<h5>{{ title }}</h5>
+	</div>
+	
+	<div class="panel-body">
+		<mat-form-field appearance="legacy">
+    		<mat-label>cardNumber</mat-label>
+		    <input matInput ngDefaultControl placeholder="cardNumber" name="paymentCard.cardNumber" [(ngModel)]="paymentCard.cardNumber">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>embossedName</mat-label>
+		    <input matInput ngDefaultControl placeholder="embossedName" name="paymentCard.embossedName" [(ngModel)]="paymentCard.embossedName">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+		<input matInput placeholder="expiryMonth" name="paymentCard.expiryMonth "[(ngModel)]="paymentCard.expiryMonth">
+<p>
+		<input matInput placeholder="expiryYear" name="paymentCard.expiryYear "[(ngModel)]="paymentCard.expiryYear">
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>Bank</mat-label>
+			<mat-select placeholder="Bank"  [(ngModel)]="paymentCard.Bank">
+		    	<mat-option name="paymentCard.Bank" ngDefaultControl  
+		    		*ngFor="let bank of banks"		    		 
+		    		[value]="bank._id">
+		      		{{bank.name}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>Account</mat-label>
+			<mat-select placeholder="Account"  [(ngModel)]="paymentCard.Account">
+		    	<mat-option name="paymentCard.Account" ngDefaultControl  
+		    		*ngFor="let account of accounts"		    		 
+		    		[value]="account._id">
+		      		{{account.accountName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>Customer</mat-label>
+			<mat-select placeholder="Customer"  [(ngModel)]="paymentCard.Customer">
+		    	<mat-option name="paymentCard.Customer" ngDefaultControl  
+		    		*ngFor="let customer of customers"		    		 
+		    		[value]="customer._id">
+		      		{{customer.firstName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>Transactions</mat-label>
+			<mat-select placeholder="Transactions" multiple [(ngModel)]="paymentCard.Transactions">
+		    	<mat-option name="paymentCard.Transactions" ngDefaultControl  
+		    		*ngFor="let transaction of transactions"		    		 
+		    		[value]="transaction._id">
+		      		{{transaction.bookingDate}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+		    <mat-label>CardType</mat-label>
+			<mat-select placeholder="CardType" name="paymentCard.CardType" [(ngModel)]="paymentCard.CardType">
+		    	<mat-option ngDefaultControl *ngFor="let CardType of CardTypes" [value]="CardType">
+		      		{{CardType}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+		    <mat-label>CardStatus</mat-label>
+			<mat-select placeholder="CardStatus" name="paymentCard.CardStatus" [(ngModel)]="paymentCard.CardStatus">
+		    	<mat-option ngDefaultControl *ngFor="let CardStatus of CardStatuss" [value]="CardStatus">
+		      		{{CardStatus}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+		    <mat-label>Network</mat-label>
+			<mat-select placeholder="Network" name="paymentCard.Network" [(ngModel)]="paymentCard.Network">
+		    	<mat-option ngDefaultControl *ngFor="let CardNetwork of CardNetworks" [value]="CardNetwork">
+		      		{{CardNetwork}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+                   <button 
+		    (click)="addPaymentCard(paymentCard.cardNumber, paymentCard.embossedName, paymentCard.expiryMonth, paymentCard.expiryYear, paymentCard.Bank, paymentCard.Account, paymentCard.Customer, paymentCard.Transactions, paymentCard.CardType, paymentCard.CardStatus, paymentCard.Network)" 
+		    class="btn btn-primary">add
+		</button>
+	</div> <!-- panel body -->	
+</div> <!-- panel panel-primary -->

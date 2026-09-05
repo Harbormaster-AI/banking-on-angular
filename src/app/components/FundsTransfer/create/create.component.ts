@@ -26,7 +26,19 @@ export class CreateFundsTransferComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  transferReference: ['', Validators.required],
+      amount: ['', Validators.required],
+      requestedDate: ['', Validators.required],
+      executionDate: ['', Validators.required],
+      purpose: ['', Validators.required],
+      feeAmount: ['', Validators.required],
+      SourceAccount: ['', ],
+      DestinationAccount: ['', ],
+      ExternalBeneficiary: ['', ],
+      InitiatedBy: ['', ],
+      Transactions: ['', ],
+      Method: ['', ],
+      Status: ['', ]
         });
     }
 

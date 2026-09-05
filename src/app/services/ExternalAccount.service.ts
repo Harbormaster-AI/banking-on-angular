@@ -41,7 +41,14 @@ export class ExternalAccountService extends HelperBaseService {
   	addExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions) : Promise<any> {
     	const uri = this.ormUrl + '/ExternalAccount/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		name: name,
+      		iban: iban,
+      		accountNumber: accountNumber,
+      		bic: bic,
+      		bankName: bankName,
+      		country: country,
+      		Customer: Customer != null && Customer.length > 0 ? Customer : null,
+			Transactions: Transactions != null && Transactions.length > 0 ? Transactions : null
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -84,7 +91,14 @@ export class ExternalAccountService extends HelperBaseService {
 	updateExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/ExternalAccount/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		name: name,
+      		iban: iban,
+      		accountNumber: accountNumber,
+      		bic: bic,
+      		bankName: bankName,
+      		country: country,
+      		Customer: Customer != null && Customer.length > 0 ? Customer : null,
+			Transactions: Transactions != null && Transactions.length > 0 ? Transactions : null
     	};
     	
     	return this.http.post(uri, obj).toPromise();

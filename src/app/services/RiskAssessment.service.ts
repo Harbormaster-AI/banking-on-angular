@@ -40,7 +40,10 @@ export class RiskAssessmentService extends HelperBaseService {
   	addRiskAssessment(score, assessedOn, KycProfile, Rating) : Promise<any> {
     	const uri = this.ormUrl + '/RiskAssessment/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		score: score,
+      		assessedOn: assessedOn,
+      		KycProfile: KycProfile != null && KycProfile.length > 0 ? KycProfile : null,
+			Rating: Rating
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -83,7 +86,10 @@ export class RiskAssessmentService extends HelperBaseService {
 	updateRiskAssessment(score, assessedOn, KycProfile, Rating, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/RiskAssessment/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		score: score,
+      		assessedOn: assessedOn,
+      		KycProfile: KycProfile != null && KycProfile.length > 0 ? KycProfile : null,
+			Rating: Rating
     	};
     	
     	return this.http.post(uri, obj).toPromise();

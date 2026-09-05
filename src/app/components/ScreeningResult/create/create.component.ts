@@ -26,7 +26,10 @@ export class CreateScreeningResultComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  screeningDate: ['', Validators.required],
+      provider: ['', Validators.required],
+      KycProfile: ['', ],
+      Outcome: ['', ]
         });
     }
 

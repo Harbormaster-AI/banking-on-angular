@@ -43,7 +43,14 @@ export class DisputeService extends HelperBaseService {
   	addDispute(disputeReference, raisedOn, reason, Transaction, Customer, Account, PaymentCard, Status) : Promise<any> {
     	const uri = this.ormUrl + '/Dispute/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		disputeReference: disputeReference,
+      		raisedOn: raisedOn,
+      		reason: reason,
+      		Transaction: Transaction != null && Transaction.length > 0 ? Transaction : null,
+      		Customer: Customer != null && Customer.length > 0 ? Customer : null,
+      		Account: Account != null && Account.length > 0 ? Account : null,
+      		PaymentCard: PaymentCard != null && PaymentCard.length > 0 ? PaymentCard : null,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -86,7 +93,14 @@ export class DisputeService extends HelperBaseService {
 	updateDispute(disputeReference, raisedOn, reason, Transaction, Customer, Account, PaymentCard, Status, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/Dispute/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		disputeReference: disputeReference,
+      		raisedOn: raisedOn,
+      		reason: reason,
+      		Transaction: Transaction != null && Transaction.length > 0 ? Transaction : null,
+      		Customer: Customer != null && Customer.length > 0 ? Customer : null,
+      		Account: Account != null && Account.length > 0 ? Account : null,
+      		PaymentCard: PaymentCard != null && PaymentCard.length > 0 ? PaymentCard : null,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();

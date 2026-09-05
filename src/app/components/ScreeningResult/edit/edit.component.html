@@ -1,1 +1,46 @@
-#formFields( "update" )
+<div class="panel panel-primary">
+	<div class="panel-heading">
+    	<h5>{{ title }}</h5>
+	</div>
+	
+	<div class="panel-body">
+ 		<mat-form-field appearance="legacy">
+		    <mat-label>screeningDate</mat-label>
+		  	<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="screeningDate" name="screeningResult.screeningDate" [(ngModel)]="screeningResult.screeningDate">
+			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+			<mat-hint></mat-hint>
+		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>provider</mat-label>
+		    <input matInput ngDefaultControl placeholder="provider" name="screeningResult.provider" [(ngModel)]="screeningResult.provider">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>KycProfile</mat-label>
+			<mat-select placeholder="KycProfile"   [compareWith]="compareFn"  [(ngModel)]="screeningResult.KycProfile">
+		    	<mat-option name="screeningResult.KycProfile" ngDefaultControl  
+		    		*ngFor="let kycProfile of kycProfiles"		    		 
+		    		[value]="kycProfile._id">
+		      		{{kycProfile.profileId}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+		    <mat-label>Outcome</mat-label>
+			<mat-select placeholder="Outcome" name="screeningResult.Outcome" [(ngModel)]="screeningResult.Outcome">
+		    	<mat-option ngDefaultControl *ngFor="let ScreeningOutcome of ScreeningOutcomes" [value]="ScreeningOutcome">
+		      		{{ScreeningOutcome}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+                <button 
+		    (click)="updateScreeningResult(screeningResult.screeningDate, screeningResult.provider, screeningResult.KycProfile, screeningResult.Outcome)" 
+		    class="btn btn-primary">update
+		</button>
+	</div> <!-- panel body -->	
+</div> <!-- panel panel-primary -->

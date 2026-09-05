@@ -26,7 +26,14 @@ export class CreateConsentComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  grantedOn: ['', Validators.required],
+      expiresOn: ['', Validators.required],
+      Customer: ['', ],
+      Bank: ['', ],
+      AuthorizedAccounts: ['', ],
+      ThirdPartyProvider: ['', ],
+      ConsentType: ['', ],
+      Status: ['', ]
         });
     }
 

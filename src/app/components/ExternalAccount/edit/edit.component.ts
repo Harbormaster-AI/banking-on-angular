@@ -27,7 +27,14 @@ export class EditExternalAccountComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  name: ['', Validators.required],
+      iban: ['', Validators.required],
+      accountNumber: ['', Validators.required],
+      bic: ['', Validators.required],
+      bankName: ['', Validators.required],
+      country: ['', Validators.required],
+      Customer: ['', ],
+      Transactions: ['', ]
         });
     }
 

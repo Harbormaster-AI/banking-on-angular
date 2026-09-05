@@ -27,7 +27,14 @@ export class EditRepaymentScheduleComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  installmentNumber: ['', Validators.required],
+      dueDate: ['', Validators.required],
+      principalDue: ['', Validators.required],
+      interestDue: ['', Validators.required],
+      totalDue: ['', Validators.required],
+      LoanAccount: ['', ],
+      Payment: ['', ],
+      Status: ['', ]
         });
     }
 

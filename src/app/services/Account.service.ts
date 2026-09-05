@@ -47,7 +47,23 @@ export class AccountService extends HelperBaseService {
   	addAccount(accountNumber, iban, accountName, currency, openedOn, closedOn, Bank, Branch, Product, Owners, Transactions, Statements, StandingInstructions, FeeCharges, AccountType, OwnershipType, Status) : Promise<any> {
     	const uri = this.ormUrl + '/Account/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		accountNumber: accountNumber,
+      		iban: iban,
+      		accountName: accountName,
+      		currency: currency,
+      		openedOn: openedOn,
+      		closedOn: closedOn,
+      		Bank: Bank != null && Bank.length > 0 ? Bank : null,
+      		Branch: Branch != null && Branch.length > 0 ? Branch : null,
+      		Product: Product != null && Product.length > 0 ? Product : null,
+      		Owners: Owners != null && Owners.length > 0 ? Owners : null,
+      		Transactions: Transactions != null && Transactions.length > 0 ? Transactions : null,
+      		Statements: Statements != null && Statements.length > 0 ? Statements : null,
+      		StandingInstructions: StandingInstructions != null && StandingInstructions.length > 0 ? StandingInstructions : null,
+      		FeeCharges: FeeCharges != null && FeeCharges.length > 0 ? FeeCharges : null,
+      		AccountType: AccountType,
+      		OwnershipType: OwnershipType,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -90,7 +106,23 @@ export class AccountService extends HelperBaseService {
 	updateAccount(accountNumber, iban, accountName, currency, openedOn, closedOn, Bank, Branch, Product, Owners, Transactions, Statements, StandingInstructions, FeeCharges, AccountType, OwnershipType, Status, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/Account/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		accountNumber: accountNumber,
+      		iban: iban,
+      		accountName: accountName,
+      		currency: currency,
+      		openedOn: openedOn,
+      		closedOn: closedOn,
+      		Bank: Bank != null && Bank.length > 0 ? Bank : null,
+      		Branch: Branch != null && Branch.length > 0 ? Branch : null,
+      		Product: Product != null && Product.length > 0 ? Product : null,
+      		Owners: Owners != null && Owners.length > 0 ? Owners : null,
+      		Transactions: Transactions != null && Transactions.length > 0 ? Transactions : null,
+      		Statements: Statements != null && Statements.length > 0 ? Statements : null,
+      		StandingInstructions: StandingInstructions != null && StandingInstructions.length > 0 ? StandingInstructions : null,
+      		FeeCharges: FeeCharges != null && FeeCharges.length > 0 ? FeeCharges : null,
+      		AccountType: AccountType,
+      		OwnershipType: OwnershipType,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();

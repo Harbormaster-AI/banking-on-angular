@@ -1,1 +1,63 @@
-#formFields( "update" )
+<div class="panel panel-primary">
+	<div class="panel-heading">
+    	<h5>{{ title }}</h5>
+	</div>
+	
+	<div class="panel-body">
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>feeCode</mat-label>
+		    <input matInput ngDefaultControl placeholder="feeCode" name="feeCharge.feeCode" [(ngModel)]="feeCharge.feeCode">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>amount</mat-label>
+		    <input matInput ngDefaultControl placeholder="amount" name="feeCharge.amount" [(ngModel)]="feeCharge.amount">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+		    <mat-label>appliedOn</mat-label>
+		  	<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="appliedOn" name="feeCharge.appliedOn" [(ngModel)]="feeCharge.appliedOn">
+			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+			<mat-hint></mat-hint>
+		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>Account</mat-label>
+			<mat-select placeholder="Account"   [compareWith]="compareFn"  [(ngModel)]="feeCharge.Account">
+		    	<mat-option name="feeCharge.Account" ngDefaultControl  
+		    		*ngFor="let account of accounts"		    		 
+		    		[value]="account._id">
+		      		{{account.accountName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>LoanAccount</mat-label>
+			<mat-select placeholder="LoanAccount"   [compareWith]="compareFn"  [(ngModel)]="feeCharge.LoanAccount">
+		    	<mat-option name="feeCharge.LoanAccount" ngDefaultControl  
+		    		*ngFor="let loanAccount of loanAccounts"		    		 
+		    		[value]="loanAccount._id">
+		      		{{loanAccount.loanNumber}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+		    <mat-label>FeeType</mat-label>
+			<mat-select placeholder="FeeType" name="feeCharge.FeeType" [(ngModel)]="feeCharge.FeeType">
+		    	<mat-option ngDefaultControl *ngFor="let FeeType of FeeTypes" [value]="FeeType">
+		      		{{FeeType}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+                    <button 
+		    (click)="updateFeeCharge(feeCharge.feeCode, feeCharge.amount, feeCharge.appliedOn, feeCharge.Account, feeCharge.LoanAccount, feeCharge.FeeType)" 
+		    class="btn btn-primary">update
+		</button>
+	</div> <!-- panel body -->	
+</div> <!-- panel panel-primary -->

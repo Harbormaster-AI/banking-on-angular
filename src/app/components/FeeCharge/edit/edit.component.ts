@@ -27,7 +27,12 @@ export class EditFeeChargeComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  feeCode: ['', Validators.required],
+      amount: ['', Validators.required],
+      appliedOn: ['', Validators.required],
+      Account: ['', ],
+      LoanAccount: ['', ],
+      FeeType: ['', ]
         });
     }
 

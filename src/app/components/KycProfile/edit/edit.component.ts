@@ -27,7 +27,13 @@ export class EditKycProfileComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  profileId: ['', Validators.required],
+      lastReviewedOn: ['', Validators.required],
+      Customer: ['', ],
+      IdentityDocuments: ['', ],
+      RiskAssessments: ['', ],
+      Screenings: ['', ],
+      Status: ['', ]
         });
     }
 

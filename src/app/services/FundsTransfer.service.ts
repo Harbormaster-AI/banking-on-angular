@@ -43,7 +43,19 @@ export class FundsTransferService extends HelperBaseService {
   	addFundsTransfer(transferReference, amount, requestedDate, executionDate, purpose, feeAmount, SourceAccount, DestinationAccount, ExternalBeneficiary, InitiatedBy, Transactions, Method, Status) : Promise<any> {
     	const uri = this.ormUrl + '/FundsTransfer/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		transferReference: transferReference,
+      		amount: amount,
+      		requestedDate: requestedDate,
+      		executionDate: executionDate,
+      		purpose: purpose,
+      		feeAmount: feeAmount,
+      		SourceAccount: SourceAccount != null && SourceAccount.length > 0 ? SourceAccount : null,
+      		DestinationAccount: DestinationAccount != null && DestinationAccount.length > 0 ? DestinationAccount : null,
+      		ExternalBeneficiary: ExternalBeneficiary != null && ExternalBeneficiary.length > 0 ? ExternalBeneficiary : null,
+      		InitiatedBy: InitiatedBy != null && InitiatedBy.length > 0 ? InitiatedBy : null,
+      		Transactions: Transactions != null && Transactions.length > 0 ? Transactions : null,
+      		Method: Method,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -86,7 +98,19 @@ export class FundsTransferService extends HelperBaseService {
 	updateFundsTransfer(transferReference, amount, requestedDate, executionDate, purpose, feeAmount, SourceAccount, DestinationAccount, ExternalBeneficiary, InitiatedBy, Transactions, Method, Status, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/FundsTransfer/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		transferReference: transferReference,
+      		amount: amount,
+      		requestedDate: requestedDate,
+      		executionDate: executionDate,
+      		purpose: purpose,
+      		feeAmount: feeAmount,
+      		SourceAccount: SourceAccount != null && SourceAccount.length > 0 ? SourceAccount : null,
+      		DestinationAccount: DestinationAccount != null && DestinationAccount.length > 0 ? DestinationAccount : null,
+      		ExternalBeneficiary: ExternalBeneficiary != null && ExternalBeneficiary.length > 0 ? ExternalBeneficiary : null,
+      		InitiatedBy: InitiatedBy != null && InitiatedBy.length > 0 ? InitiatedBy : null,
+      		Transactions: Transactions != null && Transactions.length > 0 ? Transactions : null,
+      		Method: Method,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();

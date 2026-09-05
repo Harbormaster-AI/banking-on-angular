@@ -45,7 +45,20 @@ export class TransactionService extends HelperBaseService {
   	addTransaction(bookingDate, valueDate, amount, description, Account, ExternalCounterparty, PaymentCard, FundsTransfer, FxTrade, Dispute, Direction, TransactionType, Status, Channel) : Promise<any> {
     	const uri = this.ormUrl + '/Transaction/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		bookingDate: bookingDate,
+      		valueDate: valueDate,
+      		amount: amount,
+      		description: description,
+      		Account: Account != null && Account.length > 0 ? Account : null,
+      		ExternalCounterparty: ExternalCounterparty != null && ExternalCounterparty.length > 0 ? ExternalCounterparty : null,
+      		PaymentCard: PaymentCard != null && PaymentCard.length > 0 ? PaymentCard : null,
+      		FundsTransfer: FundsTransfer != null && FundsTransfer.length > 0 ? FundsTransfer : null,
+      		FxTrade: FxTrade != null && FxTrade.length > 0 ? FxTrade : null,
+      		Dispute: Dispute != null && Dispute.length > 0 ? Dispute : null,
+      		Direction: Direction,
+      		TransactionType: TransactionType,
+      		Status: Status,
+			Channel: Channel
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -88,7 +101,20 @@ export class TransactionService extends HelperBaseService {
 	updateTransaction(bookingDate, valueDate, amount, description, Account, ExternalCounterparty, PaymentCard, FundsTransfer, FxTrade, Dispute, Direction, TransactionType, Status, Channel, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/Transaction/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		bookingDate: bookingDate,
+      		valueDate: valueDate,
+      		amount: amount,
+      		description: description,
+      		Account: Account != null && Account.length > 0 ? Account : null,
+      		ExternalCounterparty: ExternalCounterparty != null && ExternalCounterparty.length > 0 ? ExternalCounterparty : null,
+      		PaymentCard: PaymentCard != null && PaymentCard.length > 0 ? PaymentCard : null,
+      		FundsTransfer: FundsTransfer != null && FundsTransfer.length > 0 ? FundsTransfer : null,
+      		FxTrade: FxTrade != null && FxTrade.length > 0 ? FxTrade : null,
+      		Dispute: Dispute != null && Dispute.length > 0 ? Dispute : null,
+      		Direction: Direction,
+      		TransactionType: TransactionType,
+      		Status: Status,
+			Channel: Channel
     	};
     	
     	return this.http.post(uri, obj).toPromise();

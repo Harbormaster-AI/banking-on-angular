@@ -26,7 +26,14 @@ export class CreateBankingProductComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  productCode: ['', Validators.required],
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      Bank: ['', ],
+      Accounts: ['', ],
+      LoanAccounts: ['', ],
+      PaymentCards: ['', ],
+      ProductCategory: ['', ]
         });
     }
 

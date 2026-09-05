@@ -43,7 +43,14 @@ export class BankingProductService extends HelperBaseService {
   	addBankingProduct(productCode, name, description, Bank, Accounts, LoanAccounts, PaymentCards, ProductCategory) : Promise<any> {
     	const uri = this.ormUrl + '/BankingProduct/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		productCode: productCode,
+      		name: name,
+      		description: description,
+      		Bank: Bank != null && Bank.length > 0 ? Bank : null,
+      		Accounts: Accounts != null && Accounts.length > 0 ? Accounts : null,
+      		LoanAccounts: LoanAccounts != null && LoanAccounts.length > 0 ? LoanAccounts : null,
+      		PaymentCards: PaymentCards != null && PaymentCards.length > 0 ? PaymentCards : null,
+			ProductCategory: ProductCategory
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -86,7 +93,14 @@ export class BankingProductService extends HelperBaseService {
 	updateBankingProduct(productCode, name, description, Bank, Accounts, LoanAccounts, PaymentCards, ProductCategory, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/BankingProduct/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		productCode: productCode,
+      		name: name,
+      		description: description,
+      		Bank: Bank != null && Bank.length > 0 ? Bank : null,
+      		Accounts: Accounts != null && Accounts.length > 0 ? Accounts : null,
+      		LoanAccounts: LoanAccounts != null && LoanAccounts.length > 0 ? LoanAccounts : null,
+      		PaymentCards: PaymentCards != null && PaymentCards.length > 0 ? PaymentCards : null,
+			ProductCategory: ProductCategory
     	};
     	
     	return this.http.post(uri, obj).toPromise();

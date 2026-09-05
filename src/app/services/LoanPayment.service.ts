@@ -41,7 +41,13 @@ export class LoanPaymentService extends HelperBaseService {
   	addLoanPayment(paymentReference, amount, paymentDate, LoanAccount, Transaction, Method, Status) : Promise<any> {
     	const uri = this.ormUrl + '/LoanPayment/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		paymentReference: paymentReference,
+      		amount: amount,
+      		paymentDate: paymentDate,
+      		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
+      		Transaction: Transaction != null && Transaction.length > 0 ? Transaction : null,
+      		Method: Method,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -84,7 +90,13 @@ export class LoanPaymentService extends HelperBaseService {
 	updateLoanPayment(paymentReference, amount, paymentDate, LoanAccount, Transaction, Method, Status, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/LoanPayment/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		paymentReference: paymentReference,
+      		amount: amount,
+      		paymentDate: paymentDate,
+      		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
+      		Transaction: Transaction != null && Transaction.length > 0 ? Transaction : null,
+      		Method: Method,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();

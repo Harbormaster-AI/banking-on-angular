@@ -26,7 +26,17 @@ export class CreatePaymentCardComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  cardNumber: ['', Validators.required],
+      embossedName: ['', Validators.required],
+      expiryMonth: ['', Validators.required],
+      expiryYear: ['', Validators.required],
+      Bank: ['', ],
+      Account: ['', ],
+      Customer: ['', ],
+      Transactions: ['', ],
+      CardType: ['', ],
+      CardStatus: ['', ],
+      Network: ['', ]
         });
     }
 

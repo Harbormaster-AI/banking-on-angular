@@ -40,7 +40,10 @@ export class ScreeningResultService extends HelperBaseService {
   	addScreeningResult(screeningDate, provider, KycProfile, Outcome) : Promise<any> {
     	const uri = this.ormUrl + '/ScreeningResult/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		screeningDate: screeningDate,
+      		provider: provider,
+      		KycProfile: KycProfile != null && KycProfile.length > 0 ? KycProfile : null,
+			Outcome: Outcome
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -83,7 +86,10 @@ export class ScreeningResultService extends HelperBaseService {
 	updateScreeningResult(screeningDate, provider, KycProfile, Outcome, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/ScreeningResult/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		screeningDate: screeningDate,
+      		provider: provider,
+      		KycProfile: KycProfile != null && KycProfile.length > 0 ? KycProfile : null,
+			Outcome: Outcome
     	};
     	
     	return this.http.post(uri, obj).toPromise();

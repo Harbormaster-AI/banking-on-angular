@@ -43,7 +43,14 @@ export class ConsentService extends HelperBaseService {
   	addConsent(grantedOn, expiresOn, Customer, Bank, AuthorizedAccounts, ThirdPartyProvider, ConsentType, Status) : Promise<any> {
     	const uri = this.ormUrl + '/Consent/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		grantedOn: grantedOn,
+      		expiresOn: expiresOn,
+      		Customer: Customer != null && Customer.length > 0 ? Customer : null,
+      		Bank: Bank != null && Bank.length > 0 ? Bank : null,
+      		AuthorizedAccounts: AuthorizedAccounts != null && AuthorizedAccounts.length > 0 ? AuthorizedAccounts : null,
+      		ThirdPartyProvider: ThirdPartyProvider != null && ThirdPartyProvider.length > 0 ? ThirdPartyProvider : null,
+      		ConsentType: ConsentType,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -86,7 +93,14 @@ export class ConsentService extends HelperBaseService {
 	updateConsent(grantedOn, expiresOn, Customer, Bank, AuthorizedAccounts, ThirdPartyProvider, ConsentType, Status, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/Consent/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		grantedOn: grantedOn,
+      		expiresOn: expiresOn,
+      		Customer: Customer != null && Customer.length > 0 ? Customer : null,
+      		Bank: Bank != null && Bank.length > 0 ? Bank : null,
+      		AuthorizedAccounts: AuthorizedAccounts != null && AuthorizedAccounts.length > 0 ? AuthorizedAccounts : null,
+      		ThirdPartyProvider: ThirdPartyProvider != null && ThirdPartyProvider.length > 0 ? ThirdPartyProvider : null,
+      		ConsentType: ConsentType,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();

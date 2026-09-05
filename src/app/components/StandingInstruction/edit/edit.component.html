@@ -1,1 +1,72 @@
-#formFields( "update" )
+<div class="panel panel-primary">
+	<div class="panel-heading">
+    	<h5>{{ title }}</h5>
+	</div>
+	
+	<div class="panel-body">
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>instructionId</mat-label>
+		    <input matInput ngDefaultControl placeholder="instructionId" name="standingInstruction.instructionId" [(ngModel)]="standingInstruction.instructionId">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>amount</mat-label>
+		    <input matInput ngDefaultControl placeholder="amount" name="standingInstruction.amount" [(ngModel)]="standingInstruction.amount">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+		    <mat-label>nextExecutionDate</mat-label>
+		  	<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="nextExecutionDate" name="standingInstruction.nextExecutionDate" [(ngModel)]="standingInstruction.nextExecutionDate">
+			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+			<mat-hint></mat-hint>
+		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>Account</mat-label>
+			<mat-select placeholder="Account"   [compareWith]="compareFn"  [(ngModel)]="standingInstruction.Account">
+		    	<mat-option name="standingInstruction.Account" ngDefaultControl  
+		    		*ngFor="let account of accounts"		    		 
+		    		[value]="account._id">
+		      		{{account.accountName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>Beneficiary</mat-label>
+			<mat-select placeholder="Beneficiary"   [compareWith]="compareFn"  [(ngModel)]="standingInstruction.Beneficiary">
+		    	<mat-option name="standingInstruction.Beneficiary" ngDefaultControl  
+		    		*ngFor="let externalAccount of externalAccounts"		    		 
+		    		[value]="externalAccount._id">
+		      		{{externalAccount.name}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+		    <mat-label>Frequency</mat-label>
+			<mat-select placeholder="Frequency" name="standingInstruction.Frequency" [(ngModel)]="standingInstruction.Frequency">
+		    	<mat-option ngDefaultControl *ngFor="let StandingInstructionFrequency of StandingInstructionFrequencys" [value]="StandingInstructionFrequency">
+		      		{{StandingInstructionFrequency}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+		    <mat-label>Status</mat-label>
+			<mat-select placeholder="Status" name="standingInstruction.Status" [(ngModel)]="standingInstruction.Status">
+		    	<mat-option ngDefaultControl *ngFor="let StandingInstructionStatus of StandingInstructionStatuss" [value]="StandingInstructionStatus">
+		      		{{StandingInstructionStatus}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+                      <button 
+		    (click)="updateStandingInstruction(standingInstruction.instructionId, standingInstruction.amount, standingInstruction.nextExecutionDate, standingInstruction.Account, standingInstruction.Beneficiary, standingInstruction.Frequency, standingInstruction.Status)" 
+		    class="btn btn-primary">update
+		</button>
+	</div> <!-- panel body -->	
+</div> <!-- panel panel-primary -->

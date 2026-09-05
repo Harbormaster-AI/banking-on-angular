@@ -48,7 +48,26 @@ export class CustomerService extends HelperBaseService {
   	addCustomer(firstName, lastName, legalName, dateOfBirth, taxId, email, phone, address, Bank, Accounts, LoanAccounts, PaymentCards, ExternalAccounts, FundsTransfers, Disputes, KycProfiles, Consents, CustomerType, RiskRating, KycStatus) : Promise<any> {
     	const uri = this.ormUrl + '/Customer/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		firstName: firstName,
+      		lastName: lastName,
+      		legalName: legalName,
+      		dateOfBirth: dateOfBirth,
+      		taxId: taxId,
+      		email: email,
+      		phone: phone,
+      		address: address,
+      		Bank: Bank != null && Bank.length > 0 ? Bank : null,
+      		Accounts: Accounts != null && Accounts.length > 0 ? Accounts : null,
+      		LoanAccounts: LoanAccounts != null && LoanAccounts.length > 0 ? LoanAccounts : null,
+      		PaymentCards: PaymentCards != null && PaymentCards.length > 0 ? PaymentCards : null,
+      		ExternalAccounts: ExternalAccounts != null && ExternalAccounts.length > 0 ? ExternalAccounts : null,
+      		FundsTransfers: FundsTransfers != null && FundsTransfers.length > 0 ? FundsTransfers : null,
+      		Disputes: Disputes != null && Disputes.length > 0 ? Disputes : null,
+      		KycProfiles: KycProfiles != null && KycProfiles.length > 0 ? KycProfiles : null,
+      		Consents: Consents != null && Consents.length > 0 ? Consents : null,
+      		CustomerType: CustomerType,
+      		RiskRating: RiskRating,
+			KycStatus: KycStatus
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -91,7 +110,26 @@ export class CustomerService extends HelperBaseService {
 	updateCustomer(firstName, lastName, legalName, dateOfBirth, taxId, email, phone, address, Bank, Accounts, LoanAccounts, PaymentCards, ExternalAccounts, FundsTransfers, Disputes, KycProfiles, Consents, CustomerType, RiskRating, KycStatus, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/Customer/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		firstName: firstName,
+      		lastName: lastName,
+      		legalName: legalName,
+      		dateOfBirth: dateOfBirth,
+      		taxId: taxId,
+      		email: email,
+      		phone: phone,
+      		address: address,
+      		Bank: Bank != null && Bank.length > 0 ? Bank : null,
+      		Accounts: Accounts != null && Accounts.length > 0 ? Accounts : null,
+      		LoanAccounts: LoanAccounts != null && LoanAccounts.length > 0 ? LoanAccounts : null,
+      		PaymentCards: PaymentCards != null && PaymentCards.length > 0 ? PaymentCards : null,
+      		ExternalAccounts: ExternalAccounts != null && ExternalAccounts.length > 0 ? ExternalAccounts : null,
+      		FundsTransfers: FundsTransfers != null && FundsTransfers.length > 0 ? FundsTransfers : null,
+      		Disputes: Disputes != null && Disputes.length > 0 ? Disputes : null,
+      		KycProfiles: KycProfiles != null && KycProfiles.length > 0 ? KycProfiles : null,
+      		Consents: Consents != null && Consents.length > 0 ? Consents : null,
+      		CustomerType: CustomerType,
+      		RiskRating: RiskRating,
+			KycStatus: KycStatus
     	};
     	
     	return this.http.post(uri, obj).toPromise();

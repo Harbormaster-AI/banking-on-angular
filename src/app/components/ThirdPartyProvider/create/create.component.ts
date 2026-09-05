@@ -26,7 +26,11 @@ export class CreateThirdPartyProviderComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  name: ['', Validators.required],
+      registrationId: ['', Validators.required],
+      website: ['', Validators.required],
+      Bank: ['', ],
+      Consents: ['', ]
         });
     }
 

@@ -26,7 +26,13 @@ export class CreateStandingInstructionComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  instructionId: ['', Validators.required],
+      amount: ['', Validators.required],
+      nextExecutionDate: ['', Validators.required],
+      Account: ['', ],
+      Beneficiary: ['', ],
+      Frequency: ['', ],
+      Status: ['', ]
         });
     }
 

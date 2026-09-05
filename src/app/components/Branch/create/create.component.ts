@@ -26,7 +26,15 @@ export class CreateBranchComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  name: ['', Validators.required],
+      branchCode: ['', Validators.required],
+      address: ['', Validators.required],
+      phone: ['', Validators.required],
+      openingHours: ['', Validators.required],
+      Bank: ['', ],
+      Accounts: ['', ],
+      LoanAccounts: ['', ],
+      Atms: ['', ]
         });
     }
 

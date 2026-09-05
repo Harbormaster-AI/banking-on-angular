@@ -1,1 +1,141 @@
-#formFields( "update" )
+<div class="panel panel-primary">
+	<div class="panel-heading">
+    	<h5>{{ title }}</h5>
+	</div>
+	
+	<div class="panel-body">
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>name</mat-label>
+		    <input matInput ngDefaultControl placeholder="name" name="bank.name" [(ngModel)]="bank.name">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>legalName</mat-label>
+		    <input matInput ngDefaultControl placeholder="legalName" name="bank.legalName" [(ngModel)]="bank.legalName">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>swiftBic</mat-label>
+		    <input matInput ngDefaultControl placeholder="swiftBic" name="bank.swiftBic" [(ngModel)]="bank.swiftBic">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>headquartersCountry</mat-label>
+		    <input matInput ngDefaultControl placeholder="headquartersCountry" name="bank.headquartersCountry" [(ngModel)]="bank.headquartersCountry">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>website</mat-label>
+		    <input matInput ngDefaultControl placeholder="website" name="bank.website" [(ngModel)]="bank.website">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>Branches</mat-label>
+			<mat-select placeholder="Branches" multiple  [compareWith]="compareFn"  [(ngModel)]="bank.Branches">
+		    	<mat-option name="bank.Branches" ngDefaultControl  
+		    		*ngFor="let branch of branchs"		    		 
+		    		[value]="branch._id">
+		      		{{branch.name}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>Products</mat-label>
+			<mat-select placeholder="Products" multiple  [compareWith]="compareFn"  [(ngModel)]="bank.Products">
+		    	<mat-option name="bank.Products" ngDefaultControl  
+		    		*ngFor="let bankingProduct of bankingProducts"		    		 
+		    		[value]="bankingProduct._id">
+		      		{{bankingProduct.name}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>Customers</mat-label>
+			<mat-select placeholder="Customers" multiple  [compareWith]="compareFn"  [(ngModel)]="bank.Customers">
+		    	<mat-option name="bank.Customers" ngDefaultControl  
+		    		*ngFor="let customer of customers"		    		 
+		    		[value]="customer._id">
+		      		{{customer.firstName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>Accounts</mat-label>
+			<mat-select placeholder="Accounts" multiple  [compareWith]="compareFn"  [(ngModel)]="bank.Accounts">
+		    	<mat-option name="bank.Accounts" ngDefaultControl  
+		    		*ngFor="let account of accounts"		    		 
+		    		[value]="account._id">
+		      		{{account.accountName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>PaymentCards</mat-label>
+			<mat-select placeholder="PaymentCards" multiple  [compareWith]="compareFn"  [(ngModel)]="bank.PaymentCards">
+		    	<mat-option name="bank.PaymentCards" ngDefaultControl  
+		    		*ngFor="let paymentCard of paymentCards"		    		 
+		    		[value]="paymentCard._id">
+		      		{{paymentCard.embossedName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>LoanAccounts</mat-label>
+			<mat-select placeholder="LoanAccounts" multiple  [compareWith]="compareFn"  [(ngModel)]="bank.LoanAccounts">
+		    	<mat-option name="bank.LoanAccounts" ngDefaultControl  
+		    		*ngFor="let loanAccount of loanAccounts"		    		 
+		    		[value]="loanAccount._id">
+		      		{{loanAccount.loanNumber}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>ExchangeRates</mat-label>
+			<mat-select placeholder="ExchangeRates" multiple  [compareWith]="compareFn"  [(ngModel)]="bank.ExchangeRates">
+		    	<mat-option name="bank.ExchangeRates" ngDefaultControl  
+		    		*ngFor="let exchangeRate of exchangeRates"		    		 
+		    		[value]="exchangeRate._id">
+		      		{{exchangeRate.baseCurrency}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>Consents</mat-label>
+			<mat-select placeholder="Consents" multiple  [compareWith]="compareFn"  [(ngModel)]="bank.Consents">
+		    	<mat-option name="bank.Consents" ngDefaultControl  
+		    		*ngFor="let consent of consents"		    		 
+		    		[value]="consent._id">
+		      		{{consent.grantedOn}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>ThirdPartyProviders</mat-label>
+			<mat-select placeholder="ThirdPartyProviders" multiple  [compareWith]="compareFn"  [(ngModel)]="bank.ThirdPartyProviders">
+		    	<mat-option name="bank.ThirdPartyProviders" ngDefaultControl  
+		    		*ngFor="let thirdPartyProvider of thirdPartyProviders"		    		 
+		    		[value]="thirdPartyProvider._id">
+		      		{{thirdPartyProvider.name}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+                                    <button 
+		    (click)="updateBank(bank.name, bank.legalName, bank.swiftBic, bank.headquartersCountry, bank.website, bank.Branches, bank.Products, bank.Customers, bank.Accounts, bank.PaymentCards, bank.LoanAccounts, bank.ExchangeRates, bank.Consents, bank.ThirdPartyProviders)" 
+		    class="btn btn-primary">update
+		</button>
+	</div> <!-- panel body -->	
+</div> <!-- panel panel-primary -->

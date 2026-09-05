@@ -27,7 +27,10 @@ export class EditRiskAssessmentComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  score: ['', Validators.required],
+      assessedOn: ['', Validators.required],
+      KycProfile: ['', ],
+      Rating: ['', ]
         });
     }
 

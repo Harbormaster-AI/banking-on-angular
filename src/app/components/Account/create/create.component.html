@@ -1,1 +1,167 @@
-#formFields( "add" )
+<div class="panel panel-primary">
+	<div class="panel-heading">
+    	<h5>{{ title }}</h5>
+	</div>
+	
+	<div class="panel-body">
+		<mat-form-field appearance="legacy">
+    		<mat-label>accountNumber</mat-label>
+		    <input matInput ngDefaultControl placeholder="accountNumber" name="account.accountNumber" [(ngModel)]="account.accountNumber">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>iban</mat-label>
+		    <input matInput ngDefaultControl placeholder="iban" name="account.iban" [(ngModel)]="account.iban">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>accountName</mat-label>
+		    <input matInput ngDefaultControl placeholder="accountName" name="account.accountName" [(ngModel)]="account.accountName">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>currency</mat-label>
+		    <input matInput ngDefaultControl placeholder="currency" name="account.currency" [(ngModel)]="account.currency">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+		    <mat-label>openedOn</mat-label>
+		  	<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="openedOn" name="account.openedOn" [(ngModel)]="account.openedOn">
+			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+			<mat-hint></mat-hint>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+		    <mat-label>closedOn</mat-label>
+		  	<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="closedOn" name="account.closedOn" [(ngModel)]="account.closedOn">
+			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+			<mat-hint></mat-hint>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>Bank</mat-label>
+			<mat-select placeholder="Bank"  [(ngModel)]="account.Bank">
+		    	<mat-option name="account.Bank" ngDefaultControl  
+		    		*ngFor="let bank of banks"		    		 
+		    		[value]="bank._id">
+		      		{{bank.name}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>Branch</mat-label>
+			<mat-select placeholder="Branch"  [(ngModel)]="account.Branch">
+		    	<mat-option name="account.Branch" ngDefaultControl  
+		    		*ngFor="let branch of branchs"		    		 
+		    		[value]="branch._id">
+		      		{{branch.name}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>Product</mat-label>
+			<mat-select placeholder="Product"  [(ngModel)]="account.Product">
+		    	<mat-option name="account.Product" ngDefaultControl  
+		    		*ngFor="let bankingProduct of bankingProducts"		    		 
+		    		[value]="bankingProduct._id">
+		      		{{bankingProduct.name}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>Owners</mat-label>
+			<mat-select placeholder="Owners" multiple [(ngModel)]="account.Owners">
+		    	<mat-option name="account.Owners" ngDefaultControl  
+		    		*ngFor="let customer of customers"		    		 
+		    		[value]="customer._id">
+		      		{{customer.firstName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>Transactions</mat-label>
+			<mat-select placeholder="Transactions" multiple [(ngModel)]="account.Transactions">
+		    	<mat-option name="account.Transactions" ngDefaultControl  
+		    		*ngFor="let transaction of transactions"		    		 
+		    		[value]="transaction._id">
+		      		{{transaction.bookingDate}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>Statements</mat-label>
+			<mat-select placeholder="Statements" multiple [(ngModel)]="account.Statements">
+		    	<mat-option name="account.Statements" ngDefaultControl  
+		    		*ngFor="let accountStatement of accountStatements"		    		 
+		    		[value]="accountStatement._id">
+		      		{{accountStatement.statementNumber}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>StandingInstructions</mat-label>
+			<mat-select placeholder="StandingInstructions" multiple [(ngModel)]="account.StandingInstructions">
+		    	<mat-option name="account.StandingInstructions" ngDefaultControl  
+		    		*ngFor="let standingInstruction of standingInstructions"		    		 
+		    		[value]="standingInstruction._id">
+		      		{{standingInstruction.instructionId}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>FeeCharges</mat-label>
+			<mat-select placeholder="FeeCharges" multiple [(ngModel)]="account.FeeCharges">
+		    	<mat-option name="account.FeeCharges" ngDefaultControl  
+		    		*ngFor="let feeCharge of feeCharges"		    		 
+		    		[value]="feeCharge._id">
+		      		{{feeCharge.feeCode}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+		    <mat-label>AccountType</mat-label>
+			<mat-select placeholder="AccountType" name="account.AccountType" [(ngModel)]="account.AccountType">
+		    	<mat-option ngDefaultControl *ngFor="let AccountType of AccountTypes" [value]="AccountType">
+		      		{{AccountType}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+		    <mat-label>OwnershipType</mat-label>
+			<mat-select placeholder="OwnershipType" name="account.OwnershipType" [(ngModel)]="account.OwnershipType">
+		    	<mat-option ngDefaultControl *ngFor="let AccountOwnershipType of AccountOwnershipTypes" [value]="AccountOwnershipType">
+		      		{{AccountOwnershipType}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+		    <mat-label>Status</mat-label>
+			<mat-select placeholder="Status" name="account.Status" [(ngModel)]="account.Status">
+		    	<mat-option ngDefaultControl *ngFor="let AccountStatus of AccountStatuss" [value]="AccountStatus">
+		      		{{AccountStatus}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+                         <button 
+		    (click)="addAccount(account.accountNumber, account.iban, account.accountName, account.currency, account.openedOn, account.closedOn, account.Bank, account.Branch, account.Product, account.Owners, account.Transactions, account.Statements, account.StandingInstructions, account.FeeCharges, account.AccountType, account.OwnershipType, account.Status)" 
+		    class="btn btn-primary">add
+		</button>
+	</div> <!-- panel body -->	
+</div> <!-- panel panel-primary -->

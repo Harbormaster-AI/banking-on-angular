@@ -1,1 +1,83 @@
-#formFields( "add" )
+<div class="panel panel-primary">
+	<div class="panel-heading">
+    	<h5>{{ title }}</h5>
+	</div>
+	
+	<div class="panel-body">
+		<mat-form-field appearance="legacy">
+    		<mat-label>productCode</mat-label>
+		    <input matInput ngDefaultControl placeholder="productCode" name="bankingProduct.productCode" [(ngModel)]="bankingProduct.productCode">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>name</mat-label>
+		    <input matInput ngDefaultControl placeholder="name" name="bankingProduct.name" [(ngModel)]="bankingProduct.name">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>description</mat-label>
+		    <input matInput ngDefaultControl placeholder="description" name="bankingProduct.description" [(ngModel)]="bankingProduct.description">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>Bank</mat-label>
+			<mat-select placeholder="Bank"  [(ngModel)]="bankingProduct.Bank">
+		    	<mat-option name="bankingProduct.Bank" ngDefaultControl  
+		    		*ngFor="let bank of banks"		    		 
+		    		[value]="bank._id">
+		      		{{bank.name}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>Accounts</mat-label>
+			<mat-select placeholder="Accounts" multiple [(ngModel)]="bankingProduct.Accounts">
+		    	<mat-option name="bankingProduct.Accounts" ngDefaultControl  
+		    		*ngFor="let account of accounts"		    		 
+		    		[value]="account._id">
+		      		{{account.accountName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>LoanAccounts</mat-label>
+			<mat-select placeholder="LoanAccounts" multiple [(ngModel)]="bankingProduct.LoanAccounts">
+		    	<mat-option name="bankingProduct.LoanAccounts" ngDefaultControl  
+		    		*ngFor="let loanAccount of loanAccounts"		    		 
+		    		[value]="loanAccount._id">
+		      		{{loanAccount.loanNumber}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>PaymentCards</mat-label>
+			<mat-select placeholder="PaymentCards" multiple [(ngModel)]="bankingProduct.PaymentCards">
+		    	<mat-option name="bankingProduct.PaymentCards" ngDefaultControl  
+		    		*ngFor="let paymentCard of paymentCards"		    		 
+		    		[value]="paymentCard._id">
+		      		{{paymentCard.embossedName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+		    <mat-label>ProductCategory</mat-label>
+			<mat-select placeholder="ProductCategory" name="bankingProduct.ProductCategory" [(ngModel)]="bankingProduct.ProductCategory">
+		    	<mat-option ngDefaultControl *ngFor="let ProductCategory of ProductCategorys" [value]="ProductCategory">
+		      		{{ProductCategory}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+                <button 
+		    (click)="addBankingProduct(bankingProduct.productCode, bankingProduct.name, bankingProduct.description, bankingProduct.Bank, bankingProduct.Accounts, bankingProduct.LoanAccounts, bankingProduct.PaymentCards, bankingProduct.ProductCategory)" 
+		    class="btn btn-primary">add
+		</button>
+	</div> <!-- panel body -->	
+</div> <!-- panel panel-primary -->

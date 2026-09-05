@@ -41,7 +41,11 @@ export class ThirdPartyProviderService extends HelperBaseService {
   	addThirdPartyProvider(name, registrationId, website, Bank, Consents) : Promise<any> {
     	const uri = this.ormUrl + '/ThirdPartyProvider/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		name: name,
+      		registrationId: registrationId,
+      		website: website,
+      		Bank: Bank != null && Bank.length > 0 ? Bank : null,
+			Consents: Consents != null && Consents.length > 0 ? Consents : null
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -84,7 +88,11 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	updateThirdPartyProvider(name, registrationId, website, Bank, Consents, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/ThirdPartyProvider/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		name: name,
+      		registrationId: registrationId,
+      		website: website,
+      		Bank: Bank != null && Bank.length > 0 ? Bank : null,
+			Consents: Consents != null && Consents.length > 0 ? Consents : null
     	};
     	
     	return this.http.post(uri, obj).toPromise();

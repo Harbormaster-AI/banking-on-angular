@@ -1,1 +1,127 @@
-#formFields( "add" )
+<div class="panel panel-primary">
+	<div class="panel-heading">
+    	<h5>{{ title }}</h5>
+	</div>
+	
+	<div class="panel-body">
+		<mat-form-field appearance="legacy">
+    		<mat-label>tradeReference</mat-label>
+		    <input matInput ngDefaultControl placeholder="tradeReference" name="fXTrade.tradeReference" [(ngModel)]="fXTrade.tradeReference">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+		    <mat-label>tradeDate</mat-label>
+		  	<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="tradeDate" name="fXTrade.tradeDate" [(ngModel)]="fXTrade.tradeDate">
+			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+			<mat-hint></mat-hint>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+		    <mat-label>settlementDate</mat-label>
+		  	<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="settlementDate" name="fXTrade.settlementDate" [(ngModel)]="fXTrade.settlementDate">
+			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+			<mat-hint></mat-hint>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>amountSold</mat-label>
+		    <input matInput ngDefaultControl placeholder="amountSold" name="fXTrade.amountSold" [(ngModel)]="fXTrade.amountSold">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>amountBought</mat-label>
+		    <input matInput ngDefaultControl placeholder="amountBought" name="fXTrade.amountBought" [(ngModel)]="fXTrade.amountBought">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>rate</mat-label>
+		    <input matInput ngDefaultControl placeholder="rate" name="fXTrade.rate" [(ngModel)]="fXTrade.rate">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>Customer</mat-label>
+			<mat-select placeholder="Customer"  [(ngModel)]="fXTrade.Customer">
+		    	<mat-option name="fXTrade.Customer" ngDefaultControl  
+		    		*ngFor="let customer of customers"		    		 
+		    		[value]="customer._id">
+		      		{{customer.firstName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>Bank</mat-label>
+			<mat-select placeholder="Bank"  [(ngModel)]="fXTrade.Bank">
+		    	<mat-option name="fXTrade.Bank" ngDefaultControl  
+		    		*ngFor="let bank of banks"		    		 
+		    		[value]="bank._id">
+		      		{{bank.name}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>ExchangeRate</mat-label>
+			<mat-select placeholder="ExchangeRate"  [(ngModel)]="fXTrade.ExchangeRate">
+		    	<mat-option name="fXTrade.ExchangeRate" ngDefaultControl  
+		    		*ngFor="let exchangeRate of exchangeRates"		    		 
+		    		[value]="exchangeRate._id">
+		      		{{exchangeRate.baseCurrency}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>SourceAccount</mat-label>
+			<mat-select placeholder="SourceAccount"  [(ngModel)]="fXTrade.SourceAccount">
+		    	<mat-option name="fXTrade.SourceAccount" ngDefaultControl  
+		    		*ngFor="let account of accounts"		    		 
+		    		[value]="account._id">
+		      		{{account.accountName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>DestinationAccount</mat-label>
+			<mat-select placeholder="DestinationAccount"  [(ngModel)]="fXTrade.DestinationAccount">
+		    	<mat-option name="fXTrade.DestinationAccount" ngDefaultControl  
+		    		*ngFor="let account of accounts"		    		 
+		    		[value]="account._id">
+		      		{{account.accountName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>Transaction</mat-label>
+			<mat-select placeholder="Transaction"  [(ngModel)]="fXTrade.Transaction">
+		    	<mat-option name="fXTrade.Transaction" ngDefaultControl  
+		    		*ngFor="let transaction of transactions"		    		 
+		    		[value]="transaction._id">
+		      		{{transaction.bookingDate}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+		    <mat-label>Status</mat-label>
+			<mat-select placeholder="Status" name="fXTrade.Status" [(ngModel)]="fXTrade.Status">
+		    	<mat-option ngDefaultControl *ngFor="let TradeStatus of TradeStatuss" [value]="TradeStatus">
+		      		{{TradeStatus}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+                     <button 
+		    (click)="addFXTrade(fXTrade.tradeReference, fXTrade.tradeDate, fXTrade.settlementDate, fXTrade.amountSold, fXTrade.amountBought, fXTrade.rate, fXTrade.Customer, fXTrade.Bank, fXTrade.ExchangeRate, fXTrade.SourceAccount, fXTrade.DestinationAccount, fXTrade.Transaction, fXTrade.Status)" 
+		    class="btn btn-primary">add
+		</button>
+	</div> <!-- panel body -->	
+</div> <!-- panel panel-primary -->

@@ -1,1 +1,85 @@
-#formFields( "update" )
+<div class="panel panel-primary">
+	<div class="panel-heading">
+    	<h5>{{ title }}</h5>
+	</div>
+	
+	<div class="panel-body">
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>disputeReference</mat-label>
+		    <input matInput ngDefaultControl placeholder="disputeReference" name="dispute.disputeReference" [(ngModel)]="dispute.disputeReference">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+		    <mat-label>raisedOn</mat-label>
+		  	<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="raisedOn" name="dispute.raisedOn" [(ngModel)]="dispute.raisedOn">
+			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+			<mat-hint></mat-hint>
+		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>reason</mat-label>
+		    <input matInput ngDefaultControl placeholder="reason" name="dispute.reason" [(ngModel)]="dispute.reason">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>Transaction</mat-label>
+			<mat-select placeholder="Transaction"   [compareWith]="compareFn"  [(ngModel)]="dispute.Transaction">
+		    	<mat-option name="dispute.Transaction" ngDefaultControl  
+		    		*ngFor="let transaction of transactions"		    		 
+		    		[value]="transaction._id">
+		      		{{transaction.bookingDate}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>Customer</mat-label>
+			<mat-select placeholder="Customer"   [compareWith]="compareFn"  [(ngModel)]="dispute.Customer">
+		    	<mat-option name="dispute.Customer" ngDefaultControl  
+		    		*ngFor="let customer of customers"		    		 
+		    		[value]="customer._id">
+		      		{{customer.firstName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>Account</mat-label>
+			<mat-select placeholder="Account"   [compareWith]="compareFn"  [(ngModel)]="dispute.Account">
+		    	<mat-option name="dispute.Account" ngDefaultControl  
+		    		*ngFor="let account of accounts"		    		 
+		    		[value]="account._id">
+		      		{{account.accountName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>PaymentCard</mat-label>
+			<mat-select placeholder="PaymentCard"   [compareWith]="compareFn"  [(ngModel)]="dispute.PaymentCard">
+		    	<mat-option name="dispute.PaymentCard" ngDefaultControl  
+		    		*ngFor="let paymentCard of paymentCards"		    		 
+		    		[value]="paymentCard._id">
+		      		{{paymentCard.embossedName}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+		    <mat-label>Status</mat-label>
+			<mat-select placeholder="Status" name="dispute.Status" [(ngModel)]="dispute.Status">
+		    	<mat-option ngDefaultControl *ngFor="let DisputeStatus of DisputeStatuss" [value]="DisputeStatus">
+		      		{{DisputeStatus}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+                        <button 
+		    (click)="updateDispute(dispute.disputeReference, dispute.raisedOn, dispute.reason, dispute.Transaction, dispute.Customer, dispute.Account, dispute.PaymentCard, dispute.Status)" 
+		    class="btn btn-primary">update
+		</button>
+	</div> <!-- panel body -->	
+</div> <!-- panel panel-primary -->

@@ -26,7 +26,20 @@ export class CreateBankComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  name: ['', Validators.required],
+      legalName: ['', Validators.required],
+      swiftBic: ['', Validators.required],
+      headquartersCountry: ['', Validators.required],
+      website: ['', Validators.required],
+      Branches: ['', ],
+      Products: ['', ],
+      Customers: ['', ],
+      Accounts: ['', ],
+      PaymentCards: ['', ],
+      LoanAccounts: ['', ],
+      ExchangeRates: ['', ],
+      Consents: ['', ],
+      ThirdPartyProviders: ['', ]
         });
     }
 

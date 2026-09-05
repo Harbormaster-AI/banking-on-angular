@@ -48,7 +48,20 @@ export class BankService extends HelperBaseService {
   	addBank(name, legalName, swiftBic, headquartersCountry, website, Branches, Products, Customers, Accounts, PaymentCards, LoanAccounts, ExchangeRates, Consents, ThirdPartyProviders) : Promise<any> {
     	const uri = this.ormUrl + '/Bank/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		name: name,
+      		legalName: legalName,
+      		swiftBic: swiftBic,
+      		headquartersCountry: headquartersCountry,
+      		website: website,
+      		Branches: Branches != null && Branches.length > 0 ? Branches : null,
+      		Products: Products != null && Products.length > 0 ? Products : null,
+      		Customers: Customers != null && Customers.length > 0 ? Customers : null,
+      		Accounts: Accounts != null && Accounts.length > 0 ? Accounts : null,
+      		PaymentCards: PaymentCards != null && PaymentCards.length > 0 ? PaymentCards : null,
+      		LoanAccounts: LoanAccounts != null && LoanAccounts.length > 0 ? LoanAccounts : null,
+      		ExchangeRates: ExchangeRates != null && ExchangeRates.length > 0 ? ExchangeRates : null,
+      		Consents: Consents != null && Consents.length > 0 ? Consents : null,
+			ThirdPartyProviders: ThirdPartyProviders != null && ThirdPartyProviders.length > 0 ? ThirdPartyProviders : null
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -91,7 +104,20 @@ export class BankService extends HelperBaseService {
 	updateBank(name, legalName, swiftBic, headquartersCountry, website, Branches, Products, Customers, Accounts, PaymentCards, LoanAccounts, ExchangeRates, Consents, ThirdPartyProviders, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/Bank/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		name: name,
+      		legalName: legalName,
+      		swiftBic: swiftBic,
+      		headquartersCountry: headquartersCountry,
+      		website: website,
+      		Branches: Branches != null && Branches.length > 0 ? Branches : null,
+      		Products: Products != null && Products.length > 0 ? Products : null,
+      		Customers: Customers != null && Customers.length > 0 ? Customers : null,
+      		Accounts: Accounts != null && Accounts.length > 0 ? Accounts : null,
+      		PaymentCards: PaymentCards != null && PaymentCards.length > 0 ? PaymentCards : null,
+      		LoanAccounts: LoanAccounts != null && LoanAccounts.length > 0 ? LoanAccounts : null,
+      		ExchangeRates: ExchangeRates != null && ExchangeRates.length > 0 ? ExchangeRates : null,
+      		Consents: Consents != null && Consents.length > 0 ? Consents : null,
+			ThirdPartyProviders: ThirdPartyProviders != null && ThirdPartyProviders.length > 0 ? ThirdPartyProviders : null
     	};
     	
     	return this.http.post(uri, obj).toPromise();

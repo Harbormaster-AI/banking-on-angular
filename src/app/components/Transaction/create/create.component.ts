@@ -26,7 +26,20 @@ export class CreateTransactionComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  bookingDate: ['', Validators.required],
+      valueDate: ['', Validators.required],
+      amount: ['', Validators.required],
+      description: ['', Validators.required],
+      Account: ['', ],
+      ExternalCounterparty: ['', ],
+      PaymentCard: ['', ],
+      FundsTransfer: ['', ],
+      FxTrade: ['', ],
+      Dispute: ['', ],
+      Direction: ['', ],
+      TransactionType: ['', ],
+      Status: ['', ],
+      Channel: ['', ]
         });
     }
 

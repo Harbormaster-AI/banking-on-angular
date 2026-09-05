@@ -26,7 +26,26 @@ export class CreateCustomerComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      legalName: ['', Validators.required],
+      dateOfBirth: ['', Validators.required],
+      taxId: ['', Validators.required],
+      email: ['', Validators.required],
+      phone: ['', Validators.required],
+      address: ['', Validators.required],
+      Bank: ['', ],
+      Accounts: ['', ],
+      LoanAccounts: ['', ],
+      PaymentCards: ['', ],
+      ExternalAccounts: ['', ],
+      FundsTransfers: ['', ],
+      Disputes: ['', ],
+      KycProfiles: ['', ],
+      Consents: ['', ],
+      CustomerType: ['', ],
+      RiskRating: ['', ],
+      KycStatus: ['', ]
         });
     }
 

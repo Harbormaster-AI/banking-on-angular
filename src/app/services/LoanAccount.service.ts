@@ -47,7 +47,26 @@ export class LoanAccountService extends HelperBaseService {
   	addLoanAccount(loanNumber, principalAmount, outstandingPrincipal, interestRate, originationDate, maturityDate, paymentDayOfMonth, currency, Bank, Branch, Product, Borrowers, RepaymentSchedule, Payments, Collateral, FeeCharges, LoanType, RateType, Compounding, Status) : Promise<any> {
     	const uri = this.ormUrl + '/LoanAccount/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		loanNumber: loanNumber,
+      		principalAmount: principalAmount,
+      		outstandingPrincipal: outstandingPrincipal,
+      		interestRate: interestRate,
+      		originationDate: originationDate,
+      		maturityDate: maturityDate,
+      		paymentDayOfMonth: paymentDayOfMonth,
+      		currency: currency,
+      		Bank: Bank != null && Bank.length > 0 ? Bank : null,
+      		Branch: Branch != null && Branch.length > 0 ? Branch : null,
+      		Product: Product != null && Product.length > 0 ? Product : null,
+      		Borrowers: Borrowers != null && Borrowers.length > 0 ? Borrowers : null,
+      		RepaymentSchedule: RepaymentSchedule != null && RepaymentSchedule.length > 0 ? RepaymentSchedule : null,
+      		Payments: Payments != null && Payments.length > 0 ? Payments : null,
+      		Collateral: Collateral != null && Collateral.length > 0 ? Collateral : null,
+      		FeeCharges: FeeCharges != null && FeeCharges.length > 0 ? FeeCharges : null,
+      		LoanType: LoanType,
+      		RateType: RateType,
+      		Compounding: Compounding,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -90,7 +109,26 @@ export class LoanAccountService extends HelperBaseService {
 	updateLoanAccount(loanNumber, principalAmount, outstandingPrincipal, interestRate, originationDate, maturityDate, paymentDayOfMonth, currency, Bank, Branch, Product, Borrowers, RepaymentSchedule, Payments, Collateral, FeeCharges, LoanType, RateType, Compounding, Status, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/LoanAccount/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		loanNumber: loanNumber,
+      		principalAmount: principalAmount,
+      		outstandingPrincipal: outstandingPrincipal,
+      		interestRate: interestRate,
+      		originationDate: originationDate,
+      		maturityDate: maturityDate,
+      		paymentDayOfMonth: paymentDayOfMonth,
+      		currency: currency,
+      		Bank: Bank != null && Bank.length > 0 ? Bank : null,
+      		Branch: Branch != null && Branch.length > 0 ? Branch : null,
+      		Product: Product != null && Product.length > 0 ? Product : null,
+      		Borrowers: Borrowers != null && Borrowers.length > 0 ? Borrowers : null,
+      		RepaymentSchedule: RepaymentSchedule != null && RepaymentSchedule.length > 0 ? RepaymentSchedule : null,
+      		Payments: Payments != null && Payments.length > 0 ? Payments : null,
+      		Collateral: Collateral != null && Collateral.length > 0 ? Collateral : null,
+      		FeeCharges: FeeCharges != null && FeeCharges.length > 0 ? FeeCharges : null,
+      		LoanType: LoanType,
+      		RateType: RateType,
+      		Compounding: Compounding,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();

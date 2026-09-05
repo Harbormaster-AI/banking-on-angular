@@ -1,1 +1,52 @@
-#formFields( "update" )
+<div class="panel panel-primary">
+	<div class="panel-heading">
+    	<h5>{{ title }}</h5>
+	</div>
+	
+	<div class="panel-body">
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>documentNumber</mat-label>
+		    <input matInput ngDefaultControl placeholder="documentNumber" name="identityDocument.documentNumber" [(ngModel)]="identityDocument.documentNumber">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+    		<mat-label>issuingCountry</mat-label>
+		    <input matInput ngDefaultControl placeholder="issuingCountry" name="identityDocument.issuingCountry" [(ngModel)]="identityDocument.issuingCountry">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+		    <mat-label>expirationDate</mat-label>
+		  	<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="expirationDate" name="identityDocument.expirationDate" [(ngModel)]="identityDocument.expirationDate">
+			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+			<mat-hint></mat-hint>
+		</mat-form-field>
+<p>
+   		<mat-form-field appearance="legacy">
+    		<mat-label>KycProfile</mat-label>
+			<mat-select placeholder="KycProfile"   [compareWith]="compareFn"  [(ngModel)]="identityDocument.KycProfile">
+		    	<mat-option name="identityDocument.KycProfile" ngDefaultControl  
+		    		*ngFor="let kycProfile of kycProfiles"		    		 
+		    		[value]="kycProfile._id">
+		      		{{kycProfile.profileId}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+ 		<mat-form-field appearance="legacy">
+		    <mat-label>DocumentType</mat-label>
+			<mat-select placeholder="DocumentType" name="identityDocument.DocumentType" [(ngModel)]="identityDocument.DocumentType">
+		    	<mat-option ngDefaultControl *ngFor="let IdentityDocumentType of IdentityDocumentTypes" [value]="IdentityDocumentType">
+		      		{{IdentityDocumentType}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+                  <button 
+		    (click)="updateIdentityDocument(identityDocument.documentNumber, identityDocument.issuingCountry, identityDocument.expirationDate, identityDocument.KycProfile, identityDocument.DocumentType)" 
+		    class="btn btn-primary">update
+		</button>
+	</div> <!-- panel body -->	
+</div> <!-- panel panel-primary -->

@@ -26,7 +26,13 @@ export class CreateAccountStatementComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  statementNumber: ['', Validators.required],
+      periodStart: ['', Validators.required],
+      periodEnd: ['', Validators.required],
+      openingBalance: ['', Validators.required],
+      closingBalance: ['', Validators.required],
+      Account: ['', ],
+      DeliveryMethod: ['', ]
         });
     }
 

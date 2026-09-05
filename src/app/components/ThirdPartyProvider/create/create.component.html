@@ -1,1 +1,52 @@
-#formFields( "add" )
+<div class="panel panel-primary">
+	<div class="panel-heading">
+    	<h5>{{ title }}</h5>
+	</div>
+	
+	<div class="panel-body">
+		<mat-form-field appearance="legacy">
+    		<mat-label>name</mat-label>
+		    <input matInput ngDefaultControl placeholder="name" name="thirdPartyProvider.name" [(ngModel)]="thirdPartyProvider.name">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>registrationId</mat-label>
+		    <input matInput ngDefaultControl placeholder="registrationId" name="thirdPartyProvider.registrationId" [(ngModel)]="thirdPartyProvider.registrationId">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>website</mat-label>
+		    <input matInput ngDefaultControl placeholder="website" name="thirdPartyProvider.website" [(ngModel)]="thirdPartyProvider.website">
+    		<mat-hint></mat-hint>
+  		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>Bank</mat-label>
+			<mat-select placeholder="Bank"  [(ngModel)]="thirdPartyProvider.Bank">
+		    	<mat-option name="thirdPartyProvider.Bank" ngDefaultControl  
+		    		*ngFor="let bank of banks"		    		 
+		    		[value]="bank._id">
+		      		{{bank.name}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+		<mat-form-field appearance="legacy">
+    		<mat-label>Consents</mat-label>
+			<mat-select placeholder="Consents" multiple [(ngModel)]="thirdPartyProvider.Consents">
+		    	<mat-option name="thirdPartyProvider.Consents" ngDefaultControl  
+		    		*ngFor="let consent of consents"		    		 
+		    		[value]="consent._id">
+		      		{{consent.grantedOn}}
+		    	</mat-option>
+		  	</mat-select>
+		</mat-form-field>
+<p>
+             <button 
+		    (click)="addThirdPartyProvider(thirdPartyProvider.name, thirdPartyProvider.registrationId, thirdPartyProvider.website, thirdPartyProvider.Bank, thirdPartyProvider.Consents)" 
+		    class="btn btn-primary">add
+		</button>
+	</div> <!-- panel body -->	
+</div> <!-- panel panel-primary -->

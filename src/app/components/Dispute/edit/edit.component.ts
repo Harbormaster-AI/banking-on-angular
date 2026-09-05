@@ -27,7 +27,14 @@ export class EditDisputeComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  disputeReference: ['', Validators.required],
+      raisedOn: ['', Validators.required],
+      reason: ['', Validators.required],
+      Transaction: ['', ],
+      Customer: ['', ],
+      Account: ['', ],
+      PaymentCard: ['', ],
+      Status: ['', ]
         });
     }
 

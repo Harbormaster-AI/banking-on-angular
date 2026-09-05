@@ -41,7 +41,13 @@ export class ExchangeRateService extends HelperBaseService {
   	addExchangeRate(baseCurrency, counterCurrency, rate, asOf, source, Bank, FxTrades) : Promise<any> {
     	const uri = this.ormUrl + '/ExchangeRate/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		baseCurrency: baseCurrency,
+      		counterCurrency: counterCurrency,
+      		rate: rate,
+      		asOf: asOf,
+      		source: source,
+      		Bank: Bank != null && Bank.length > 0 ? Bank : null,
+			FxTrades: FxTrades != null && FxTrades.length > 0 ? FxTrades : null
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -84,7 +90,13 @@ export class ExchangeRateService extends HelperBaseService {
 	updateExchangeRate(baseCurrency, counterCurrency, rate, asOf, source, Bank, FxTrades, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/ExchangeRate/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		baseCurrency: baseCurrency,
+      		counterCurrency: counterCurrency,
+      		rate: rate,
+      		asOf: asOf,
+      		source: source,
+      		Bank: Bank != null && Bank.length > 0 ? Bank : null,
+			FxTrades: FxTrades != null && FxTrades.length > 0 ? FxTrades : null
     	};
     	
     	return this.http.post(uri, obj).toPromise();

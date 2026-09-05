@@ -27,7 +27,23 @@ export class EditAccountComponent implements OnInit {
 
     createForm(): FormGroup {
         return this.fb.group({
-            #outputDataValidators()
+                  accountNumber: ['', Validators.required],
+      iban: ['', Validators.required],
+      accountName: ['', Validators.required],
+      currency: ['', Validators.required],
+      openedOn: ['', Validators.required],
+      closedOn: ['', Validators.required],
+      Bank: ['', ],
+      Branch: ['', ],
+      Product: ['', ],
+      Owners: ['', ],
+      Transactions: ['', ],
+      Statements: ['', ],
+      StandingInstructions: ['', ],
+      FeeCharges: ['', ],
+      AccountType: ['', ],
+      OwnershipType: ['', ],
+      Status: ['', ]
         });
     }
 

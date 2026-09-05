@@ -43,7 +43,13 @@ export class KycProfileService extends HelperBaseService {
   	addKycProfile(profileId, lastReviewedOn, Customer, IdentityDocuments, RiskAssessments, Screenings, Status) : Promise<any> {
     	const uri = this.ormUrl + '/KycProfile/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		profileId: profileId,
+      		lastReviewedOn: lastReviewedOn,
+      		Customer: Customer != null && Customer.length > 0 ? Customer : null,
+      		IdentityDocuments: IdentityDocuments != null && IdentityDocuments.length > 0 ? IdentityDocuments : null,
+      		RiskAssessments: RiskAssessments != null && RiskAssessments.length > 0 ? RiskAssessments : null,
+      		Screenings: Screenings != null && Screenings.length > 0 ? Screenings : null,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -86,7 +92,13 @@ export class KycProfileService extends HelperBaseService {
 	updateKycProfile(profileId, lastReviewedOn, Customer, IdentityDocuments, RiskAssessments, Screenings, Status, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/KycProfile/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		profileId: profileId,
+      		lastReviewedOn: lastReviewedOn,
+      		Customer: Customer != null && Customer.length > 0 ? Customer : null,
+      		IdentityDocuments: IdentityDocuments != null && IdentityDocuments.length > 0 ? IdentityDocuments : null,
+      		RiskAssessments: RiskAssessments != null && RiskAssessments.length > 0 ? RiskAssessments : null,
+      		Screenings: Screenings != null && Screenings.length > 0 ? Screenings : null,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();

@@ -44,7 +44,19 @@ export class FXTradeService extends HelperBaseService {
   	addFXTrade(tradeReference, tradeDate, settlementDate, amountSold, amountBought, rate, Customer, Bank, ExchangeRate, SourceAccount, DestinationAccount, Transaction, Status) : Promise<any> {
     	const uri = this.ormUrl + '/FXTrade/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		tradeReference: tradeReference,
+      		tradeDate: tradeDate,
+      		settlementDate: settlementDate,
+      		amountSold: amountSold,
+      		amountBought: amountBought,
+      		rate: rate,
+      		Customer: Customer != null && Customer.length > 0 ? Customer : null,
+      		Bank: Bank != null && Bank.length > 0 ? Bank : null,
+      		ExchangeRate: ExchangeRate != null && ExchangeRate.length > 0 ? ExchangeRate : null,
+      		SourceAccount: SourceAccount != null && SourceAccount.length > 0 ? SourceAccount : null,
+      		DestinationAccount: DestinationAccount != null && DestinationAccount.length > 0 ? DestinationAccount : null,
+      		Transaction: Transaction != null && Transaction.length > 0 ? Transaction : null,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -87,7 +99,19 @@ export class FXTradeService extends HelperBaseService {
 	updateFXTrade(tradeReference, tradeDate, settlementDate, amountSold, amountBought, rate, Customer, Bank, ExchangeRate, SourceAccount, DestinationAccount, Transaction, Status, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/FXTrade/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		tradeReference: tradeReference,
+      		tradeDate: tradeDate,
+      		settlementDate: settlementDate,
+      		amountSold: amountSold,
+      		amountBought: amountBought,
+      		rate: rate,
+      		Customer: Customer != null && Customer.length > 0 ? Customer : null,
+      		Bank: Bank != null && Bank.length > 0 ? Bank : null,
+      		ExchangeRate: ExchangeRate != null && ExchangeRate.length > 0 ? ExchangeRate : null,
+      		SourceAccount: SourceAccount != null && SourceAccount.length > 0 ? SourceAccount : null,
+      		DestinationAccount: DestinationAccount != null && DestinationAccount.length > 0 ? DestinationAccount : null,
+      		Transaction: Transaction != null && Transaction.length > 0 ? Transaction : null,
+			Status: Status
     	};
     	
     	return this.http.post(uri, obj).toPromise();

@@ -40,7 +40,11 @@ export class IdentityDocumentService extends HelperBaseService {
   	addIdentityDocument(documentNumber, issuingCountry, expirationDate, KycProfile, DocumentType) : Promise<any> {
     	const uri = this.ormUrl + '/IdentityDocument/add';
     	const obj = {
-#attributeStructDecl(${classObject})
+      		documentNumber: documentNumber,
+      		issuingCountry: issuingCountry,
+      		expirationDate: expirationDate,
+      		KycProfile: KycProfile != null && KycProfile.length > 0 ? KycProfile : null,
+			DocumentType: DocumentType
     	};
     	
     	return this.http.post(uri, obj).toPromise();
@@ -83,7 +87,11 @@ export class IdentityDocumentService extends HelperBaseService {
 	updateIdentityDocument(documentNumber, issuingCountry, expirationDate, KycProfile, DocumentType, id)  : Promise<any>  {
     	const uri = this.ormUrl + '/IdentityDocument/update/' + id;
     	const obj = {
-#attributeStructDecl(${classObject})
+      		documentNumber: documentNumber,
+      		issuingCountry: issuingCountry,
+      		expirationDate: expirationDate,
+      		KycProfile: KycProfile != null && KycProfile.length > 0 ? KycProfile : null,
+			DocumentType: DocumentType
     	};
     	
     	return this.http.post(uri, obj).toPromise();
