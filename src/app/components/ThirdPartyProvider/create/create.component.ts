@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ThirdPartyProviderService } from '../../../services/ThirdPartyProvider.service';
-import { ThirdPartyProvider } from '../../../models/thirdPartyProvider';
+import { ThirdPartyProvider } from '../../../models/ThirdPartyProvider';
 
 @Component({
     selector: 'app-create-thirdPartyProvider',

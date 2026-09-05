@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DisputeService } from '../../../services/Dispute.service';
-import { Dispute } from '../../../models/dispute';
+import { Dispute } from '../../../models/Dispute';
 
 @Component({
     selector: 'app-create-dispute',

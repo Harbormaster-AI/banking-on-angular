@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ExchangeRateService } from '../../../services/ExchangeRate.service';
-import { ExchangeRate } from '../../../models/exchangeRate';
+import { ExchangeRate } from '../../../models/ExchangeRate';
 
 @Component({
     selector: 'app-create-exchangeRate',

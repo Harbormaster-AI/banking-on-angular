@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RepaymentScheduleService } from '../../../services/RepaymentSchedule.service';
-import { RepaymentSchedule } from '../../../models/repaymentSchedule';
+import { RepaymentSchedule } from '../../../models/RepaymentSchedule';
 
 @Component({
     selector: 'app-create-repaymentSchedule',

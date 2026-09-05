@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BranchService } from '../../../services/Branch.service';
-import { Branch } from '../../../models/branch';
+import { Branch } from '../../../models/Branch';
 
 @Component({
     selector: 'app-create-branch',

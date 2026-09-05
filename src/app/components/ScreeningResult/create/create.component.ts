@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ScreeningResultService } from '../../../services/ScreeningResult.service';
-import { ScreeningResult } from '../../../models/screeningResult';
+import { ScreeningResult } from '../../../models/ScreeningResult';
 
 @Component({
     selector: 'app-create-screeningResult',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FundsTransferService } from '../../../services/FundsTransfer.service';
-import { FundsTransfer } from '../../../models/fundsTransfer';
+import { FundsTransfer } from '../../../models/FundsTransfer';
 
 @Component({
     selector: 'app-create-fundsTransfer',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConsentService } from '../../../services/Consent.service';
-import { Consent } from '../../../models/consent';
+import { Consent } from '../../../models/Consent';
 
 @Component({
     selector: 'app-create-consent',

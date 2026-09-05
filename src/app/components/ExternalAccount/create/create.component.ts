@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ExternalAccountService } from '../../../services/ExternalAccount.service';
-import { ExternalAccount } from '../../../models/externalAccount';
+import { ExternalAccount } from '../../../models/ExternalAccount';
 
 @Component({
     selector: 'app-create-externalAccount',

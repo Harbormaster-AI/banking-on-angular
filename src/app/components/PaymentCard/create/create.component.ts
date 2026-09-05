@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PaymentCardService } from '../../../services/PaymentCard.service';
-import { PaymentCard } from '../../../models/paymentCard';
+import { PaymentCard } from '../../../models/PaymentCard';
 
 @Component({
     selector: 'app-create-paymentCard',

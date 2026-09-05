@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CollateralService } from '../../../services/Collateral.service';
-import { Collateral } from '../../../models/collateral';
+import { Collateral } from '../../../models/Collateral';
 
 @Component({
     selector: 'app-create-collateral',

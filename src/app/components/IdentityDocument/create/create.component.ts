@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IdentityDocumentService } from '../../../services/IdentityDocument.service';
-import { IdentityDocument } from '../../../models/identityDocument';
+import { IdentityDocument } from '../../../models/IdentityDocument';
 
 @Component({
     selector: 'app-create-identityDocument',

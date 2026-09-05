@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ATMService } from '../../../services/ATM.service';
-import { ATM } from '../../../models/aTM';
+import { ATM } from '../../../models/ATM';
 
 @Component({
     selector: 'app-create-aTM',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BankingProductService } from '../../../services/BankingProduct.service';
-import { BankingProduct } from '../../../models/bankingProduct';
+import { BankingProduct } from '../../../models/BankingProduct';
 
 @Component({
     selector: 'app-create-bankingProduct',

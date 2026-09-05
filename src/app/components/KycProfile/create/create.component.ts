@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { KycProfileService } from '../../../services/KycProfile.service';
-import { KycProfile } from '../../../models/kycProfile';
+import { KycProfile } from '../../../models/KycProfile';
 
 @Component({
     selector: 'app-create-kycProfile',

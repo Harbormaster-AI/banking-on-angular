@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoanAccountService } from '../../../services/LoanAccount.service';
-import { LoanAccount } from '../../../models/loanAccount';
+import { LoanAccount } from '../../../models/LoanAccount';
 
 @Component({
     selector: 'app-create-loanAccount',

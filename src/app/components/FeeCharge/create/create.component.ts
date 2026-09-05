@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FeeChargeService } from '../../../services/FeeCharge.service';
-import { FeeCharge } from '../../../models/feeCharge';
+import { FeeCharge } from '../../../models/FeeCharge';
 
 @Component({
     selector: 'app-create-feeCharge',

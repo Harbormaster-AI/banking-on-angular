@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StandingInstructionService } from '../../../services/StandingInstruction.service';
-import { StandingInstruction } from '../../../models/standingInstruction';
+import { StandingInstruction } from '../../../models/StandingInstruction';
 
 @Component({
     selector: 'app-create-standingInstruction',

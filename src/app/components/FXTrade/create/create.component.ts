@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FXTradeService } from '../../../services/FXTrade.service';
-import { FXTrade } from '../../../models/fXTrade';
+import { FXTrade } from '../../../models/FXTrade';
 
 @Component({
     selector: 'app-create-fXTrade',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RiskAssessmentService } from '../../../services/RiskAssessment.service';
-import { RiskAssessment } from '../../../models/riskAssessment';
+import { RiskAssessment } from '../../../models/RiskAssessment';
 
 @Component({
     selector: 'app-create-riskAssessment',

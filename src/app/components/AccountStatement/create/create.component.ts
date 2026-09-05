@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountStatementService } from '../../../services/AccountStatement.service';
-import { AccountStatement } from '../../../models/accountStatement';
+import { AccountStatement } from '../../../models/AccountStatement';
 
 @Component({
     selector: 'app-create-accountStatement',
