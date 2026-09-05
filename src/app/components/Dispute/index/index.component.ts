@@ -10,7 +10,7 @@ import { Dispute } from '../../../models/Dispute';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexDisputeComponent implements OnInit {
+export class IndexDisputeComponent extemds BaseComponent {
 
     disputes: Dispute[] = [];
 

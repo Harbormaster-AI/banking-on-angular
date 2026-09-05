@@ -10,7 +10,7 @@ import { Customer } from '../../../models/Customer';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexCustomerComponent implements OnInit {
+export class IndexCustomerComponent extemds BaseComponent {
 
     customers: Customer[] = [];
 

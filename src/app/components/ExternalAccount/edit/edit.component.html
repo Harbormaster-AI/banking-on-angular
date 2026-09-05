@@ -4,43 +4,43 @@
 	</div>
 
 	<div class="card-body">
-																	 																																																																															<mat-form-field appearance="legacy">
+																	 																																																																															<mat-form-field appearance="outline">
 								<mat-label>name</mat-label>
 								<input matInput ngDefaultControl placeholder="name" name="externalAccount.name" [(ngModel)]="externalAccount.name">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-					 																																																																															<mat-form-field appearance="legacy">
+					 																																																																															<mat-form-field appearance="outline">
 								<mat-label>iban</mat-label>
 								<input matInput ngDefaultControl placeholder="iban" name="externalAccount.iban" [(ngModel)]="externalAccount.iban">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-					 																																																																															<mat-form-field appearance="legacy">
+					 																																																																															<mat-form-field appearance="outline">
 								<mat-label>accountNumber</mat-label>
 								<input matInput ngDefaultControl placeholder="accountNumber" name="externalAccount.accountNumber" [(ngModel)]="externalAccount.accountNumber">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-					 																																																																															<mat-form-field appearance="legacy">
+					 																																																																															<mat-form-field appearance="outline">
 								<mat-label>bic</mat-label>
 								<input matInput ngDefaultControl placeholder="bic" name="externalAccount.bic" [(ngModel)]="externalAccount.bic">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-					 																																																																															<mat-form-field appearance="legacy">
+					 																																																																															<mat-form-field appearance="outline">
 								<mat-label>bankName</mat-label>
 								<input matInput ngDefaultControl placeholder="bankName" name="externalAccount.bankName" [(ngModel)]="externalAccount.bankName">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-					 																																																																															<mat-form-field appearance="legacy">
+					 																																																																															<mat-form-field appearance="outline">
 								<mat-label>country</mat-label>
 								<input matInput ngDefaultControl placeholder="country" name="externalAccount.country" [(ngModel)]="externalAccount.country">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-					 																																							 								 								<mat-form-field appearance="legacy">
+					 																																							 								 								<mat-form-field appearance="outline">
 					<mat-label>Customer</mat-label>
 					<mat-select placeholder="Customer"   [compareWith]="compareFn"  [(ngModel)]="externalAccount.Customer">
 						@for (customer of customers; track customer.customerId) {
@@ -52,7 +52,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-					 																																																						 								 								<mat-form-field appearance="legacy">
+					 																																																						 								 								<mat-form-field appearance="outline">
 					<mat-label>Transactions</mat-label>
 					<mat-select placeholder="Transactions" multiple  [compareWith]="compareFn"  [(ngModel)]="externalAccount.Transactions">
 						@for (transaction of transactions; track transaction.transactionId) {

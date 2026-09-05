@@ -4,13 +4,13 @@
 	</div>
 
 	<div class="card-body">
-																																																																																																<mat-form-field appearance="legacy">
+																																																																																																<mat-form-field appearance="outline">
 								<mat-label>disputeReference</mat-label>
 								<input matInput ngDefaultControl placeholder="disputeReference" name="dispute.disputeReference" [(ngModel)]="dispute.disputeReference">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>raisedOn</mat-label>
 								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="raisedOn" name="dispute.raisedOn" [(ngModel)]="dispute.raisedOn">
 								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -18,13 +18,13 @@
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																																																	<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>reason</mat-label>
 								<input matInput ngDefaultControl placeholder="reason" name="dispute.reason" [(ngModel)]="dispute.reason">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Transaction</mat-label>
 					<mat-select placeholder="Transaction"  [(ngModel)]="dispute.Transaction">
 						@for (transaction of transactions; track transaction.transactionId) {
@@ -36,7 +36,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Customer</mat-label>
 					<mat-select placeholder="Customer"  [(ngModel)]="dispute.Customer">
 						@for (customer of customers; track customer.customerId) {
@@ -48,7 +48,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Account</mat-label>
 					<mat-select placeholder="Account"  [(ngModel)]="dispute.Account">
 						@for (account of accounts; track account.accountId) {
@@ -60,7 +60,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>PaymentCard</mat-label>
 					<mat-select placeholder="PaymentCard"  [(ngModel)]="dispute.PaymentCard">
 						@for (paymentCard of paymentCards; track paymentCard.paymentCardId) {
@@ -72,7 +72,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>Status</mat-label>
 						<mat-select placeholder="Status" name="dispute.Status" [(ngModel)]="dispute.Status">
 							@for (DisputeStatus of DisputeStatuss; track DisputeStatus) {

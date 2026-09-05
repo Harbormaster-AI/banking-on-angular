@@ -10,7 +10,7 @@ import { ATM } from '../../../models/ATM';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexATMComponent implements OnInit {
+export class IndexATMComponent extemds BaseComponent {
 
     aTMs: ATM[] = [];
 

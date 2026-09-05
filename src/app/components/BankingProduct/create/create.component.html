@@ -4,25 +4,25 @@
 	</div>
 
 	<div class="card-body">
-																																																																																																<mat-form-field appearance="legacy">
+																																																																																																<mat-form-field appearance="outline">
 								<mat-label>productCode</mat-label>
 								<input matInput ngDefaultControl placeholder="productCode" name="bankingProduct.productCode" [(ngModel)]="bankingProduct.productCode">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>name</mat-label>
 								<input matInput ngDefaultControl placeholder="name" name="bankingProduct.name" [(ngModel)]="bankingProduct.name">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>description</mat-label>
 								<input matInput ngDefaultControl placeholder="description" name="bankingProduct.description" [(ngModel)]="bankingProduct.description">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Bank</mat-label>
 					<mat-select placeholder="Bank"  [(ngModel)]="bankingProduct.Bank">
 						@for (bank of banks; track bank.bankId) {
@@ -34,7 +34,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>Accounts</mat-label>
 					<mat-select placeholder="Accounts" multiple [(ngModel)]="bankingProduct.Accounts">
 						@for (account of accounts; track account.accountId) {
@@ -46,7 +46,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>LoanAccounts</mat-label>
 					<mat-select placeholder="LoanAccounts" multiple [(ngModel)]="bankingProduct.LoanAccounts">
 						@for (loanAccount of loanAccounts; track loanAccount.loanAccountId) {
@@ -58,7 +58,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>PaymentCards</mat-label>
 					<mat-select placeholder="PaymentCards" multiple [(ngModel)]="bankingProduct.PaymentCards">
 						@for (paymentCard of paymentCards; track paymentCard.paymentCardId) {
@@ -70,7 +70,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>ProductCategory</mat-label>
 						<mat-select placeholder="ProductCategory" name="bankingProduct.ProductCategory" [(ngModel)]="bankingProduct.ProductCategory">
 							@for (ProductCategory of ProductCategorys; track ProductCategory) {

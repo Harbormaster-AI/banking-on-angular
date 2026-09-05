@@ -1,8 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RiskAssessmentService } from '../../../services/RiskAssessment.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { RiskAssessmentService } from '../../../services/RiskAssessment.service';
+import { SubBaseComponent } from '../../RiskAssessment/sub.base.component';
+
 
 @Component({
     selector: 'app-edit-riskAssessment',
@@ -10,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })
-export class EditRiskAssessmentComponent implements OnInit {
+export class EditRiskAssessmentComponent extends SubBaseComponent implements OnInit {
 
     title = 'Edit RiskAssessment';
 

@@ -10,7 +10,7 @@ import { Collateral } from '../../../models/Collateral';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexCollateralComponent implements OnInit {
+export class IndexCollateralComponent extemds BaseComponent {
 
     collaterals: Collateral[] = [];
 

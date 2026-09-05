@@ -4,13 +4,13 @@
 	</div>
 
 	<div class="card-body">
-																																																																																																<mat-form-field appearance="legacy">
+																																																																																																<mat-form-field appearance="outline">
 								<mat-label>cardNumber</mat-label>
 								<input matInput ngDefaultControl placeholder="cardNumber" name="paymentCard.cardNumber" [(ngModel)]="paymentCard.cardNumber">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>embossedName</mat-label>
 								<input matInput ngDefaultControl placeholder="embossedName" name="paymentCard.embossedName" [(ngModel)]="paymentCard.embossedName">
 								<mat-hint></mat-hint>
@@ -20,7 +20,7 @@
 																																																																	<p>
 																																																																																				<input matInput placeholder="expiryYear" name="paymentCard.expiryYear" [(ngModel)]="paymentCard.expiryYear">
 																																																																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Bank</mat-label>
 					<mat-select placeholder="Bank"  [(ngModel)]="paymentCard.Bank">
 						@for (bank of banks; track bank.bankId) {
@@ -32,7 +32,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Account</mat-label>
 					<mat-select placeholder="Account"  [(ngModel)]="paymentCard.Account">
 						@for (account of accounts; track account.accountId) {
@@ -44,7 +44,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Customer</mat-label>
 					<mat-select placeholder="Customer"  [(ngModel)]="paymentCard.Customer">
 						@for (customer of customers; track customer.customerId) {
@@ -56,7 +56,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>Transactions</mat-label>
 					<mat-select placeholder="Transactions" multiple [(ngModel)]="paymentCard.Transactions">
 						@for (transaction of transactions; track transaction.transactionId) {
@@ -68,7 +68,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>CardType</mat-label>
 						<mat-select placeholder="CardType" name="paymentCard.CardType" [(ngModel)]="paymentCard.CardType">
 							@for (CardType of CardTypes; track CardType) {
@@ -79,7 +79,7 @@
 						</mat-select>
 					</mat-form-field>
 																																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>CardStatus</mat-label>
 						<mat-select placeholder="CardStatus" name="paymentCard.CardStatus" [(ngModel)]="paymentCard.CardStatus">
 							@for (CardStatus of CardStatuss; track CardStatus) {
@@ -90,7 +90,7 @@
 						</mat-select>
 					</mat-form-field>
 																																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>Network</mat-label>
 						<mat-select placeholder="Network" name="paymentCard.Network" [(ngModel)]="paymentCard.Network">
 							@for (CardNetwork of CardNetworks; track CardNetwork) {

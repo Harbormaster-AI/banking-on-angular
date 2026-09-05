@@ -4,19 +4,19 @@
 	</div>
 
 	<div class="card-body">
-																																																																																																<mat-form-field appearance="legacy">
+																																																																																																<mat-form-field appearance="outline">
 								<mat-label>feeCode</mat-label>
 								<input matInput ngDefaultControl placeholder="feeCode" name="feeCharge.feeCode" [(ngModel)]="feeCharge.feeCode">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>amount</mat-label>
 								<input matInput ngDefaultControl placeholder="amount" name="feeCharge.amount" [(ngModel)]="feeCharge.amount">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>appliedOn</mat-label>
 								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="appliedOn" name="feeCharge.appliedOn" [(ngModel)]="feeCharge.appliedOn">
 								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -24,7 +24,7 @@
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																																																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Account</mat-label>
 					<mat-select placeholder="Account"  [(ngModel)]="feeCharge.Account">
 						@for (account of accounts; track account.accountId) {
@@ -36,7 +36,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>LoanAccount</mat-label>
 					<mat-select placeholder="LoanAccount"  [(ngModel)]="feeCharge.LoanAccount">
 						@for (loanAccount of loanAccounts; track loanAccount.loanAccountId) {
@@ -48,7 +48,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>FeeType</mat-label>
 						<mat-select placeholder="FeeType" name="feeCharge.FeeType" [(ngModel)]="feeCharge.FeeType">
 							@for (FeeType of FeeTypes; track FeeType) {

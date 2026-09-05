@@ -4,25 +4,25 @@
 	</div>
 
 	<div class="card-body">
-																																																																																																<mat-form-field appearance="legacy">
+																																																																																																<mat-form-field appearance="outline">
 								<mat-label>firstName</mat-label>
 								<input matInput ngDefaultControl placeholder="firstName" name="customer.firstName" [(ngModel)]="customer.firstName">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>lastName</mat-label>
 								<input matInput ngDefaultControl placeholder="lastName" name="customer.lastName" [(ngModel)]="customer.lastName">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>legalName</mat-label>
 								<input matInput ngDefaultControl placeholder="legalName" name="customer.legalName" [(ngModel)]="customer.legalName">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>dateOfBirth</mat-label>
 								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="dateOfBirth" name="customer.dateOfBirth" [(ngModel)]="customer.dateOfBirth">
 								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -30,31 +30,31 @@
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																																																	<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>taxId</mat-label>
 								<input matInput ngDefaultControl placeholder="taxId" name="customer.taxId" [(ngModel)]="customer.taxId">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>email</mat-label>
 								<input matInput ngDefaultControl placeholder="email" name="customer.email" [(ngModel)]="customer.email">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>phone</mat-label>
 								<input matInput ngDefaultControl placeholder="phone" name="customer.phone" [(ngModel)]="customer.phone">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>address</mat-label>
 								<input matInput ngDefaultControl placeholder="address" name="customer.address" [(ngModel)]="customer.address">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Bank</mat-label>
 					<mat-select placeholder="Bank"  [(ngModel)]="customer.Bank">
 						@for (bank of banks; track bank.bankId) {
@@ -66,7 +66,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>Accounts</mat-label>
 					<mat-select placeholder="Accounts" multiple [(ngModel)]="customer.Accounts">
 						@for (account of accounts; track account.accountId) {
@@ -78,7 +78,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>LoanAccounts</mat-label>
 					<mat-select placeholder="LoanAccounts" multiple [(ngModel)]="customer.LoanAccounts">
 						@for (loanAccount of loanAccounts; track loanAccount.loanAccountId) {
@@ -90,7 +90,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>PaymentCards</mat-label>
 					<mat-select placeholder="PaymentCards" multiple [(ngModel)]="customer.PaymentCards">
 						@for (paymentCard of paymentCards; track paymentCard.paymentCardId) {
@@ -102,7 +102,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>ExternalAccounts</mat-label>
 					<mat-select placeholder="ExternalAccounts" multiple [(ngModel)]="customer.ExternalAccounts">
 						@for (externalAccount of externalAccounts; track externalAccount.externalAccountId) {
@@ -114,7 +114,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>FundsTransfers</mat-label>
 					<mat-select placeholder="FundsTransfers" multiple [(ngModel)]="customer.FundsTransfers">
 						@for (fundsTransfer of fundsTransfers; track fundsTransfer.fundsTransferId) {
@@ -126,7 +126,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>Disputes</mat-label>
 					<mat-select placeholder="Disputes" multiple [(ngModel)]="customer.Disputes">
 						@for (dispute of disputes; track dispute.disputeId) {
@@ -138,7 +138,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>KycProfiles</mat-label>
 					<mat-select placeholder="KycProfiles" multiple [(ngModel)]="customer.KycProfiles">
 						@for (kycProfile of kycProfiles; track kycProfile.kycProfileId) {
@@ -150,7 +150,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>Consents</mat-label>
 					<mat-select placeholder="Consents" multiple [(ngModel)]="customer.Consents">
 						@for (consent of consents; track consent.consentId) {
@@ -162,7 +162,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>CustomerType</mat-label>
 						<mat-select placeholder="CustomerType" name="customer.CustomerType" [(ngModel)]="customer.CustomerType">
 							@for (CustomerType of CustomerTypes; track CustomerType) {
@@ -173,7 +173,7 @@
 						</mat-select>
 					</mat-form-field>
 																																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>RiskRating</mat-label>
 						<mat-select placeholder="RiskRating" name="customer.RiskRating" [(ngModel)]="customer.RiskRating">
 							@for (RiskRating of RiskRatings; track RiskRating) {
@@ -184,7 +184,7 @@
 						</mat-select>
 					</mat-form-field>
 																																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>KycStatus</mat-label>
 						<mat-select placeholder="KycStatus" name="customer.KycStatus" [(ngModel)]="customer.KycStatus">
 							@for (KycStatus of KycStatuss; track KycStatus) {

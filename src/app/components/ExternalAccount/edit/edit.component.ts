@@ -1,8 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ExternalAccountService } from '../../../services/ExternalAccount.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { ExternalAccountService } from '../../../services/ExternalAccount.service';
+import { SubBaseComponent } from '../../ExternalAccount/sub.base.component';
+
 
 @Component({
     selector: 'app-edit-externalAccount',
@@ -10,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })
-export class EditExternalAccountComponent implements OnInit {
+export class EditExternalAccountComponent extends SubBaseComponent implements OnInit {
 
     title = 'Edit ExternalAccount';
 

@@ -1,8 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CollateralService } from '../../../services/Collateral.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { CollateralService } from '../../../services/Collateral.service';
+import { SubBaseComponent } from '../../Collateral/sub.base.component';
+
 
 @Component({
     selector: 'app-edit-collateral',
@@ -10,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })
-export class EditCollateralComponent implements OnInit {
+export class EditCollateralComponent extends SubBaseComponent implements OnInit {
 
     title = 'Edit Collateral';
 

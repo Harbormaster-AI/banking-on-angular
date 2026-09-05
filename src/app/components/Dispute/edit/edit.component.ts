@@ -1,8 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DisputeService } from '../../../services/Dispute.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { DisputeService } from '../../../services/Dispute.service';
+import { SubBaseComponent } from '../../Dispute/sub.base.component';
+
 
 @Component({
     selector: 'app-edit-dispute',
@@ -10,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })
-export class EditDisputeComponent implements OnInit {
+export class EditDisputeComponent extends SubBaseComponent implements OnInit {
 
     title = 'Edit Dispute';
 

@@ -4,13 +4,13 @@
 	</div>
 
 	<div class="card-body">
-																																																																																																<mat-form-field appearance="legacy">
+																																																																																																<mat-form-field appearance="outline">
 								<mat-label>tradeReference</mat-label>
 								<input matInput ngDefaultControl placeholder="tradeReference" name="fXTrade.tradeReference" [(ngModel)]="fXTrade.tradeReference">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>tradeDate</mat-label>
 								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="tradeDate" name="fXTrade.tradeDate" [(ngModel)]="fXTrade.tradeDate">
 								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -18,7 +18,7 @@
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																																																	<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>settlementDate</mat-label>
 								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="settlementDate" name="fXTrade.settlementDate" [(ngModel)]="fXTrade.settlementDate">
 								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -26,25 +26,25 @@
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																																																	<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>amountSold</mat-label>
 								<input matInput ngDefaultControl placeholder="amountSold" name="fXTrade.amountSold" [(ngModel)]="fXTrade.amountSold">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>amountBought</mat-label>
 								<input matInput ngDefaultControl placeholder="amountBought" name="fXTrade.amountBought" [(ngModel)]="fXTrade.amountBought">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>rate</mat-label>
 								<input matInput ngDefaultControl placeholder="rate" name="fXTrade.rate" [(ngModel)]="fXTrade.rate">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Customer</mat-label>
 					<mat-select placeholder="Customer"  [(ngModel)]="fXTrade.Customer">
 						@for (customer of customers; track customer.customerId) {
@@ -56,7 +56,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Bank</mat-label>
 					<mat-select placeholder="Bank"  [(ngModel)]="fXTrade.Bank">
 						@for (bank of banks; track bank.bankId) {
@@ -68,7 +68,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>ExchangeRate</mat-label>
 					<mat-select placeholder="ExchangeRate"  [(ngModel)]="fXTrade.ExchangeRate">
 						@for (exchangeRate of exchangeRates; track exchangeRate.exchangeRateId) {
@@ -80,7 +80,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>SourceAccount</mat-label>
 					<mat-select placeholder="SourceAccount"  [(ngModel)]="fXTrade.SourceAccount">
 						@for (account of accounts; track account.accountId) {
@@ -92,7 +92,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>DestinationAccount</mat-label>
 					<mat-select placeholder="DestinationAccount"  [(ngModel)]="fXTrade.DestinationAccount">
 						@for (account of accounts; track account.accountId) {
@@ -104,7 +104,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Transaction</mat-label>
 					<mat-select placeholder="Transaction"  [(ngModel)]="fXTrade.Transaction">
 						@for (transaction of transactions; track transaction.transactionId) {
@@ -116,7 +116,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>Status</mat-label>
 						<mat-select placeholder="Status" name="fXTrade.Status" [(ngModel)]="fXTrade.Status">
 							@for (TradeStatus of TradeStatuss; track TradeStatus) {

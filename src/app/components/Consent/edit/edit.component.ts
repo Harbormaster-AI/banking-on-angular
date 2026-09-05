@@ -1,8 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ConsentService } from '../../../services/Consent.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { ConsentService } from '../../../services/Consent.service';
+import { SubBaseComponent } from '../../Consent/sub.base.component';
+
 
 @Component({
     selector: 'app-edit-consent',
@@ -10,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })
-export class EditConsentComponent implements OnInit {
+export class EditConsentComponent extends SubBaseComponent implements OnInit {
 
     title = 'Edit Consent';
 

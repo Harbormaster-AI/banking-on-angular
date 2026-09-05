@@ -1,8 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FundsTransferService } from '../../../services/FundsTransfer.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { FundsTransferService } from '../../../services/FundsTransfer.service';
+import { SubBaseComponent } from '../../FundsTransfer/sub.base.component';
+
 
 @Component({
     selector: 'app-edit-fundsTransfer',
@@ -10,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })
-export class EditFundsTransferComponent implements OnInit {
+export class EditFundsTransferComponent extends SubBaseComponent implements OnInit {
 
     title = 'Edit FundsTransfer';
 

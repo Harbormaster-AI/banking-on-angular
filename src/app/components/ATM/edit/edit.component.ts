@@ -1,8 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ATMService } from '../../../services/ATM.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { ATMService } from '../../../services/ATM.service';
+import { SubBaseComponent } from '../../ATM/sub.base.component';
+
 
 @Component({
     selector: 'app-edit-aTM',
@@ -10,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })
-export class EditATMComponent implements OnInit {
+export class EditATMComponent extends SubBaseComponent implements OnInit {
 
     title = 'Edit ATM';
 

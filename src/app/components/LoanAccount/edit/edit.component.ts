@@ -1,8 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoanAccountService } from '../../../services/LoanAccount.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { LoanAccountService } from '../../../services/LoanAccount.service';
+import { SubBaseComponent } from '../../LoanAccount/sub.base.component';
+
 
 @Component({
     selector: 'app-edit-loanAccount',
@@ -10,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })
-export class EditLoanAccountComponent implements OnInit {
+export class EditLoanAccountComponent extends SubBaseComponent implements OnInit {
 
     title = 'Edit LoanAccount';
 

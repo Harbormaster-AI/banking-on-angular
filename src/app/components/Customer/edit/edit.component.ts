@@ -1,8 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CustomerService } from '../../../services/Customer.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { CustomerService } from '../../../services/Customer.service';
+import { SubBaseComponent } from '../../Customer/sub.base.component';
+
 
 @Component({
     selector: 'app-edit-customer',
@@ -10,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })
-export class EditCustomerComponent implements OnInit {
+export class EditCustomerComponent extends SubBaseComponent implements OnInit {
 
     title = 'Edit Customer';
 

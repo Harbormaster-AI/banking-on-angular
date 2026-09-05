@@ -1,8 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RepaymentScheduleService } from '../../../services/RepaymentSchedule.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { RepaymentScheduleService } from '../../../services/RepaymentSchedule.service';
+import { SubBaseComponent } from '../../RepaymentSchedule/sub.base.component';
+
 
 @Component({
     selector: 'app-edit-repaymentSchedule',
@@ -10,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })
-export class EditRepaymentScheduleComponent implements OnInit {
+export class EditRepaymentScheduleComponent extends SubBaseComponent implements OnInit {
 
     title = 'Edit RepaymentSchedule';
 

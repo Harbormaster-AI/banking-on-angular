@@ -4,19 +4,19 @@
 	</div>
 
 	<div class="card-body">
-																	 																																																																															<mat-form-field appearance="legacy">
+																	 																																																																															<mat-form-field appearance="outline">
 								<mat-label>terminalId</mat-label>
 								<input matInput ngDefaultControl placeholder="terminalId" name="aTM.terminalId" [(ngModel)]="aTM.terminalId">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-					 																																																																															<mat-form-field appearance="legacy">
+					 																																																																															<mat-form-field appearance="outline">
 								<mat-label>location</mat-label>
 								<input matInput ngDefaultControl placeholder="location" name="aTM.location" [(ngModel)]="aTM.location">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-					 																																							 								 								<mat-form-field appearance="legacy">
+					 																																							 								 								<mat-form-field appearance="outline">
 					<mat-label>Branch</mat-label>
 					<mat-select placeholder="Branch"   [compareWith]="compareFn"  [(ngModel)]="aTM.Branch">
 						@for (branch of branchs; track branch.branchId) {
@@ -28,7 +28,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-					 																																				<mat-form-field appearance="legacy">
+					 																																				<mat-form-field appearance="outline">
 						<mat-label>Status</mat-label>
 						<mat-select placeholder="Status" name="aTM.Status" [(ngModel)]="aTM.Status">
 							@for (ATMStatus of ATMStatuss; track ATMStatus) {

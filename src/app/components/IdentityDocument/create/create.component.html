@@ -4,19 +4,19 @@
 	</div>
 
 	<div class="card-body">
-																																																																																																<mat-form-field appearance="legacy">
+																																																																																																<mat-form-field appearance="outline">
 								<mat-label>documentNumber</mat-label>
 								<input matInput ngDefaultControl placeholder="documentNumber" name="identityDocument.documentNumber" [(ngModel)]="identityDocument.documentNumber">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>issuingCountry</mat-label>
 								<input matInput ngDefaultControl placeholder="issuingCountry" name="identityDocument.issuingCountry" [(ngModel)]="identityDocument.issuingCountry">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>expirationDate</mat-label>
 								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="expirationDate" name="identityDocument.expirationDate" [(ngModel)]="identityDocument.expirationDate">
 								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -24,7 +24,7 @@
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																																																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>KycProfile</mat-label>
 					<mat-select placeholder="KycProfile"  [(ngModel)]="identityDocument.KycProfile">
 						@for (kycProfile of kycProfiles; track kycProfile.kycProfileId) {
@@ -36,7 +36,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>DocumentType</mat-label>
 						<mat-select placeholder="DocumentType" name="identityDocument.DocumentType" [(ngModel)]="identityDocument.DocumentType">
 							@for (IdentityDocumentType of IdentityDocumentTypes; track IdentityDocumentType) {

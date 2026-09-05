@@ -1,8 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ThirdPartyProviderService } from '../../../services/ThirdPartyProvider.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { ThirdPartyProviderService } from '../../../services/ThirdPartyProvider.service';
+import { SubBaseComponent } from '../../ThirdPartyProvider/sub.base.component';
+
 
 @Component({
     selector: 'app-edit-thirdPartyProvider',
@@ -10,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })
-export class EditThirdPartyProviderComponent implements OnInit {
+export class EditThirdPartyProviderComponent extends SubBaseComponent implements OnInit {
 
     title = 'Edit ThirdPartyProvider';
 

@@ -4,37 +4,37 @@
 	</div>
 
 	<div class="card-body">
-																																																																																																<mat-form-field appearance="legacy">
+																																																																																																<mat-form-field appearance="outline">
 								<mat-label>name</mat-label>
 								<input matInput ngDefaultControl placeholder="name" name="branch.name" [(ngModel)]="branch.name">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>branchCode</mat-label>
 								<input matInput ngDefaultControl placeholder="branchCode" name="branch.branchCode" [(ngModel)]="branch.branchCode">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>address</mat-label>
 								<input matInput ngDefaultControl placeholder="address" name="branch.address" [(ngModel)]="branch.address">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>phone</mat-label>
 								<input matInput ngDefaultControl placeholder="phone" name="branch.phone" [(ngModel)]="branch.phone">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>openingHours</mat-label>
 								<input matInput ngDefaultControl placeholder="openingHours" name="branch.openingHours" [(ngModel)]="branch.openingHours">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Bank</mat-label>
 					<mat-select placeholder="Bank"  [(ngModel)]="branch.Bank">
 						@for (bank of banks; track bank.bankId) {
@@ -46,7 +46,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>Accounts</mat-label>
 					<mat-select placeholder="Accounts" multiple [(ngModel)]="branch.Accounts">
 						@for (account of accounts; track account.accountId) {
@@ -58,7 +58,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>LoanAccounts</mat-label>
 					<mat-select placeholder="LoanAccounts" multiple [(ngModel)]="branch.LoanAccounts">
 						@for (loanAccount of loanAccounts; track loanAccount.loanAccountId) {
@@ -70,7 +70,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>Atms</mat-label>
 					<mat-select placeholder="Atms" multiple [(ngModel)]="branch.Atms">
 						@for (aTM of aTMs; track aTM.aTMId) {

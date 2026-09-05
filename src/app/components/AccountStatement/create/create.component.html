@@ -4,13 +4,13 @@
 	</div>
 
 	<div class="card-body">
-																																																																																																<mat-form-field appearance="legacy">
+																																																																																																<mat-form-field appearance="outline">
 								<mat-label>statementNumber</mat-label>
 								<input matInput ngDefaultControl placeholder="statementNumber" name="accountStatement.statementNumber" [(ngModel)]="accountStatement.statementNumber">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>periodStart</mat-label>
 								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="periodStart" name="accountStatement.periodStart" [(ngModel)]="accountStatement.periodStart">
 								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -18,7 +18,7 @@
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																																																	<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>periodEnd</mat-label>
 								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="periodEnd" name="accountStatement.periodEnd" [(ngModel)]="accountStatement.periodEnd">
 								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -26,19 +26,19 @@
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																																																	<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>openingBalance</mat-label>
 								<input matInput ngDefaultControl placeholder="openingBalance" name="accountStatement.openingBalance" [(ngModel)]="accountStatement.openingBalance">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>closingBalance</mat-label>
 								<input matInput ngDefaultControl placeholder="closingBalance" name="accountStatement.closingBalance" [(ngModel)]="accountStatement.closingBalance">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Account</mat-label>
 					<mat-select placeholder="Account"  [(ngModel)]="accountStatement.Account">
 						@for (account of accounts; track account.accountId) {
@@ -50,7 +50,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>DeliveryMethod</mat-label>
 						<mat-select placeholder="DeliveryMethod" name="accountStatement.DeliveryMethod" [(ngModel)]="accountStatement.DeliveryMethod">
 							@for (StatementDeliveryMethod of StatementDeliveryMethods; track StatementDeliveryMethod) {

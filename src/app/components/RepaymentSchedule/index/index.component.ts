@@ -10,7 +10,7 @@ import { RepaymentSchedule } from '../../../models/RepaymentSchedule';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexRepaymentScheduleComponent implements OnInit {
+export class IndexRepaymentScheduleComponent extemds BaseComponent {
 
     repaymentSchedules: RepaymentSchedule[] = [];
 

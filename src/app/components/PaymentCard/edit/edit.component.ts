@@ -1,8 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PaymentCardService } from '../../../services/PaymentCard.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { PaymentCardService } from '../../../services/PaymentCard.service';
+import { SubBaseComponent } from '../../PaymentCard/sub.base.component';
+
 
 @Component({
     selector: 'app-edit-paymentCard',
@@ -10,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })
-export class EditPaymentCardComponent implements OnInit {
+export class EditPaymentCardComponent extends SubBaseComponent implements OnInit {
 
     title = 'Edit PaymentCard';
 

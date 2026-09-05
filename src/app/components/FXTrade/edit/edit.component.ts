@@ -1,8 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FXTradeService } from '../../../services/FXTrade.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { FXTradeService } from '../../../services/FXTrade.service';
+import { SubBaseComponent } from '../../FXTrade/sub.base.component';
+
 
 @Component({
     selector: 'app-edit-fXTrade',
@@ -10,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })
-export class EditFXTradeComponent implements OnInit {
+export class EditFXTradeComponent extends SubBaseComponent implements OnInit {
 
     title = 'Edit FXTrade';
 

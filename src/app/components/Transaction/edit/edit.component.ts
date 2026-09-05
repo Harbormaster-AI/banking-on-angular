@@ -1,8 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TransactionService } from '../../../services/Transaction.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { TransactionService } from '../../../services/Transaction.service';
+import { SubBaseComponent } from '../../Transaction/sub.base.component';
+
 
 @Component({
     selector: 'app-edit-transaction',
@@ -10,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })
-export class EditTransactionComponent implements OnInit {
+export class EditTransactionComponent extends SubBaseComponent implements OnInit {
 
     title = 'Edit Transaction';
 

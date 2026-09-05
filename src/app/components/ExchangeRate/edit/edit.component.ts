@@ -1,8 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ExchangeRateService } from '../../../services/ExchangeRate.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { ExchangeRateService } from '../../../services/ExchangeRate.service';
+import { SubBaseComponent } from '../../ExchangeRate/sub.base.component';
+
 
 @Component({
     selector: 'app-edit-exchangeRate',
@@ -10,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })
-export class EditExchangeRateComponent implements OnInit {
+export class EditExchangeRateComponent extends SubBaseComponent implements OnInit {
 
     title = 'Edit ExchangeRate';
 

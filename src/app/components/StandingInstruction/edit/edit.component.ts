@@ -1,8 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StandingInstructionService } from '../../../services/StandingInstruction.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { StandingInstructionService } from '../../../services/StandingInstruction.service';
+import { SubBaseComponent } from '../../StandingInstruction/sub.base.component';
+
 
 @Component({
     selector: 'app-edit-standingInstruction',
@@ -10,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })
-export class EditStandingInstructionComponent implements OnInit {
+export class EditStandingInstructionComponent extends SubBaseComponent implements OnInit {
 
     title = 'Edit StandingInstruction';
 

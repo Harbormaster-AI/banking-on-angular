@@ -4,25 +4,25 @@
 	</div>
 
 	<div class="card-body">
-																																																																																																<mat-form-field appearance="legacy">
+																																																																																																<mat-form-field appearance="outline">
 								<mat-label>name</mat-label>
 								<input matInput ngDefaultControl placeholder="name" name="thirdPartyProvider.name" [(ngModel)]="thirdPartyProvider.name">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>registrationId</mat-label>
 								<input matInput ngDefaultControl placeholder="registrationId" name="thirdPartyProvider.registrationId" [(ngModel)]="thirdPartyProvider.registrationId">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>website</mat-label>
 								<input matInput ngDefaultControl placeholder="website" name="thirdPartyProvider.website" [(ngModel)]="thirdPartyProvider.website">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Bank</mat-label>
 					<mat-select placeholder="Bank"  [(ngModel)]="thirdPartyProvider.Bank">
 						@for (bank of banks; track bank.bankId) {
@@ -34,7 +34,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>Consents</mat-label>
 					<mat-select placeholder="Consents" multiple [(ngModel)]="thirdPartyProvider.Consents">
 						@for (consent of consents; track consent.consentId) {

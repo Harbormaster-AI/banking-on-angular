@@ -1,8 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IdentityDocumentService } from '../../../services/IdentityDocument.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { IdentityDocumentService } from '../../../services/IdentityDocument.service';
+import { SubBaseComponent } from '../../IdentityDocument/sub.base.component';
+
 
 @Component({
     selector: 'app-edit-identityDocument',
@@ -10,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })
-export class EditIdentityDocumentComponent implements OnInit {
+export class EditIdentityDocumentComponent extends SubBaseComponent implements OnInit {
 
     title = 'Edit IdentityDocument';
 

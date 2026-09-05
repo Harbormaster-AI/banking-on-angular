@@ -10,7 +10,7 @@ import { IdentityDocument } from '../../../models/IdentityDocument';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexIdentityDocumentComponent implements OnInit {
+export class IndexIdentityDocumentComponent extemds BaseComponent {
 
     identityDocuments: IdentityDocument[] = [];
 

@@ -1,8 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FeeChargeService } from '../../../services/FeeCharge.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { FeeChargeService } from '../../../services/FeeCharge.service';
+import { SubBaseComponent } from '../../FeeCharge/sub.base.component';
+
 
 @Component({
     selector: 'app-edit-feeCharge',
@@ -10,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })
-export class EditFeeChargeComponent implements OnInit {
+export class EditFeeChargeComponent extends SubBaseComponent implements OnInit {
 
     title = 'Edit FeeCharge';
 

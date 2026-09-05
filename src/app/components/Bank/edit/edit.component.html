@@ -4,37 +4,37 @@
 	</div>
 
 	<div class="card-body">
-																	 																																																																															<mat-form-field appearance="legacy">
+																	 																																																																															<mat-form-field appearance="outline">
 								<mat-label>name</mat-label>
 								<input matInput ngDefaultControl placeholder="name" name="bank.name" [(ngModel)]="bank.name">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-					 																																																																															<mat-form-field appearance="legacy">
+					 																																																																															<mat-form-field appearance="outline">
 								<mat-label>legalName</mat-label>
 								<input matInput ngDefaultControl placeholder="legalName" name="bank.legalName" [(ngModel)]="bank.legalName">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-					 																																																																															<mat-form-field appearance="legacy">
+					 																																																																															<mat-form-field appearance="outline">
 								<mat-label>swiftBic</mat-label>
 								<input matInput ngDefaultControl placeholder="swiftBic" name="bank.swiftBic" [(ngModel)]="bank.swiftBic">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-					 																																																																															<mat-form-field appearance="legacy">
+					 																																																																															<mat-form-field appearance="outline">
 								<mat-label>headquartersCountry</mat-label>
 								<input matInput ngDefaultControl placeholder="headquartersCountry" name="bank.headquartersCountry" [(ngModel)]="bank.headquartersCountry">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-					 																																																																															<mat-form-field appearance="legacy">
+					 																																																																															<mat-form-field appearance="outline">
 								<mat-label>website</mat-label>
 								<input matInput ngDefaultControl placeholder="website" name="bank.website" [(ngModel)]="bank.website">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-					 																																																						 								 								<mat-form-field appearance="legacy">
+					 																																																						 								 								<mat-form-field appearance="outline">
 					<mat-label>Branches</mat-label>
 					<mat-select placeholder="Branches" multiple  [compareWith]="compareFn"  [(ngModel)]="bank.Branches">
 						@for (branch of branchs; track branch.branchId) {
@@ -46,7 +46,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-					 																																																						 								 								<mat-form-field appearance="legacy">
+					 																																																						 								 								<mat-form-field appearance="outline">
 					<mat-label>Products</mat-label>
 					<mat-select placeholder="Products" multiple  [compareWith]="compareFn"  [(ngModel)]="bank.Products">
 						@for (bankingProduct of bankingProducts; track bankingProduct.bankingProductId) {
@@ -58,7 +58,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-					 																																																						 								 								<mat-form-field appearance="legacy">
+					 																																																						 								 								<mat-form-field appearance="outline">
 					<mat-label>Customers</mat-label>
 					<mat-select placeholder="Customers" multiple  [compareWith]="compareFn"  [(ngModel)]="bank.Customers">
 						@for (customer of customers; track customer.customerId) {
@@ -70,7 +70,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-					 																																																						 								 								<mat-form-field appearance="legacy">
+					 																																																						 								 								<mat-form-field appearance="outline">
 					<mat-label>Accounts</mat-label>
 					<mat-select placeholder="Accounts" multiple  [compareWith]="compareFn"  [(ngModel)]="bank.Accounts">
 						@for (account of accounts; track account.accountId) {
@@ -82,7 +82,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-					 																																																						 								 								<mat-form-field appearance="legacy">
+					 																																																						 								 								<mat-form-field appearance="outline">
 					<mat-label>PaymentCards</mat-label>
 					<mat-select placeholder="PaymentCards" multiple  [compareWith]="compareFn"  [(ngModel)]="bank.PaymentCards">
 						@for (paymentCard of paymentCards; track paymentCard.paymentCardId) {
@@ -94,7 +94,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-					 																																																						 								 								<mat-form-field appearance="legacy">
+					 																																																						 								 								<mat-form-field appearance="outline">
 					<mat-label>LoanAccounts</mat-label>
 					<mat-select placeholder="LoanAccounts" multiple  [compareWith]="compareFn"  [(ngModel)]="bank.LoanAccounts">
 						@for (loanAccount of loanAccounts; track loanAccount.loanAccountId) {
@@ -106,7 +106,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-					 																																																						 								 								<mat-form-field appearance="legacy">
+					 																																																						 								 								<mat-form-field appearance="outline">
 					<mat-label>ExchangeRates</mat-label>
 					<mat-select placeholder="ExchangeRates" multiple  [compareWith]="compareFn"  [(ngModel)]="bank.ExchangeRates">
 						@for (exchangeRate of exchangeRates; track exchangeRate.exchangeRateId) {
@@ -118,7 +118,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-					 																																																						 								 								<mat-form-field appearance="legacy">
+					 																																																						 								 								<mat-form-field appearance="outline">
 					<mat-label>Consents</mat-label>
 					<mat-select placeholder="Consents" multiple  [compareWith]="compareFn"  [(ngModel)]="bank.Consents">
 						@for (consent of consents; track consent.consentId) {
@@ -130,7 +130,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-					 																																																						 								 								<mat-form-field appearance="legacy">
+					 																																																						 								 								<mat-form-field appearance="outline">
 					<mat-label>ThirdPartyProviders</mat-label>
 					<mat-select placeholder="ThirdPartyProviders" multiple  [compareWith]="compareFn"  [(ngModel)]="bank.ThirdPartyProviders">
 						@for (thirdPartyProvider of thirdPartyProviders; track thirdPartyProvider.thirdPartyProviderId) {

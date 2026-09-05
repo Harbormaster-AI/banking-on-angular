@@ -4,25 +4,25 @@
 	</div>
 
 	<div class="card-body">
-																																																																																																<mat-form-field appearance="legacy">
+																																																																																																<mat-form-field appearance="outline">
 								<mat-label>baseCurrency</mat-label>
 								<input matInput ngDefaultControl placeholder="baseCurrency" name="exchangeRate.baseCurrency" [(ngModel)]="exchangeRate.baseCurrency">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>counterCurrency</mat-label>
 								<input matInput ngDefaultControl placeholder="counterCurrency" name="exchangeRate.counterCurrency" [(ngModel)]="exchangeRate.counterCurrency">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>rate</mat-label>
 								<input matInput ngDefaultControl placeholder="rate" name="exchangeRate.rate" [(ngModel)]="exchangeRate.rate">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>asOf</mat-label>
 								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="asOf" name="exchangeRate.asOf" [(ngModel)]="exchangeRate.asOf">
 								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -30,13 +30,13 @@
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																																																	<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>source</mat-label>
 								<input matInput ngDefaultControl placeholder="source" name="exchangeRate.source" [(ngModel)]="exchangeRate.source">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Bank</mat-label>
 					<mat-select placeholder="Bank"  [(ngModel)]="exchangeRate.Bank">
 						@for (bank of banks; track bank.bankId) {
@@ -48,7 +48,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>FxTrades</mat-label>
 					<mat-select placeholder="FxTrades" multiple [(ngModel)]="exchangeRate.FxTrades">
 						@for (fXTrade of fXTrades; track fXTrade.fXTradeId) {

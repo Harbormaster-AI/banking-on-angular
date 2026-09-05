@@ -4,31 +4,31 @@
 	</div>
 
 	<div class="card-body">
-																																																																																																<mat-form-field appearance="legacy">
+																																																																																																<mat-form-field appearance="outline">
 								<mat-label>loanNumber</mat-label>
 								<input matInput ngDefaultControl placeholder="loanNumber" name="loanAccount.loanNumber" [(ngModel)]="loanAccount.loanNumber">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>principalAmount</mat-label>
 								<input matInput ngDefaultControl placeholder="principalAmount" name="loanAccount.principalAmount" [(ngModel)]="loanAccount.principalAmount">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>outstandingPrincipal</mat-label>
 								<input matInput ngDefaultControl placeholder="outstandingPrincipal" name="loanAccount.outstandingPrincipal" [(ngModel)]="loanAccount.outstandingPrincipal">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>interestRate</mat-label>
 								<input matInput ngDefaultControl placeholder="interestRate" name="loanAccount.interestRate" [(ngModel)]="loanAccount.interestRate">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>originationDate</mat-label>
 								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="originationDate" name="loanAccount.originationDate" [(ngModel)]="loanAccount.originationDate">
 								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -36,7 +36,7 @@
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																																																	<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>maturityDate</mat-label>
 								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="maturityDate" name="loanAccount.maturityDate" [(ngModel)]="loanAccount.maturityDate">
 								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -46,13 +46,13 @@
 																																																																	<p>
 																																																																																				<input matInput placeholder="paymentDayOfMonth" name="loanAccount.paymentDayOfMonth" [(ngModel)]="loanAccount.paymentDayOfMonth">
 																																																																	<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>currency</mat-label>
 								<input matInput ngDefaultControl placeholder="currency" name="loanAccount.currency" [(ngModel)]="loanAccount.currency">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Bank</mat-label>
 					<mat-select placeholder="Bank"  [(ngModel)]="loanAccount.Bank">
 						@for (bank of banks; track bank.bankId) {
@@ -64,7 +64,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Branch</mat-label>
 					<mat-select placeholder="Branch"  [(ngModel)]="loanAccount.Branch">
 						@for (branch of branchs; track branch.branchId) {
@@ -76,7 +76,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Product</mat-label>
 					<mat-select placeholder="Product"  [(ngModel)]="loanAccount.Product">
 						@for (bankingProduct of bankingProducts; track bankingProduct.bankingProductId) {
@@ -88,7 +88,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>Borrowers</mat-label>
 					<mat-select placeholder="Borrowers" multiple [(ngModel)]="loanAccount.Borrowers">
 						@for (customer of customers; track customer.customerId) {
@@ -100,7 +100,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>RepaymentSchedule</mat-label>
 					<mat-select placeholder="RepaymentSchedule" multiple [(ngModel)]="loanAccount.RepaymentSchedule">
 						@for (repaymentSchedule of repaymentSchedules; track repaymentSchedule.repaymentScheduleId) {
@@ -112,7 +112,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>Payments</mat-label>
 					<mat-select placeholder="Payments" multiple [(ngModel)]="loanAccount.Payments">
 						@for (loanPayment of loanPayments; track loanPayment.loanPaymentId) {
@@ -124,7 +124,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>Collateral</mat-label>
 					<mat-select placeholder="Collateral" multiple [(ngModel)]="loanAccount.Collateral">
 						@for (collateral of collaterals; track collateral.collateralId) {
@@ -136,7 +136,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>FeeCharges</mat-label>
 					<mat-select placeholder="FeeCharges" multiple [(ngModel)]="loanAccount.FeeCharges">
 						@for (feeCharge of feeCharges; track feeCharge.feeChargeId) {
@@ -148,7 +148,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>LoanType</mat-label>
 						<mat-select placeholder="LoanType" name="loanAccount.LoanType" [(ngModel)]="loanAccount.LoanType">
 							@for (LoanType of LoanTypes; track LoanType) {
@@ -159,7 +159,7 @@
 						</mat-select>
 					</mat-form-field>
 																																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>RateType</mat-label>
 						<mat-select placeholder="RateType" name="loanAccount.RateType" [(ngModel)]="loanAccount.RateType">
 							@for (RateType of RateTypes; track RateType) {
@@ -170,7 +170,7 @@
 						</mat-select>
 					</mat-form-field>
 																																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>Compounding</mat-label>
 						<mat-select placeholder="Compounding" name="loanAccount.Compounding" [(ngModel)]="loanAccount.Compounding">
 							@for (InterestCompounding of InterestCompoundings; track InterestCompounding) {
@@ -181,7 +181,7 @@
 						</mat-select>
 					</mat-form-field>
 																																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>Status</mat-label>
 						<mat-select placeholder="Status" name="loanAccount.Status" [(ngModel)]="loanAccount.Status">
 							@for (LoanStatus of LoanStatuss; track LoanStatus) {

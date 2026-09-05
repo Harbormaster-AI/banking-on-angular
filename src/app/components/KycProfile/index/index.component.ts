@@ -10,7 +10,7 @@ import { KycProfile } from '../../../models/KycProfile';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexKycProfileComponent implements OnInit {
+export class IndexKycProfileComponent extemds BaseComponent {
 
     kycProfiles: KycProfile[] = [];
 

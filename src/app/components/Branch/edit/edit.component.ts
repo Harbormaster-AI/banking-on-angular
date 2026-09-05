@@ -1,8 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BranchService } from '../../../services/Branch.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { BranchService } from '../../../services/Branch.service';
+import { SubBaseComponent } from '../../Branch/sub.base.component';
+
 
 @Component({
     selector: 'app-edit-branch',
@@ -10,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })
-export class EditBranchComponent implements OnInit {
+export class EditBranchComponent extends SubBaseComponent implements OnInit {
 
     title = 'Edit Branch';
 

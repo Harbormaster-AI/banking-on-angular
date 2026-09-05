@@ -4,7 +4,7 @@
 	</div>
 
 	<div class="card-body">
-																																																																																																<mat-form-field appearance="legacy">
+																																																																																																<mat-form-field appearance="outline">
 								<mat-label>bookingDate</mat-label>
 								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="bookingDate" name="transaction.bookingDate" [(ngModel)]="transaction.bookingDate">
 								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -12,7 +12,7 @@
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																																																	<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>valueDate</mat-label>
 								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="valueDate" name="transaction.valueDate" [(ngModel)]="transaction.valueDate">
 								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -20,19 +20,19 @@
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																																																	<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>amount</mat-label>
 								<input matInput ngDefaultControl placeholder="amount" name="transaction.amount" [(ngModel)]="transaction.amount">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>description</mat-label>
 								<input matInput ngDefaultControl placeholder="description" name="transaction.description" [(ngModel)]="transaction.description">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Account</mat-label>
 					<mat-select placeholder="Account"  [(ngModel)]="transaction.Account">
 						@for (account of accounts; track account.accountId) {
@@ -44,7 +44,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>ExternalCounterparty</mat-label>
 					<mat-select placeholder="ExternalCounterparty"  [(ngModel)]="transaction.ExternalCounterparty">
 						@for (externalAccount of externalAccounts; track externalAccount.externalAccountId) {
@@ -56,7 +56,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>PaymentCard</mat-label>
 					<mat-select placeholder="PaymentCard"  [(ngModel)]="transaction.PaymentCard">
 						@for (paymentCard of paymentCards; track paymentCard.paymentCardId) {
@@ -68,7 +68,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>FundsTransfer</mat-label>
 					<mat-select placeholder="FundsTransfer"  [(ngModel)]="transaction.FundsTransfer">
 						@for (fundsTransfer of fundsTransfers; track fundsTransfer.fundsTransferId) {
@@ -80,7 +80,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>FxTrade</mat-label>
 					<mat-select placeholder="FxTrade"  [(ngModel)]="transaction.FxTrade">
 						@for (fXTrade of fXTrades; track fXTrade.fXTradeId) {
@@ -92,7 +92,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Dispute</mat-label>
 					<mat-select placeholder="Dispute"  [(ngModel)]="transaction.Dispute">
 						@for (dispute of disputes; track dispute.disputeId) {
@@ -104,7 +104,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>Direction</mat-label>
 						<mat-select placeholder="Direction" name="transaction.Direction" [(ngModel)]="transaction.Direction">
 							@for (TransactionDirection of TransactionDirections; track TransactionDirection) {
@@ -115,7 +115,7 @@
 						</mat-select>
 					</mat-form-field>
 																																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>TransactionType</mat-label>
 						<mat-select placeholder="TransactionType" name="transaction.TransactionType" [(ngModel)]="transaction.TransactionType">
 							@for (TransactionType of TransactionTypes; track TransactionType) {
@@ -126,7 +126,7 @@
 						</mat-select>
 					</mat-form-field>
 																																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>Status</mat-label>
 						<mat-select placeholder="Status" name="transaction.Status" [(ngModel)]="transaction.Status">
 							@for (TransactionStatus of TransactionStatuss; track TransactionStatus) {
@@ -137,7 +137,7 @@
 						</mat-select>
 					</mat-form-field>
 																																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>Channel</mat-label>
 						<mat-select placeholder="Channel" name="transaction.Channel" [(ngModel)]="transaction.Channel">
 							@for (ChannelType of ChannelTypes; track ChannelType) {

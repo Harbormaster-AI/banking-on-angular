@@ -10,7 +10,7 @@ import { ExchangeRate } from '../../../models/ExchangeRate';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexExchangeRateComponent implements OnInit {
+export class IndexExchangeRateComponent extemds BaseComponent {
 
     exchangeRates: ExchangeRate[] = [];
 

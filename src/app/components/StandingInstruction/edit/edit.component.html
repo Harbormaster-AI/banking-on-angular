@@ -4,19 +4,19 @@
 	</div>
 
 	<div class="card-body">
-																	 																																																																															<mat-form-field appearance="legacy">
+																	 																																																																															<mat-form-field appearance="outline">
 								<mat-label>instructionId</mat-label>
 								<input matInput ngDefaultControl placeholder="instructionId" name="standingInstruction.instructionId" [(ngModel)]="standingInstruction.instructionId">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-					 																																																																															<mat-form-field appearance="legacy">
+					 																																																																															<mat-form-field appearance="outline">
 								<mat-label>amount</mat-label>
 								<input matInput ngDefaultControl placeholder="amount" name="standingInstruction.amount" [(ngModel)]="standingInstruction.amount">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-					 																																																																															<mat-form-field appearance="legacy">
+					 																																																																															<mat-form-field appearance="outline">
 								<mat-label>nextExecutionDate</mat-label>
 								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="nextExecutionDate" name="standingInstruction.nextExecutionDate" [(ngModel)]="standingInstruction.nextExecutionDate">
 								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -24,7 +24,7 @@
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																																																	<p>
-					 																																							 								 								<mat-form-field appearance="legacy">
+					 																																							 								 								<mat-form-field appearance="outline">
 					<mat-label>Account</mat-label>
 					<mat-select placeholder="Account"   [compareWith]="compareFn"  [(ngModel)]="standingInstruction.Account">
 						@for (account of accounts; track account.accountId) {
@@ -36,7 +36,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-					 																																							 								 								<mat-form-field appearance="legacy">
+					 																																							 								 								<mat-form-field appearance="outline">
 					<mat-label>Beneficiary</mat-label>
 					<mat-select placeholder="Beneficiary"   [compareWith]="compareFn"  [(ngModel)]="standingInstruction.Beneficiary">
 						@for (externalAccount of externalAccounts; track externalAccount.externalAccountId) {
@@ -48,7 +48,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-					 																																				<mat-form-field appearance="legacy">
+					 																																				<mat-form-field appearance="outline">
 						<mat-label>Frequency</mat-label>
 						<mat-select placeholder="Frequency" name="standingInstruction.Frequency" [(ngModel)]="standingInstruction.Frequency">
 							@for (StandingInstructionFrequency of StandingInstructionFrequencys; track StandingInstructionFrequency) {
@@ -59,7 +59,7 @@
 						</mat-select>
 					</mat-form-field>
 																																	<p>
-					 																																				<mat-form-field appearance="legacy">
+					 																																				<mat-form-field appearance="outline">
 						<mat-label>Status</mat-label>
 						<mat-select placeholder="Status" name="standingInstruction.Status" [(ngModel)]="standingInstruction.Status">
 							@for (StandingInstructionStatus of StandingInstructionStatuss; track StandingInstructionStatus) {

@@ -1,8 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ScreeningResultService } from '../../../services/ScreeningResult.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { ScreeningResultService } from '../../../services/ScreeningResult.service';
+import { SubBaseComponent } from '../../ScreeningResult/sub.base.component';
+
 
 @Component({
     selector: 'app-edit-screeningResult',
@@ -10,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })
-export class EditScreeningResultComponent implements OnInit {
+export class EditScreeningResultComponent extends SubBaseComponent implements OnInit {
 
     title = 'Edit ScreeningResult';
 

@@ -10,7 +10,7 @@ import { ExternalAccount } from '../../../models/ExternalAccount';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexExternalAccountComponent implements OnInit {
+export class IndexExternalAccountComponent extemds BaseComponent {
 
     externalAccounts: ExternalAccount[] = [];
 

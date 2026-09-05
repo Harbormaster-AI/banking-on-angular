@@ -10,7 +10,7 @@ import { RiskAssessment } from '../../../models/RiskAssessment';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexRiskAssessmentComponent implements OnInit {
+export class IndexRiskAssessmentComponent extemds BaseComponent {
 
     riskAssessments: RiskAssessment[] = [];
 

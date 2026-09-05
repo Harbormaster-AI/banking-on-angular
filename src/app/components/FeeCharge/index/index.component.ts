@@ -10,7 +10,7 @@ import { FeeCharge } from '../../../models/FeeCharge';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexFeeChargeComponent implements OnInit {
+export class IndexFeeChargeComponent extemds BaseComponent {
 
     feeCharges: FeeCharge[] = [];
 

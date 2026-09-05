@@ -10,7 +10,7 @@ import { AccountStatement } from '../../../models/AccountStatement';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexAccountStatementComponent implements OnInit {
+export class IndexAccountStatementComponent extemds BaseComponent {
 
     accountStatements: AccountStatement[] = [];
 

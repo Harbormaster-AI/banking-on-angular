@@ -10,7 +10,7 @@ import { FundsTransfer } from '../../../models/FundsTransfer';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexFundsTransferComponent implements OnInit {
+export class IndexFundsTransferComponent extemds BaseComponent {
 
     fundsTransfers: FundsTransfer[] = [];
 

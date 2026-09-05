@@ -1,8 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { KycProfileService } from '../../../services/KycProfile.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { KycProfileService } from '../../../services/KycProfile.service';
+import { SubBaseComponent } from '../../KycProfile/sub.base.component';
+
 
 @Component({
     selector: 'app-edit-kycProfile',
@@ -10,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl: './edit.component.html',
     styleUrls: ['./edit.component.css']
 })
-export class EditKycProfileComponent implements OnInit {
+export class EditKycProfileComponent extends SubBaseComponent implements OnInit {
 
     title = 'Edit KycProfile';
 

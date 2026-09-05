@@ -10,7 +10,7 @@ import { Transaction } from '../../../models/Transaction';
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.css']
 })
-export class IndexTransactionComponent implements OnInit {
+export class IndexTransactionComponent extemds BaseComponent {
 
     transactions: Transaction[] = [];
 

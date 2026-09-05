@@ -4,7 +4,7 @@
 	</div>
 
 	<div class="card-body">
-																																																																																																<mat-form-field appearance="legacy">
+																																																																																																<mat-form-field appearance="outline">
 								<mat-label>grantedOn</mat-label>
 								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="grantedOn" name="consent.grantedOn" [(ngModel)]="consent.grantedOn">
 								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -12,7 +12,7 @@
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																																																	<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>expiresOn</mat-label>
 								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="expiresOn" name="consent.expiresOn" [(ngModel)]="consent.expiresOn">
 								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -20,7 +20,7 @@
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																																																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Customer</mat-label>
 					<mat-select placeholder="Customer"  [(ngModel)]="consent.Customer">
 						@for (customer of customers; track customer.customerId) {
@@ -32,7 +32,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Bank</mat-label>
 					<mat-select placeholder="Bank"  [(ngModel)]="consent.Bank">
 						@for (bank of banks; track bank.bankId) {
@@ -44,7 +44,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																																							<mat-form-field appearance="legacy">
+																																																																							<mat-form-field appearance="outline">
 					<mat-label>AuthorizedAccounts</mat-label>
 					<mat-select placeholder="AuthorizedAccounts" multiple [(ngModel)]="consent.AuthorizedAccounts">
 						@for (account of accounts; track account.accountId) {
@@ -56,7 +56,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>ThirdPartyProvider</mat-label>
 					<mat-select placeholder="ThirdPartyProvider"  [(ngModel)]="consent.ThirdPartyProvider">
 						@for (thirdPartyProvider of thirdPartyProviders; track thirdPartyProvider.thirdPartyProviderId) {
@@ -68,7 +68,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>ConsentType</mat-label>
 						<mat-select placeholder="ConsentType" name="consent.ConsentType" [(ngModel)]="consent.ConsentType">
 							@for (ConsentType of ConsentTypes; track ConsentType) {
@@ -79,7 +79,7 @@
 						</mat-select>
 					</mat-form-field>
 																																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>Status</mat-label>
 						<mat-select placeholder="Status" name="consent.Status" [(ngModel)]="consent.Status">
 							@for (ConsentStatus of ConsentStatuss; track ConsentStatus) {

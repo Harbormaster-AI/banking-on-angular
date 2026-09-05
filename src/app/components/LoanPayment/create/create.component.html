@@ -4,19 +4,19 @@
 	</div>
 
 	<div class="card-body">
-																																																																																																<mat-form-field appearance="legacy">
+																																																																																																<mat-form-field appearance="outline">
 								<mat-label>paymentReference</mat-label>
 								<input matInput ngDefaultControl placeholder="paymentReference" name="loanPayment.paymentReference" [(ngModel)]="loanPayment.paymentReference">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>amount</mat-label>
 								<input matInput ngDefaultControl placeholder="amount" name="loanPayment.amount" [(ngModel)]="loanPayment.amount">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-																																																																																				<mat-form-field appearance="legacy">
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>paymentDate</mat-label>
 								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="paymentDate" name="loanPayment.paymentDate" [(ngModel)]="loanPayment.paymentDate">
 								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -24,7 +24,7 @@
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																																																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>LoanAccount</mat-label>
 					<mat-select placeholder="LoanAccount"  [(ngModel)]="loanPayment.LoanAccount">
 						@for (loanAccount of loanAccounts; track loanAccount.loanAccountId) {
@@ -36,7 +36,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																																								<mat-form-field appearance="legacy">
+																																																								<mat-form-field appearance="outline">
 					<mat-label>Transaction</mat-label>
 					<mat-select placeholder="Transaction"  [(ngModel)]="loanPayment.Transaction">
 						@for (transaction of transactions; track transaction.transactionId) {
@@ -48,7 +48,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>Method</mat-label>
 						<mat-select placeholder="Method" name="loanPayment.Method" [(ngModel)]="loanPayment.Method">
 							@for (PaymentMethod of PaymentMethods; track PaymentMethod) {
@@ -59,7 +59,7 @@
 						</mat-select>
 					</mat-form-field>
 																																	<p>
-																																									<mat-form-field appearance="legacy">
+																																									<mat-form-field appearance="outline">
 						<mat-label>Status</mat-label>
 						<mat-select placeholder="Status" name="loanPayment.Status" [(ngModel)]="loanPayment.Status">
 							@for (PaymentStatus of PaymentStatuss; track PaymentStatus) {

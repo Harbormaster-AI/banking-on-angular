@@ -6,7 +6,7 @@
 	<div class="card-body">
 																	 																																																																															<input matInput placeholder="installmentNumber" name="repaymentSchedule.installmentNumber" [(ngModel)]="repaymentSchedule.installmentNumber">
 																																																																	<p>
-					 																																																																															<mat-form-field appearance="legacy">
+					 																																																																															<mat-form-field appearance="outline">
 								<mat-label>dueDate</mat-label>
 								<input matInput ngDefaultControl [matDatepicker]="picker" placeholder="dueDate" name="repaymentSchedule.dueDate" [(ngModel)]="repaymentSchedule.dueDate">
 								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -14,25 +14,25 @@
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																																																	<p>
-					 																																																																															<mat-form-field appearance="legacy">
+					 																																																																															<mat-form-field appearance="outline">
 								<mat-label>principalDue</mat-label>
 								<input matInput ngDefaultControl placeholder="principalDue" name="repaymentSchedule.principalDue" [(ngModel)]="repaymentSchedule.principalDue">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-					 																																																																															<mat-form-field appearance="legacy">
+					 																																																																															<mat-form-field appearance="outline">
 								<mat-label>interestDue</mat-label>
 								<input matInput ngDefaultControl placeholder="interestDue" name="repaymentSchedule.interestDue" [(ngModel)]="repaymentSchedule.interestDue">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-					 																																																																															<mat-form-field appearance="legacy">
+					 																																																																															<mat-form-field appearance="outline">
 								<mat-label>totalDue</mat-label>
 								<input matInput ngDefaultControl placeholder="totalDue" name="repaymentSchedule.totalDue" [(ngModel)]="repaymentSchedule.totalDue">
 								<mat-hint></mat-hint>
 							</mat-form-field>
 																																												<p>
-					 																																							 								 								<mat-form-field appearance="legacy">
+					 																																							 								 								<mat-form-field appearance="outline">
 					<mat-label>LoanAccount</mat-label>
 					<mat-select placeholder="LoanAccount"   [compareWith]="compareFn"  [(ngModel)]="repaymentSchedule.LoanAccount">
 						@for (loanAccount of loanAccounts; track loanAccount.loanAccountId) {
@@ -44,7 +44,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-					 																																							 								 								<mat-form-field appearance="legacy">
+					 																																							 								 								<mat-form-field appearance="outline">
 					<mat-label>Payment</mat-label>
 					<mat-select placeholder="Payment"   [compareWith]="compareFn"  [(ngModel)]="repaymentSchedule.Payment">
 						@for (loanPayment of loanPayments; track loanPayment.loanPaymentId) {
@@ -56,7 +56,7 @@
 					</mat-select>
 				</mat-form-field>
 																	<p>
-					 																																				<mat-form-field appearance="legacy">
+					 																																				<mat-form-field appearance="outline">
 						<mat-label>Status</mat-label>
 						<mat-select placeholder="Status" name="repaymentSchedule.Status" [(ngModel)]="repaymentSchedule.Status">
 							@for (InstallmentStatus of InstallmentStatuss; track InstallmentStatus) {
