@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {Consent} from '../models/Consent';
 import {CustomerService} from '../services/Customer.service';
 import {BankService} from '../services/Bank.service';
@@ -86,8 +83,8 @@ export class ConsentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateConsent(grantedOn, expiresOn, Customer, Bank, AuthorizedAccounts, ThirdPartyProvider, ConsentType, Status, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/Consent/update/' + id;
+		updateConsent(grantedOn, expiresOn, Customer, Bank, AuthorizedAccounts, ThirdPartyProvider, ConsentType, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/Consent/update/' + id;
 			const obj = {
 				      		grantedOn: grantedOn,
       		expiresOn: expiresOn,
@@ -98,7 +95,6 @@ export class ConsentService extends HelperBaseService {
       		ConsentType: ConsentType,
 			Status: Status
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

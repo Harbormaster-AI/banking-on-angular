@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {BankingProduct} from '../models/BankingProduct';
 import {BankService} from '../services/Bank.service';
 import {AccountService} from '../services/Account.service';
@@ -86,8 +83,8 @@ export class BankingProductService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateBankingProduct(productCode, name, description, Bank, Accounts, LoanAccounts, PaymentCards, ProductCategory, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/BankingProduct/update/' + id;
+		updateBankingProduct(productCode, name, description, Bank, Accounts, LoanAccounts, PaymentCards, ProductCategory, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/BankingProduct/update/' + id;
 			const obj = {
 				      		productCode: productCode,
       		name: name,
@@ -98,7 +95,6 @@ export class BankingProductService extends HelperBaseService {
       		PaymentCards: PaymentCards != null && PaymentCards.length > 0 ? PaymentCards : null,
 			ProductCategory: ProductCategory
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

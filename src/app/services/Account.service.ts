@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {Account} from '../models/Account';
 import {BankService} from '../services/Bank.service';
 import {BranchService} from '../services/Branch.service';
@@ -99,8 +96,8 @@ export class AccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateAccount(accountNumber, iban, accountName, currency, openedOn, closedOn, Bank, Branch, Product, Owners, Transactions, Statements, StandingInstructions, FeeCharges, AccountType, OwnershipType, Status, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/Account/update/' + id;
+		updateAccount(accountNumber, iban, accountName, currency, openedOn, closedOn, Bank, Branch, Product, Owners, Transactions, Statements, StandingInstructions, FeeCharges, AccountType, OwnershipType, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/Account/update/' + id;
 			const obj = {
 				      		accountNumber: accountNumber,
       		iban: iban,
@@ -120,7 +117,6 @@ export class AccountService extends HelperBaseService {
       		OwnershipType: OwnershipType,
 			Status: Status
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {ThirdPartyProvider} from '../models/ThirdPartyProvider';
 import {BankService} from '../services/Bank.service';
 import {ConsentService} from '../services/Consent.service';
@@ -81,8 +78,8 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateThirdPartyProvider(name, registrationId, website, Bank, Consents, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/ThirdPartyProvider/update/' + id;
+		updateThirdPartyProvider(name, registrationId, website, Bank, Consents, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/ThirdPartyProvider/update/' + id;
 			const obj = {
 				      		name: name,
       		registrationId: registrationId,
@@ -90,7 +87,6 @@ export class ThirdPartyProviderService extends HelperBaseService {
       		Bank: Bank != null && Bank.length > 0 ? Bank : null,
 			Consents: Consents != null && Consents.length > 0 ? Consents : null
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {LoanAccount} from '../models/LoanAccount';
 import {BankService} from '../services/Bank.service';
 import {BranchService} from '../services/Branch.service';
@@ -102,8 +99,8 @@ export class LoanAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateLoanAccount(loanNumber, principalAmount, outstandingPrincipal, interestRate, originationDate, maturityDate, paymentDayOfMonth, currency, Bank, Branch, Product, Borrowers, RepaymentSchedule, Payments, Collateral, FeeCharges, LoanType, RateType, Compounding, Status, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/LoanAccount/update/' + id;
+		updateLoanAccount(loanNumber, principalAmount, outstandingPrincipal, interestRate, originationDate, maturityDate, paymentDayOfMonth, currency, Bank, Branch, Product, Borrowers, RepaymentSchedule, Payments, Collateral, FeeCharges, LoanType, RateType, Compounding, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/LoanAccount/update/' + id;
 			const obj = {
 				      		loanNumber: loanNumber,
       		principalAmount: principalAmount,
@@ -126,7 +123,6 @@ export class LoanAccountService extends HelperBaseService {
       		Compounding: Compounding,
 			Status: Status
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

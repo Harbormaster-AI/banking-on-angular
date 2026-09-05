@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {RepaymentSchedule} from '../models/RepaymentSchedule';
 import {LoanAccountService} from '../services/LoanAccount.service';
 import {LoanPaymentService} from '../services/LoanPayment.service';
@@ -84,8 +81,8 @@ export class RepaymentScheduleService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateRepaymentSchedule(installmentNumber, dueDate, principalDue, interestDue, totalDue, LoanAccount, Payment, Status, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/RepaymentSchedule/update/' + id;
+		updateRepaymentSchedule(installmentNumber, dueDate, principalDue, interestDue, totalDue, LoanAccount, Payment, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/RepaymentSchedule/update/' + id;
 			const obj = {
 				      		installmentNumber: installmentNumber,
       		dueDate: dueDate,
@@ -96,7 +93,6 @@ export class RepaymentScheduleService extends HelperBaseService {
       		Payment: Payment != null && Payment.length > 0 ? Payment : null,
 			Status: Status
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

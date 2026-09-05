@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {FundsTransfer} from '../models/FundsTransfer';
 import {AccountService} from '../services/Account.service';
 import {ExternalAccountService} from '../services/ExternalAccount.service';
@@ -91,8 +88,8 @@ export class FundsTransferService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateFundsTransfer(transferReference, amount, requestedDate, executionDate, purpose, feeAmount, SourceAccount, DestinationAccount, ExternalBeneficiary, InitiatedBy, Transactions, Method, Status, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/FundsTransfer/update/' + id;
+		updateFundsTransfer(transferReference, amount, requestedDate, executionDate, purpose, feeAmount, SourceAccount, DestinationAccount, ExternalBeneficiary, InitiatedBy, Transactions, Method, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/FundsTransfer/update/' + id;
 			const obj = {
 				      		transferReference: transferReference,
       		amount: amount,
@@ -108,7 +105,6 @@ export class FundsTransferService extends HelperBaseService {
       		Method: Method,
 			Status: Status
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

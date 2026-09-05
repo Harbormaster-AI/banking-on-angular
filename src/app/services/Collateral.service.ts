@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {Collateral} from '../models/Collateral';
 import {LoanAccountService} from '../services/LoanAccount.service';
 import { HelperBaseService } from './helperbase.service';
@@ -80,8 +77,8 @@ export class CollateralService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateCollateral(appraisedValue, description, location, LoanAccount, CollateralType, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/Collateral/update/' + id;
+		updateCollateral(appraisedValue, description, location, LoanAccount, CollateralType, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/Collateral/update/' + id;
 			const obj = {
 				      		appraisedValue: appraisedValue,
       		description: description,
@@ -89,7 +86,6 @@ export class CollateralService extends HelperBaseService {
       		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
 			CollateralType: CollateralType
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

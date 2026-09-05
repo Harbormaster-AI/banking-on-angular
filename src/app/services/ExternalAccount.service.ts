@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {ExternalAccount} from '../models/ExternalAccount';
 import {CustomerService} from '../services/Customer.service';
 import {TransactionService} from '../services/Transaction.service';
@@ -84,8 +81,8 @@ export class ExternalAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/ExternalAccount/update/' + id;
+		updateExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/ExternalAccount/update/' + id;
 			const obj = {
 				      		name: name,
       		iban: iban,
@@ -96,7 +93,6 @@ export class ExternalAccountService extends HelperBaseService {
       		Customer: Customer != null && Customer.length > 0 ? Customer : null,
 			Transactions: Transactions != null && Transactions.length > 0 ? Transactions : null
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

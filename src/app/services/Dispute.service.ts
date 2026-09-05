@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {Dispute} from '../models/Dispute';
 import {TransactionService} from '../services/Transaction.service';
 import {CustomerService} from '../services/Customer.service';
@@ -86,8 +83,8 @@ export class DisputeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateDispute(disputeReference, raisedOn, reason, Transaction, Customer, Account, PaymentCard, Status, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/Dispute/update/' + id;
+		updateDispute(disputeReference, raisedOn, reason, Transaction, Customer, Account, PaymentCard, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/Dispute/update/' + id;
 			const obj = {
 				      		disputeReference: disputeReference,
       		raisedOn: raisedOn,
@@ -98,7 +95,6 @@ export class DisputeService extends HelperBaseService {
       		PaymentCard: PaymentCard != null && PaymentCard.length > 0 ? PaymentCard : null,
 			Status: Status
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

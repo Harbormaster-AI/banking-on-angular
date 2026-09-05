@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {FeeCharge} from '../models/FeeCharge';
 import {AccountService} from '../services/Account.service';
 import {LoanAccountService} from '../services/LoanAccount.service';
@@ -82,8 +79,8 @@ export class FeeChargeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateFeeCharge(feeCode, amount, appliedOn, Account, LoanAccount, FeeType, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/FeeCharge/update/' + id;
+		updateFeeCharge(feeCode, amount, appliedOn, Account, LoanAccount, FeeType, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/FeeCharge/update/' + id;
 			const obj = {
 				      		feeCode: feeCode,
       		amount: amount,
@@ -92,7 +89,6 @@ export class FeeChargeService extends HelperBaseService {
       		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
 			FeeType: FeeType
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

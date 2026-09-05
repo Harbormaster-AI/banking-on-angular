@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {ATM} from '../models/ATM';
 import {BranchService} from '../services/Branch.service';
 import { HelperBaseService } from './helperbase.service';
@@ -79,15 +76,14 @@ export class ATMService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateATM(terminalId, location, Branch, Status, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/ATM/update/' + id;
+		updateATM(terminalId, location, Branch, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/ATM/update/' + id;
 			const obj = {
 				      		terminalId: terminalId,
       		location: location,
       		Branch: Branch != null && Branch.length > 0 ? Branch : null,
 			Status: Status
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

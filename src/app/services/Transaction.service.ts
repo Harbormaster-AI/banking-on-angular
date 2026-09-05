@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {Transaction} from '../models/Transaction';
 import {AccountService} from '../services/Account.service';
 import {ExternalAccountService} from '../services/ExternalAccount.service';
@@ -94,8 +91,8 @@ export class TransactionService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateTransaction(bookingDate, valueDate, amount, description, Account, ExternalCounterparty, PaymentCard, FundsTransfer, FxTrade, Dispute, Direction, TransactionType, Status, Channel, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/Transaction/update/' + id;
+		updateTransaction(bookingDate, valueDate, amount, description, Account, ExternalCounterparty, PaymentCard, FundsTransfer, FxTrade, Dispute, Direction, TransactionType, Status, Channel, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/Transaction/update/' + id;
 			const obj = {
 				      		bookingDate: bookingDate,
       		valueDate: valueDate,
@@ -112,7 +109,6 @@ export class TransactionService extends HelperBaseService {
       		Status: Status,
 			Channel: Channel
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

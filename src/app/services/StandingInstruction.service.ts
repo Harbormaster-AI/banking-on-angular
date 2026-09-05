@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {StandingInstruction} from '../models/StandingInstruction';
 import {AccountService} from '../services/Account.service';
 import {ExternalAccountService} from '../services/ExternalAccount.service';
@@ -83,8 +80,8 @@ export class StandingInstructionService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateStandingInstruction(instructionId, amount, nextExecutionDate, Account, Beneficiary, Frequency, Status, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/StandingInstruction/update/' + id;
+		updateStandingInstruction(instructionId, amount, nextExecutionDate, Account, Beneficiary, Frequency, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/StandingInstruction/update/' + id;
 			const obj = {
 				      		instructionId: instructionId,
       		amount: amount,
@@ -94,7 +91,6 @@ export class StandingInstructionService extends HelperBaseService {
       		Frequency: Frequency,
 			Status: Status
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

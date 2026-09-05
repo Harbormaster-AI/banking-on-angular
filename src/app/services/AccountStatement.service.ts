@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {AccountStatement} from '../models/AccountStatement';
 import {AccountService} from '../services/Account.service';
 import { HelperBaseService } from './helperbase.service';
@@ -82,8 +79,8 @@ export class AccountStatementService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateAccountStatement(statementNumber, periodStart, periodEnd, openingBalance, closingBalance, Account, DeliveryMethod, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/AccountStatement/update/' + id;
+		updateAccountStatement(statementNumber, periodStart, periodEnd, openingBalance, closingBalance, Account, DeliveryMethod, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/AccountStatement/update/' + id;
 			const obj = {
 				      		statementNumber: statementNumber,
       		periodStart: periodStart,
@@ -93,7 +90,6 @@ export class AccountStatementService extends HelperBaseService {
       		Account: Account != null && Account.length > 0 ? Account : null,
 			DeliveryMethod: DeliveryMethod
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

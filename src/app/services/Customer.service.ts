@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {Customer} from '../models/Customer';
 import {BankService} from '../services/Bank.service';
 import {AccountService} from '../services/Account.service';
@@ -103,8 +100,8 @@ export class CustomerService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateCustomer(firstName, lastName, legalName, dateOfBirth, taxId, email, phone, address, Bank, Accounts, LoanAccounts, PaymentCards, ExternalAccounts, FundsTransfers, Disputes, KycProfiles, Consents, CustomerType, RiskRating, KycStatus, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/Customer/update/' + id;
+		updateCustomer(firstName, lastName, legalName, dateOfBirth, taxId, email, phone, address, Bank, Accounts, LoanAccounts, PaymentCards, ExternalAccounts, FundsTransfers, Disputes, KycProfiles, Consents, CustomerType, RiskRating, KycStatus, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/Customer/update/' + id;
 			const obj = {
 				      		firstName: firstName,
       		lastName: lastName,
@@ -127,7 +124,6 @@ export class CustomerService extends HelperBaseService {
       		RiskRating: RiskRating,
 			KycStatus: KycStatus
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

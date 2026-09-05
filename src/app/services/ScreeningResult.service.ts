@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {ScreeningResult} from '../models/ScreeningResult';
 import {KycProfileService} from '../services/KycProfile.service';
 import { HelperBaseService } from './helperbase.service';
@@ -79,15 +76,14 @@ export class ScreeningResultService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateScreeningResult(screeningDate, provider, KycProfile, Outcome, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/ScreeningResult/update/' + id;
+		updateScreeningResult(screeningDate, provider, KycProfile, Outcome, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/ScreeningResult/update/' + id;
 			const obj = {
 				      		screeningDate: screeningDate,
       		provider: provider,
       		KycProfile: KycProfile != null && KycProfile.length > 0 ? KycProfile : null,
 			Outcome: Outcome
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

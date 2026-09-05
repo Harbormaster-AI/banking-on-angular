@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {Bank} from '../models/Bank';
 import {BranchService} from '../services/Branch.service';
 import {BankingProductService} from '../services/BankingProduct.service';
@@ -97,8 +94,8 @@ export class BankService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateBank(name, legalName, swiftBic, headquartersCountry, website, Branches, Products, Customers, Accounts, PaymentCards, LoanAccounts, ExchangeRates, Consents, ThirdPartyProviders, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/Bank/update/' + id;
+		updateBank(name, legalName, swiftBic, headquartersCountry, website, Branches, Products, Customers, Accounts, PaymentCards, LoanAccounts, ExchangeRates, Consents, ThirdPartyProviders, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/Bank/update/' + id;
 			const obj = {
 				      		name: name,
       		legalName: legalName,
@@ -115,7 +112,6 @@ export class BankService extends HelperBaseService {
       		Consents: Consents != null && Consents.length > 0 ? Consents : null,
 			ThirdPartyProviders: ThirdPartyProviders != null && ThirdPartyProviders.length > 0 ? ThirdPartyProviders : null
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

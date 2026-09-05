@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {IdentityDocument} from '../models/IdentityDocument';
 import {KycProfileService} from '../services/KycProfile.service';
 import { HelperBaseService } from './helperbase.service';
@@ -80,8 +77,8 @@ export class IdentityDocumentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateIdentityDocument(documentNumber, issuingCountry, expirationDate, KycProfile, DocumentType, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/IdentityDocument/update/' + id;
+		updateIdentityDocument(documentNumber, issuingCountry, expirationDate, KycProfile, DocumentType, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/IdentityDocument/update/' + id;
 			const obj = {
 				      		documentNumber: documentNumber,
       		issuingCountry: issuingCountry,
@@ -89,7 +86,6 @@ export class IdentityDocumentService extends HelperBaseService {
       		KycProfile: KycProfile != null && KycProfile.length > 0 ? KycProfile : null,
 			DocumentType: DocumentType
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

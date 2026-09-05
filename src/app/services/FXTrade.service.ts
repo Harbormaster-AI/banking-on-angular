@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {FXTrade} from '../models/FXTrade';
 import {CustomerService} from '../services/Customer.service';
 import {BankService} from '../services/Bank.service';
@@ -92,8 +89,8 @@ export class FXTradeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateFXTrade(tradeReference, tradeDate, settlementDate, amountSold, amountBought, rate, Customer, Bank, ExchangeRate, SourceAccount, DestinationAccount, Transaction, Status, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/FXTrade/update/' + id;
+		updateFXTrade(tradeReference, tradeDate, settlementDate, amountSold, amountBought, rate, Customer, Bank, ExchangeRate, SourceAccount, DestinationAccount, Transaction, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/FXTrade/update/' + id;
 			const obj = {
 				      		tradeReference: tradeReference,
       		tradeDate: tradeDate,
@@ -109,7 +106,6 @@ export class FXTradeService extends HelperBaseService {
       		Transaction: Transaction != null && Transaction.length > 0 ? Transaction : null,
 			Status: Status
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

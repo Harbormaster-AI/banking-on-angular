@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {PaymentCard} from '../models/PaymentCard';
 import {BankService} from '../services/Bank.service';
 import {AccountService} from '../services/Account.service';
@@ -89,8 +86,8 @@ export class PaymentCardService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updatePaymentCard(cardNumber, embossedName, expiryMonth, expiryYear, Bank, Account, Customer, Transactions, CardType, CardStatus, Network, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/PaymentCard/update/' + id;
+		updatePaymentCard(cardNumber, embossedName, expiryMonth, expiryYear, Bank, Account, Customer, Transactions, CardType, CardStatus, Network, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/PaymentCard/update/' + id;
 			const obj = {
 				      		cardNumber: cardNumber,
       		embossedName: embossedName,
@@ -104,7 +101,6 @@ export class PaymentCardService extends HelperBaseService {
       		CardStatus: CardStatus,
 			Network: Network
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {ExchangeRate} from '../models/ExchangeRate';
 import {BankService} from '../services/Bank.service';
 import {FXTradeService} from '../services/FXTrade.service';
@@ -83,8 +80,8 @@ export class ExchangeRateService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateExchangeRate(baseCurrency, counterCurrency, rate, asOf, source, Bank, FxTrades, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/ExchangeRate/update/' + id;
+		updateExchangeRate(baseCurrency, counterCurrency, rate, asOf, source, Bank, FxTrades, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/ExchangeRate/update/' + id;
 			const obj = {
 				      		baseCurrency: baseCurrency,
       		counterCurrency: counterCurrency,
@@ -94,7 +91,6 @@ export class ExchangeRateService extends HelperBaseService {
       		Bank: Bank != null && Bank.length > 0 ? Bank : null,
 			FxTrades: FxTrades != null && FxTrades.length > 0 ? FxTrades : null
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

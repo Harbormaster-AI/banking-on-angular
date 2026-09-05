@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {LoanPayment} from '../models/LoanPayment';
 import {LoanAccountService} from '../services/LoanAccount.service';
 import {TransactionService} from '../services/Transaction.service';
@@ -83,8 +80,8 @@ export class LoanPaymentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateLoanPayment(paymentReference, amount, paymentDate, LoanAccount, Transaction, Method, Status, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/LoanPayment/update/' + id;
+		updateLoanPayment(paymentReference, amount, paymentDate, LoanAccount, Transaction, Method, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/LoanPayment/update/' + id;
 			const obj = {
 				      		paymentReference: paymentReference,
       		amount: amount,
@@ -94,7 +91,6 @@ export class LoanPaymentService extends HelperBaseService {
       		Method: Method,
 			Status: Status
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 

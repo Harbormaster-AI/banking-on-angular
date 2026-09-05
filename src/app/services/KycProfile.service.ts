@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 import {KycProfile} from '../models/KycProfile';
 import {CustomerService} from '../services/Customer.service';
 import {IdentityDocumentService} from '../services/IdentityDocument.service';
@@ -85,8 +82,8 @@ export class KycProfileService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateKycProfile(profileId, lastReviewedOn, Customer, IdentityDocuments, RiskAssessments, Screenings, Status, id)  :  Observable<any>  {
-					const uri = this.apiUrl + '/KycProfile/update/' + id;
+		updateKycProfile(profileId, lastReviewedOn, Customer, IdentityDocuments, RiskAssessments, Screenings, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/KycProfile/update/' + id;
 			const obj = {
 				      		profileId: profileId,
       		lastReviewedOn: lastReviewedOn,
@@ -96,7 +93,6 @@ export class KycProfileService extends HelperBaseService {
       		Screenings: Screenings != null && Screenings.length > 0 ? Screenings : null,
 			Status: Status
 			};
-		}
 		return this.http.post(uri, obj);
 	}
 
