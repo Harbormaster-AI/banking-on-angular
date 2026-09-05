@@ -98,7 +98,7 @@ export class IdentityDocumentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteIdentityDocument(id)  : Promise<any> {
+	deleteIdentityDocument(id)  : Observable<any> {
 		const uri = this.apiUrl + '/IdentityDocument/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

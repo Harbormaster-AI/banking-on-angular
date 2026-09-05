@@ -107,7 +107,7 @@ export class BankingProductService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteBankingProduct(id)  : Promise<any> {
+	deleteBankingProduct(id)  : Observable<any> {
 		const uri = this.apiUrl + '/BankingProduct/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

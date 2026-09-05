@@ -45,7 +45,7 @@ export class EditFeeChargeComponent extends SubBaseComponent implements OnInit {
     updateFeeCharge(feeCode, amount, appliedOn, Account, LoanAccount, FeeType): void {
         this.route.params.subscribe(params => {
                         this.service.updateFeeCharge(feeCode, amount, appliedOn, Account, LoanAccount, FeeType, params['id'])
-                            .then(() => {
+                            .subscribe(() => {
                     this.router.navigate(['/indexFeeCharge']);
                 });
         });

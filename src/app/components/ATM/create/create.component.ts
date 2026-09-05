@@ -41,10 +41,10 @@ export class CreateATMComponent extends SubBaseComponent implements OnInit {
     addATM(terminalId, location, Branch, Status): void {
         this.aTMService
         .addATM(terminalId, location, Branch, Status)
-.then(() => {
-        this.router.navigate(['/indexATM']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexATM']);
+            });
+    }
 
     ngOnInit(): void {
     }

@@ -47,7 +47,7 @@ export class EditDisputeComponent extends SubBaseComponent implements OnInit {
     updateDispute(disputeReference, raisedOn, reason, Transaction, Customer, Account, PaymentCard, Status): void {
         this.route.params.subscribe(params => {
                         this.service.updateDispute(disputeReference, raisedOn, reason, Transaction, Customer, Account, PaymentCard, Status, params['id'])
-                            .then(() => {
+                            .subscribe(() => {
                     this.router.navigate(['/indexDispute']);
                 });
         });

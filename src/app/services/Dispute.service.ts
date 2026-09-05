@@ -107,7 +107,7 @@ export class DisputeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteDispute(id)  : Promise<any> {
+	deleteDispute(id)  : Observable<any> {
 		const uri = this.apiUrl + '/Dispute/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

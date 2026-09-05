@@ -45,10 +45,10 @@ export class CreateExternalAccountComponent extends SubBaseComponent implements 
     addExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions): void {
         this.externalAccountService
         .addExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions)
-.then(() => {
-        this.router.navigate(['/indexExternalAccount']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexExternalAccount']);
+            });
+    }
 
     ngOnInit(): void {
     }

@@ -107,7 +107,7 @@ export class ConsentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteConsent(id)  : Promise<any> {
+	deleteConsent(id)  : Observable<any> {
 		const uri = this.apiUrl + '/Consent/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

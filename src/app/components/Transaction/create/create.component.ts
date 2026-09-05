@@ -51,10 +51,10 @@ export class CreateTransactionComponent extends SubBaseComponent implements OnIn
     addTransaction(bookingDate, valueDate, amount, description, Account, ExternalCounterparty, PaymentCard, FundsTransfer, FxTrade, Dispute, Direction, TransactionType, Status, Channel): void {
         this.transactionService
         .addTransaction(bookingDate, valueDate, amount, description, Account, ExternalCounterparty, PaymentCard, FundsTransfer, FxTrade, Dispute, Direction, TransactionType, Status, Channel)
-.then(() => {
-        this.router.navigate(['/indexTransaction']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexTransaction']);
+            });
+    }
 
     ngOnInit(): void {
     }

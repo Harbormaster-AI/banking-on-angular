@@ -46,10 +46,10 @@ export class CreateBranchComponent extends SubBaseComponent implements OnInit {
     addBranch(name, branchCode, address, phone, openingHours, Bank, Accounts, LoanAccounts, Atms): void {
         this.branchService
         .addBranch(name, branchCode, address, phone, openingHours, Bank, Accounts, LoanAccounts, Atms)
-.then(() => {
-        this.router.navigate(['/indexBranch']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexBranch']);
+            });
+    }
 
     ngOnInit(): void {
     }

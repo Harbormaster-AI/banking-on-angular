@@ -121,7 +121,7 @@ export class TransactionService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteTransaction(id)  : Promise<any> {
+	deleteTransaction(id)  : Observable<any> {
 		const uri = this.apiUrl + '/Transaction/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

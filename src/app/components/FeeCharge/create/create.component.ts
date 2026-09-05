@@ -43,10 +43,10 @@ export class CreateFeeChargeComponent extends SubBaseComponent implements OnInit
     addFeeCharge(feeCode, amount, appliedOn, Account, LoanAccount, FeeType): void {
         this.feeChargeService
         .addFeeCharge(feeCode, amount, appliedOn, Account, LoanAccount, FeeType)
-.then(() => {
-        this.router.navigate(['/indexFeeCharge']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexFeeCharge']);
+            });
+    }
 
     ngOnInit(): void {
     }

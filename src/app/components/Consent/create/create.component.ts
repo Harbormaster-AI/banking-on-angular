@@ -45,10 +45,10 @@ export class CreateConsentComponent extends SubBaseComponent implements OnInit {
     addConsent(grantedOn, expiresOn, Customer, Bank, AuthorizedAccounts, ThirdPartyProvider, ConsentType, Status): void {
         this.consentService
         .addConsent(grantedOn, expiresOn, Customer, Bank, AuthorizedAccounts, ThirdPartyProvider, ConsentType, Status)
-.then(() => {
-        this.router.navigate(['/indexConsent']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexConsent']);
+            });
+    }
 
     ngOnInit(): void {
     }

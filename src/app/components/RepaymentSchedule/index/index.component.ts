@@ -31,7 +31,7 @@ export class IndexRepaymentScheduleComponent implements OnInit {
 
     deleteRepaymentSchedule(id: any): void {
         this.service.deleteRepaymentSchedule(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getRepaymentSchedules();
             });
     }

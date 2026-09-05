@@ -31,7 +31,7 @@ export class IndexRiskAssessmentComponent implements OnInit {
 
     deleteRiskAssessment(id: any): void {
         this.service.deleteRiskAssessment(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getRiskAssessments();
             });
     }

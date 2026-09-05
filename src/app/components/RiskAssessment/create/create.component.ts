@@ -41,10 +41,10 @@ export class CreateRiskAssessmentComponent extends SubBaseComponent implements O
     addRiskAssessment(score, assessedOn, KycProfile, Rating): void {
         this.riskAssessmentService
         .addRiskAssessment(score, assessedOn, KycProfile, Rating)
-.then(() => {
-        this.router.navigate(['/indexRiskAssessment']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexRiskAssessment']);
+            });
+    }
 
     ngOnInit(): void {
     }

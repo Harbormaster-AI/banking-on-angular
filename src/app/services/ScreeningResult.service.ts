@@ -96,7 +96,7 @@ export class ScreeningResultService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteScreeningResult(id)  : Promise<any> {
+	deleteScreeningResult(id)  : Observable<any> {
 		const uri = this.apiUrl + '/ScreeningResult/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

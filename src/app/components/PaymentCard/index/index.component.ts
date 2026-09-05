@@ -31,7 +31,7 @@ export class IndexPaymentCardComponent implements OnInit {
 
     deletePaymentCard(id: any): void {
         this.service.deletePaymentCard(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getPaymentCards();
             });
     }

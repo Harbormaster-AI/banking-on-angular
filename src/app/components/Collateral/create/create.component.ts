@@ -42,10 +42,10 @@ export class CreateCollateralComponent extends SubBaseComponent implements OnIni
     addCollateral(appraisedValue, description, location, LoanAccount, CollateralType): void {
         this.collateralService
         .addCollateral(appraisedValue, description, location, LoanAccount, CollateralType)
-.then(() => {
-        this.router.navigate(['/indexCollateral']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexCollateral']);
+            });
+    }
 
     ngOnInit(): void {
     }

@@ -31,7 +31,7 @@ export class IndexExternalAccountComponent implements OnInit {
 
     deleteExternalAccount(id: any): void {
         this.service.deleteExternalAccount(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getExternalAccounts();
             });
     }

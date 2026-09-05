@@ -59,7 +59,7 @@ export class EditCustomerComponent extends SubBaseComponent implements OnInit {
     updateCustomer(firstName, lastName, legalName, dateOfBirth, taxId, email, phone, address, Bank, Accounts, LoanAccounts, PaymentCards, ExternalAccounts, FundsTransfers, Disputes, KycProfiles, Consents, CustomerType, RiskRating, KycStatus): void {
         this.route.params.subscribe(params => {
                         this.service.updateCustomer(firstName, lastName, legalName, dateOfBirth, taxId, email, phone, address, Bank, Accounts, LoanAccounts, PaymentCards, ExternalAccounts, FundsTransfers, Disputes, KycProfiles, Consents, CustomerType, RiskRating, KycStatus, params['id'])
-                            .then(() => {
+                            .subscribe(() => {
                     this.router.navigate(['/indexCustomer']);
                 });
         });

@@ -31,7 +31,7 @@ export class IndexThirdPartyProviderComponent implements OnInit {
 
     deleteThirdPartyProvider(id: any): void {
         this.service.deleteThirdPartyProvider(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getThirdPartyProviders();
             });
     }

@@ -124,7 +124,7 @@ export class BankService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteBank(id)  : Promise<any> {
+	deleteBank(id)  : Observable<any> {
 		const uri = this.apiUrl + '/Bank/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

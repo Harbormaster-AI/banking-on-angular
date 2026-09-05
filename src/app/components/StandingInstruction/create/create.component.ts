@@ -44,10 +44,10 @@ export class CreateStandingInstructionComponent extends SubBaseComponent impleme
     addStandingInstruction(instructionId, amount, nextExecutionDate, Account, Beneficiary, Frequency, Status): void {
         this.standingInstructionService
         .addStandingInstruction(instructionId, amount, nextExecutionDate, Account, Beneficiary, Frequency, Status)
-.then(() => {
-        this.router.navigate(['/indexStandingInstruction']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexStandingInstruction']);
+            });
+    }
 
     ngOnInit(): void {
     }

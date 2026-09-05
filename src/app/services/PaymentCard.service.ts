@@ -113,7 +113,7 @@ export class PaymentCardService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deletePaymentCard(id)  : Promise<any> {
+	deletePaymentCard(id)  : Observable<any> {
 		const uri = this.apiUrl + '/PaymentCard/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

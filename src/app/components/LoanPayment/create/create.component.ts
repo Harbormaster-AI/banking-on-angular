@@ -44,10 +44,10 @@ export class CreateLoanPaymentComponent extends SubBaseComponent implements OnIn
     addLoanPayment(paymentReference, amount, paymentDate, LoanAccount, Transaction, Method, Status): void {
         this.loanPaymentService
         .addLoanPayment(paymentReference, amount, paymentDate, LoanAccount, Transaction, Method, Status)
-.then(() => {
-        this.router.navigate(['/indexLoanPayment']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexLoanPayment']);
+            });
+    }
 
     ngOnInit(): void {
     }

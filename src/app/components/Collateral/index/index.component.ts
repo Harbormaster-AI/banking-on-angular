@@ -31,7 +31,7 @@ export class IndexCollateralComponent implements OnInit {
 
     deleteCollateral(id: any): void {
         this.service.deleteCollateral(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getCollaterals();
             });
     }

@@ -44,7 +44,7 @@ export class EditCollateralComponent extends SubBaseComponent implements OnInit 
     updateCollateral(appraisedValue, description, location, LoanAccount, CollateralType): void {
         this.route.params.subscribe(params => {
                         this.service.updateCollateral(appraisedValue, description, location, LoanAccount, CollateralType, params['id'])
-                            .then(() => {
+                            .subscribe(() => {
                     this.router.navigate(['/indexCollateral']);
                 });
         });

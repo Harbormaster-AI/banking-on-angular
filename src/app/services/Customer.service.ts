@@ -136,7 +136,7 @@ export class CustomerService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteCustomer(id)  : Promise<any> {
+	deleteCustomer(id)  : Observable<any> {
 		const uri = this.apiUrl + '/Customer/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

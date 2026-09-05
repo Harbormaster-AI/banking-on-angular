@@ -31,7 +31,7 @@ export class IndexScreeningResultComponent implements OnInit {
 
     deleteScreeningResult(id: any): void {
         this.service.deleteScreeningResult(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getScreeningResults();
             });
     }

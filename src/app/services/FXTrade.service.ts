@@ -118,7 +118,7 @@ export class FXTradeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteFXTrade(id)  : Promise<any> {
+	deleteFXTrade(id)  : Observable<any> {
 		const uri = this.apiUrl + '/FXTrade/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

@@ -43,7 +43,7 @@ export class EditScreeningResultComponent extends SubBaseComponent implements On
     updateScreeningResult(screeningDate, provider, KycProfile, Outcome): void {
         this.route.params.subscribe(params => {
                         this.service.updateScreeningResult(screeningDate, provider, KycProfile, Outcome, params['id'])
-                            .then(() => {
+                            .subscribe(() => {
                     this.router.navigate(['/indexScreeningResult']);
                 });
         });

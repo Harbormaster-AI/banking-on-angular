@@ -42,10 +42,10 @@ export class CreateThirdPartyProviderComponent extends SubBaseComponent implemen
     addThirdPartyProvider(name, registrationId, website, Bank, Consents): void {
         this.thirdPartyProviderService
         .addThirdPartyProvider(name, registrationId, website, Bank, Consents)
-.then(() => {
-        this.router.navigate(['/indexThirdPartyProvider']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexThirdPartyProvider']);
+            });
+    }
 
     ngOnInit(): void {
     }

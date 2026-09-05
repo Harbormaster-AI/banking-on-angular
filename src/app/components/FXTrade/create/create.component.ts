@@ -50,10 +50,10 @@ export class CreateFXTradeComponent extends SubBaseComponent implements OnInit {
     addFXTrade(tradeReference, tradeDate, settlementDate, amountSold, amountBought, rate, Customer, Bank, ExchangeRate, SourceAccount, DestinationAccount, Transaction, Status): void {
         this.fXTradeService
         .addFXTrade(tradeReference, tradeDate, settlementDate, amountSold, amountBought, rate, Customer, Bank, ExchangeRate, SourceAccount, DestinationAccount, Transaction, Status)
-.then(() => {
-        this.router.navigate(['/indexFXTrade']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexFXTrade']);
+            });
+    }
 
     ngOnInit(): void {
     }

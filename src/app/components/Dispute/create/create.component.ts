@@ -45,10 +45,10 @@ export class CreateDisputeComponent extends SubBaseComponent implements OnInit {
     addDispute(disputeReference, raisedOn, reason, Transaction, Customer, Account, PaymentCard, Status): void {
         this.disputeService
         .addDispute(disputeReference, raisedOn, reason, Transaction, Customer, Account, PaymentCard, Status)
-.then(() => {
-        this.router.navigate(['/indexDispute']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexDispute']);
+            });
+    }
 
     ngOnInit(): void {
     }

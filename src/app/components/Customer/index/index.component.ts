@@ -31,7 +31,7 @@ export class IndexCustomerComponent implements OnInit {
 
     deleteCustomer(id: any): void {
         this.service.deleteCustomer(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getCustomers();
             });
     }

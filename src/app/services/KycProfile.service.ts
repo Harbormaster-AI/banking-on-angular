@@ -105,7 +105,7 @@ export class KycProfileService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteKycProfile(id)  : Promise<any> {
+	deleteKycProfile(id)  : Observable<any> {
 		const uri = this.apiUrl + '/KycProfile/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

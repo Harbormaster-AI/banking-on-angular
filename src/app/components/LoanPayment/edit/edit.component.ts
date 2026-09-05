@@ -46,7 +46,7 @@ export class EditLoanPaymentComponent extends SubBaseComponent implements OnInit
     updateLoanPayment(paymentReference, amount, paymentDate, LoanAccount, Transaction, Method, Status): void {
         this.route.params.subscribe(params => {
                         this.service.updateLoanPayment(paymentReference, amount, paymentDate, LoanAccount, Transaction, Method, Status, params['id'])
-                            .then(() => {
+                            .subscribe(() => {
                     this.router.navigate(['/indexLoanPayment']);
                 });
         });

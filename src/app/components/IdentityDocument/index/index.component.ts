@@ -31,7 +31,7 @@ export class IndexIdentityDocumentComponent implements OnInit {
 
     deleteIdentityDocument(id: any): void {
         this.service.deleteIdentityDocument(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getIdentityDocuments();
             });
     }

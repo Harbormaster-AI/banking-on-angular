@@ -53,7 +53,7 @@ export class EditBankComponent extends SubBaseComponent implements OnInit {
     updateBank(name, legalName, swiftBic, headquartersCountry, website, Branches, Products, Customers, Accounts, PaymentCards, LoanAccounts, ExchangeRates, Consents, ThirdPartyProviders): void {
         this.route.params.subscribe(params => {
                         this.service.updateBank(name, legalName, swiftBic, headquartersCountry, website, Branches, Products, Customers, Accounts, PaymentCards, LoanAccounts, ExchangeRates, Consents, ThirdPartyProviders, params['id'])
-                            .then(() => {
+                            .subscribe(() => {
                     this.router.navigate(['/indexBank']);
                 });
         });

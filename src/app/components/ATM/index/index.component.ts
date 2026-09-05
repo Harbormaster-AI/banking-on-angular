@@ -31,7 +31,7 @@ export class IndexATMComponent implements OnInit {
 
     deleteATM(id: any): void {
         this.service.deleteATM(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getATMs();
             });
     }

@@ -105,7 +105,7 @@ export class ExternalAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteExternalAccount(id)  : Promise<any> {
+	deleteExternalAccount(id)  : Observable<any> {
 		const uri = this.apiUrl + '/ExternalAccount/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

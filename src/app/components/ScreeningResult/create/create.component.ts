@@ -41,10 +41,10 @@ export class CreateScreeningResultComponent extends SubBaseComponent implements 
     addScreeningResult(screeningDate, provider, KycProfile, Outcome): void {
         this.screeningResultService
         .addScreeningResult(screeningDate, provider, KycProfile, Outcome)
-.then(() => {
-        this.router.navigate(['/indexScreeningResult']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexScreeningResult']);
+            });
+    }
 
     ngOnInit(): void {
     }

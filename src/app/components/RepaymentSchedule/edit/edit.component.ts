@@ -47,7 +47,7 @@ export class EditRepaymentScheduleComponent extends SubBaseComponent implements 
     updateRepaymentSchedule(installmentNumber, dueDate, principalDue, interestDue, totalDue, LoanAccount, Payment, Status): void {
         this.route.params.subscribe(params => {
                         this.service.updateRepaymentSchedule(installmentNumber, dueDate, principalDue, interestDue, totalDue, LoanAccount, Payment, Status, params['id'])
-                            .then(() => {
+                            .subscribe(() => {
                     this.router.navigate(['/indexRepaymentSchedule']);
                 });
         });

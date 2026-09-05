@@ -57,10 +57,10 @@ export class CreateCustomerComponent extends SubBaseComponent implements OnInit 
     addCustomer(firstName, lastName, legalName, dateOfBirth, taxId, email, phone, address, Bank, Accounts, LoanAccounts, PaymentCards, ExternalAccounts, FundsTransfers, Disputes, KycProfiles, Consents, CustomerType, RiskRating, KycStatus): void {
         this.customerService
         .addCustomer(firstName, lastName, legalName, dateOfBirth, taxId, email, phone, address, Bank, Accounts, LoanAccounts, PaymentCards, ExternalAccounts, FundsTransfers, Disputes, KycProfiles, Consents, CustomerType, RiskRating, KycStatus)
-.then(() => {
-        this.router.navigate(['/indexCustomer']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexCustomer']);
+            });
+    }
 
     ngOnInit(): void {
     }

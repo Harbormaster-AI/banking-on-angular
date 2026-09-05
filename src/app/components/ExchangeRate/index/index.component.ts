@@ -31,7 +31,7 @@ export class IndexExchangeRateComponent implements OnInit {
 
     deleteExchangeRate(id: any): void {
         this.service.deleteExchangeRate(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getExchangeRates();
             });
     }

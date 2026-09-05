@@ -44,10 +44,10 @@ export class CreateKycProfileComponent extends SubBaseComponent implements OnIni
     addKycProfile(profileId, lastReviewedOn, Customer, IdentityDocuments, RiskAssessments, Screenings, Status): void {
         this.kycProfileService
         .addKycProfile(profileId, lastReviewedOn, Customer, IdentityDocuments, RiskAssessments, Screenings, Status)
-.then(() => {
-        this.router.navigate(['/indexKycProfile']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexKycProfile']);
+            });
+    }
 
     ngOnInit(): void {
     }

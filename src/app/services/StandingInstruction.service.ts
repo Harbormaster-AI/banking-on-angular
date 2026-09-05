@@ -103,7 +103,7 @@ export class StandingInstructionService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteStandingInstruction(id)  : Promise<any> {
+	deleteStandingInstruction(id)  : Observable<any> {
 		const uri = this.apiUrl + '/StandingInstruction/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

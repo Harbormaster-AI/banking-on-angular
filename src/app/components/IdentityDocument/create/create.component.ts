@@ -42,10 +42,10 @@ export class CreateIdentityDocumentComponent extends SubBaseComponent implements
     addIdentityDocument(documentNumber, issuingCountry, expirationDate, KycProfile, DocumentType): void {
         this.identityDocumentService
         .addIdentityDocument(documentNumber, issuingCountry, expirationDate, KycProfile, DocumentType)
-.then(() => {
-        this.router.navigate(['/indexIdentityDocument']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexIdentityDocument']);
+            });
+    }
 
     ngOnInit(): void {
     }

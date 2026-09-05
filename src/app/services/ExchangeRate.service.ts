@@ -103,7 +103,7 @@ export class ExchangeRateService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteExchangeRate(id)  : Promise<any> {
+	deleteExchangeRate(id)  : Observable<any> {
 		const uri = this.apiUrl + '/ExchangeRate/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

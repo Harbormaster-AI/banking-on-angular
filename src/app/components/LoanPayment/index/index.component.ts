@@ -31,7 +31,7 @@ export class IndexLoanPaymentComponent implements OnInit {
 
     deleteLoanPayment(id: any): void {
         this.service.deleteLoanPayment(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getLoanPayments();
             });
     }

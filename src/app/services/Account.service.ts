@@ -129,7 +129,7 @@ export class AccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteAccount(id)  : Promise<any> {
+	deleteAccount(id)  : Observable<any> {
 		const uri = this.apiUrl + '/Account/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

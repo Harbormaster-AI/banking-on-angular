@@ -98,7 +98,7 @@ export class CollateralService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteCollateral(id)  : Promise<any> {
+	deleteCollateral(id)  : Observable<any> {
 		const uri = this.apiUrl + '/Collateral/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

@@ -50,10 +50,10 @@ export class CreateFundsTransferComponent extends SubBaseComponent implements On
     addFundsTransfer(transferReference, amount, requestedDate, executionDate, purpose, feeAmount, SourceAccount, DestinationAccount, ExternalBeneficiary, InitiatedBy, Transactions, Method, Status): void {
         this.fundsTransferService
         .addFundsTransfer(transferReference, amount, requestedDate, executionDate, purpose, feeAmount, SourceAccount, DestinationAccount, ExternalBeneficiary, InitiatedBy, Transactions, Method, Status)
-.then(() => {
-        this.router.navigate(['/indexFundsTransfer']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexFundsTransfer']);
+            });
+    }
 
     ngOnInit(): void {
     }

@@ -31,7 +31,7 @@ export class IndexStandingInstructionComponent implements OnInit {
 
     deleteStandingInstruction(id: any): void {
         this.service.deleteStandingInstruction(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getStandingInstructions();
             });
     }

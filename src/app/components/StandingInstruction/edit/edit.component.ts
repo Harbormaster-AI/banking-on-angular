@@ -46,7 +46,7 @@ export class EditStandingInstructionComponent extends SubBaseComponent implement
     updateStandingInstruction(instructionId, amount, nextExecutionDate, Account, Beneficiary, Frequency, Status): void {
         this.route.params.subscribe(params => {
                         this.service.updateStandingInstruction(instructionId, amount, nextExecutionDate, Account, Beneficiary, Frequency, Status, params['id'])
-                            .then(() => {
+                            .subscribe(() => {
                     this.router.navigate(['/indexStandingInstruction']);
                 });
         });

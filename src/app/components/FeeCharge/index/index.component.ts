@@ -31,7 +31,7 @@ export class IndexFeeChargeComponent implements OnInit {
 
     deleteFeeCharge(id: any): void {
         this.service.deleteFeeCharge(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getFeeCharges();
             });
     }

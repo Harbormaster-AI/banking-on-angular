@@ -105,7 +105,7 @@ export class RepaymentScheduleService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteRepaymentSchedule(id)  : Promise<any> {
+	deleteRepaymentSchedule(id)  : Observable<any> {
 		const uri = this.apiUrl + '/RepaymentSchedule/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

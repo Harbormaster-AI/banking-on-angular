@@ -47,7 +47,7 @@ export class EditExternalAccountComponent extends SubBaseComponent implements On
     updateExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions): void {
         this.route.params.subscribe(params => {
                         this.service.updateExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions, params['id'])
-                            .then(() => {
+                            .subscribe(() => {
                     this.router.navigate(['/indexExternalAccount']);
                 });
         });

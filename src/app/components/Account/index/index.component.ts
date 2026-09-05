@@ -31,7 +31,7 @@ export class IndexAccountComponent implements OnInit {
 
     deleteAccount(id: any): void {
         this.service.deleteAccount(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getAccounts();
             });
     }

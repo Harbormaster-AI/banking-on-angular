@@ -44,7 +44,7 @@ export class EditThirdPartyProviderComponent extends SubBaseComponent implements
     updateThirdPartyProvider(name, registrationId, website, Bank, Consents): void {
         this.route.params.subscribe(params => {
                         this.service.updateThirdPartyProvider(name, registrationId, website, Bank, Consents, params['id'])
-                            .then(() => {
+                            .subscribe(() => {
                     this.router.navigate(['/indexThirdPartyProvider']);
                 });
         });

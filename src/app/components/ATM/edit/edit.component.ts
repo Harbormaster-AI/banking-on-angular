@@ -43,7 +43,7 @@ export class EditATMComponent extends SubBaseComponent implements OnInit {
     updateATM(terminalId, location, Branch, Status): void {
         this.route.params.subscribe(params => {
                         this.service.updateATM(terminalId, location, Branch, Status, params['id'])
-                            .then(() => {
+                            .subscribe(() => {
                     this.router.navigate(['/indexATM']);
                 });
         });

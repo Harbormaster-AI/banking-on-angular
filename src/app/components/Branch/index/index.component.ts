@@ -31,7 +31,7 @@ export class IndexBranchComponent implements OnInit {
 
     deleteBranch(id: any): void {
         this.service.deleteBranch(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getBranchs();
             });
     }

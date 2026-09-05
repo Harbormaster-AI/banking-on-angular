@@ -96,7 +96,7 @@ export class RiskAssessmentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteRiskAssessment(id)  : Promise<any> {
+	deleteRiskAssessment(id)  : Observable<any> {
 		const uri = this.apiUrl + '/RiskAssessment/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

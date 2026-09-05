@@ -44,10 +44,10 @@ export class CreateExchangeRateComponent extends SubBaseComponent implements OnI
     addExchangeRate(baseCurrency, counterCurrency, rate, asOf, source, Bank, FxTrades): void {
         this.exchangeRateService
         .addExchangeRate(baseCurrency, counterCurrency, rate, asOf, source, Bank, FxTrades)
-.then(() => {
-        this.router.navigate(['/indexExchangeRate']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexExchangeRate']);
+            });
+    }
 
     ngOnInit(): void {
     }

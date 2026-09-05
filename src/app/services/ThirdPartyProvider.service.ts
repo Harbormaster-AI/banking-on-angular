@@ -99,7 +99,7 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteThirdPartyProvider(id)  : Promise<any> {
+	deleteThirdPartyProvider(id)  : Observable<any> {
 		const uri = this.apiUrl + '/ThirdPartyProvider/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

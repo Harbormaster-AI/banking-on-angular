@@ -31,7 +31,7 @@ export class IndexDisputeComponent implements OnInit {
 
     deleteDispute(id: any): void {
         this.service.deleteDispute(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getDisputes();
             });
     }

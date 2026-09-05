@@ -47,7 +47,7 @@ export class EditBankingProductComponent extends SubBaseComponent implements OnI
     updateBankingProduct(productCode, name, description, Bank, Accounts, LoanAccounts, PaymentCards, ProductCategory): void {
         this.route.params.subscribe(params => {
                         this.service.updateBankingProduct(productCode, name, description, Bank, Accounts, LoanAccounts, PaymentCards, ProductCategory, params['id'])
-                            .then(() => {
+                            .subscribe(() => {
                     this.router.navigate(['/indexBankingProduct']);
                 });
         });

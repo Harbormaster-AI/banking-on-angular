@@ -101,7 +101,7 @@ export class FeeChargeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteFeeCharge(id)  : Promise<any> {
+	deleteFeeCharge(id)  : Observable<any> {
 		const uri = this.apiUrl + '/FeeCharge/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

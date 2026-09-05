@@ -46,7 +46,7 @@ export class EditAccountStatementComponent extends SubBaseComponent implements O
     updateAccountStatement(statementNumber, periodStart, periodEnd, openingBalance, closingBalance, Account, DeliveryMethod): void {
         this.route.params.subscribe(params => {
                         this.service.updateAccountStatement(statementNumber, periodStart, periodEnd, openingBalance, closingBalance, Account, DeliveryMethod, params['id'])
-                            .then(() => {
+                            .subscribe(() => {
                     this.router.navigate(['/indexAccountStatement']);
                 });
         });

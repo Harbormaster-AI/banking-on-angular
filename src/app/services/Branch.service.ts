@@ -109,7 +109,7 @@ export class BranchService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteBranch(id)  : Promise<any> {
+	deleteBranch(id)  : Observable<any> {
 		const uri = this.apiUrl + '/Branch/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

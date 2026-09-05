@@ -50,7 +50,7 @@ export class EditPaymentCardComponent extends SubBaseComponent implements OnInit
     updatePaymentCard(cardNumber, embossedName, expiryMonth, expiryYear, Bank, Account, Customer, Transactions, CardType, CardStatus, Network): void {
         this.route.params.subscribe(params => {
                         this.service.updatePaymentCard(cardNumber, embossedName, expiryMonth, expiryYear, Bank, Account, Customer, Transactions, CardType, CardStatus, Network, params['id'])
-                            .then(() => {
+                            .subscribe(() => {
                     this.router.navigate(['/indexPaymentCard']);
                 });
         });

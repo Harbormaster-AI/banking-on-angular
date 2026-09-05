@@ -47,7 +47,7 @@ export class EditConsentComponent extends SubBaseComponent implements OnInit {
     updateConsent(grantedOn, expiresOn, Customer, Bank, AuthorizedAccounts, ThirdPartyProvider, ConsentType, Status): void {
         this.route.params.subscribe(params => {
                         this.service.updateConsent(grantedOn, expiresOn, Customer, Bank, AuthorizedAccounts, ThirdPartyProvider, ConsentType, Status, params['id'])
-                            .then(() => {
+                            .subscribe(() => {
                     this.router.navigate(['/indexConsent']);
                 });
         });

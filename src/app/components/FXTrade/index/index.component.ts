@@ -31,7 +31,7 @@ export class IndexFXTradeComponent implements OnInit {
 
     deleteFXTrade(id: any): void {
         this.service.deleteFXTrade(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getFXTrades();
             });
     }

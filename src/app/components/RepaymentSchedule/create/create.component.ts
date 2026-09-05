@@ -45,10 +45,10 @@ export class CreateRepaymentScheduleComponent extends SubBaseComponent implement
     addRepaymentSchedule(installmentNumber, dueDate, principalDue, interestDue, totalDue, LoanAccount, Payment, Status): void {
         this.repaymentScheduleService
         .addRepaymentSchedule(installmentNumber, dueDate, principalDue, interestDue, totalDue, LoanAccount, Payment, Status)
-.then(() => {
-        this.router.navigate(['/indexRepaymentSchedule']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexRepaymentSchedule']);
+            });
+    }
 
     ngOnInit(): void {
     }

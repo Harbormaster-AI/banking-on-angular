@@ -48,10 +48,10 @@ export class CreatePaymentCardComponent extends SubBaseComponent implements OnIn
     addPaymentCard(cardNumber, embossedName, expiryMonth, expiryYear, Bank, Account, Customer, Transactions, CardType, CardStatus, Network): void {
         this.paymentCardService
         .addPaymentCard(cardNumber, embossedName, expiryMonth, expiryYear, Bank, Account, Customer, Transactions, CardType, CardStatus, Network)
-.then(() => {
-        this.router.navigate(['/indexPaymentCard']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexPaymentCard']);
+            });
+    }
 
     ngOnInit(): void {
     }

@@ -45,10 +45,10 @@ export class CreateBankingProductComponent extends SubBaseComponent implements O
     addBankingProduct(productCode, name, description, Bank, Accounts, LoanAccounts, PaymentCards, ProductCategory): void {
         this.bankingProductService
         .addBankingProduct(productCode, name, description, Bank, Accounts, LoanAccounts, PaymentCards, ProductCategory)
-.then(() => {
-        this.router.navigate(['/indexBankingProduct']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexBankingProduct']);
+            });
+    }
 
     ngOnInit(): void {
     }

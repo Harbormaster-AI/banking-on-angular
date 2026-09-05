@@ -51,10 +51,10 @@ export class CreateBankComponent extends SubBaseComponent implements OnInit {
     addBank(name, legalName, swiftBic, headquartersCountry, website, Branches, Products, Customers, Accounts, PaymentCards, LoanAccounts, ExchangeRates, Consents, ThirdPartyProviders): void {
         this.bankService
         .addBank(name, legalName, swiftBic, headquartersCountry, website, Branches, Products, Customers, Accounts, PaymentCards, LoanAccounts, ExchangeRates, Consents, ThirdPartyProviders)
-.then(() => {
-        this.router.navigate(['/indexBank']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexBank']);
+            });
+    }
 
     ngOnInit(): void {
     }

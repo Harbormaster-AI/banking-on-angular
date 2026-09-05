@@ -135,7 +135,7 @@ export class LoanAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteLoanAccount(id)  : Promise<any> {
+	deleteLoanAccount(id)  : Observable<any> {
 		const uri = this.apiUrl + '/LoanAccount/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

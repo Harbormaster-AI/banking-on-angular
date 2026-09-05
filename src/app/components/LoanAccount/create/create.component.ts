@@ -57,10 +57,10 @@ export class CreateLoanAccountComponent extends SubBaseComponent implements OnIn
     addLoanAccount(loanNumber, principalAmount, outstandingPrincipal, interestRate, originationDate, maturityDate, paymentDayOfMonth, currency, Bank, Branch, Product, Borrowers, RepaymentSchedule, Payments, Collateral, FeeCharges, LoanType, RateType, Compounding, Status): void {
         this.loanAccountService
         .addLoanAccount(loanNumber, principalAmount, outstandingPrincipal, interestRate, originationDate, maturityDate, paymentDayOfMonth, currency, Bank, Branch, Product, Borrowers, RepaymentSchedule, Payments, Collateral, FeeCharges, LoanType, RateType, Compounding, Status)
-.then(() => {
-        this.router.navigate(['/indexLoanAccount']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexLoanAccount']);
+            });
+    }
 
     ngOnInit(): void {
     }

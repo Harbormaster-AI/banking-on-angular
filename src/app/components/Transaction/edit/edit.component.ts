@@ -53,7 +53,7 @@ export class EditTransactionComponent extends SubBaseComponent implements OnInit
     updateTransaction(bookingDate, valueDate, amount, description, Account, ExternalCounterparty, PaymentCard, FundsTransfer, FxTrade, Dispute, Direction, TransactionType, Status, Channel): void {
         this.route.params.subscribe(params => {
                         this.service.updateTransaction(bookingDate, valueDate, amount, description, Account, ExternalCounterparty, PaymentCard, FundsTransfer, FxTrade, Dispute, Direction, TransactionType, Status, Channel, params['id'])
-                            .then(() => {
+                            .subscribe(() => {
                     this.router.navigate(['/indexTransaction']);
                 });
         });

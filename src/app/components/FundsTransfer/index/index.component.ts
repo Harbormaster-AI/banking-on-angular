@@ -31,7 +31,7 @@ export class IndexFundsTransferComponent implements OnInit {
 
     deleteFundsTransfer(id: any): void {
         this.service.deleteFundsTransfer(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getFundsTransfers();
             });
     }

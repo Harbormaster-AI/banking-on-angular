@@ -44,10 +44,10 @@ export class CreateAccountStatementComponent extends SubBaseComponent implements
     addAccountStatement(statementNumber, periodStart, periodEnd, openingBalance, closingBalance, Account, DeliveryMethod): void {
         this.accountStatementService
         .addAccountStatement(statementNumber, periodStart, periodEnd, openingBalance, closingBalance, Account, DeliveryMethod)
-.then(() => {
-        this.router.navigate(['/indexAccountStatement']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexAccountStatement']);
+            });
+    }
 
     ngOnInit(): void {
     }

@@ -96,7 +96,7 @@ export class ATMService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteATM(id)  : Promise<any> {
+	deleteATM(id)  : Observable<any> {
 		const uri = this.apiUrl + '/ATM/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

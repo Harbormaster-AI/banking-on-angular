@@ -48,7 +48,7 @@ export class EditBranchComponent extends SubBaseComponent implements OnInit {
     updateBranch(name, branchCode, address, phone, openingHours, Bank, Accounts, LoanAccounts, Atms): void {
         this.route.params.subscribe(params => {
                         this.service.updateBranch(name, branchCode, address, phone, openingHours, Bank, Accounts, LoanAccounts, Atms, params['id'])
-                            .then(() => {
+                            .subscribe(() => {
                     this.router.navigate(['/indexBranch']);
                 });
         });

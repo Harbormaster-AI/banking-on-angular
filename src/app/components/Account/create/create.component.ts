@@ -54,10 +54,10 @@ export class CreateAccountComponent extends SubBaseComponent implements OnInit {
     addAccount(accountNumber, iban, accountName, currency, openedOn, closedOn, Bank, Branch, Product, Owners, Transactions, Statements, StandingInstructions, FeeCharges, AccountType, OwnershipType, Status): void {
         this.accountService
         .addAccount(accountNumber, iban, accountName, currency, openedOn, closedOn, Bank, Branch, Product, Owners, Transactions, Statements, StandingInstructions, FeeCharges, AccountType, OwnershipType, Status)
-.then(() => {
-        this.router.navigate(['/indexAccount']);
-    });
-}
+            .subscribe(() => {
+                this.router.navigate(['/indexAccount']);
+            });
+    }
 
     ngOnInit(): void {
     }

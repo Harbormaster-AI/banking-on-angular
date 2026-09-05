@@ -31,7 +31,7 @@ export class IndexConsentComponent implements OnInit {
 
     deleteConsent(id: any): void {
         this.service.deleteConsent(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getConsents();
             });
     }

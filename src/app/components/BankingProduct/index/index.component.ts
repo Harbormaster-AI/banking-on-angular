@@ -31,7 +31,7 @@ export class IndexBankingProductComponent implements OnInit {
 
     deleteBankingProduct(id: any): void {
         this.service.deleteBankingProduct(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getBankingProducts();
             });
     }

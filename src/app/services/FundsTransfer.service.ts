@@ -117,7 +117,7 @@ export class FundsTransferService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	deleteFundsTransfer(id)  : Promise<any> {
+	deleteFundsTransfer(id)  : Observable<any> {
 		const uri = this.apiUrl + '/FundsTransfer/delete/' + id;
 
 		return firstValueFrom(this.http.get(uri));

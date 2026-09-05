@@ -31,7 +31,7 @@ export class IndexKycProfileComponent implements OnInit {
 
     deleteKycProfile(id: any): void {
         this.service.deleteKycProfile(id)
-            .then(() => {
+            .subscribe(() => {
                 this.getKycProfiles();
             });
     }
