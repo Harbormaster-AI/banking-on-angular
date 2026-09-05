@@ -213,7 +213,7 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editThirdPartyProvider(id)
-			.subscribe(res : ThirdPartyProvider => {
+			.subscribe((res : ThirdPartyProvider) => {
 				this.thirdPartyProvider = res;
 			});
 	}

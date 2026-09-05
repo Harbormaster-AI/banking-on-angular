@@ -656,7 +656,7 @@ export class CustomerService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editCustomer(id)
-			.subscribe(res : Customer => {
+			.subscribe((res : Customer) => {
 				this.customer = res;
 			});
 	}

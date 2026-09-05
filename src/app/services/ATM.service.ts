@@ -152,7 +152,7 @@ export class ATMService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editATM(id)
-			.subscribe(res : ATM => {
+			.subscribe((res : ATM) => {
 				this.aTM = res;
 			});
 	}

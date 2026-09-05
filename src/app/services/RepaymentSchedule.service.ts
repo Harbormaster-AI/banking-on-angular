@@ -198,7 +198,7 @@ export class RepaymentScheduleService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editRepaymentSchedule(id)
-			.subscribe(res : RepaymentSchedule => {
+			.subscribe((res : RepaymentSchedule) => {
 				this.repaymentSchedule = res;
 			});
 	}

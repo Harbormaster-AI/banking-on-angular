@@ -274,7 +274,7 @@ export class DisputeService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editDispute(id)
-			.subscribe(res : Dispute => {
+			.subscribe((res : Dispute) => {
 				this.dispute = res;
 			});
 	}

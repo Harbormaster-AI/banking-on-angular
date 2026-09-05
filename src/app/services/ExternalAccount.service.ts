@@ -219,7 +219,7 @@ export class ExternalAccountService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editExternalAccount(id)
-			.subscribe(res : ExternalAccount => {
+			.subscribe((res : ExternalAccount) => {
 				this.externalAccount = res;
 			});
 	}

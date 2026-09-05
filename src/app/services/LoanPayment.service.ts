@@ -196,7 +196,7 @@ export class LoanPaymentService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editLoanPayment(id)
-			.subscribe(res : LoanPayment => {
+			.subscribe((res : LoanPayment) => {
 				this.loanPayment = res;
 			});
 	}

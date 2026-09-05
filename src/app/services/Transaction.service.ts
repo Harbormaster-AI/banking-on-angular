@@ -362,7 +362,7 @@ export class TransactionService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editTransaction(id)
-			.subscribe(res : Transaction => {
+			.subscribe((res : Transaction) => {
 				this.transaction = res;
 			});
 	}

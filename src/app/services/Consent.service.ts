@@ -295,7 +295,7 @@ export class ConsentService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editConsent(id)
-			.subscribe(res : Consent => {
+			.subscribe((res : Consent) => {
 				this.consent = res;
 			});
 	}

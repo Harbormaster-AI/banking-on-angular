@@ -339,7 +339,7 @@ export class BranchService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editBranch(id)
-			.subscribe(res : Branch => {
+			.subscribe((res : Branch) => {
 				this.branch = res;
 			});
 	}

@@ -158,7 +158,7 @@ export class AccountStatementService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editAccountStatement(id)
-			.subscribe(res : AccountStatement => {
+			.subscribe((res : AccountStatement) => {
 				this.accountStatement = res;
 			});
 	}

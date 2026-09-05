@@ -154,7 +154,7 @@ export class IdentityDocumentService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editIdentityDocument(id)
-			.subscribe(res : IdentityDocument => {
+			.subscribe((res : IdentityDocument) => {
 				this.identityDocument = res;
 			});
 	}

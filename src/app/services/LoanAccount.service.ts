@@ -555,7 +555,7 @@ export class LoanAccountService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editLoanAccount(id)
-			.subscribe(res : LoanAccount => {
+			.subscribe((res : LoanAccount) => {
 				this.loanAccount = res;
 			});
 	}

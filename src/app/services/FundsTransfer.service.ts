@@ -342,7 +342,7 @@ export class FundsTransferService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editFundsTransfer(id)
-			.subscribe(res : FundsTransfer => {
+			.subscribe((res : FundsTransfer) => {
 				this.fundsTransfer = res;
 			});
 	}

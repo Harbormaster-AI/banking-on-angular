@@ -152,7 +152,7 @@ export class ScreeningResultService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editScreeningResult(id)
-			.subscribe(res : ScreeningResult => {
+			.subscribe((res : ScreeningResult) => {
 				this.screeningResult = res;
 			});
 	}

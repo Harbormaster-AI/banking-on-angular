@@ -154,7 +154,7 @@ export class CollateralService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editCollateral(id)
-			.subscribe(res : Collateral => {
+			.subscribe((res : Collateral) => {
 				this.collateral = res;
 			});
 	}

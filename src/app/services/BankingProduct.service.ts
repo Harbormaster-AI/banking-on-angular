@@ -337,7 +337,7 @@ export class BankingProductService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editBankingProduct(id)
-			.subscribe(res : BankingProduct => {
+			.subscribe((res : BankingProduct) => {
 				this.bankingProduct = res;
 			});
 	}

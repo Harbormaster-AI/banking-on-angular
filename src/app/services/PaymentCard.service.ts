@@ -301,7 +301,7 @@ export class PaymentCardService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editPaymentCard(id)
-			.subscribe(res : PaymentCard => {
+			.subscribe((res : PaymentCard) => {
 				this.paymentCard = res;
 			});
 	}

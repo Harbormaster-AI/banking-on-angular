@@ -335,7 +335,7 @@ export class KycProfileService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editKycProfile(id)
-			.subscribe(res : KycProfile => {
+			.subscribe((res : KycProfile) => {
 				this.kycProfile = res;
 			});
 	}

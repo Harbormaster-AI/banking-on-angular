@@ -194,7 +194,7 @@ export class FeeChargeService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editFeeCharge(id)
-			.subscribe(res : FeeCharge => {
+			.subscribe((res : FeeCharge) => {
 				this.feeCharge = res;
 			});
 	}

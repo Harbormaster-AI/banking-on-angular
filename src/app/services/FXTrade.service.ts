@@ -359,7 +359,7 @@ export class FXTradeService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editFXTrade(id)
-			.subscribe(res : FXTrade => {
+			.subscribe((res : FXTrade) => {
 				this.fXTrade = res;
 			});
 	}

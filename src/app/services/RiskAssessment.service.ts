@@ -152,7 +152,7 @@ export class RiskAssessmentService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editRiskAssessment(id)
-			.subscribe(res : RiskAssessment => {
+			.subscribe((res : RiskAssessment) => {
 				this.riskAssessment = res;
 			});
 	}

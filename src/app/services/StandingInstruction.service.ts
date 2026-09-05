@@ -196,7 +196,7 @@ export class StandingInstructionService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editStandingInstruction(id)
-			.subscribe(res : StandingInstruction => {
+			.subscribe((res : StandingInstruction) => {
 				this.standingInstruction = res;
 			});
 	}

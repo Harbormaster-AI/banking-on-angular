@@ -217,7 +217,7 @@ export class ExchangeRateService extends HelperBaseService {
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editExchangeRate(id)
-			.subscribe(res : ExchangeRate => {
+			.subscribe((res : ExchangeRate) => {
 				this.exchangeRate = res;
 			});
 	}
