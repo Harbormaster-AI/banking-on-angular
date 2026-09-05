@@ -103,7 +103,7 @@ export class ScreeningResultService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignKycProfile( screeningResultId, _kycProfileId ): Promise<any> {
+	assignKycProfile( screeningResultId, _kycProfileId ): Observable<any> {
 
 		// get the ScreeningResult from storage
 		this.loadHelper( screeningResultId );
@@ -123,7 +123,7 @@ export class ScreeningResultService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignKycProfile( screeningResultId ): Promise<any> {
+	unassignKycProfile( screeningResultId ): Observable<any> {
 
 		// get the ScreeningResult from storage
 		this.loadHelper( screeningResultId );

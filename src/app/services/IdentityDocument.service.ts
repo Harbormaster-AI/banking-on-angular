@@ -105,7 +105,7 @@ export class IdentityDocumentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignKycProfile( identityDocumentId, _kycProfileId ): Promise<any> {
+	assignKycProfile( identityDocumentId, _kycProfileId ): Observable<any> {
 
 		// get the IdentityDocument from storage
 		this.loadHelper( identityDocumentId );
@@ -125,7 +125,7 @@ export class IdentityDocumentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignKycProfile( identityDocumentId ): Promise<any> {
+	unassignKycProfile( identityDocumentId ): Observable<any> {
 
 		// get the IdentityDocument from storage
 		this.loadHelper( identityDocumentId );

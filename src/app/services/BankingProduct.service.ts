@@ -114,7 +114,7 @@ export class BankingProductService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignBank( bankingProductId, _bankId ): Promise<any> {
+	assignBank( bankingProductId, _bankId ): Observable<any> {
 
 		// get the BankingProduct from storage
 		this.loadHelper( bankingProductId );
@@ -134,7 +134,7 @@ export class BankingProductService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignBank( bankingProductId ): Promise<any> {
+	unassignBank( bankingProductId ): Observable<any> {
 
 		// get the BankingProduct from storage
 		this.loadHelper( bankingProductId );
@@ -153,7 +153,7 @@ export class BankingProductService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addAccounts( bankingProductId, accountsIds ): Promise<any> {
+	addAccounts( bankingProductId, accountsIds ): Observable<any> {
 
 		// get the BankingProduct
 		this.loadHelper( bankingProductId );
@@ -180,7 +180,7 @@ export class BankingProductService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeAccounts( bankingProductId, accountsIds ): Promise<any> {
+	removeAccounts( bankingProductId, accountsIds ): Observable<any> {
 
 		// get the BankingProduct
 		this.loadHelper( bankingProductId );
@@ -211,7 +211,7 @@ export class BankingProductService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addLoanAccounts( bankingProductId, loanAccountsIds ): Promise<any> {
+	addLoanAccounts( bankingProductId, loanAccountsIds ): Observable<any> {
 
 		// get the BankingProduct
 		this.loadHelper( bankingProductId );
@@ -238,7 +238,7 @@ export class BankingProductService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeLoanAccounts( bankingProductId, loanAccountsIds ): Promise<any> {
+	removeLoanAccounts( bankingProductId, loanAccountsIds ): Observable<any> {
 
 		// get the BankingProduct
 		this.loadHelper( bankingProductId );
@@ -269,7 +269,7 @@ export class BankingProductService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addPaymentCards( bankingProductId, paymentCardsIds ): Promise<any> {
+	addPaymentCards( bankingProductId, paymentCardsIds ): Observable<any> {
 
 		// get the BankingProduct
 		this.loadHelper( bankingProductId );
@@ -296,7 +296,7 @@ export class BankingProductService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removePaymentCards( bankingProductId, paymentCardsIds ): Promise<any> {
+	removePaymentCards( bankingProductId, paymentCardsIds ): Observable<any> {
 
 		// get the BankingProduct
 		this.loadHelper( bankingProductId );

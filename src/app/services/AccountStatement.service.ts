@@ -109,7 +109,7 @@ export class AccountStatementService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignAccount( accountStatementId, _accountId ): Promise<any> {
+	assignAccount( accountStatementId, _accountId ): Observable<any> {
 
 		// get the AccountStatement from storage
 		this.loadHelper( accountStatementId );
@@ -129,7 +129,7 @@ export class AccountStatementService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignAccount( accountStatementId ): Promise<any> {
+	unassignAccount( accountStatementId ): Observable<any> {
 
 		// get the AccountStatement from storage
 		this.loadHelper( accountStatementId );

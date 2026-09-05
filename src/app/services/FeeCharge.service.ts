@@ -108,7 +108,7 @@ export class FeeChargeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignAccount( feeChargeId, _accountId ): Promise<any> {
+	assignAccount( feeChargeId, _accountId ): Observable<any> {
 
 		// get the FeeCharge from storage
 		this.loadHelper( feeChargeId );
@@ -128,7 +128,7 @@ export class FeeChargeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignAccount( feeChargeId ): Promise<any> {
+	unassignAccount( feeChargeId ): Observable<any> {
 
 		// get the FeeCharge from storage
 		this.loadHelper( feeChargeId );
@@ -145,7 +145,7 @@ export class FeeChargeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignLoanAccount( feeChargeId, _loanAccountId ): Promise<any> {
+	assignLoanAccount( feeChargeId, _loanAccountId ): Observable<any> {
 
 		// get the FeeCharge from storage
 		this.loadHelper( feeChargeId );
@@ -165,7 +165,7 @@ export class FeeChargeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignLoanAccount( feeChargeId ): Promise<any> {
+	unassignLoanAccount( feeChargeId ): Observable<any> {
 
 		// get the FeeCharge from storage
 		this.loadHelper( feeChargeId );

@@ -128,7 +128,7 @@ export class TransactionService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignAccount( transactionId, _accountId ): Promise<any> {
+	assignAccount( transactionId, _accountId ): Observable<any> {
 
 		// get the Transaction from storage
 		this.loadHelper( transactionId );
@@ -148,7 +148,7 @@ export class TransactionService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignAccount( transactionId ): Promise<any> {
+	unassignAccount( transactionId ): Observable<any> {
 
 		// get the Transaction from storage
 		this.loadHelper( transactionId );
@@ -165,7 +165,7 @@ export class TransactionService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignExternalCounterparty( transactionId, _externalCounterpartyId ): Promise<any> {
+	assignExternalCounterparty( transactionId, _externalCounterpartyId ): Observable<any> {
 
 		// get the Transaction from storage
 		this.loadHelper( transactionId );
@@ -185,7 +185,7 @@ export class TransactionService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignExternalCounterparty( transactionId ): Promise<any> {
+	unassignExternalCounterparty( transactionId ): Observable<any> {
 
 		// get the Transaction from storage
 		this.loadHelper( transactionId );
@@ -202,7 +202,7 @@ export class TransactionService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignPaymentCard( transactionId, _paymentCardId ): Promise<any> {
+	assignPaymentCard( transactionId, _paymentCardId ): Observable<any> {
 
 		// get the Transaction from storage
 		this.loadHelper( transactionId );
@@ -222,7 +222,7 @@ export class TransactionService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignPaymentCard( transactionId ): Promise<any> {
+	unassignPaymentCard( transactionId ): Observable<any> {
 
 		// get the Transaction from storage
 		this.loadHelper( transactionId );
@@ -239,7 +239,7 @@ export class TransactionService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignFundsTransfer( transactionId, _fundsTransferId ): Promise<any> {
+	assignFundsTransfer( transactionId, _fundsTransferId ): Observable<any> {
 
 		// get the Transaction from storage
 		this.loadHelper( transactionId );
@@ -259,7 +259,7 @@ export class TransactionService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignFundsTransfer( transactionId ): Promise<any> {
+	unassignFundsTransfer( transactionId ): Observable<any> {
 
 		// get the Transaction from storage
 		this.loadHelper( transactionId );
@@ -276,7 +276,7 @@ export class TransactionService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignFxTrade( transactionId, _fxTradeId ): Promise<any> {
+	assignFxTrade( transactionId, _fxTradeId ): Observable<any> {
 
 		// get the Transaction from storage
 		this.loadHelper( transactionId );
@@ -296,7 +296,7 @@ export class TransactionService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignFxTrade( transactionId ): Promise<any> {
+	unassignFxTrade( transactionId ): Observable<any> {
 
 		// get the Transaction from storage
 		this.loadHelper( transactionId );
@@ -313,7 +313,7 @@ export class TransactionService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignDispute( transactionId, _disputeId ): Promise<any> {
+	assignDispute( transactionId, _disputeId ): Observable<any> {
 
 		// get the Transaction from storage
 		this.loadHelper( transactionId );
@@ -333,7 +333,7 @@ export class TransactionService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignDispute( transactionId ): Promise<any> {
+	unassignDispute( transactionId ): Observable<any> {
 
 		// get the Transaction from storage
 		this.loadHelper( transactionId );

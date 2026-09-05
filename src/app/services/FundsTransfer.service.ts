@@ -124,7 +124,7 @@ export class FundsTransferService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignSourceAccount( fundsTransferId, _sourceAccountId ): Promise<any> {
+	assignSourceAccount( fundsTransferId, _sourceAccountId ): Observable<any> {
 
 		// get the FundsTransfer from storage
 		this.loadHelper( fundsTransferId );
@@ -144,7 +144,7 @@ export class FundsTransferService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignSourceAccount( fundsTransferId ): Promise<any> {
+	unassignSourceAccount( fundsTransferId ): Observable<any> {
 
 		// get the FundsTransfer from storage
 		this.loadHelper( fundsTransferId );
@@ -161,7 +161,7 @@ export class FundsTransferService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignDestinationAccount( fundsTransferId, _destinationAccountId ): Promise<any> {
+	assignDestinationAccount( fundsTransferId, _destinationAccountId ): Observable<any> {
 
 		// get the FundsTransfer from storage
 		this.loadHelper( fundsTransferId );
@@ -181,7 +181,7 @@ export class FundsTransferService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignDestinationAccount( fundsTransferId ): Promise<any> {
+	unassignDestinationAccount( fundsTransferId ): Observable<any> {
 
 		// get the FundsTransfer from storage
 		this.loadHelper( fundsTransferId );
@@ -198,7 +198,7 @@ export class FundsTransferService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignExternalBeneficiary( fundsTransferId, _externalBeneficiaryId ): Promise<any> {
+	assignExternalBeneficiary( fundsTransferId, _externalBeneficiaryId ): Observable<any> {
 
 		// get the FundsTransfer from storage
 		this.loadHelper( fundsTransferId );
@@ -218,7 +218,7 @@ export class FundsTransferService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignExternalBeneficiary( fundsTransferId ): Promise<any> {
+	unassignExternalBeneficiary( fundsTransferId ): Observable<any> {
 
 		// get the FundsTransfer from storage
 		this.loadHelper( fundsTransferId );
@@ -235,7 +235,7 @@ export class FundsTransferService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignInitiatedBy( fundsTransferId, _initiatedById ): Promise<any> {
+	assignInitiatedBy( fundsTransferId, _initiatedById ): Observable<any> {
 
 		// get the FundsTransfer from storage
 		this.loadHelper( fundsTransferId );
@@ -255,7 +255,7 @@ export class FundsTransferService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignInitiatedBy( fundsTransferId ): Promise<any> {
+	unassignInitiatedBy( fundsTransferId ): Observable<any> {
 
 		// get the FundsTransfer from storage
 		this.loadHelper( fundsTransferId );
@@ -274,7 +274,7 @@ export class FundsTransferService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addTransactions( fundsTransferId, transactionsIds ): Promise<any> {
+	addTransactions( fundsTransferId, transactionsIds ): Observable<any> {
 
 		// get the FundsTransfer
 		this.loadHelper( fundsTransferId );
@@ -301,7 +301,7 @@ export class FundsTransferService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeTransactions( fundsTransferId, transactionsIds ): Promise<any> {
+	removeTransactions( fundsTransferId, transactionsIds ): Observable<any> {
 
 		// get the FundsTransfer
 		this.loadHelper( fundsTransferId );

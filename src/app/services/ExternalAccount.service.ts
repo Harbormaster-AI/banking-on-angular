@@ -112,7 +112,7 @@ export class ExternalAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignCustomer( externalAccountId, _customerId ): Promise<any> {
+	assignCustomer( externalAccountId, _customerId ): Observable<any> {
 
 		// get the ExternalAccount from storage
 		this.loadHelper( externalAccountId );
@@ -132,7 +132,7 @@ export class ExternalAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignCustomer( externalAccountId ): Promise<any> {
+	unassignCustomer( externalAccountId ): Observable<any> {
 
 		// get the ExternalAccount from storage
 		this.loadHelper( externalAccountId );
@@ -151,7 +151,7 @@ export class ExternalAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addTransactions( externalAccountId, transactionsIds ): Promise<any> {
+	addTransactions( externalAccountId, transactionsIds ): Observable<any> {
 
 		// get the ExternalAccount
 		this.loadHelper( externalAccountId );
@@ -178,7 +178,7 @@ export class ExternalAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeTransactions( externalAccountId, transactionsIds ): Promise<any> {
+	removeTransactions( externalAccountId, transactionsIds ): Observable<any> {
 
 		// get the ExternalAccount
 		this.loadHelper( externalAccountId );

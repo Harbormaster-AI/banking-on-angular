@@ -112,7 +112,7 @@ export class KycProfileService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignCustomer( kycProfileId, _customerId ): Promise<any> {
+	assignCustomer( kycProfileId, _customerId ): Observable<any> {
 
 		// get the KycProfile from storage
 		this.loadHelper( kycProfileId );
@@ -132,7 +132,7 @@ export class KycProfileService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignCustomer( kycProfileId ): Promise<any> {
+	unassignCustomer( kycProfileId ): Observable<any> {
 
 		// get the KycProfile from storage
 		this.loadHelper( kycProfileId );
@@ -151,7 +151,7 @@ export class KycProfileService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addIdentityDocuments( kycProfileId, identityDocumentsIds ): Promise<any> {
+	addIdentityDocuments( kycProfileId, identityDocumentsIds ): Observable<any> {
 
 		// get the KycProfile
 		this.loadHelper( kycProfileId );
@@ -178,7 +178,7 @@ export class KycProfileService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeIdentityDocuments( kycProfileId, identityDocumentsIds ): Promise<any> {
+	removeIdentityDocuments( kycProfileId, identityDocumentsIds ): Observable<any> {
 
 		// get the KycProfile
 		this.loadHelper( kycProfileId );
@@ -209,7 +209,7 @@ export class KycProfileService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addRiskAssessments( kycProfileId, riskAssessmentsIds ): Promise<any> {
+	addRiskAssessments( kycProfileId, riskAssessmentsIds ): Observable<any> {
 
 		// get the KycProfile
 		this.loadHelper( kycProfileId );
@@ -236,7 +236,7 @@ export class KycProfileService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeRiskAssessments( kycProfileId, riskAssessmentsIds ): Promise<any> {
+	removeRiskAssessments( kycProfileId, riskAssessmentsIds ): Observable<any> {
 
 		// get the KycProfile
 		this.loadHelper( kycProfileId );
@@ -267,7 +267,7 @@ export class KycProfileService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addScreenings( kycProfileId, screeningsIds ): Promise<any> {
+	addScreenings( kycProfileId, screeningsIds ): Observable<any> {
 
 		// get the KycProfile
 		this.loadHelper( kycProfileId );
@@ -294,7 +294,7 @@ export class KycProfileService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeScreenings( kycProfileId, screeningsIds ): Promise<any> {
+	removeScreenings( kycProfileId, screeningsIds ): Observable<any> {
 
 		// get the KycProfile
 		this.loadHelper( kycProfileId );

@@ -103,7 +103,7 @@ export class RiskAssessmentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignKycProfile( riskAssessmentId, _kycProfileId ): Promise<any> {
+	assignKycProfile( riskAssessmentId, _kycProfileId ): Observable<any> {
 
 		// get the RiskAssessment from storage
 		this.loadHelper( riskAssessmentId );
@@ -123,7 +123,7 @@ export class RiskAssessmentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignKycProfile( riskAssessmentId ): Promise<any> {
+	unassignKycProfile( riskAssessmentId ): Observable<any> {
 
 		// get the RiskAssessment from storage
 		this.loadHelper( riskAssessmentId );

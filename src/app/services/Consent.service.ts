@@ -114,7 +114,7 @@ export class ConsentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignCustomer( consentId, _customerId ): Promise<any> {
+	assignCustomer( consentId, _customerId ): Observable<any> {
 
 		// get the Consent from storage
 		this.loadHelper( consentId );
@@ -134,7 +134,7 @@ export class ConsentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignCustomer( consentId ): Promise<any> {
+	unassignCustomer( consentId ): Observable<any> {
 
 		// get the Consent from storage
 		this.loadHelper( consentId );
@@ -151,7 +151,7 @@ export class ConsentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignBank( consentId, _bankId ): Promise<any> {
+	assignBank( consentId, _bankId ): Observable<any> {
 
 		// get the Consent from storage
 		this.loadHelper( consentId );
@@ -171,7 +171,7 @@ export class ConsentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignBank( consentId ): Promise<any> {
+	unassignBank( consentId ): Observable<any> {
 
 		// get the Consent from storage
 		this.loadHelper( consentId );
@@ -188,7 +188,7 @@ export class ConsentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignThirdPartyProvider( consentId, _thirdPartyProviderId ): Promise<any> {
+	assignThirdPartyProvider( consentId, _thirdPartyProviderId ): Observable<any> {
 
 		// get the Consent from storage
 		this.loadHelper( consentId );
@@ -208,7 +208,7 @@ export class ConsentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignThirdPartyProvider( consentId ): Promise<any> {
+	unassignThirdPartyProvider( consentId ): Observable<any> {
 
 		// get the Consent from storage
 		this.loadHelper( consentId );
@@ -227,7 +227,7 @@ export class ConsentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addAuthorizedAccounts( consentId, authorizedAccountsIds ): Promise<any> {
+	addAuthorizedAccounts( consentId, authorizedAccountsIds ): Observable<any> {
 
 		// get the Consent
 		this.loadHelper( consentId );
@@ -254,7 +254,7 @@ export class ConsentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeAuthorizedAccounts( consentId, authorizedAccountsIds ): Promise<any> {
+	removeAuthorizedAccounts( consentId, authorizedAccountsIds ): Observable<any> {
 
 		// get the Consent
 		this.loadHelper( consentId );

@@ -125,7 +125,7 @@ export class FXTradeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignCustomer( fXTradeId, _customerId ): Promise<any> {
+	assignCustomer( fXTradeId, _customerId ): Observable<any> {
 
 		// get the FXTrade from storage
 		this.loadHelper( fXTradeId );
@@ -145,7 +145,7 @@ export class FXTradeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignCustomer( fXTradeId ): Promise<any> {
+	unassignCustomer( fXTradeId ): Observable<any> {
 
 		// get the FXTrade from storage
 		this.loadHelper( fXTradeId );
@@ -162,7 +162,7 @@ export class FXTradeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignBank( fXTradeId, _bankId ): Promise<any> {
+	assignBank( fXTradeId, _bankId ): Observable<any> {
 
 		// get the FXTrade from storage
 		this.loadHelper( fXTradeId );
@@ -182,7 +182,7 @@ export class FXTradeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignBank( fXTradeId ): Promise<any> {
+	unassignBank( fXTradeId ): Observable<any> {
 
 		// get the FXTrade from storage
 		this.loadHelper( fXTradeId );
@@ -199,7 +199,7 @@ export class FXTradeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignExchangeRate( fXTradeId, _exchangeRateId ): Promise<any> {
+	assignExchangeRate( fXTradeId, _exchangeRateId ): Observable<any> {
 
 		// get the FXTrade from storage
 		this.loadHelper( fXTradeId );
@@ -219,7 +219,7 @@ export class FXTradeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignExchangeRate( fXTradeId ): Promise<any> {
+	unassignExchangeRate( fXTradeId ): Observable<any> {
 
 		// get the FXTrade from storage
 		this.loadHelper( fXTradeId );
@@ -236,7 +236,7 @@ export class FXTradeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignSourceAccount( fXTradeId, _sourceAccountId ): Promise<any> {
+	assignSourceAccount( fXTradeId, _sourceAccountId ): Observable<any> {
 
 		// get the FXTrade from storage
 		this.loadHelper( fXTradeId );
@@ -256,7 +256,7 @@ export class FXTradeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignSourceAccount( fXTradeId ): Promise<any> {
+	unassignSourceAccount( fXTradeId ): Observable<any> {
 
 		// get the FXTrade from storage
 		this.loadHelper( fXTradeId );
@@ -273,7 +273,7 @@ export class FXTradeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignDestinationAccount( fXTradeId, _destinationAccountId ): Promise<any> {
+	assignDestinationAccount( fXTradeId, _destinationAccountId ): Observable<any> {
 
 		// get the FXTrade from storage
 		this.loadHelper( fXTradeId );
@@ -293,7 +293,7 @@ export class FXTradeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignDestinationAccount( fXTradeId ): Promise<any> {
+	unassignDestinationAccount( fXTradeId ): Observable<any> {
 
 		// get the FXTrade from storage
 		this.loadHelper( fXTradeId );
@@ -310,7 +310,7 @@ export class FXTradeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignTransaction( fXTradeId, _transactionId ): Promise<any> {
+	assignTransaction( fXTradeId, _transactionId ): Observable<any> {
 
 		// get the FXTrade from storage
 		this.loadHelper( fXTradeId );
@@ -330,7 +330,7 @@ export class FXTradeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignTransaction( fXTradeId ): Promise<any> {
+	unassignTransaction( fXTradeId ): Observable<any> {
 
 		// get the FXTrade from storage
 		this.loadHelper( fXTradeId );

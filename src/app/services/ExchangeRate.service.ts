@@ -110,7 +110,7 @@ export class ExchangeRateService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignBank( exchangeRateId, _bankId ): Promise<any> {
+	assignBank( exchangeRateId, _bankId ): Observable<any> {
 
 		// get the ExchangeRate from storage
 		this.loadHelper( exchangeRateId );
@@ -130,7 +130,7 @@ export class ExchangeRateService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignBank( exchangeRateId ): Promise<any> {
+	unassignBank( exchangeRateId ): Observable<any> {
 
 		// get the ExchangeRate from storage
 		this.loadHelper( exchangeRateId );
@@ -149,7 +149,7 @@ export class ExchangeRateService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addFxTrades( exchangeRateId, fxTradesIds ): Promise<any> {
+	addFxTrades( exchangeRateId, fxTradesIds ): Observable<any> {
 
 		// get the ExchangeRate
 		this.loadHelper( exchangeRateId );
@@ -176,7 +176,7 @@ export class ExchangeRateService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeFxTrades( exchangeRateId, fxTradesIds ): Promise<any> {
+	removeFxTrades( exchangeRateId, fxTradesIds ): Observable<any> {
 
 		// get the ExchangeRate
 		this.loadHelper( exchangeRateId );

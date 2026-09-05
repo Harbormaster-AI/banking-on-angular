@@ -133,7 +133,7 @@ export class BankService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addBranches( bankId, branchesIds ): Promise<any> {
+	addBranches( bankId, branchesIds ): Observable<any> {
 
 		// get the Bank
 		this.loadHelper( bankId );
@@ -160,7 +160,7 @@ export class BankService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeBranches( bankId, branchesIds ): Promise<any> {
+	removeBranches( bankId, branchesIds ): Observable<any> {
 
 		// get the Bank
 		this.loadHelper( bankId );
@@ -191,7 +191,7 @@ export class BankService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addProducts( bankId, productsIds ): Promise<any> {
+	addProducts( bankId, productsIds ): Observable<any> {
 
 		// get the Bank
 		this.loadHelper( bankId );
@@ -218,7 +218,7 @@ export class BankService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeProducts( bankId, productsIds ): Promise<any> {
+	removeProducts( bankId, productsIds ): Observable<any> {
 
 		// get the Bank
 		this.loadHelper( bankId );
@@ -249,7 +249,7 @@ export class BankService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addCustomers( bankId, customersIds ): Promise<any> {
+	addCustomers( bankId, customersIds ): Observable<any> {
 
 		// get the Bank
 		this.loadHelper( bankId );
@@ -276,7 +276,7 @@ export class BankService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeCustomers( bankId, customersIds ): Promise<any> {
+	removeCustomers( bankId, customersIds ): Observable<any> {
 
 		// get the Bank
 		this.loadHelper( bankId );
@@ -307,7 +307,7 @@ export class BankService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addAccounts( bankId, accountsIds ): Promise<any> {
+	addAccounts( bankId, accountsIds ): Observable<any> {
 
 		// get the Bank
 		this.loadHelper( bankId );
@@ -334,7 +334,7 @@ export class BankService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeAccounts( bankId, accountsIds ): Promise<any> {
+	removeAccounts( bankId, accountsIds ): Observable<any> {
 
 		// get the Bank
 		this.loadHelper( bankId );
@@ -365,7 +365,7 @@ export class BankService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addPaymentCards( bankId, paymentCardsIds ): Promise<any> {
+	addPaymentCards( bankId, paymentCardsIds ): Observable<any> {
 
 		// get the Bank
 		this.loadHelper( bankId );
@@ -392,7 +392,7 @@ export class BankService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removePaymentCards( bankId, paymentCardsIds ): Promise<any> {
+	removePaymentCards( bankId, paymentCardsIds ): Observable<any> {
 
 		// get the Bank
 		this.loadHelper( bankId );
@@ -423,7 +423,7 @@ export class BankService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addLoanAccounts( bankId, loanAccountsIds ): Promise<any> {
+	addLoanAccounts( bankId, loanAccountsIds ): Observable<any> {
 
 		// get the Bank
 		this.loadHelper( bankId );
@@ -450,7 +450,7 @@ export class BankService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeLoanAccounts( bankId, loanAccountsIds ): Promise<any> {
+	removeLoanAccounts( bankId, loanAccountsIds ): Observable<any> {
 
 		// get the Bank
 		this.loadHelper( bankId );
@@ -481,7 +481,7 @@ export class BankService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addExchangeRates( bankId, exchangeRatesIds ): Promise<any> {
+	addExchangeRates( bankId, exchangeRatesIds ): Observable<any> {
 
 		// get the Bank
 		this.loadHelper( bankId );
@@ -508,7 +508,7 @@ export class BankService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeExchangeRates( bankId, exchangeRatesIds ): Promise<any> {
+	removeExchangeRates( bankId, exchangeRatesIds ): Observable<any> {
 
 		// get the Bank
 		this.loadHelper( bankId );
@@ -539,7 +539,7 @@ export class BankService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addConsents( bankId, consentsIds ): Promise<any> {
+	addConsents( bankId, consentsIds ): Observable<any> {
 
 		// get the Bank
 		this.loadHelper( bankId );
@@ -566,7 +566,7 @@ export class BankService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeConsents( bankId, consentsIds ): Promise<any> {
+	removeConsents( bankId, consentsIds ): Observable<any> {
 
 		// get the Bank
 		this.loadHelper( bankId );
@@ -597,7 +597,7 @@ export class BankService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addThirdPartyProviders( bankId, thirdPartyProvidersIds ): Promise<any> {
+	addThirdPartyProviders( bankId, thirdPartyProvidersIds ): Observable<any> {
 
 		// get the Bank
 		this.loadHelper( bankId );
@@ -624,7 +624,7 @@ export class BankService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeThirdPartyProviders( bankId, thirdPartyProvidersIds ): Promise<any> {
+	removeThirdPartyProviders( bankId, thirdPartyProvidersIds ): Observable<any> {
 
 		// get the Bank
 		this.loadHelper( bankId );

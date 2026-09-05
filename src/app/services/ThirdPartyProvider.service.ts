@@ -106,7 +106,7 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignBank( thirdPartyProviderId, _bankId ): Promise<any> {
+	assignBank( thirdPartyProviderId, _bankId ): Observable<any> {
 
 		// get the ThirdPartyProvider from storage
 		this.loadHelper( thirdPartyProviderId );
@@ -126,7 +126,7 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignBank( thirdPartyProviderId ): Promise<any> {
+	unassignBank( thirdPartyProviderId ): Observable<any> {
 
 		// get the ThirdPartyProvider from storage
 		this.loadHelper( thirdPartyProviderId );
@@ -145,7 +145,7 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addConsents( thirdPartyProviderId, consentsIds ): Promise<any> {
+	addConsents( thirdPartyProviderId, consentsIds ): Observable<any> {
 
 		// get the ThirdPartyProvider
 		this.loadHelper( thirdPartyProviderId );
@@ -172,7 +172,7 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeConsents( thirdPartyProviderId, consentsIds ): Promise<any> {
+	removeConsents( thirdPartyProviderId, consentsIds ): Observable<any> {
 
 		// get the ThirdPartyProvider
 		this.loadHelper( thirdPartyProviderId );

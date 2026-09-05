@@ -105,7 +105,7 @@ export class CollateralService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignLoanAccount( collateralId, _loanAccountId ): Promise<any> {
+	assignLoanAccount( collateralId, _loanAccountId ): Observable<any> {
 
 		// get the Collateral from storage
 		this.loadHelper( collateralId );
@@ -125,7 +125,7 @@ export class CollateralService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignLoanAccount( collateralId ): Promise<any> {
+	unassignLoanAccount( collateralId ): Observable<any> {
 
 		// get the Collateral from storage
 		this.loadHelper( collateralId );

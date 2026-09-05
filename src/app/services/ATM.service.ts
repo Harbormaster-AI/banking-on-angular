@@ -103,7 +103,7 @@ export class ATMService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignBranch( aTMId, _branchId ): Promise<any> {
+	assignBranch( aTMId, _branchId ): Observable<any> {
 
 		// get the ATM from storage
 		this.loadHelper( aTMId );
@@ -123,7 +123,7 @@ export class ATMService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignBranch( aTMId ): Promise<any> {
+	unassignBranch( aTMId ): Observable<any> {
 
 		// get the ATM from storage
 		this.loadHelper( aTMId );

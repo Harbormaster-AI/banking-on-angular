@@ -112,7 +112,7 @@ export class RepaymentScheduleService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignLoanAccount( repaymentScheduleId, _loanAccountId ): Promise<any> {
+	assignLoanAccount( repaymentScheduleId, _loanAccountId ): Observable<any> {
 
 		// get the RepaymentSchedule from storage
 		this.loadHelper( repaymentScheduleId );
@@ -132,7 +132,7 @@ export class RepaymentScheduleService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignLoanAccount( repaymentScheduleId ): Promise<any> {
+	unassignLoanAccount( repaymentScheduleId ): Observable<any> {
 
 		// get the RepaymentSchedule from storage
 		this.loadHelper( repaymentScheduleId );
@@ -149,7 +149,7 @@ export class RepaymentScheduleService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignPayment( repaymentScheduleId, _paymentId ): Promise<any> {
+	assignPayment( repaymentScheduleId, _paymentId ): Observable<any> {
 
 		// get the RepaymentSchedule from storage
 		this.loadHelper( repaymentScheduleId );
@@ -169,7 +169,7 @@ export class RepaymentScheduleService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignPayment( repaymentScheduleId ): Promise<any> {
+	unassignPayment( repaymentScheduleId ): Observable<any> {
 
 		// get the RepaymentSchedule from storage
 		this.loadHelper( repaymentScheduleId );

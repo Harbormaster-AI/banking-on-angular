@@ -114,7 +114,7 @@ export class DisputeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignTransaction( disputeId, _transactionId ): Promise<any> {
+	assignTransaction( disputeId, _transactionId ): Observable<any> {
 
 		// get the Dispute from storage
 		this.loadHelper( disputeId );
@@ -134,7 +134,7 @@ export class DisputeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignTransaction( disputeId ): Promise<any> {
+	unassignTransaction( disputeId ): Observable<any> {
 
 		// get the Dispute from storage
 		this.loadHelper( disputeId );
@@ -151,7 +151,7 @@ export class DisputeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignCustomer( disputeId, _customerId ): Promise<any> {
+	assignCustomer( disputeId, _customerId ): Observable<any> {
 
 		// get the Dispute from storage
 		this.loadHelper( disputeId );
@@ -171,7 +171,7 @@ export class DisputeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignCustomer( disputeId ): Promise<any> {
+	unassignCustomer( disputeId ): Observable<any> {
 
 		// get the Dispute from storage
 		this.loadHelper( disputeId );
@@ -188,7 +188,7 @@ export class DisputeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignAccount( disputeId, _accountId ): Promise<any> {
+	assignAccount( disputeId, _accountId ): Observable<any> {
 
 		// get the Dispute from storage
 		this.loadHelper( disputeId );
@@ -208,7 +208,7 @@ export class DisputeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignAccount( disputeId ): Promise<any> {
+	unassignAccount( disputeId ): Observable<any> {
 
 		// get the Dispute from storage
 		this.loadHelper( disputeId );
@@ -225,7 +225,7 @@ export class DisputeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignPaymentCard( disputeId, _paymentCardId ): Promise<any> {
+	assignPaymentCard( disputeId, _paymentCardId ): Observable<any> {
 
 		// get the Dispute from storage
 		this.loadHelper( disputeId );
@@ -245,7 +245,7 @@ export class DisputeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignPaymentCard( disputeId ): Promise<any> {
+	unassignPaymentCard( disputeId ): Observable<any> {
 
 		// get the Dispute from storage
 		this.loadHelper( disputeId );

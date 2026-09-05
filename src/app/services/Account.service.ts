@@ -136,7 +136,7 @@ export class AccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignBank( accountId, _bankId ): Promise<any> {
+	assignBank( accountId, _bankId ): Observable<any> {
 
 		// get the Account from storage
 		this.loadHelper( accountId );
@@ -156,7 +156,7 @@ export class AccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignBank( accountId ): Promise<any> {
+	unassignBank( accountId ): Observable<any> {
 
 		// get the Account from storage
 		this.loadHelper( accountId );
@@ -173,7 +173,7 @@ export class AccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignBranch( accountId, _branchId ): Promise<any> {
+	assignBranch( accountId, _branchId ): Observable<any> {
 
 		// get the Account from storage
 		this.loadHelper( accountId );
@@ -193,7 +193,7 @@ export class AccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignBranch( accountId ): Promise<any> {
+	unassignBranch( accountId ): Observable<any> {
 
 		// get the Account from storage
 		this.loadHelper( accountId );
@@ -210,7 +210,7 @@ export class AccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignProduct( accountId, _productId ): Promise<any> {
+	assignProduct( accountId, _productId ): Observable<any> {
 
 		// get the Account from storage
 		this.loadHelper( accountId );
@@ -230,7 +230,7 @@ export class AccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignProduct( accountId ): Promise<any> {
+	unassignProduct( accountId ): Observable<any> {
 
 		// get the Account from storage
 		this.loadHelper( accountId );
@@ -249,7 +249,7 @@ export class AccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addOwners( accountId, ownersIds ): Promise<any> {
+	addOwners( accountId, ownersIds ): Observable<any> {
 
 		// get the Account
 		this.loadHelper( accountId );
@@ -276,7 +276,7 @@ export class AccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeOwners( accountId, ownersIds ): Promise<any> {
+	removeOwners( accountId, ownersIds ): Observable<any> {
 
 		// get the Account
 		this.loadHelper( accountId );
@@ -307,7 +307,7 @@ export class AccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addTransactions( accountId, transactionsIds ): Promise<any> {
+	addTransactions( accountId, transactionsIds ): Observable<any> {
 
 		// get the Account
 		this.loadHelper( accountId );
@@ -334,7 +334,7 @@ export class AccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeTransactions( accountId, transactionsIds ): Promise<any> {
+	removeTransactions( accountId, transactionsIds ): Observable<any> {
 
 		// get the Account
 		this.loadHelper( accountId );
@@ -365,7 +365,7 @@ export class AccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addStatements( accountId, statementsIds ): Promise<any> {
+	addStatements( accountId, statementsIds ): Observable<any> {
 
 		// get the Account
 		this.loadHelper( accountId );
@@ -392,7 +392,7 @@ export class AccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeStatements( accountId, statementsIds ): Promise<any> {
+	removeStatements( accountId, statementsIds ): Observable<any> {
 
 		// get the Account
 		this.loadHelper( accountId );
@@ -423,7 +423,7 @@ export class AccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addStandingInstructions( accountId, standingInstructionsIds ): Promise<any> {
+	addStandingInstructions( accountId, standingInstructionsIds ): Observable<any> {
 
 		// get the Account
 		this.loadHelper( accountId );
@@ -450,7 +450,7 @@ export class AccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeStandingInstructions( accountId, standingInstructionsIds ): Promise<any> {
+	removeStandingInstructions( accountId, standingInstructionsIds ): Observable<any> {
 
 		// get the Account
 		this.loadHelper( accountId );
@@ -481,7 +481,7 @@ export class AccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addFeeCharges( accountId, feeChargesIds ): Promise<any> {
+	addFeeCharges( accountId, feeChargesIds ): Observable<any> {
 
 		// get the Account
 		this.loadHelper( accountId );
@@ -508,7 +508,7 @@ export class AccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeFeeCharges( accountId, feeChargesIds ): Promise<any> {
+	removeFeeCharges( accountId, feeChargesIds ): Observable<any> {
 
 		// get the Account
 		this.loadHelper( accountId );

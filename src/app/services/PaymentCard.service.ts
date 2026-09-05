@@ -120,7 +120,7 @@ export class PaymentCardService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignBank( paymentCardId, _bankId ): Promise<any> {
+	assignBank( paymentCardId, _bankId ): Observable<any> {
 
 		// get the PaymentCard from storage
 		this.loadHelper( paymentCardId );
@@ -140,7 +140,7 @@ export class PaymentCardService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignBank( paymentCardId ): Promise<any> {
+	unassignBank( paymentCardId ): Observable<any> {
 
 		// get the PaymentCard from storage
 		this.loadHelper( paymentCardId );
@@ -157,7 +157,7 @@ export class PaymentCardService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignAccount( paymentCardId, _accountId ): Promise<any> {
+	assignAccount( paymentCardId, _accountId ): Observable<any> {
 
 		// get the PaymentCard from storage
 		this.loadHelper( paymentCardId );
@@ -177,7 +177,7 @@ export class PaymentCardService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignAccount( paymentCardId ): Promise<any> {
+	unassignAccount( paymentCardId ): Observable<any> {
 
 		// get the PaymentCard from storage
 		this.loadHelper( paymentCardId );
@@ -194,7 +194,7 @@ export class PaymentCardService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignCustomer( paymentCardId, _customerId ): Promise<any> {
+	assignCustomer( paymentCardId, _customerId ): Observable<any> {
 
 		// get the PaymentCard from storage
 		this.loadHelper( paymentCardId );
@@ -214,7 +214,7 @@ export class PaymentCardService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignCustomer( paymentCardId ): Promise<any> {
+	unassignCustomer( paymentCardId ): Observable<any> {
 
 		// get the PaymentCard from storage
 		this.loadHelper( paymentCardId );
@@ -233,7 +233,7 @@ export class PaymentCardService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addTransactions( paymentCardId, transactionsIds ): Promise<any> {
+	addTransactions( paymentCardId, transactionsIds ): Observable<any> {
 
 		// get the PaymentCard
 		this.loadHelper( paymentCardId );
@@ -260,7 +260,7 @@ export class PaymentCardService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeTransactions( paymentCardId, transactionsIds ): Promise<any> {
+	removeTransactions( paymentCardId, transactionsIds ): Observable<any> {
 
 		// get the PaymentCard
 		this.loadHelper( paymentCardId );

@@ -110,7 +110,7 @@ export class StandingInstructionService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignAccount( standingInstructionId, _accountId ): Promise<any> {
+	assignAccount( standingInstructionId, _accountId ): Observable<any> {
 
 		// get the StandingInstruction from storage
 		this.loadHelper( standingInstructionId );
@@ -130,7 +130,7 @@ export class StandingInstructionService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignAccount( standingInstructionId ): Promise<any> {
+	unassignAccount( standingInstructionId ): Observable<any> {
 
 		// get the StandingInstruction from storage
 		this.loadHelper( standingInstructionId );
@@ -147,7 +147,7 @@ export class StandingInstructionService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignBeneficiary( standingInstructionId, _beneficiaryId ): Promise<any> {
+	assignBeneficiary( standingInstructionId, _beneficiaryId ): Observable<any> {
 
 		// get the StandingInstruction from storage
 		this.loadHelper( standingInstructionId );
@@ -167,7 +167,7 @@ export class StandingInstructionService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignBeneficiary( standingInstructionId ): Promise<any> {
+	unassignBeneficiary( standingInstructionId ): Observable<any> {
 
 		// get the StandingInstruction from storage
 		this.loadHelper( standingInstructionId );

@@ -143,7 +143,7 @@ export class CustomerService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignBank( customerId, _bankId ): Promise<any> {
+	assignBank( customerId, _bankId ): Observable<any> {
 
 		// get the Customer from storage
 		this.loadHelper( customerId );
@@ -163,7 +163,7 @@ export class CustomerService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignBank( customerId ): Promise<any> {
+	unassignBank( customerId ): Observable<any> {
 
 		// get the Customer from storage
 		this.loadHelper( customerId );
@@ -182,7 +182,7 @@ export class CustomerService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addAccounts( customerId, accountsIds ): Promise<any> {
+	addAccounts( customerId, accountsIds ): Observable<any> {
 
 		// get the Customer
 		this.loadHelper( customerId );
@@ -209,7 +209,7 @@ export class CustomerService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeAccounts( customerId, accountsIds ): Promise<any> {
+	removeAccounts( customerId, accountsIds ): Observable<any> {
 
 		// get the Customer
 		this.loadHelper( customerId );
@@ -240,7 +240,7 @@ export class CustomerService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addLoanAccounts( customerId, loanAccountsIds ): Promise<any> {
+	addLoanAccounts( customerId, loanAccountsIds ): Observable<any> {
 
 		// get the Customer
 		this.loadHelper( customerId );
@@ -267,7 +267,7 @@ export class CustomerService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeLoanAccounts( customerId, loanAccountsIds ): Promise<any> {
+	removeLoanAccounts( customerId, loanAccountsIds ): Observable<any> {
 
 		// get the Customer
 		this.loadHelper( customerId );
@@ -298,7 +298,7 @@ export class CustomerService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addPaymentCards( customerId, paymentCardsIds ): Promise<any> {
+	addPaymentCards( customerId, paymentCardsIds ): Observable<any> {
 
 		// get the Customer
 		this.loadHelper( customerId );
@@ -325,7 +325,7 @@ export class CustomerService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removePaymentCards( customerId, paymentCardsIds ): Promise<any> {
+	removePaymentCards( customerId, paymentCardsIds ): Observable<any> {
 
 		// get the Customer
 		this.loadHelper( customerId );
@@ -356,7 +356,7 @@ export class CustomerService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addExternalAccounts( customerId, externalAccountsIds ): Promise<any> {
+	addExternalAccounts( customerId, externalAccountsIds ): Observable<any> {
 
 		// get the Customer
 		this.loadHelper( customerId );
@@ -383,7 +383,7 @@ export class CustomerService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeExternalAccounts( customerId, externalAccountsIds ): Promise<any> {
+	removeExternalAccounts( customerId, externalAccountsIds ): Observable<any> {
 
 		// get the Customer
 		this.loadHelper( customerId );
@@ -414,7 +414,7 @@ export class CustomerService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addFundsTransfers( customerId, fundsTransfersIds ): Promise<any> {
+	addFundsTransfers( customerId, fundsTransfersIds ): Observable<any> {
 
 		// get the Customer
 		this.loadHelper( customerId );
@@ -441,7 +441,7 @@ export class CustomerService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeFundsTransfers( customerId, fundsTransfersIds ): Promise<any> {
+	removeFundsTransfers( customerId, fundsTransfersIds ): Observable<any> {
 
 		// get the Customer
 		this.loadHelper( customerId );
@@ -472,7 +472,7 @@ export class CustomerService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addDisputes( customerId, disputesIds ): Promise<any> {
+	addDisputes( customerId, disputesIds ): Observable<any> {
 
 		// get the Customer
 		this.loadHelper( customerId );
@@ -499,7 +499,7 @@ export class CustomerService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeDisputes( customerId, disputesIds ): Promise<any> {
+	removeDisputes( customerId, disputesIds ): Observable<any> {
 
 		// get the Customer
 		this.loadHelper( customerId );
@@ -530,7 +530,7 @@ export class CustomerService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addKycProfiles( customerId, kycProfilesIds ): Promise<any> {
+	addKycProfiles( customerId, kycProfilesIds ): Observable<any> {
 
 		// get the Customer
 		this.loadHelper( customerId );
@@ -557,7 +557,7 @@ export class CustomerService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeKycProfiles( customerId, kycProfilesIds ): Promise<any> {
+	removeKycProfiles( customerId, kycProfilesIds ): Observable<any> {
 
 		// get the Customer
 		this.loadHelper( customerId );
@@ -588,7 +588,7 @@ export class CustomerService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addConsents( customerId, consentsIds ): Promise<any> {
+	addConsents( customerId, consentsIds ): Observable<any> {
 
 		// get the Customer
 		this.loadHelper( customerId );
@@ -615,7 +615,7 @@ export class CustomerService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeConsents( customerId, consentsIds ): Promise<any> {
+	removeConsents( customerId, consentsIds ): Observable<any> {
 
 		// get the Customer
 		this.loadHelper( customerId );

@@ -116,7 +116,7 @@ export class BranchService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignBank( branchId, _bankId ): Promise<any> {
+	assignBank( branchId, _bankId ): Observable<any> {
 
 		// get the Branch from storage
 		this.loadHelper( branchId );
@@ -136,7 +136,7 @@ export class BranchService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignBank( branchId ): Promise<any> {
+	unassignBank( branchId ): Observable<any> {
 
 		// get the Branch from storage
 		this.loadHelper( branchId );
@@ -155,7 +155,7 @@ export class BranchService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addAccounts( branchId, accountsIds ): Promise<any> {
+	addAccounts( branchId, accountsIds ): Observable<any> {
 
 		// get the Branch
 		this.loadHelper( branchId );
@@ -182,7 +182,7 @@ export class BranchService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeAccounts( branchId, accountsIds ): Promise<any> {
+	removeAccounts( branchId, accountsIds ): Observable<any> {
 
 		// get the Branch
 		this.loadHelper( branchId );
@@ -213,7 +213,7 @@ export class BranchService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addLoanAccounts( branchId, loanAccountsIds ): Promise<any> {
+	addLoanAccounts( branchId, loanAccountsIds ): Observable<any> {
 
 		// get the Branch
 		this.loadHelper( branchId );
@@ -240,7 +240,7 @@ export class BranchService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeLoanAccounts( branchId, loanAccountsIds ): Promise<any> {
+	removeLoanAccounts( branchId, loanAccountsIds ): Observable<any> {
 
 		// get the Branch
 		this.loadHelper( branchId );
@@ -271,7 +271,7 @@ export class BranchService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addAtms( branchId, atmsIds ): Promise<any> {
+	addAtms( branchId, atmsIds ): Observable<any> {
 
 		// get the Branch
 		this.loadHelper( branchId );
@@ -298,7 +298,7 @@ export class BranchService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeAtms( branchId, atmsIds ): Promise<any> {
+	removeAtms( branchId, atmsIds ): Observable<any> {
 
 		// get the Branch
 		this.loadHelper( branchId );

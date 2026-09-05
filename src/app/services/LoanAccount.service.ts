@@ -142,7 +142,7 @@ export class LoanAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignBank( loanAccountId, _bankId ): Promise<any> {
+	assignBank( loanAccountId, _bankId ): Observable<any> {
 
 		// get the LoanAccount from storage
 		this.loadHelper( loanAccountId );
@@ -162,7 +162,7 @@ export class LoanAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignBank( loanAccountId ): Promise<any> {
+	unassignBank( loanAccountId ): Observable<any> {
 
 		// get the LoanAccount from storage
 		this.loadHelper( loanAccountId );
@@ -179,7 +179,7 @@ export class LoanAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignBranch( loanAccountId, _branchId ): Promise<any> {
+	assignBranch( loanAccountId, _branchId ): Observable<any> {
 
 		// get the LoanAccount from storage
 		this.loadHelper( loanAccountId );
@@ -199,7 +199,7 @@ export class LoanAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignBranch( loanAccountId ): Promise<any> {
+	unassignBranch( loanAccountId ): Observable<any> {
 
 		// get the LoanAccount from storage
 		this.loadHelper( loanAccountId );
@@ -216,7 +216,7 @@ export class LoanAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	assignProduct( loanAccountId, _productId ): Promise<any> {
+	assignProduct( loanAccountId, _productId ): Observable<any> {
 
 		// get the LoanAccount from storage
 		this.loadHelper( loanAccountId );
@@ -236,7 +236,7 @@ export class LoanAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	unassignProduct( loanAccountId ): Promise<any> {
+	unassignProduct( loanAccountId ): Observable<any> {
 
 		// get the LoanAccount from storage
 		this.loadHelper( loanAccountId );
@@ -255,7 +255,7 @@ export class LoanAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addBorrowers( loanAccountId, borrowersIds ): Promise<any> {
+	addBorrowers( loanAccountId, borrowersIds ): Observable<any> {
 
 		// get the LoanAccount
 		this.loadHelper( loanAccountId );
@@ -282,7 +282,7 @@ export class LoanAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeBorrowers( loanAccountId, borrowersIds ): Promise<any> {
+	removeBorrowers( loanAccountId, borrowersIds ): Observable<any> {
 
 		// get the LoanAccount
 		this.loadHelper( loanAccountId );
@@ -313,7 +313,7 @@ export class LoanAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addRepaymentSchedule( loanAccountId, repaymentScheduleIds ): Promise<any> {
+	addRepaymentSchedule( loanAccountId, repaymentScheduleIds ): Observable<any> {
 
 		// get the LoanAccount
 		this.loadHelper( loanAccountId );
@@ -340,7 +340,7 @@ export class LoanAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeRepaymentSchedule( loanAccountId, repaymentScheduleIds ): Promise<any> {
+	removeRepaymentSchedule( loanAccountId, repaymentScheduleIds ): Observable<any> {
 
 		// get the LoanAccount
 		this.loadHelper( loanAccountId );
@@ -371,7 +371,7 @@ export class LoanAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addPayments( loanAccountId, paymentsIds ): Promise<any> {
+	addPayments( loanAccountId, paymentsIds ): Observable<any> {
 
 		// get the LoanAccount
 		this.loadHelper( loanAccountId );
@@ -398,7 +398,7 @@ export class LoanAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removePayments( loanAccountId, paymentsIds ): Promise<any> {
+	removePayments( loanAccountId, paymentsIds ): Observable<any> {
 
 		// get the LoanAccount
 		this.loadHelper( loanAccountId );
@@ -429,7 +429,7 @@ export class LoanAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addCollateral( loanAccountId, collateralIds ): Promise<any> {
+	addCollateral( loanAccountId, collateralIds ): Observable<any> {
 
 		// get the LoanAccount
 		this.loadHelper( loanAccountId );
@@ -456,7 +456,7 @@ export class LoanAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeCollateral( loanAccountId, collateralIds ): Promise<any> {
+	removeCollateral( loanAccountId, collateralIds ): Observable<any> {
 
 		// get the LoanAccount
 		this.loadHelper( loanAccountId );
@@ -487,7 +487,7 @@ export class LoanAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	addFeeCharges( loanAccountId, feeChargesIds ): Promise<any> {
+	addFeeCharges( loanAccountId, feeChargesIds ): Observable<any> {
 
 		// get the LoanAccount
 		this.loadHelper( loanAccountId );
@@ -514,7 +514,7 @@ export class LoanAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	removeFeeCharges( loanAccountId, feeChargesIds ): Promise<any> {
+	removeFeeCharges( loanAccountId, feeChargesIds ): Observable<any> {
 
 		// get the LoanAccount
 		this.loadHelper( loanAccountId );
