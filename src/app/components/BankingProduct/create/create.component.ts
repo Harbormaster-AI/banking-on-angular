@@ -23,6 +23,7 @@ export class CreateBankingProductComponent extends SubBaseComponent implements O
         private fb: FormBuilder,
         private router: Router
 ) {
+        super(http);
         this.bankingProductForm = this.createForm();
     }
 

@@ -23,6 +23,7 @@ export class CreateRepaymentScheduleComponent extends SubBaseComponent implement
         private fb: FormBuilder,
         private router: Router
 ) {
+        super(http);
         this.repaymentScheduleForm = this.createForm();
     }
 

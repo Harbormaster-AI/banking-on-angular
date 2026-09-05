@@ -23,6 +23,7 @@ export class CreateAccountStatementComponent extends SubBaseComponent implements
         private fb: FormBuilder,
         private router: Router
 ) {
+        super(http);
         this.accountStatementForm = this.createForm();
     }
 

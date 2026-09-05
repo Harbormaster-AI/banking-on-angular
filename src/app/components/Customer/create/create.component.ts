@@ -23,6 +23,7 @@ export class CreateCustomerComponent extends SubBaseComponent implements OnInit 
         private fb: FormBuilder,
         private router: Router
 ) {
+        super(http);
         this.customerForm = this.createForm();
     }
 

@@ -23,6 +23,7 @@ export class CreateThirdPartyProviderComponent extends SubBaseComponent implemen
         private fb: FormBuilder,
         private router: Router
 ) {
+        super(http);
         this.thirdPartyProviderForm = this.createForm();
     }
 

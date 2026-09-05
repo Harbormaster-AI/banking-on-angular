@@ -23,6 +23,7 @@ export class CreateFXTradeComponent extends SubBaseComponent implements OnInit {
         private fb: FormBuilder,
         private router: Router
 ) {
+        super(http);
         this.fXTradeForm = this.createForm();
     }
 

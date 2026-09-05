@@ -23,6 +23,7 @@ export class CreateFeeChargeComponent extends SubBaseComponent implements OnInit
         private fb: FormBuilder,
         private router: Router
 ) {
+        super(http);
         this.feeChargeForm = this.createForm();
     }
 

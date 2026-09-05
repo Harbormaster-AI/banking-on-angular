@@ -23,6 +23,7 @@ export class CreateFundsTransferComponent extends SubBaseComponent implements On
         private fb: FormBuilder,
         private router: Router
 ) {
+        super(http);
         this.fundsTransferForm = this.createForm();
     }
 

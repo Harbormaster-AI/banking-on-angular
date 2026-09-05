@@ -23,6 +23,7 @@ export class CreateCollateralComponent extends SubBaseComponent implements OnIni
         private fb: FormBuilder,
         private router: Router
 ) {
+        super(http);
         this.collateralForm = this.createForm();
     }
 

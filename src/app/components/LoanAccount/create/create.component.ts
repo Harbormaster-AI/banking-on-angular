@@ -23,6 +23,7 @@ export class CreateLoanAccountComponent extends SubBaseComponent implements OnIn
         private fb: FormBuilder,
         private router: Router
 ) {
+        super(http);
         this.loanAccountForm = this.createForm();
     }
 

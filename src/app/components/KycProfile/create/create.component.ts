@@ -23,6 +23,7 @@ export class CreateKycProfileComponent extends SubBaseComponent implements OnIni
         private fb: FormBuilder,
         private router: Router
 ) {
+        super(http);
         this.kycProfileForm = this.createForm();
     }
 

@@ -23,6 +23,7 @@ export class CreateDisputeComponent extends SubBaseComponent implements OnInit {
         private fb: FormBuilder,
         private router: Router
 ) {
+        super(http);
         this.disputeForm = this.createForm();
     }
 

@@ -23,6 +23,7 @@ export class CreateRiskAssessmentComponent extends SubBaseComponent implements O
         private fb: FormBuilder,
         private router: Router
 ) {
+        super(http);
         this.riskAssessmentForm = this.createForm();
     }
 

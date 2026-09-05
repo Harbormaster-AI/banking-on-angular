@@ -23,6 +23,7 @@ export class CreatePaymentCardComponent extends SubBaseComponent implements OnIn
         private fb: FormBuilder,
         private router: Router
 ) {
+        super(http);
         this.paymentCardForm = this.createForm();
     }
 

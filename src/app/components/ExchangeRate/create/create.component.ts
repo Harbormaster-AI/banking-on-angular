@@ -23,6 +23,7 @@ export class CreateExchangeRateComponent extends SubBaseComponent implements OnI
         private fb: FormBuilder,
         private router: Router
 ) {
+        super(http);
         this.exchangeRateForm = this.createForm();
     }
 

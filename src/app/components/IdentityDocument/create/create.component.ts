@@ -23,6 +23,7 @@ export class CreateIdentityDocumentComponent extends SubBaseComponent implements
         private fb: FormBuilder,
         private router: Router
 ) {
+        super(http);
         this.identityDocumentForm = this.createForm();
     }
 
