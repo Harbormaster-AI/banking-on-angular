@@ -20,7 +20,7 @@ export class RepaymentScheduleService extends HelperBaseService {
 	// general holder 
 	//********************************************************************
 	repaymentSchedule : any;
-	
+
 	//********************************************************************
 	// Catch all for the return value of a service call
 	//********************************************************************
@@ -29,19 +29,19 @@ export class RepaymentScheduleService extends HelperBaseService {
 	//********************************************************************
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
- 	constructor(private http: HttpClient) {
-		 super();
-    }
- 	
-	//********************************************************************
-	// add a RepaymentSchedule 
-	// returns the results untouched as a JSON representation 
+	constructor(private http: HttpClient) {
+		super();
+	}
+
+		//********************************************************************
+	// add a RepaymentSchedule
+	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-  	addRepaymentSchedule(installmentNumber, dueDate, principalDue, interestDue, totalDue, LoanAccount, Payment, Status) : Promise<any> {
-    	const uri = this.apiUrl + '/RepaymentSchedule/add';
-    	const obj = {
-      		installmentNumber: installmentNumber,
+	addRepaymentSchedule(installmentNumber, dueDate, principalDue, interestDue, totalDue, LoanAccount, Payment, Status) : Promise<any> {
+		const uri = this.apiUrl + '/RepaymentSchedule/add';
+		const obj = {
+			      		installmentNumber: installmentNumber,
       		dueDate: dueDate,
       		principalDue: principalDue,
       		interestDue: interestDue,
@@ -49,45 +49,45 @@ export class RepaymentScheduleService extends HelperBaseService {
       		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
       		Payment: Payment != null && Payment.length > 0 ? Payment : null,
 			Status: Status
-    	};
-    	
-    	return this.http.post(uri, obj).toPromise();
-  	}
+};
+
+	return this.http.post(uri, obj).toPromise();
+}
 
 	//********************************************************************
-	// gets all RepaymentSchedule 
+	// gets all RepaymentSchedule
 	// returns the results untouched as JSON representation of an
 	// array of RepaymentSchedule models
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getRepaymentSchedules() {
-    	const uri = this.apiUrl + '/RepaymentSchedule';
-    	
-    	return this
-            	.http.get(uri);
-  	}
+		const uri = this.apiUrl + '/RepaymentSchedule';
+
+		return this
+			.http.get(uri);
+	}
 
 	//********************************************************************
-	// edit a RepaymentSchedule 
+	// edit a RepaymentSchedule
 	// returns the results untouched as a JSON representation of a
 	// RepaymentSchedule model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-  	editRepaymentSchedule(id) {
-    	const uri = this.apiUrl + '/RepaymentSchedule/edit/' + id;
-    	
-    	return this.http.get(uri);
-  	}
+	editRepaymentSchedule(id) {
+		const uri = this.apiUrl + '/RepaymentSchedule/edit/' + id;
+
+		return this.http.get(uri);
+	}
 
 	//********************************************************************
-	// update a RepaymentSchedule 
+	// update a RepaymentSchedule
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	updateRepaymentSchedule(installmentNumber, dueDate, principalDue, interestDue, totalDue, LoanAccount, Payment, Status, id)  : Promise<any>  {
-    	const uri = this.apiUrl + '/RepaymentSchedule/update/' + id;
-    	const obj = {
-      		installmentNumber: installmentNumber,
+			updateRepaymentSchedule(installmentNumber, dueDate, principalDue, interestDue, totalDue, LoanAccount, Payment, Status, id)  : Promise<any>  {
+			const uri = this.apiUrl + '/RepaymentSchedule/update/' + id;
+	const obj = {
+		      		installmentNumber: installmentNumber,
       		dueDate: dueDate,
       		principalDue: principalDue,
       		interestDue: interestDue,
@@ -95,23 +95,23 @@ export class RepaymentScheduleService extends HelperBaseService {
       		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
       		Payment: Payment != null && Payment.length > 0 ? Payment : null,
 			Status: Status
-    	};
-    	
-    	return firstValueFrom(this.http.post(uri, obj));
-  	}
+};
+
+	return firstValueFrom(this.http.post(uri, obj));
+}
 
 	//********************************************************************
-	// delete a RepaymentSchedule 
+	// delete a RepaymentSchedule
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteRepaymentSchedule(id)  : Promise<any> {
-    	const uri = this.apiUrl + '/RepaymentSchedule/delete/' + id;
+		const uri = this.apiUrl + '/RepaymentSchedule/delete/' + id;
 
-        return firstValueFrom(this.http.get(uri));
-  }
-  
-    		//********************************************************************
+		return firstValueFrom(this.http.get(uri));
+	}
+
+			//********************************************************************
 	// assigns a LoanAccount on a RepaymentSchedule
 	// returns a Promise
 	// delegates via URI to an ORM handler
@@ -120,35 +120,35 @@ export class RepaymentScheduleService extends HelperBaseService {
 
 		// get the RepaymentSchedule from storage
 		this.loadHelper( repaymentScheduleId );
-		
-		// get the LoanAccount from storage
-		var tmp 	= new LoanAccountService(this.http).editLoanAccount(_loanAccountId);
-		
-		// assign the LoanAccount		
-		this.repaymentSchedule.loanAccount = tmp;
-      		
-		// save the RepaymentSchedule
-		return this.saveHelper();		
-	}
+
+	// get the LoanAccount from storage
+	var tmp 	= new LoanAccountService(this.http).editLoanAccount(_loanAccountId);
+
+	// assign the LoanAccount
+	this.repaymentSchedule.loanAccount = tmp;
+
+	// save the RepaymentSchedule
+	return this.saveHelper();
+}
 
 	//********************************************************************
 	// unassigns a LoanAccount on a RepaymentSchedule
 	// returns a Promise
 	// delegates via URI to an ORM handler
-	//********************************************************************				
+	//********************************************************************
 	unassignLoanAccount( repaymentScheduleId ): Promise<any> {
 
 		// get the RepaymentSchedule from storage
-        this.loadHelper( repaymentScheduleId );
-		
-		// assign LoanAccount to null		
-		this.repaymentSchedule.loanAccount = null;
-      		
-		// save the RepaymentSchedule
-		return this.saveHelper();
-	}
-	
-	//********************************************************************
+		this.loadHelper( repaymentScheduleId );
+
+	// assign LoanAccount to null
+	this.repaymentSchedule.loanAccount = null;
+
+	// save the RepaymentSchedule
+	return this.saveHelper();
+}
+
+		//********************************************************************
 	// assigns a Payment on a RepaymentSchedule
 	// returns a Promise
 	// delegates via URI to an ORM handler
@@ -157,56 +157,56 @@ export class RepaymentScheduleService extends HelperBaseService {
 
 		// get the RepaymentSchedule from storage
 		this.loadHelper( repaymentScheduleId );
-		
-		// get the LoanPayment from storage
-		var tmp 	= new LoanPaymentService(this.http).editLoanPayment(_paymentId);
-		
-		// assign the Payment		
-		this.repaymentSchedule.payment = tmp;
-      		
-		// save the RepaymentSchedule
-		return this.saveHelper();		
-	}
+
+	// get the LoanPayment from storage
+	var tmp 	= new LoanPaymentService(this.http).editLoanPayment(_paymentId);
+
+	// assign the Payment
+	this.repaymentSchedule.payment = tmp;
+
+	// save the RepaymentSchedule
+	return this.saveHelper();
+}
 
 	//********************************************************************
 	// unassigns a Payment on a RepaymentSchedule
 	// returns a Promise
 	// delegates via URI to an ORM handler
-	//********************************************************************				
+	//********************************************************************
 	unassignPayment( repaymentScheduleId ): Promise<any> {
 
 		// get the RepaymentSchedule from storage
-        this.loadHelper( repaymentScheduleId );
-		
-		// assign Payment to null		
-		this.repaymentSchedule.payment = null;
-      		
-		// save the RepaymentSchedule
-		return this.saveHelper();
-	}
+		this.loadHelper( repaymentScheduleId );
+
+	// assign Payment to null
+	this.repaymentSchedule.payment = null;
+
+	// save the RepaymentSchedule
+	return this.saveHelper();
+}
+
 	
-
-
+	
 	//********************************************************************
 	// saveHelper - internal helper to save a RepaymentSchedule
 	//********************************************************************
 	saveHelper() : Promise<any> {
-		
-		const uri = this.apiUrl + '/RepaymentSchedule/update/' + this.repaymentSchedule._id;		
-		
-    	return firstValueFrom( this
-      			.http
-      			.post(uri, this.repaymentSchedule)
-				);
-	}
+
+		const uri = this.apiUrl + '/RepaymentSchedule/update/' + this.repaymentSchedule;
+
+	return firstValueFrom( this
+		.http
+		.post(uri, this.repaymentSchedule)
+);
+}
 
 	//********************************************************************
 	// loadHelper - internal helper to load a RepaymentSchedule
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editRepaymentSchedule(id)
-        		.subscribe(res => {
-        			this.repaymentSchedule = res;
-      			});
+			.subscribe(res => {
+				this.repaymentSchedule = res;
+			});
 	}
 }

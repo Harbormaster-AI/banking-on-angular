@@ -20,7 +20,7 @@ export class LoanPaymentService extends HelperBaseService {
 	// general holder 
 	//********************************************************************
 	loanPayment : any;
-	
+
 	//********************************************************************
 	// Catch all for the return value of a service call
 	//********************************************************************
@@ -29,87 +29,87 @@ export class LoanPaymentService extends HelperBaseService {
 	//********************************************************************
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
- 	constructor(private http: HttpClient) {
-		 super();
-    }
- 	
-	//********************************************************************
-	// add a LoanPayment 
-	// returns the results untouched as a JSON representation 
+	constructor(private http: HttpClient) {
+		super();
+	}
+
+		//********************************************************************
+	// add a LoanPayment
+	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-  	addLoanPayment(paymentReference, amount, paymentDate, LoanAccount, Transaction, Method, Status) : Promise<any> {
-    	const uri = this.apiUrl + '/LoanPayment/add';
-    	const obj = {
-      		paymentReference: paymentReference,
+	addLoanPayment(paymentReference, amount, paymentDate, LoanAccount, Transaction, Method, Status) : Promise<any> {
+		const uri = this.apiUrl + '/LoanPayment/add';
+		const obj = {
+			      		paymentReference: paymentReference,
       		amount: amount,
       		paymentDate: paymentDate,
       		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
       		Transaction: Transaction != null && Transaction.length > 0 ? Transaction : null,
       		Method: Method,
 			Status: Status
-    	};
-    	
-    	return this.http.post(uri, obj).toPromise();
-  	}
+};
+
+	return this.http.post(uri, obj).toPromise();
+}
 
 	//********************************************************************
-	// gets all LoanPayment 
+	// gets all LoanPayment
 	// returns the results untouched as JSON representation of an
 	// array of LoanPayment models
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getLoanPayments() {
-    	const uri = this.apiUrl + '/LoanPayment';
-    	
-    	return this
-            	.http.get(uri);
-  	}
+		const uri = this.apiUrl + '/LoanPayment';
+
+		return this
+			.http.get(uri);
+	}
 
 	//********************************************************************
-	// edit a LoanPayment 
+	// edit a LoanPayment
 	// returns the results untouched as a JSON representation of a
 	// LoanPayment model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-  	editLoanPayment(id) {
-    	const uri = this.apiUrl + '/LoanPayment/edit/' + id;
-    	
-    	return this.http.get(uri);
-  	}
+	editLoanPayment(id) {
+		const uri = this.apiUrl + '/LoanPayment/edit/' + id;
+
+		return this.http.get(uri);
+	}
 
 	//********************************************************************
-	// update a LoanPayment 
+	// update a LoanPayment
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	updateLoanPayment(paymentReference, amount, paymentDate, LoanAccount, Transaction, Method, Status, id)  : Promise<any>  {
-    	const uri = this.apiUrl + '/LoanPayment/update/' + id;
-    	const obj = {
-      		paymentReference: paymentReference,
+			updateLoanPayment(paymentReference, amount, paymentDate, LoanAccount, Transaction, Method, Status, id)  : Promise<any>  {
+			const uri = this.apiUrl + '/LoanPayment/update/' + id;
+	const obj = {
+		      		paymentReference: paymentReference,
       		amount: amount,
       		paymentDate: paymentDate,
       		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
       		Transaction: Transaction != null && Transaction.length > 0 ? Transaction : null,
       		Method: Method,
 			Status: Status
-    	};
-    	
-    	return firstValueFrom(this.http.post(uri, obj));
-  	}
+};
+
+	return firstValueFrom(this.http.post(uri, obj));
+}
 
 	//********************************************************************
-	// delete a LoanPayment 
+	// delete a LoanPayment
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteLoanPayment(id)  : Promise<any> {
-    	const uri = this.apiUrl + '/LoanPayment/delete/' + id;
+		const uri = this.apiUrl + '/LoanPayment/delete/' + id;
 
-        return firstValueFrom(this.http.get(uri));
-  }
-  
-    		//********************************************************************
+		return firstValueFrom(this.http.get(uri));
+	}
+
+			//********************************************************************
 	// assigns a LoanAccount on a LoanPayment
 	// returns a Promise
 	// delegates via URI to an ORM handler
@@ -118,35 +118,35 @@ export class LoanPaymentService extends HelperBaseService {
 
 		// get the LoanPayment from storage
 		this.loadHelper( loanPaymentId );
-		
-		// get the LoanAccount from storage
-		var tmp 	= new LoanAccountService(this.http).editLoanAccount(_loanAccountId);
-		
-		// assign the LoanAccount		
-		this.loanPayment.loanAccount = tmp;
-      		
-		// save the LoanPayment
-		return this.saveHelper();		
-	}
+
+	// get the LoanAccount from storage
+	var tmp 	= new LoanAccountService(this.http).editLoanAccount(_loanAccountId);
+
+	// assign the LoanAccount
+	this.loanPayment.loanAccount = tmp;
+
+	// save the LoanPayment
+	return this.saveHelper();
+}
 
 	//********************************************************************
 	// unassigns a LoanAccount on a LoanPayment
 	// returns a Promise
 	// delegates via URI to an ORM handler
-	//********************************************************************				
+	//********************************************************************
 	unassignLoanAccount( loanPaymentId ): Promise<any> {
 
 		// get the LoanPayment from storage
-        this.loadHelper( loanPaymentId );
-		
-		// assign LoanAccount to null		
-		this.loanPayment.loanAccount = null;
-      		
-		// save the LoanPayment
-		return this.saveHelper();
-	}
-	
-	//********************************************************************
+		this.loadHelper( loanPaymentId );
+
+	// assign LoanAccount to null
+	this.loanPayment.loanAccount = null;
+
+	// save the LoanPayment
+	return this.saveHelper();
+}
+
+		//********************************************************************
 	// assigns a Transaction on a LoanPayment
 	// returns a Promise
 	// delegates via URI to an ORM handler
@@ -155,56 +155,56 @@ export class LoanPaymentService extends HelperBaseService {
 
 		// get the LoanPayment from storage
 		this.loadHelper( loanPaymentId );
-		
-		// get the Transaction from storage
-		var tmp 	= new TransactionService(this.http).editTransaction(_transactionId);
-		
-		// assign the Transaction		
-		this.loanPayment.transaction = tmp;
-      		
-		// save the LoanPayment
-		return this.saveHelper();		
-	}
+
+	// get the Transaction from storage
+	var tmp 	= new TransactionService(this.http).editTransaction(_transactionId);
+
+	// assign the Transaction
+	this.loanPayment.transaction = tmp;
+
+	// save the LoanPayment
+	return this.saveHelper();
+}
 
 	//********************************************************************
 	// unassigns a Transaction on a LoanPayment
 	// returns a Promise
 	// delegates via URI to an ORM handler
-	//********************************************************************				
+	//********************************************************************
 	unassignTransaction( loanPaymentId ): Promise<any> {
 
 		// get the LoanPayment from storage
-        this.loadHelper( loanPaymentId );
-		
-		// assign Transaction to null		
-		this.loanPayment.transaction = null;
-      		
-		// save the LoanPayment
-		return this.saveHelper();
-	}
+		this.loadHelper( loanPaymentId );
+
+	// assign Transaction to null
+	this.loanPayment.transaction = null;
+
+	// save the LoanPayment
+	return this.saveHelper();
+}
+
 	
-
-
+	
 	//********************************************************************
 	// saveHelper - internal helper to save a LoanPayment
 	//********************************************************************
 	saveHelper() : Promise<any> {
-		
-		const uri = this.apiUrl + '/LoanPayment/update/' + this.loanPayment._id;		
-		
-    	return firstValueFrom( this
-      			.http
-      			.post(uri, this.loanPayment)
-				);
-	}
+
+		const uri = this.apiUrl + '/LoanPayment/update/' + this.loanPayment;
+
+	return firstValueFrom( this
+		.http
+		.post(uri, this.loanPayment)
+);
+}
 
 	//********************************************************************
 	// loadHelper - internal helper to load a LoanPayment
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editLoanPayment(id)
-        		.subscribe(res => {
-        			this.loanPayment = res;
-      			});
+			.subscribe(res => {
+				this.loanPayment = res;
+			});
 	}
 }

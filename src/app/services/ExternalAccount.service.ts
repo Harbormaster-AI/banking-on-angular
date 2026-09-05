@@ -20,7 +20,7 @@ export class ExternalAccountService extends HelperBaseService {
 	// general holder 
 	//********************************************************************
 	externalAccount : any;
-	
+
 	//********************************************************************
 	// Catch all for the return value of a service call
 	//********************************************************************
@@ -29,19 +29,19 @@ export class ExternalAccountService extends HelperBaseService {
 	//********************************************************************
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
- 	constructor(private http: HttpClient) {
-		 super();
-    }
- 	
-	//********************************************************************
-	// add a ExternalAccount 
-	// returns the results untouched as a JSON representation 
+	constructor(private http: HttpClient) {
+		super();
+	}
+
+		//********************************************************************
+	// add a ExternalAccount
+	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-  	addExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions) : Promise<any> {
-    	const uri = this.apiUrl + '/ExternalAccount/add';
-    	const obj = {
-      		name: name,
+	addExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions) : Promise<any> {
+		const uri = this.apiUrl + '/ExternalAccount/add';
+		const obj = {
+			      		name: name,
       		iban: iban,
       		accountNumber: accountNumber,
       		bic: bic,
@@ -49,45 +49,45 @@ export class ExternalAccountService extends HelperBaseService {
       		country: country,
       		Customer: Customer != null && Customer.length > 0 ? Customer : null,
 			Transactions: Transactions != null && Transactions.length > 0 ? Transactions : null
-    	};
-    	
-    	return this.http.post(uri, obj).toPromise();
-  	}
+};
+
+	return this.http.post(uri, obj).toPromise();
+}
 
 	//********************************************************************
-	// gets all ExternalAccount 
+	// gets all ExternalAccount
 	// returns the results untouched as JSON representation of an
 	// array of ExternalAccount models
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getExternalAccounts() {
-    	const uri = this.apiUrl + '/ExternalAccount';
-    	
-    	return this
-            	.http.get(uri);
-  	}
+		const uri = this.apiUrl + '/ExternalAccount';
+
+		return this
+			.http.get(uri);
+	}
 
 	//********************************************************************
-	// edit a ExternalAccount 
+	// edit a ExternalAccount
 	// returns the results untouched as a JSON representation of a
 	// ExternalAccount model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-  	editExternalAccount(id) {
-    	const uri = this.apiUrl + '/ExternalAccount/edit/' + id;
-    	
-    	return this.http.get(uri);
-  	}
+	editExternalAccount(id) {
+		const uri = this.apiUrl + '/ExternalAccount/edit/' + id;
+
+		return this.http.get(uri);
+	}
 
 	//********************************************************************
-	// update a ExternalAccount 
+	// update a ExternalAccount
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	updateExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions, id)  : Promise<any>  {
-    	const uri = this.apiUrl + '/ExternalAccount/update/' + id;
-    	const obj = {
-      		name: name,
+			updateExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions, id)  : Promise<any>  {
+			const uri = this.apiUrl + '/ExternalAccount/update/' + id;
+	const obj = {
+		      		name: name,
       		iban: iban,
       		accountNumber: accountNumber,
       		bic: bic,
@@ -95,23 +95,23 @@ export class ExternalAccountService extends HelperBaseService {
       		country: country,
       		Customer: Customer != null && Customer.length > 0 ? Customer : null,
 			Transactions: Transactions != null && Transactions.length > 0 ? Transactions : null
-    	};
-    	
-    	return firstValueFrom(this.http.post(uri, obj));
-  	}
+};
+
+	return firstValueFrom(this.http.post(uri, obj));
+}
 
 	//********************************************************************
-	// delete a ExternalAccount 
+	// delete a ExternalAccount
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteExternalAccount(id)  : Promise<any> {
-    	const uri = this.apiUrl + '/ExternalAccount/delete/' + id;
+		const uri = this.apiUrl + '/ExternalAccount/delete/' + id;
 
-        return firstValueFrom(this.http.get(uri));
-  }
-  
-    		//********************************************************************
+		return firstValueFrom(this.http.get(uri));
+	}
+
+			//********************************************************************
 	// assigns a Customer on a ExternalAccount
 	// returns a Promise
 	// delegates via URI to an ORM handler
@@ -120,114 +120,114 @@ export class ExternalAccountService extends HelperBaseService {
 
 		// get the ExternalAccount from storage
 		this.loadHelper( externalAccountId );
-		
-		// get the Customer from storage
-		var tmp 	= new CustomerService(this.http).editCustomer(_customerId);
-		
-		// assign the Customer		
-		this.externalAccount.customer = tmp;
-      		
-		// save the ExternalAccount
-		return this.saveHelper();		
-	}
+
+	// get the Customer from storage
+	var tmp 	= new CustomerService(this.http).editCustomer(_customerId);
+
+	// assign the Customer
+	this.externalAccount.customer = tmp;
+
+	// save the ExternalAccount
+	return this.saveHelper();
+}
 
 	//********************************************************************
 	// unassigns a Customer on a ExternalAccount
 	// returns a Promise
 	// delegates via URI to an ORM handler
-	//********************************************************************				
+	//********************************************************************
 	unassignCustomer( externalAccountId ): Promise<any> {
 
 		// get the ExternalAccount from storage
-        this.loadHelper( externalAccountId );
-		
-		// assign Customer to null		
-		this.externalAccount.customer = null;
-      		
-		// save the ExternalAccount
-		return this.saveHelper();
-	}
-	
+		this.loadHelper( externalAccountId );
 
-	//********************************************************************
-	// adds one or more transactionsIds as a Transactions 
+	// assign Customer to null
+	this.externalAccount.customer = null;
+
+	// save the ExternalAccount
+	return this.saveHelper();
+}
+
+	
+		//********************************************************************
+	// adds one or more transactionsIds as a Transactions
 	// to a ExternalAccount
 	// returns a Promise
 	// delegates via URI to an ORM handler
-	//********************************************************************				
+	//********************************************************************
 	addTransactions( externalAccountId, transactionsIds ): Promise<any> {
 
 		// get the ExternalAccount
 		this.loadHelper( externalAccountId );
-				
-		// split on a comma with no spaces
-		var idList = transactionsIds.split(',')
 
-		// iterate over array of transactions ids
-		idList.forEach(function (id) {
-			// read the Transaction		
-			var transaction = new TransactionService(this.http).editTransaction(id);	
-			// add the Transaction if not already assigned
-			if ( this.externalAccount.transactions.indexOf(transaction) == -1 )
-				this.externalAccount.transactions.push(transaction);
-		});
-				
-		// save it		
-		return this.saveHelper();
-	}			
-	
+	// split on a comma with no spaces
+	var idList = transactionsIds.split(',')
+
+	// iterate over array of transactions ids
+	idList.forEach(function (id) {
+		// read the Transaction
+		var transaction = new TransactionService(this.http).editTransaction(id);
+		// add the Transaction if not already assigned
+		if ( this.externalAccount.transactions.indexOf(transaction) == -1 )
+		this.externalAccount.transactions.push(transaction);
+	});
+
+	// save it
+	return this.saveHelper();
+}
+
 	//********************************************************************
-	// removes one or more transactionsIds as a Transactions 
+	// removes one or more transactionsIds as a Transactions
 	// from a ExternalAccount
 	// returns a Promise
 	// delegates via URI to an ORM handler
-	//********************************************************************						
+	//********************************************************************
 	removeTransactions( externalAccountId, transactionsIds ): Promise<any> {
-		
+
 		// get the ExternalAccount
 		this.loadHelper( externalAccountId );
 
-				
-		// split on a comma with no spaces
-		var idList 					= transactionsIds.split(',');
-		var transactions 	= this.externalAccount.transactions;
-		
-		if ( transactions != null && transactionsIds != null ) {
-		
-			// iterate over array of transactions ids
-			transactions.forEach(function (obj) {				
-				if ( transactionsIds.indexOf(obj._id) > -1 ) {
-					 // remove the Transaction
-					this.externalAccount.transactions.pop(obj);
-				}
-			});
-					
-		    // save it		
-			return this.saveHelper();
-		}
-	}
-			
 
+	// split on a comma with no spaces
+	var idList 					= transactionsIds.split(',');
+	var transactions 	= this.externalAccount.transactions;
+
+	if ( transactions != null && transactionsIds != null ) {
+
+		// iterate over array of transactions ids
+		transactions.forEach(function (obj) {
+			if ( transactionsIds.indexOf(obj._id) > -1 ) {
+				// remove the Transaction
+				this.externalAccount.transactions.pop(obj);
+			}
+		});
+
+		// save it
+		return this.saveHelper();
+	}
+}
+
+	
 	//********************************************************************
 	// saveHelper - internal helper to save a ExternalAccount
 	//********************************************************************
 	saveHelper() : Promise<any> {
-		
-		const uri = this.apiUrl + '/ExternalAccount/update/' + this.externalAccount._id;		
-		
-    	return firstValueFrom( this
-      			.http
-      			.post(uri, this.externalAccount)
-				);
-	}
+
+		const uri = this.apiUrl + '/ExternalAccount/update/' + this.externalAccount;
+
+	return firstValueFrom( this
+		.http
+		.post(uri, this.externalAccount)
+);
+}
 
 	//********************************************************************
 	// loadHelper - internal helper to load a ExternalAccount
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editExternalAccount(id)
-        		.subscribe(res => {
-        			this.externalAccount = res;
-      			});
+			.subscribe(res => {
+				this.externalAccount = res;
+			});
 	}
 }

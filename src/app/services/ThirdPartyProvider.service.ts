@@ -20,7 +20,7 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	// general holder 
 	//********************************************************************
 	thirdPartyProvider : any;
-	
+
 	//********************************************************************
 	// Catch all for the return value of a service call
 	//********************************************************************
@@ -29,83 +29,83 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	//********************************************************************
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
- 	constructor(private http: HttpClient) {
-		 super();
-    }
- 	
-	//********************************************************************
-	// add a ThirdPartyProvider 
-	// returns the results untouched as a JSON representation 
+	constructor(private http: HttpClient) {
+		super();
+	}
+
+		//********************************************************************
+	// add a ThirdPartyProvider
+	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-  	addThirdPartyProvider(name, registrationId, website, Bank, Consents) : Promise<any> {
-    	const uri = this.apiUrl + '/ThirdPartyProvider/add';
-    	const obj = {
-      		name: name,
+	addThirdPartyProvider(name, registrationId, website, Bank, Consents) : Promise<any> {
+		const uri = this.apiUrl + '/ThirdPartyProvider/add';
+		const obj = {
+			      		name: name,
       		registrationId: registrationId,
       		website: website,
       		Bank: Bank != null && Bank.length > 0 ? Bank : null,
 			Consents: Consents != null && Consents.length > 0 ? Consents : null
-    	};
-    	
-    	return this.http.post(uri, obj).toPromise();
-  	}
+};
+
+	return this.http.post(uri, obj).toPromise();
+}
 
 	//********************************************************************
-	// gets all ThirdPartyProvider 
+	// gets all ThirdPartyProvider
 	// returns the results untouched as JSON representation of an
 	// array of ThirdPartyProvider models
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getThirdPartyProviders() {
-    	const uri = this.apiUrl + '/ThirdPartyProvider';
-    	
-    	return this
-            	.http.get(uri);
-  	}
+		const uri = this.apiUrl + '/ThirdPartyProvider';
+
+		return this
+			.http.get(uri);
+	}
 
 	//********************************************************************
-	// edit a ThirdPartyProvider 
+	// edit a ThirdPartyProvider
 	// returns the results untouched as a JSON representation of a
 	// ThirdPartyProvider model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-  	editThirdPartyProvider(id) {
-    	const uri = this.apiUrl + '/ThirdPartyProvider/edit/' + id;
-    	
-    	return this.http.get(uri);
-  	}
+	editThirdPartyProvider(id) {
+		const uri = this.apiUrl + '/ThirdPartyProvider/edit/' + id;
+
+		return this.http.get(uri);
+	}
 
 	//********************************************************************
-	// update a ThirdPartyProvider 
+	// update a ThirdPartyProvider
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	updateThirdPartyProvider(name, registrationId, website, Bank, Consents, id)  : Promise<any>  {
-    	const uri = this.apiUrl + '/ThirdPartyProvider/update/' + id;
-    	const obj = {
-      		name: name,
+			updateThirdPartyProvider(name, registrationId, website, Bank, Consents, id)  : Promise<any>  {
+			const uri = this.apiUrl + '/ThirdPartyProvider/update/' + id;
+	const obj = {
+		      		name: name,
       		registrationId: registrationId,
       		website: website,
       		Bank: Bank != null && Bank.length > 0 ? Bank : null,
 			Consents: Consents != null && Consents.length > 0 ? Consents : null
-    	};
-    	
-    	return firstValueFrom(this.http.post(uri, obj));
-  	}
+};
+
+	return firstValueFrom(this.http.post(uri, obj));
+}
 
 	//********************************************************************
-	// delete a ThirdPartyProvider 
+	// delete a ThirdPartyProvider
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteThirdPartyProvider(id)  : Promise<any> {
-    	const uri = this.apiUrl + '/ThirdPartyProvider/delete/' + id;
+		const uri = this.apiUrl + '/ThirdPartyProvider/delete/' + id;
 
-        return firstValueFrom(this.http.get(uri));
-  }
-  
-    		//********************************************************************
+		return firstValueFrom(this.http.get(uri));
+	}
+
+			//********************************************************************
 	// assigns a Bank on a ThirdPartyProvider
 	// returns a Promise
 	// delegates via URI to an ORM handler
@@ -114,114 +114,114 @@ export class ThirdPartyProviderService extends HelperBaseService {
 
 		// get the ThirdPartyProvider from storage
 		this.loadHelper( thirdPartyProviderId );
-		
-		// get the Bank from storage
-		var tmp 	= new BankService(this.http).editBank(_bankId);
-		
-		// assign the Bank		
-		this.thirdPartyProvider.bank = tmp;
-      		
-		// save the ThirdPartyProvider
-		return this.saveHelper();		
-	}
+
+	// get the Bank from storage
+	var tmp 	= new BankService(this.http).editBank(_bankId);
+
+	// assign the Bank
+	this.thirdPartyProvider.bank = tmp;
+
+	// save the ThirdPartyProvider
+	return this.saveHelper();
+}
 
 	//********************************************************************
 	// unassigns a Bank on a ThirdPartyProvider
 	// returns a Promise
 	// delegates via URI to an ORM handler
-	//********************************************************************				
+	//********************************************************************
 	unassignBank( thirdPartyProviderId ): Promise<any> {
 
 		// get the ThirdPartyProvider from storage
-        this.loadHelper( thirdPartyProviderId );
-		
-		// assign Bank to null		
-		this.thirdPartyProvider.bank = null;
-      		
-		// save the ThirdPartyProvider
-		return this.saveHelper();
-	}
-	
+		this.loadHelper( thirdPartyProviderId );
 
-	//********************************************************************
-	// adds one or more consentsIds as a Consents 
+	// assign Bank to null
+	this.thirdPartyProvider.bank = null;
+
+	// save the ThirdPartyProvider
+	return this.saveHelper();
+}
+
+	
+		//********************************************************************
+	// adds one or more consentsIds as a Consents
 	// to a ThirdPartyProvider
 	// returns a Promise
 	// delegates via URI to an ORM handler
-	//********************************************************************				
+	//********************************************************************
 	addConsents( thirdPartyProviderId, consentsIds ): Promise<any> {
 
 		// get the ThirdPartyProvider
 		this.loadHelper( thirdPartyProviderId );
-				
-		// split on a comma with no spaces
-		var idList = consentsIds.split(',')
 
-		// iterate over array of consents ids
-		idList.forEach(function (id) {
-			// read the Consent		
-			var consent = new ConsentService(this.http).editConsent(id);	
-			// add the Consent if not already assigned
-			if ( this.thirdPartyProvider.consents.indexOf(consent) == -1 )
-				this.thirdPartyProvider.consents.push(consent);
-		});
-				
-		// save it		
-		return this.saveHelper();
-	}			
-	
+	// split on a comma with no spaces
+	var idList = consentsIds.split(',')
+
+	// iterate over array of consents ids
+	idList.forEach(function (id) {
+		// read the Consent
+		var consent = new ConsentService(this.http).editConsent(id);
+		// add the Consent if not already assigned
+		if ( this.thirdPartyProvider.consents.indexOf(consent) == -1 )
+		this.thirdPartyProvider.consents.push(consent);
+	});
+
+	// save it
+	return this.saveHelper();
+}
+
 	//********************************************************************
-	// removes one or more consentsIds as a Consents 
+	// removes one or more consentsIds as a Consents
 	// from a ThirdPartyProvider
 	// returns a Promise
 	// delegates via URI to an ORM handler
-	//********************************************************************						
+	//********************************************************************
 	removeConsents( thirdPartyProviderId, consentsIds ): Promise<any> {
-		
+
 		// get the ThirdPartyProvider
 		this.loadHelper( thirdPartyProviderId );
 
-				
-		// split on a comma with no spaces
-		var idList 					= consentsIds.split(',');
-		var consents 	= this.thirdPartyProvider.consents;
-		
-		if ( consents != null && consentsIds != null ) {
-		
-			// iterate over array of consents ids
-			consents.forEach(function (obj) {				
-				if ( consentsIds.indexOf(obj._id) > -1 ) {
-					 // remove the Consent
-					this.thirdPartyProvider.consents.pop(obj);
-				}
-			});
-					
-		    // save it		
-			return this.saveHelper();
-		}
-	}
-			
 
+	// split on a comma with no spaces
+	var idList 					= consentsIds.split(',');
+	var consents 	= this.thirdPartyProvider.consents;
+
+	if ( consents != null && consentsIds != null ) {
+
+		// iterate over array of consents ids
+		consents.forEach(function (obj) {
+			if ( consentsIds.indexOf(obj._id) > -1 ) {
+				// remove the Consent
+				this.thirdPartyProvider.consents.pop(obj);
+			}
+		});
+
+		// save it
+		return this.saveHelper();
+	}
+}
+
+	
 	//********************************************************************
 	// saveHelper - internal helper to save a ThirdPartyProvider
 	//********************************************************************
 	saveHelper() : Promise<any> {
-		
-		const uri = this.apiUrl + '/ThirdPartyProvider/update/' + this.thirdPartyProvider._id;		
-		
-    	return firstValueFrom( this
-      			.http
-      			.post(uri, this.thirdPartyProvider)
-				);
-	}
+
+		const uri = this.apiUrl + '/ThirdPartyProvider/update/' + this.thirdPartyProvider;
+
+	return firstValueFrom( this
+		.http
+		.post(uri, this.thirdPartyProvider)
+);
+}
 
 	//********************************************************************
 	// loadHelper - internal helper to load a ThirdPartyProvider
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editThirdPartyProvider(id)
-        		.subscribe(res => {
-        			this.thirdPartyProvider = res;
-      			});
+			.subscribe(res => {
+				this.thirdPartyProvider = res;
+			});
 	}
 }

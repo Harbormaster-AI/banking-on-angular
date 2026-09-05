@@ -20,7 +20,7 @@ export class ExchangeRateService extends HelperBaseService {
 	// general holder 
 	//********************************************************************
 	exchangeRate : any;
-	
+
 	//********************************************************************
 	// Catch all for the return value of a service call
 	//********************************************************************
@@ -29,87 +29,87 @@ export class ExchangeRateService extends HelperBaseService {
 	//********************************************************************
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
- 	constructor(private http: HttpClient) {
-		 super();
-    }
- 	
-	//********************************************************************
-	// add a ExchangeRate 
-	// returns the results untouched as a JSON representation 
+	constructor(private http: HttpClient) {
+		super();
+	}
+
+		//********************************************************************
+	// add a ExchangeRate
+	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-  	addExchangeRate(baseCurrency, counterCurrency, rate, asOf, source, Bank, FxTrades) : Promise<any> {
-    	const uri = this.apiUrl + '/ExchangeRate/add';
-    	const obj = {
-      		baseCurrency: baseCurrency,
+	addExchangeRate(baseCurrency, counterCurrency, rate, asOf, source, Bank, FxTrades) : Promise<any> {
+		const uri = this.apiUrl + '/ExchangeRate/add';
+		const obj = {
+			      		baseCurrency: baseCurrency,
       		counterCurrency: counterCurrency,
       		rate: rate,
       		asOf: asOf,
       		source: source,
       		Bank: Bank != null && Bank.length > 0 ? Bank : null,
 			FxTrades: FxTrades != null && FxTrades.length > 0 ? FxTrades : null
-    	};
-    	
-    	return this.http.post(uri, obj).toPromise();
-  	}
+};
+
+	return this.http.post(uri, obj).toPromise();
+}
 
 	//********************************************************************
-	// gets all ExchangeRate 
+	// gets all ExchangeRate
 	// returns the results untouched as JSON representation of an
 	// array of ExchangeRate models
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getExchangeRates() {
-    	const uri = this.apiUrl + '/ExchangeRate';
-    	
-    	return this
-            	.http.get(uri);
-  	}
+		const uri = this.apiUrl + '/ExchangeRate';
+
+		return this
+			.http.get(uri);
+	}
 
 	//********************************************************************
-	// edit a ExchangeRate 
+	// edit a ExchangeRate
 	// returns the results untouched as a JSON representation of a
 	// ExchangeRate model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-  	editExchangeRate(id) {
-    	const uri = this.apiUrl + '/ExchangeRate/edit/' + id;
-    	
-    	return this.http.get(uri);
-  	}
+	editExchangeRate(id) {
+		const uri = this.apiUrl + '/ExchangeRate/edit/' + id;
+
+		return this.http.get(uri);
+	}
 
 	//********************************************************************
-	// update a ExchangeRate 
+	// update a ExchangeRate
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	updateExchangeRate(baseCurrency, counterCurrency, rate, asOf, source, Bank, FxTrades, id)  : Promise<any>  {
-    	const uri = this.apiUrl + '/ExchangeRate/update/' + id;
-    	const obj = {
-      		baseCurrency: baseCurrency,
+			updateExchangeRate(baseCurrency, counterCurrency, rate, asOf, source, Bank, FxTrades, id)  : Promise<any>  {
+			const uri = this.apiUrl + '/ExchangeRate/update/' + id;
+	const obj = {
+		      		baseCurrency: baseCurrency,
       		counterCurrency: counterCurrency,
       		rate: rate,
       		asOf: asOf,
       		source: source,
       		Bank: Bank != null && Bank.length > 0 ? Bank : null,
 			FxTrades: FxTrades != null && FxTrades.length > 0 ? FxTrades : null
-    	};
-    	
-    	return firstValueFrom(this.http.post(uri, obj));
-  	}
+};
+
+	return firstValueFrom(this.http.post(uri, obj));
+}
 
 	//********************************************************************
-	// delete a ExchangeRate 
+	// delete a ExchangeRate
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteExchangeRate(id)  : Promise<any> {
-    	const uri = this.apiUrl + '/ExchangeRate/delete/' + id;
+		const uri = this.apiUrl + '/ExchangeRate/delete/' + id;
 
-        return firstValueFrom(this.http.get(uri));
-  }
-  
-    		//********************************************************************
+		return firstValueFrom(this.http.get(uri));
+	}
+
+			//********************************************************************
 	// assigns a Bank on a ExchangeRate
 	// returns a Promise
 	// delegates via URI to an ORM handler
@@ -118,114 +118,114 @@ export class ExchangeRateService extends HelperBaseService {
 
 		// get the ExchangeRate from storage
 		this.loadHelper( exchangeRateId );
-		
-		// get the Bank from storage
-		var tmp 	= new BankService(this.http).editBank(_bankId);
-		
-		// assign the Bank		
-		this.exchangeRate.bank = tmp;
-      		
-		// save the ExchangeRate
-		return this.saveHelper();		
-	}
+
+	// get the Bank from storage
+	var tmp 	= new BankService(this.http).editBank(_bankId);
+
+	// assign the Bank
+	this.exchangeRate.bank = tmp;
+
+	// save the ExchangeRate
+	return this.saveHelper();
+}
 
 	//********************************************************************
 	// unassigns a Bank on a ExchangeRate
 	// returns a Promise
 	// delegates via URI to an ORM handler
-	//********************************************************************				
+	//********************************************************************
 	unassignBank( exchangeRateId ): Promise<any> {
 
 		// get the ExchangeRate from storage
-        this.loadHelper( exchangeRateId );
-		
-		// assign Bank to null		
-		this.exchangeRate.bank = null;
-      		
-		// save the ExchangeRate
-		return this.saveHelper();
-	}
-	
+		this.loadHelper( exchangeRateId );
 
-	//********************************************************************
-	// adds one or more fxTradesIds as a FxTrades 
+	// assign Bank to null
+	this.exchangeRate.bank = null;
+
+	// save the ExchangeRate
+	return this.saveHelper();
+}
+
+	
+		//********************************************************************
+	// adds one or more fxTradesIds as a FxTrades
 	// to a ExchangeRate
 	// returns a Promise
 	// delegates via URI to an ORM handler
-	//********************************************************************				
+	//********************************************************************
 	addFxTrades( exchangeRateId, fxTradesIds ): Promise<any> {
 
 		// get the ExchangeRate
 		this.loadHelper( exchangeRateId );
-				
-		// split on a comma with no spaces
-		var idList = fxTradesIds.split(',')
 
-		// iterate over array of fxTrades ids
-		idList.forEach(function (id) {
-			// read the FXTrade		
-			var fXTrade = new FXTradeService(this.http).editFXTrade(id);	
-			// add the FXTrade if not already assigned
-			if ( this.exchangeRate.fxTrades.indexOf(fXTrade) == -1 )
-				this.exchangeRate.fxTrades.push(fXTrade);
-		});
-				
-		// save it		
-		return this.saveHelper();
-	}			
-	
+	// split on a comma with no spaces
+	var idList = fxTradesIds.split(',')
+
+	// iterate over array of fxTrades ids
+	idList.forEach(function (id) {
+		// read the FXTrade
+		var fXTrade = new FXTradeService(this.http).editFXTrade(id);
+		// add the FXTrade if not already assigned
+		if ( this.exchangeRate.fxTrades.indexOf(fXTrade) == -1 )
+		this.exchangeRate.fxTrades.push(fXTrade);
+	});
+
+	// save it
+	return this.saveHelper();
+}
+
 	//********************************************************************
-	// removes one or more fxTradesIds as a FxTrades 
+	// removes one or more fxTradesIds as a FxTrades
 	// from a ExchangeRate
 	// returns a Promise
 	// delegates via URI to an ORM handler
-	//********************************************************************						
+	//********************************************************************
 	removeFxTrades( exchangeRateId, fxTradesIds ): Promise<any> {
-		
+
 		// get the ExchangeRate
 		this.loadHelper( exchangeRateId );
 
-				
-		// split on a comma with no spaces
-		var idList 					= fxTradesIds.split(',');
-		var fxTrades 	= this.exchangeRate.fxTrades;
-		
-		if ( fxTrades != null && fxTradesIds != null ) {
-		
-			// iterate over array of fxTrades ids
-			fxTrades.forEach(function (obj) {				
-				if ( fxTradesIds.indexOf(obj._id) > -1 ) {
-					 // remove the FXTrade
-					this.exchangeRate.fxTrades.pop(obj);
-				}
-			});
-					
-		    // save it		
-			return this.saveHelper();
-		}
-	}
-			
 
+	// split on a comma with no spaces
+	var idList 					= fxTradesIds.split(',');
+	var fxTrades 	= this.exchangeRate.fxTrades;
+
+	if ( fxTrades != null && fxTradesIds != null ) {
+
+		// iterate over array of fxTrades ids
+		fxTrades.forEach(function (obj) {
+			if ( fxTradesIds.indexOf(obj._id) > -1 ) {
+				// remove the FXTrade
+				this.exchangeRate.fxTrades.pop(obj);
+			}
+		});
+
+		// save it
+		return this.saveHelper();
+	}
+}
+
+	
 	//********************************************************************
 	// saveHelper - internal helper to save a ExchangeRate
 	//********************************************************************
 	saveHelper() : Promise<any> {
-		
-		const uri = this.apiUrl + '/ExchangeRate/update/' + this.exchangeRate._id;		
-		
-    	return firstValueFrom( this
-      			.http
-      			.post(uri, this.exchangeRate)
-				);
-	}
+
+		const uri = this.apiUrl + '/ExchangeRate/update/' + this.exchangeRate;
+
+	return firstValueFrom( this
+		.http
+		.post(uri, this.exchangeRate)
+);
+}
 
 	//********************************************************************
 	// loadHelper - internal helper to load a ExchangeRate
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editExchangeRate(id)
-        		.subscribe(res => {
-        			this.exchangeRate = res;
-      			});
+			.subscribe(res => {
+				this.exchangeRate = res;
+			});
 	}
 }

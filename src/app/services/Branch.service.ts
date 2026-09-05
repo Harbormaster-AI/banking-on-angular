@@ -22,7 +22,7 @@ export class BranchService extends HelperBaseService {
 	// general holder 
 	//********************************************************************
 	branch : any;
-	
+
 	//********************************************************************
 	// Catch all for the return value of a service call
 	//********************************************************************
@@ -31,19 +31,19 @@ export class BranchService extends HelperBaseService {
 	//********************************************************************
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
- 	constructor(private http: HttpClient) {
-		 super();
-    }
- 	
-	//********************************************************************
-	// add a Branch 
-	// returns the results untouched as a JSON representation 
+	constructor(private http: HttpClient) {
+		super();
+	}
+
+		//********************************************************************
+	// add a Branch
+	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-  	addBranch(name, branchCode, address, phone, openingHours, Bank, Accounts, LoanAccounts, Atms) : Promise<any> {
-    	const uri = this.apiUrl + '/Branch/add';
-    	const obj = {
-      		name: name,
+	addBranch(name, branchCode, address, phone, openingHours, Bank, Accounts, LoanAccounts, Atms) : Promise<any> {
+		const uri = this.apiUrl + '/Branch/add';
+		const obj = {
+			      		name: name,
       		branchCode: branchCode,
       		address: address,
       		phone: phone,
@@ -52,45 +52,45 @@ export class BranchService extends HelperBaseService {
       		Accounts: Accounts != null && Accounts.length > 0 ? Accounts : null,
       		LoanAccounts: LoanAccounts != null && LoanAccounts.length > 0 ? LoanAccounts : null,
 			Atms: Atms != null && Atms.length > 0 ? Atms : null
-    	};
-    	
-    	return this.http.post(uri, obj).toPromise();
-  	}
+};
+
+	return this.http.post(uri, obj).toPromise();
+}
 
 	//********************************************************************
-	// gets all Branch 
+	// gets all Branch
 	// returns the results untouched as JSON representation of an
 	// array of Branch models
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getBranchs() {
-    	const uri = this.apiUrl + '/Branch';
-    	
-    	return this
-            	.http.get(uri);
-  	}
+		const uri = this.apiUrl + '/Branch';
+
+		return this
+			.http.get(uri);
+	}
 
 	//********************************************************************
-	// edit a Branch 
+	// edit a Branch
 	// returns the results untouched as a JSON representation of a
 	// Branch model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-  	editBranch(id) {
-    	const uri = this.apiUrl + '/Branch/edit/' + id;
-    	
-    	return this.http.get(uri);
-  	}
+	editBranch(id) {
+		const uri = this.apiUrl + '/Branch/edit/' + id;
+
+		return this.http.get(uri);
+	}
 
 	//********************************************************************
-	// update a Branch 
+	// update a Branch
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	updateBranch(name, branchCode, address, phone, openingHours, Bank, Accounts, LoanAccounts, Atms, id)  : Promise<any>  {
-    	const uri = this.apiUrl + '/Branch/update/' + id;
-    	const obj = {
-      		name: name,
+			updateBranch(name, branchCode, address, phone, openingHours, Bank, Accounts, LoanAccounts, Atms, id)  : Promise<any>  {
+			const uri = this.apiUrl + '/Branch/update/' + id;
+	const obj = {
+		      		name: name,
       		branchCode: branchCode,
       		address: address,
       		phone: phone,
@@ -99,23 +99,23 @@ export class BranchService extends HelperBaseService {
       		Accounts: Accounts != null && Accounts.length > 0 ? Accounts : null,
       		LoanAccounts: LoanAccounts != null && LoanAccounts.length > 0 ? LoanAccounts : null,
 			Atms: Atms != null && Atms.length > 0 ? Atms : null
-    	};
-    	
-    	return firstValueFrom(this.http.post(uri, obj));
-  	}
+};
+
+	return firstValueFrom(this.http.post(uri, obj));
+}
 
 	//********************************************************************
-	// delete a Branch 
+	// delete a Branch
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteBranch(id)  : Promise<any> {
-    	const uri = this.apiUrl + '/Branch/delete/' + id;
+		const uri = this.apiUrl + '/Branch/delete/' + id;
 
-        return firstValueFrom(this.http.get(uri));
-  }
-  
-    		//********************************************************************
+		return firstValueFrom(this.http.get(uri));
+	}
+
+			//********************************************************************
 	// assigns a Bank on a Branch
 	// returns a Promise
 	// delegates via URI to an ORM handler
@@ -124,230 +124,230 @@ export class BranchService extends HelperBaseService {
 
 		// get the Branch from storage
 		this.loadHelper( branchId );
-		
-		// get the Bank from storage
-		var tmp 	= new BankService(this.http).editBank(_bankId);
-		
-		// assign the Bank		
-		this.branch.bank = tmp;
-      		
-		// save the Branch
-		return this.saveHelper();		
-	}
+
+	// get the Bank from storage
+	var tmp 	= new BankService(this.http).editBank(_bankId);
+
+	// assign the Bank
+	this.branch.bank = tmp;
+
+	// save the Branch
+	return this.saveHelper();
+}
 
 	//********************************************************************
 	// unassigns a Bank on a Branch
 	// returns a Promise
 	// delegates via URI to an ORM handler
-	//********************************************************************				
+	//********************************************************************
 	unassignBank( branchId ): Promise<any> {
 
 		// get the Branch from storage
-        this.loadHelper( branchId );
-		
-		// assign Bank to null		
-		this.branch.bank = null;
-      		
-		// save the Branch
-		return this.saveHelper();
-	}
-	
+		this.loadHelper( branchId );
 
-	//********************************************************************
-	// adds one or more accountsIds as a Accounts 
+	// assign Bank to null
+	this.branch.bank = null;
+
+	// save the Branch
+	return this.saveHelper();
+}
+
+	
+		//********************************************************************
+	// adds one or more accountsIds as a Accounts
 	// to a Branch
 	// returns a Promise
 	// delegates via URI to an ORM handler
-	//********************************************************************				
+	//********************************************************************
 	addAccounts( branchId, accountsIds ): Promise<any> {
 
 		// get the Branch
 		this.loadHelper( branchId );
-				
-		// split on a comma with no spaces
-		var idList = accountsIds.split(',')
 
-		// iterate over array of accounts ids
-		idList.forEach(function (id) {
-			// read the Account		
-			var account = new AccountService(this.http).editAccount(id);	
-			// add the Account if not already assigned
-			if ( this.branch.accounts.indexOf(account) == -1 )
-				this.branch.accounts.push(account);
-		});
-				
-		// save it		
-		return this.saveHelper();
-	}			
-	
+	// split on a comma with no spaces
+	var idList = accountsIds.split(',')
+
+	// iterate over array of accounts ids
+	idList.forEach(function (id) {
+		// read the Account
+		var account = new AccountService(this.http).editAccount(id);
+		// add the Account if not already assigned
+		if ( this.branch.accounts.indexOf(account) == -1 )
+		this.branch.accounts.push(account);
+	});
+
+	// save it
+	return this.saveHelper();
+}
+
 	//********************************************************************
-	// removes one or more accountsIds as a Accounts 
+	// removes one or more accountsIds as a Accounts
 	// from a Branch
 	// returns a Promise
 	// delegates via URI to an ORM handler
-	//********************************************************************						
+	//********************************************************************
 	removeAccounts( branchId, accountsIds ): Promise<any> {
-		
+
 		// get the Branch
 		this.loadHelper( branchId );
 
-				
-		// split on a comma with no spaces
-		var idList 					= accountsIds.split(',');
-		var accounts 	= this.branch.accounts;
-		
-		if ( accounts != null && accountsIds != null ) {
-		
-			// iterate over array of accounts ids
-			accounts.forEach(function (obj) {				
-				if ( accountsIds.indexOf(obj._id) > -1 ) {
-					 // remove the Account
-					this.branch.accounts.pop(obj);
-				}
-			});
-					
-		    // save it		
-			return this.saveHelper();
-		}
+
+	// split on a comma with no spaces
+	var idList 					= accountsIds.split(',');
+	var accounts 	= this.branch.accounts;
+
+	if ( accounts != null && accountsIds != null ) {
+
+		// iterate over array of accounts ids
+		accounts.forEach(function (obj) {
+			if ( accountsIds.indexOf(obj._id) > -1 ) {
+				// remove the Account
+				this.branch.accounts.pop(obj);
+			}
+		});
+
+		// save it
+		return this.saveHelper();
 	}
-			
-	//********************************************************************
-	// adds one or more loanAccountsIds as a LoanAccounts 
+}
+
+		//********************************************************************
+	// adds one or more loanAccountsIds as a LoanAccounts
 	// to a Branch
 	// returns a Promise
 	// delegates via URI to an ORM handler
-	//********************************************************************				
+	//********************************************************************
 	addLoanAccounts( branchId, loanAccountsIds ): Promise<any> {
 
 		// get the Branch
 		this.loadHelper( branchId );
-				
-		// split on a comma with no spaces
-		var idList = loanAccountsIds.split(',')
 
-		// iterate over array of loanAccounts ids
-		idList.forEach(function (id) {
-			// read the LoanAccount		
-			var loanAccount = new LoanAccountService(this.http).editLoanAccount(id);	
-			// add the LoanAccount if not already assigned
-			if ( this.branch.loanAccounts.indexOf(loanAccount) == -1 )
-				this.branch.loanAccounts.push(loanAccount);
-		});
-				
-		// save it		
-		return this.saveHelper();
-	}			
-	
+	// split on a comma with no spaces
+	var idList = loanAccountsIds.split(',')
+
+	// iterate over array of loanAccounts ids
+	idList.forEach(function (id) {
+		// read the LoanAccount
+		var loanAccount = new LoanAccountService(this.http).editLoanAccount(id);
+		// add the LoanAccount if not already assigned
+		if ( this.branch.loanAccounts.indexOf(loanAccount) == -1 )
+		this.branch.loanAccounts.push(loanAccount);
+	});
+
+	// save it
+	return this.saveHelper();
+}
+
 	//********************************************************************
-	// removes one or more loanAccountsIds as a LoanAccounts 
+	// removes one or more loanAccountsIds as a LoanAccounts
 	// from a Branch
 	// returns a Promise
 	// delegates via URI to an ORM handler
-	//********************************************************************						
+	//********************************************************************
 	removeLoanAccounts( branchId, loanAccountsIds ): Promise<any> {
-		
+
 		// get the Branch
 		this.loadHelper( branchId );
 
-				
-		// split on a comma with no spaces
-		var idList 					= loanAccountsIds.split(',');
-		var loanAccounts 	= this.branch.loanAccounts;
-		
-		if ( loanAccounts != null && loanAccountsIds != null ) {
-		
-			// iterate over array of loanAccounts ids
-			loanAccounts.forEach(function (obj) {				
-				if ( loanAccountsIds.indexOf(obj._id) > -1 ) {
-					 // remove the LoanAccount
-					this.branch.loanAccounts.pop(obj);
-				}
-			});
-					
-		    // save it		
-			return this.saveHelper();
-		}
+
+	// split on a comma with no spaces
+	var idList 					= loanAccountsIds.split(',');
+	var loanAccounts 	= this.branch.loanAccounts;
+
+	if ( loanAccounts != null && loanAccountsIds != null ) {
+
+		// iterate over array of loanAccounts ids
+		loanAccounts.forEach(function (obj) {
+			if ( loanAccountsIds.indexOf(obj._id) > -1 ) {
+				// remove the LoanAccount
+				this.branch.loanAccounts.pop(obj);
+			}
+		});
+
+		// save it
+		return this.saveHelper();
 	}
-			
-	//********************************************************************
-	// adds one or more atmsIds as a Atms 
+}
+
+		//********************************************************************
+	// adds one or more atmsIds as a Atms
 	// to a Branch
 	// returns a Promise
 	// delegates via URI to an ORM handler
-	//********************************************************************				
+	//********************************************************************
 	addAtms( branchId, atmsIds ): Promise<any> {
 
 		// get the Branch
 		this.loadHelper( branchId );
-				
-		// split on a comma with no spaces
-		var idList = atmsIds.split(',')
 
-		// iterate over array of atms ids
-		idList.forEach(function (id) {
-			// read the ATM		
-			var aTM = new ATMService(this.http).editATM(id);	
-			// add the ATM if not already assigned
-			if ( this.branch.atms.indexOf(aTM) == -1 )
-				this.branch.atms.push(aTM);
-		});
-				
-		// save it		
-		return this.saveHelper();
-	}			
-	
+	// split on a comma with no spaces
+	var idList = atmsIds.split(',')
+
+	// iterate over array of atms ids
+	idList.forEach(function (id) {
+		// read the ATM
+		var aTM = new ATMService(this.http).editATM(id);
+		// add the ATM if not already assigned
+		if ( this.branch.atms.indexOf(aTM) == -1 )
+		this.branch.atms.push(aTM);
+	});
+
+	// save it
+	return this.saveHelper();
+}
+
 	//********************************************************************
-	// removes one or more atmsIds as a Atms 
+	// removes one or more atmsIds as a Atms
 	// from a Branch
 	// returns a Promise
 	// delegates via URI to an ORM handler
-	//********************************************************************						
+	//********************************************************************
 	removeAtms( branchId, atmsIds ): Promise<any> {
-		
+
 		// get the Branch
 		this.loadHelper( branchId );
 
-				
-		// split on a comma with no spaces
-		var idList 					= atmsIds.split(',');
-		var atms 	= this.branch.atms;
-		
-		if ( atms != null && atmsIds != null ) {
-		
-			// iterate over array of atms ids
-			atms.forEach(function (obj) {				
-				if ( atmsIds.indexOf(obj._id) > -1 ) {
-					 // remove the ATM
-					this.branch.atms.pop(obj);
-				}
-			});
-					
-		    // save it		
-			return this.saveHelper();
-		}
-	}
-			
 
+	// split on a comma with no spaces
+	var idList 					= atmsIds.split(',');
+	var atms 	= this.branch.atms;
+
+	if ( atms != null && atmsIds != null ) {
+
+		// iterate over array of atms ids
+		atms.forEach(function (obj) {
+			if ( atmsIds.indexOf(obj._id) > -1 ) {
+				// remove the ATM
+				this.branch.atms.pop(obj);
+			}
+		});
+
+		// save it
+		return this.saveHelper();
+	}
+}
+
+	
 	//********************************************************************
 	// saveHelper - internal helper to save a Branch
 	//********************************************************************
 	saveHelper() : Promise<any> {
-		
-		const uri = this.apiUrl + '/Branch/update/' + this.branch._id;		
-		
-    	return firstValueFrom( this
-      			.http
-      			.post(uri, this.branch)
-				);
-	}
+
+		const uri = this.apiUrl + '/Branch/update/' + this.branch;
+
+	return firstValueFrom( this
+		.http
+		.post(uri, this.branch)
+);
+}
 
 	//********************************************************************
 	// loadHelper - internal helper to load a Branch
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editBranch(id)
-        		.subscribe(res => {
-        			this.branch = res;
-      			});
+			.subscribe(res => {
+				this.branch = res;
+			});
 	}
 }

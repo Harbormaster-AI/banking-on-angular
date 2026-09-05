@@ -19,7 +19,7 @@ export class ScreeningResultService extends HelperBaseService {
 	// general holder 
 	//********************************************************************
 	screeningResult : any;
-	
+
 	//********************************************************************
 	// Catch all for the return value of a service call
 	//********************************************************************
@@ -28,81 +28,81 @@ export class ScreeningResultService extends HelperBaseService {
 	//********************************************************************
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
- 	constructor(private http: HttpClient) {
-		 super();
-    }
- 	
-	//********************************************************************
-	// add a ScreeningResult 
-	// returns the results untouched as a JSON representation 
+	constructor(private http: HttpClient) {
+		super();
+	}
+
+		//********************************************************************
+	// add a ScreeningResult
+	// returns the results untouched as a JSON representation
 	// delegates via URI to an ORM handler
 	//********************************************************************
-  	addScreeningResult(screeningDate, provider, KycProfile, Outcome) : Promise<any> {
-    	const uri = this.apiUrl + '/ScreeningResult/add';
-    	const obj = {
-      		screeningDate: screeningDate,
+	addScreeningResult(screeningDate, provider, KycProfile, Outcome) : Promise<any> {
+		const uri = this.apiUrl + '/ScreeningResult/add';
+		const obj = {
+			      		screeningDate: screeningDate,
       		provider: provider,
       		KycProfile: KycProfile != null && KycProfile.length > 0 ? KycProfile : null,
 			Outcome: Outcome
-    	};
-    	
-    	return this.http.post(uri, obj).toPromise();
-  	}
+};
+
+	return this.http.post(uri, obj).toPromise();
+}
 
 	//********************************************************************
-	// gets all ScreeningResult 
+	// gets all ScreeningResult
 	// returns the results untouched as JSON representation of an
 	// array of ScreeningResult models
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getScreeningResults() {
-    	const uri = this.apiUrl + '/ScreeningResult';
-    	
-    	return this
-            	.http.get(uri);
-  	}
+		const uri = this.apiUrl + '/ScreeningResult';
+
+		return this
+			.http.get(uri);
+	}
 
 	//********************************************************************
-	// edit a ScreeningResult 
+	// edit a ScreeningResult
 	// returns the results untouched as a JSON representation of a
 	// ScreeningResult model
 	// delegates via URI to an ORM handler
 	//********************************************************************
-  	editScreeningResult(id) {
-    	const uri = this.apiUrl + '/ScreeningResult/edit/' + id;
-    	
-    	return this.http.get(uri);
-  	}
+	editScreeningResult(id) {
+		const uri = this.apiUrl + '/ScreeningResult/edit/' + id;
+
+		return this.http.get(uri);
+	}
 
 	//********************************************************************
-	// update a ScreeningResult 
+	// update a ScreeningResult
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	updateScreeningResult(screeningDate, provider, KycProfile, Outcome, id)  : Promise<any>  {
-    	const uri = this.apiUrl + '/ScreeningResult/update/' + id;
-    	const obj = {
-      		screeningDate: screeningDate,
+			updateScreeningResult(screeningDate, provider, KycProfile, Outcome, id)  : Promise<any>  {
+			const uri = this.apiUrl + '/ScreeningResult/update/' + id;
+	const obj = {
+		      		screeningDate: screeningDate,
       		provider: provider,
       		KycProfile: KycProfile != null && KycProfile.length > 0 ? KycProfile : null,
 			Outcome: Outcome
-    	};
-    	
-    	return firstValueFrom(this.http.post(uri, obj));
-  	}
+};
+
+	return firstValueFrom(this.http.post(uri, obj));
+}
 
 	//********************************************************************
-	// delete a ScreeningResult 
+	// delete a ScreeningResult
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteScreeningResult(id)  : Promise<any> {
-    	const uri = this.apiUrl + '/ScreeningResult/delete/' + id;
+		const uri = this.apiUrl + '/ScreeningResult/delete/' + id;
 
-        return firstValueFrom(this.http.get(uri));
-  }
-  
-    		//********************************************************************
+		return firstValueFrom(this.http.get(uri));
+	}
+
+			//********************************************************************
 	// assigns a KycProfile on a ScreeningResult
 	// returns a Promise
 	// delegates via URI to an ORM handler
@@ -111,56 +111,56 @@ export class ScreeningResultService extends HelperBaseService {
 
 		// get the ScreeningResult from storage
 		this.loadHelper( screeningResultId );
-		
-		// get the KycProfile from storage
-		var tmp 	= new KycProfileService(this.http).editKycProfile(_kycProfileId);
-		
-		// assign the KycProfile		
-		this.screeningResult.kycProfile = tmp;
-      		
-		// save the ScreeningResult
-		return this.saveHelper();		
-	}
+
+	// get the KycProfile from storage
+	var tmp 	= new KycProfileService(this.http).editKycProfile(_kycProfileId);
+
+	// assign the KycProfile
+	this.screeningResult.kycProfile = tmp;
+
+	// save the ScreeningResult
+	return this.saveHelper();
+}
 
 	//********************************************************************
 	// unassigns a KycProfile on a ScreeningResult
 	// returns a Promise
 	// delegates via URI to an ORM handler
-	//********************************************************************				
+	//********************************************************************
 	unassignKycProfile( screeningResultId ): Promise<any> {
 
 		// get the ScreeningResult from storage
-        this.loadHelper( screeningResultId );
-		
-		// assign KycProfile to null		
-		this.screeningResult.kycProfile = null;
-      		
-		// save the ScreeningResult
-		return this.saveHelper();
-	}
+		this.loadHelper( screeningResultId );
+
+	// assign KycProfile to null
+	this.screeningResult.kycProfile = null;
+
+	// save the ScreeningResult
+	return this.saveHelper();
+}
+
 	
-
-
+	
 	//********************************************************************
 	// saveHelper - internal helper to save a ScreeningResult
 	//********************************************************************
 	saveHelper() : Promise<any> {
-		
-		const uri = this.apiUrl + '/ScreeningResult/update/' + this.screeningResult._id;		
-		
-    	return firstValueFrom( this
-      			.http
-      			.post(uri, this.screeningResult)
-				);
-	}
+
+		const uri = this.apiUrl + '/ScreeningResult/update/' + this.screeningResult;
+
+	return firstValueFrom( this
+		.http
+		.post(uri, this.screeningResult)
+);
+}
 
 	//********************************************************************
 	// loadHelper - internal helper to load a ScreeningResult
 	//********************************************************************	
 	loadHelper( id ) {
 		this.editScreeningResult(id)
-        		.subscribe(res => {
-        			this.screeningResult = res;
-      			});
+			.subscribe(res => {
+				this.screeningResult = res;
+			});
 	}
 }
