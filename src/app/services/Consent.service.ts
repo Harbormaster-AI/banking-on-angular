@@ -14,8 +14,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class ConsentService extends HelperBaseService {
 
 	//********************************************************************
@@ -32,7 +32,7 @@ export class ConsentService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -41,7 +41,7 @@ export class ConsentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addConsent(grantedOn, expiresOn, Customer, Bank, AuthorizedAccounts, ThirdPartyProvider, ConsentType, Status) : Promise<any> {
-    	const uri = this.ormUrl + '/Consent/add';
+    	const uri = this.apiUrl + '/Consent/add';
     	const obj = {
       		grantedOn: grantedOn,
       		expiresOn: expiresOn,
@@ -63,12 +63,10 @@ export class ConsentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getConsents() {
-    	const uri = this.ormUrl + '/Consent';
+    	const uri = this.apiUrl + '/Consent';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -78,11 +76,9 @@ export class ConsentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editConsent(id) {
-    	const uri = this.ormUrl + '/Consent/edit/' + id;
+    	const uri = this.apiUrl + '/Consent/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -91,7 +87,7 @@ export class ConsentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateConsent(grantedOn, expiresOn, Customer, Bank, AuthorizedAccounts, ThirdPartyProvider, ConsentType, Status, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/Consent/update/' + id;
+    	const uri = this.apiUrl + '/Consent/update/' + id;
     	const obj = {
       		grantedOn: grantedOn,
       		expiresOn: expiresOn,
@@ -103,7 +99,7 @@ export class ConsentService extends HelperBaseService {
 			Status: Status
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -112,9 +108,9 @@ export class ConsentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteConsent(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/Consent/delete/' + id;
+    	const uri = this.apiUrl + '/Consent/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -293,12 +289,12 @@ export class ConsentService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/Consent/update/' + this.consent._id;		
+		const uri = this.apiUrl + '/Consent/update/' + this.consent._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.consent)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

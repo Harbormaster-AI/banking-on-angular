@@ -16,8 +16,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class TransactionService extends HelperBaseService {
 
 	//********************************************************************
@@ -34,7 +34,7 @@ export class TransactionService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -43,7 +43,7 @@ export class TransactionService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addTransaction(bookingDate, valueDate, amount, description, Account, ExternalCounterparty, PaymentCard, FundsTransfer, FxTrade, Dispute, Direction, TransactionType, Status, Channel) : Promise<any> {
-    	const uri = this.ormUrl + '/Transaction/add';
+    	const uri = this.apiUrl + '/Transaction/add';
     	const obj = {
       		bookingDate: bookingDate,
       		valueDate: valueDate,
@@ -71,12 +71,10 @@ export class TransactionService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getTransactions() {
-    	const uri = this.ormUrl + '/Transaction';
+    	const uri = this.apiUrl + '/Transaction';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -86,11 +84,9 @@ export class TransactionService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editTransaction(id) {
-    	const uri = this.ormUrl + '/Transaction/edit/' + id;
+    	const uri = this.apiUrl + '/Transaction/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -99,7 +95,7 @@ export class TransactionService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateTransaction(bookingDate, valueDate, amount, description, Account, ExternalCounterparty, PaymentCard, FundsTransfer, FxTrade, Dispute, Direction, TransactionType, Status, Channel, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/Transaction/update/' + id;
+    	const uri = this.apiUrl + '/Transaction/update/' + id;
     	const obj = {
       		bookingDate: bookingDate,
       		valueDate: valueDate,
@@ -117,7 +113,7 @@ export class TransactionService extends HelperBaseService {
 			Channel: Channel
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -126,9 +122,9 @@ export class TransactionService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteTransaction(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/Transaction/delete/' + id;
+    	const uri = this.apiUrl + '/Transaction/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -360,12 +356,12 @@ export class TransactionService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/Transaction/update/' + this.transaction._id;		
+		const uri = this.apiUrl + '/Transaction/update/' + this.transaction._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.transaction)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

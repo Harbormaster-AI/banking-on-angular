@@ -14,8 +14,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class KycProfileService extends HelperBaseService {
 
 	//********************************************************************
@@ -32,7 +32,7 @@ export class KycProfileService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -41,7 +41,7 @@ export class KycProfileService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addKycProfile(profileId, lastReviewedOn, Customer, IdentityDocuments, RiskAssessments, Screenings, Status) : Promise<any> {
-    	const uri = this.ormUrl + '/KycProfile/add';
+    	const uri = this.apiUrl + '/KycProfile/add';
     	const obj = {
       		profileId: profileId,
       		lastReviewedOn: lastReviewedOn,
@@ -62,12 +62,10 @@ export class KycProfileService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getKycProfiles() {
-    	const uri = this.ormUrl + '/KycProfile';
+    	const uri = this.apiUrl + '/KycProfile';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -77,11 +75,9 @@ export class KycProfileService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editKycProfile(id) {
-    	const uri = this.ormUrl + '/KycProfile/edit/' + id;
+    	const uri = this.apiUrl + '/KycProfile/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -90,7 +86,7 @@ export class KycProfileService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateKycProfile(profileId, lastReviewedOn, Customer, IdentityDocuments, RiskAssessments, Screenings, Status, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/KycProfile/update/' + id;
+    	const uri = this.apiUrl + '/KycProfile/update/' + id;
     	const obj = {
       		profileId: profileId,
       		lastReviewedOn: lastReviewedOn,
@@ -101,7 +97,7 @@ export class KycProfileService extends HelperBaseService {
 			Status: Status
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -110,9 +106,9 @@ export class KycProfileService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteKycProfile(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/KycProfile/delete/' + id;
+    	const uri = this.apiUrl + '/KycProfile/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -333,12 +329,12 @@ export class KycProfileService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/KycProfile/update/' + this.kycProfile._id;		
+		const uri = this.apiUrl + '/KycProfile/update/' + this.kycProfile._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.kycProfile)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

@@ -18,8 +18,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class AccountService extends HelperBaseService {
 
 	//********************************************************************
@@ -36,7 +36,7 @@ export class AccountService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -45,7 +45,7 @@ export class AccountService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addAccount(accountNumber, iban, accountName, currency, openedOn, closedOn, Bank, Branch, Product, Owners, Transactions, Statements, StandingInstructions, FeeCharges, AccountType, OwnershipType, Status) : Promise<any> {
-    	const uri = this.ormUrl + '/Account/add';
+    	const uri = this.apiUrl + '/Account/add';
     	const obj = {
       		accountNumber: accountNumber,
       		iban: iban,
@@ -76,12 +76,10 @@ export class AccountService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getAccounts() {
-    	const uri = this.ormUrl + '/Account';
+    	const uri = this.apiUrl + '/Account';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -91,11 +89,9 @@ export class AccountService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editAccount(id) {
-    	const uri = this.ormUrl + '/Account/edit/' + id;
+    	const uri = this.apiUrl + '/Account/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -104,7 +100,7 @@ export class AccountService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateAccount(accountNumber, iban, accountName, currency, openedOn, closedOn, Bank, Branch, Product, Owners, Transactions, Statements, StandingInstructions, FeeCharges, AccountType, OwnershipType, Status, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/Account/update/' + id;
+    	const uri = this.apiUrl + '/Account/update/' + id;
     	const obj = {
       		accountNumber: accountNumber,
       		iban: iban,
@@ -125,7 +121,7 @@ export class AccountService extends HelperBaseService {
 			Status: Status
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -134,9 +130,9 @@ export class AccountService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteAccount(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/Account/delete/' + id;
+    	const uri = this.apiUrl + '/Account/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -547,12 +543,12 @@ export class AccountService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/Account/update/' + this.account._id;		
+		const uri = this.apiUrl + '/Account/update/' + this.account._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.account)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

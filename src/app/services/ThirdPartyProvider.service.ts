@@ -12,8 +12,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class ThirdPartyProviderService extends HelperBaseService {
 
 	//********************************************************************
@@ -30,7 +30,7 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -39,7 +39,7 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addThirdPartyProvider(name, registrationId, website, Bank, Consents) : Promise<any> {
-    	const uri = this.ormUrl + '/ThirdPartyProvider/add';
+    	const uri = this.apiUrl + '/ThirdPartyProvider/add';
     	const obj = {
       		name: name,
       		registrationId: registrationId,
@@ -58,12 +58,10 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getThirdPartyProviders() {
-    	const uri = this.ormUrl + '/ThirdPartyProvider';
+    	const uri = this.apiUrl + '/ThirdPartyProvider';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -73,11 +71,9 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editThirdPartyProvider(id) {
-    	const uri = this.ormUrl + '/ThirdPartyProvider/edit/' + id;
+    	const uri = this.apiUrl + '/ThirdPartyProvider/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -86,7 +82,7 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateThirdPartyProvider(name, registrationId, website, Bank, Consents, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/ThirdPartyProvider/update/' + id;
+    	const uri = this.apiUrl + '/ThirdPartyProvider/update/' + id;
     	const obj = {
       		name: name,
       		registrationId: registrationId,
@@ -95,7 +91,7 @@ export class ThirdPartyProviderService extends HelperBaseService {
 			Consents: Consents != null && Consents.length > 0 ? Consents : null
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -104,9 +100,9 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteThirdPartyProvider(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/ThirdPartyProvider/delete/' + id;
+    	const uri = this.apiUrl + '/ThirdPartyProvider/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -211,12 +207,12 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/ThirdPartyProvider/update/' + this.thirdPartyProvider._id;		
+		const uri = this.apiUrl + '/ThirdPartyProvider/update/' + this.thirdPartyProvider._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.thirdPartyProvider)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

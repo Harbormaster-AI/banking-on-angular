@@ -11,8 +11,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class RiskAssessmentService extends HelperBaseService {
 
 	//********************************************************************
@@ -29,7 +29,7 @@ export class RiskAssessmentService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -38,7 +38,7 @@ export class RiskAssessmentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addRiskAssessment(score, assessedOn, KycProfile, Rating) : Promise<any> {
-    	const uri = this.ormUrl + '/RiskAssessment/add';
+    	const uri = this.apiUrl + '/RiskAssessment/add';
     	const obj = {
       		score: score,
       		assessedOn: assessedOn,
@@ -56,12 +56,10 @@ export class RiskAssessmentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getRiskAssessments() {
-    	const uri = this.ormUrl + '/RiskAssessment';
+    	const uri = this.apiUrl + '/RiskAssessment';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -71,11 +69,9 @@ export class RiskAssessmentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editRiskAssessment(id) {
-    	const uri = this.ormUrl + '/RiskAssessment/edit/' + id;
+    	const uri = this.apiUrl + '/RiskAssessment/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -84,7 +80,7 @@ export class RiskAssessmentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateRiskAssessment(score, assessedOn, KycProfile, Rating, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/RiskAssessment/update/' + id;
+    	const uri = this.apiUrl + '/RiskAssessment/update/' + id;
     	const obj = {
       		score: score,
       		assessedOn: assessedOn,
@@ -92,7 +88,7 @@ export class RiskAssessmentService extends HelperBaseService {
 			Rating: Rating
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -101,9 +97,9 @@ export class RiskAssessmentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteRiskAssessment(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/RiskAssessment/delete/' + id;
+    	const uri = this.apiUrl + '/RiskAssessment/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -150,12 +146,12 @@ export class RiskAssessmentService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/RiskAssessment/update/' + this.riskAssessment._id;		
+		const uri = this.apiUrl + '/RiskAssessment/update/' + this.riskAssessment._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.riskAssessment)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

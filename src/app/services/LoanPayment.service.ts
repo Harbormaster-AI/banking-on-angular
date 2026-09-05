@@ -12,8 +12,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class LoanPaymentService extends HelperBaseService {
 
 	//********************************************************************
@@ -30,7 +30,7 @@ export class LoanPaymentService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -39,7 +39,7 @@ export class LoanPaymentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addLoanPayment(paymentReference, amount, paymentDate, LoanAccount, Transaction, Method, Status) : Promise<any> {
-    	const uri = this.ormUrl + '/LoanPayment/add';
+    	const uri = this.apiUrl + '/LoanPayment/add';
     	const obj = {
       		paymentReference: paymentReference,
       		amount: amount,
@@ -60,12 +60,10 @@ export class LoanPaymentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getLoanPayments() {
-    	const uri = this.ormUrl + '/LoanPayment';
+    	const uri = this.apiUrl + '/LoanPayment';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -75,11 +73,9 @@ export class LoanPaymentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editLoanPayment(id) {
-    	const uri = this.ormUrl + '/LoanPayment/edit/' + id;
+    	const uri = this.apiUrl + '/LoanPayment/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -88,7 +84,7 @@ export class LoanPaymentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateLoanPayment(paymentReference, amount, paymentDate, LoanAccount, Transaction, Method, Status, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/LoanPayment/update/' + id;
+    	const uri = this.apiUrl + '/LoanPayment/update/' + id;
     	const obj = {
       		paymentReference: paymentReference,
       		amount: amount,
@@ -99,7 +95,7 @@ export class LoanPaymentService extends HelperBaseService {
 			Status: Status
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -108,9 +104,9 @@ export class LoanPaymentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteLoanPayment(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/LoanPayment/delete/' + id;
+    	const uri = this.apiUrl + '/LoanPayment/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -194,12 +190,12 @@ export class LoanPaymentService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/LoanPayment/update/' + this.loanPayment._id;		
+		const uri = this.apiUrl + '/LoanPayment/update/' + this.loanPayment._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.loanPayment)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

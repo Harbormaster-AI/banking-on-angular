@@ -18,8 +18,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class LoanAccountService extends HelperBaseService {
 
 	//********************************************************************
@@ -36,7 +36,7 @@ export class LoanAccountService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -45,7 +45,7 @@ export class LoanAccountService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addLoanAccount(loanNumber, principalAmount, outstandingPrincipal, interestRate, originationDate, maturityDate, paymentDayOfMonth, currency, Bank, Branch, Product, Borrowers, RepaymentSchedule, Payments, Collateral, FeeCharges, LoanType, RateType, Compounding, Status) : Promise<any> {
-    	const uri = this.ormUrl + '/LoanAccount/add';
+    	const uri = this.apiUrl + '/LoanAccount/add';
     	const obj = {
       		loanNumber: loanNumber,
       		principalAmount: principalAmount,
@@ -79,12 +79,10 @@ export class LoanAccountService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getLoanAccounts() {
-    	const uri = this.ormUrl + '/LoanAccount';
+    	const uri = this.apiUrl + '/LoanAccount';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -94,11 +92,9 @@ export class LoanAccountService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editLoanAccount(id) {
-    	const uri = this.ormUrl + '/LoanAccount/edit/' + id;
+    	const uri = this.apiUrl + '/LoanAccount/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -107,7 +103,7 @@ export class LoanAccountService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateLoanAccount(loanNumber, principalAmount, outstandingPrincipal, interestRate, originationDate, maturityDate, paymentDayOfMonth, currency, Bank, Branch, Product, Borrowers, RepaymentSchedule, Payments, Collateral, FeeCharges, LoanType, RateType, Compounding, Status, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/LoanAccount/update/' + id;
+    	const uri = this.apiUrl + '/LoanAccount/update/' + id;
     	const obj = {
       		loanNumber: loanNumber,
       		principalAmount: principalAmount,
@@ -131,7 +127,7 @@ export class LoanAccountService extends HelperBaseService {
 			Status: Status
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -140,9 +136,9 @@ export class LoanAccountService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteLoanAccount(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/LoanAccount/delete/' + id;
+    	const uri = this.apiUrl + '/LoanAccount/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -553,12 +549,12 @@ export class LoanAccountService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/LoanAccount/update/' + this.loanAccount._id;		
+		const uri = this.apiUrl + '/LoanAccount/update/' + this.loanAccount._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.loanAccount)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

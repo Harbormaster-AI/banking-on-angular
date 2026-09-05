@@ -11,8 +11,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class ScreeningResultService extends HelperBaseService {
 
 	//********************************************************************
@@ -29,7 +29,7 @@ export class ScreeningResultService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -38,7 +38,7 @@ export class ScreeningResultService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addScreeningResult(screeningDate, provider, KycProfile, Outcome) : Promise<any> {
-    	const uri = this.ormUrl + '/ScreeningResult/add';
+    	const uri = this.apiUrl + '/ScreeningResult/add';
     	const obj = {
       		screeningDate: screeningDate,
       		provider: provider,
@@ -56,12 +56,10 @@ export class ScreeningResultService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getScreeningResults() {
-    	const uri = this.ormUrl + '/ScreeningResult';
+    	const uri = this.apiUrl + '/ScreeningResult';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -71,11 +69,9 @@ export class ScreeningResultService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editScreeningResult(id) {
-    	const uri = this.ormUrl + '/ScreeningResult/edit/' + id;
+    	const uri = this.apiUrl + '/ScreeningResult/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -84,7 +80,7 @@ export class ScreeningResultService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateScreeningResult(screeningDate, provider, KycProfile, Outcome, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/ScreeningResult/update/' + id;
+    	const uri = this.apiUrl + '/ScreeningResult/update/' + id;
     	const obj = {
       		screeningDate: screeningDate,
       		provider: provider,
@@ -92,7 +88,7 @@ export class ScreeningResultService extends HelperBaseService {
 			Outcome: Outcome
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -101,9 +97,9 @@ export class ScreeningResultService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteScreeningResult(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/ScreeningResult/delete/' + id;
+    	const uri = this.apiUrl + '/ScreeningResult/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -150,12 +146,12 @@ export class ScreeningResultService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/ScreeningResult/update/' + this.screeningResult._id;		
+		const uri = this.apiUrl + '/ScreeningResult/update/' + this.screeningResult._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.screeningResult)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

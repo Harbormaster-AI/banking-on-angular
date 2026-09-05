@@ -19,8 +19,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class BankService extends HelperBaseService {
 
 	//********************************************************************
@@ -37,7 +37,7 @@ export class BankService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -46,7 +46,7 @@ export class BankService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addBank(name, legalName, swiftBic, headquartersCountry, website, Branches, Products, Customers, Accounts, PaymentCards, LoanAccounts, ExchangeRates, Consents, ThirdPartyProviders) : Promise<any> {
-    	const uri = this.ormUrl + '/Bank/add';
+    	const uri = this.apiUrl + '/Bank/add';
     	const obj = {
       		name: name,
       		legalName: legalName,
@@ -74,12 +74,10 @@ export class BankService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getBanks() {
-    	const uri = this.ormUrl + '/Bank';
+    	const uri = this.apiUrl + '/Bank';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -89,11 +87,9 @@ export class BankService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editBank(id) {
-    	const uri = this.ormUrl + '/Bank/edit/' + id;
+    	const uri = this.apiUrl + '/Bank/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -102,7 +98,7 @@ export class BankService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateBank(name, legalName, swiftBic, headquartersCountry, website, Branches, Products, Customers, Accounts, PaymentCards, LoanAccounts, ExchangeRates, Consents, ThirdPartyProviders, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/Bank/update/' + id;
+    	const uri = this.apiUrl + '/Bank/update/' + id;
     	const obj = {
       		name: name,
       		legalName: legalName,
@@ -120,7 +116,7 @@ export class BankService extends HelperBaseService {
 			ThirdPartyProviders: ThirdPartyProviders != null && ThirdPartyProviders.length > 0 ? ThirdPartyProviders : null
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -129,9 +125,9 @@ export class BankService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteBank(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/Bank/delete/' + id;
+    	const uri = this.apiUrl + '/Bank/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     	
@@ -663,12 +659,12 @@ export class BankService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/Bank/update/' + this.bank._id;		
+		const uri = this.apiUrl + '/Bank/update/' + this.bank._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.bank)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

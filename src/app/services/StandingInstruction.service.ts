@@ -12,8 +12,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class StandingInstructionService extends HelperBaseService {
 
 	//********************************************************************
@@ -30,7 +30,7 @@ export class StandingInstructionService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -39,7 +39,7 @@ export class StandingInstructionService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addStandingInstruction(instructionId, amount, nextExecutionDate, Account, Beneficiary, Frequency, Status) : Promise<any> {
-    	const uri = this.ormUrl + '/StandingInstruction/add';
+    	const uri = this.apiUrl + '/StandingInstruction/add';
     	const obj = {
       		instructionId: instructionId,
       		amount: amount,
@@ -60,12 +60,10 @@ export class StandingInstructionService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getStandingInstructions() {
-    	const uri = this.ormUrl + '/StandingInstruction';
+    	const uri = this.apiUrl + '/StandingInstruction';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -75,11 +73,9 @@ export class StandingInstructionService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editStandingInstruction(id) {
-    	const uri = this.ormUrl + '/StandingInstruction/edit/' + id;
+    	const uri = this.apiUrl + '/StandingInstruction/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -88,7 +84,7 @@ export class StandingInstructionService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateStandingInstruction(instructionId, amount, nextExecutionDate, Account, Beneficiary, Frequency, Status, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/StandingInstruction/update/' + id;
+    	const uri = this.apiUrl + '/StandingInstruction/update/' + id;
     	const obj = {
       		instructionId: instructionId,
       		amount: amount,
@@ -99,7 +95,7 @@ export class StandingInstructionService extends HelperBaseService {
 			Status: Status
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -108,9 +104,9 @@ export class StandingInstructionService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteStandingInstruction(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/StandingInstruction/delete/' + id;
+    	const uri = this.apiUrl + '/StandingInstruction/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -194,12 +190,12 @@ export class StandingInstructionService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/StandingInstruction/update/' + this.standingInstruction._id;		
+		const uri = this.apiUrl + '/StandingInstruction/update/' + this.standingInstruction._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.standingInstruction)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

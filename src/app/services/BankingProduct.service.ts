@@ -14,8 +14,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class BankingProductService extends HelperBaseService {
 
 	//********************************************************************
@@ -32,7 +32,7 @@ export class BankingProductService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -41,7 +41,7 @@ export class BankingProductService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addBankingProduct(productCode, name, description, Bank, Accounts, LoanAccounts, PaymentCards, ProductCategory) : Promise<any> {
-    	const uri = this.ormUrl + '/BankingProduct/add';
+    	const uri = this.apiUrl + '/BankingProduct/add';
     	const obj = {
       		productCode: productCode,
       		name: name,
@@ -63,12 +63,10 @@ export class BankingProductService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getBankingProducts() {
-    	const uri = this.ormUrl + '/BankingProduct';
+    	const uri = this.apiUrl + '/BankingProduct';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -78,11 +76,9 @@ export class BankingProductService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editBankingProduct(id) {
-    	const uri = this.ormUrl + '/BankingProduct/edit/' + id;
+    	const uri = this.apiUrl + '/BankingProduct/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -91,7 +87,7 @@ export class BankingProductService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateBankingProduct(productCode, name, description, Bank, Accounts, LoanAccounts, PaymentCards, ProductCategory, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/BankingProduct/update/' + id;
+    	const uri = this.apiUrl + '/BankingProduct/update/' + id;
     	const obj = {
       		productCode: productCode,
       		name: name,
@@ -103,7 +99,7 @@ export class BankingProductService extends HelperBaseService {
 			ProductCategory: ProductCategory
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -112,9 +108,9 @@ export class BankingProductService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteBankingProduct(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/BankingProduct/delete/' + id;
+    	const uri = this.apiUrl + '/BankingProduct/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -335,12 +331,12 @@ export class BankingProductService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/BankingProduct/update/' + this.bankingProduct._id;		
+		const uri = this.apiUrl + '/BankingProduct/update/' + this.bankingProduct._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.bankingProduct)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

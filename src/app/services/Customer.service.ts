@@ -19,8 +19,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class CustomerService extends HelperBaseService {
 
 	//********************************************************************
@@ -37,7 +37,7 @@ export class CustomerService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -46,7 +46,7 @@ export class CustomerService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addCustomer(firstName, lastName, legalName, dateOfBirth, taxId, email, phone, address, Bank, Accounts, LoanAccounts, PaymentCards, ExternalAccounts, FundsTransfers, Disputes, KycProfiles, Consents, CustomerType, RiskRating, KycStatus) : Promise<any> {
-    	const uri = this.ormUrl + '/Customer/add';
+    	const uri = this.apiUrl + '/Customer/add';
     	const obj = {
       		firstName: firstName,
       		lastName: lastName,
@@ -80,12 +80,10 @@ export class CustomerService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getCustomers() {
-    	const uri = this.ormUrl + '/Customer';
+    	const uri = this.apiUrl + '/Customer';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -95,11 +93,9 @@ export class CustomerService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editCustomer(id) {
-    	const uri = this.ormUrl + '/Customer/edit/' + id;
+    	const uri = this.apiUrl + '/Customer/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -108,7 +104,7 @@ export class CustomerService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateCustomer(firstName, lastName, legalName, dateOfBirth, taxId, email, phone, address, Bank, Accounts, LoanAccounts, PaymentCards, ExternalAccounts, FundsTransfers, Disputes, KycProfiles, Consents, CustomerType, RiskRating, KycStatus, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/Customer/update/' + id;
+    	const uri = this.apiUrl + '/Customer/update/' + id;
     	const obj = {
       		firstName: firstName,
       		lastName: lastName,
@@ -132,7 +128,7 @@ export class CustomerService extends HelperBaseService {
 			KycStatus: KycStatus
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -141,9 +137,9 @@ export class CustomerService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteCustomer(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/Customer/delete/' + id;
+    	const uri = this.apiUrl + '/Customer/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -654,12 +650,12 @@ export class CustomerService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/Customer/update/' + this.customer._id;		
+		const uri = this.apiUrl + '/Customer/update/' + this.customer._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.customer)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

@@ -12,8 +12,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class ExchangeRateService extends HelperBaseService {
 
 	//********************************************************************
@@ -30,7 +30,7 @@ export class ExchangeRateService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -39,7 +39,7 @@ export class ExchangeRateService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addExchangeRate(baseCurrency, counterCurrency, rate, asOf, source, Bank, FxTrades) : Promise<any> {
-    	const uri = this.ormUrl + '/ExchangeRate/add';
+    	const uri = this.apiUrl + '/ExchangeRate/add';
     	const obj = {
       		baseCurrency: baseCurrency,
       		counterCurrency: counterCurrency,
@@ -60,12 +60,10 @@ export class ExchangeRateService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getExchangeRates() {
-    	const uri = this.ormUrl + '/ExchangeRate';
+    	const uri = this.apiUrl + '/ExchangeRate';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -75,11 +73,9 @@ export class ExchangeRateService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editExchangeRate(id) {
-    	const uri = this.ormUrl + '/ExchangeRate/edit/' + id;
+    	const uri = this.apiUrl + '/ExchangeRate/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -88,7 +84,7 @@ export class ExchangeRateService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateExchangeRate(baseCurrency, counterCurrency, rate, asOf, source, Bank, FxTrades, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/ExchangeRate/update/' + id;
+    	const uri = this.apiUrl + '/ExchangeRate/update/' + id;
     	const obj = {
       		baseCurrency: baseCurrency,
       		counterCurrency: counterCurrency,
@@ -99,7 +95,7 @@ export class ExchangeRateService extends HelperBaseService {
 			FxTrades: FxTrades != null && FxTrades.length > 0 ? FxTrades : null
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -108,9 +104,9 @@ export class ExchangeRateService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteExchangeRate(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/ExchangeRate/delete/' + id;
+    	const uri = this.apiUrl + '/ExchangeRate/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -215,12 +211,12 @@ export class ExchangeRateService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/ExchangeRate/update/' + this.exchangeRate._id;		
+		const uri = this.apiUrl + '/ExchangeRate/update/' + this.exchangeRate._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.exchangeRate)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

@@ -12,8 +12,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class RepaymentScheduleService extends HelperBaseService {
 
 	//********************************************************************
@@ -30,7 +30,7 @@ export class RepaymentScheduleService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -39,7 +39,7 @@ export class RepaymentScheduleService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addRepaymentSchedule(installmentNumber, dueDate, principalDue, interestDue, totalDue, LoanAccount, Payment, Status) : Promise<any> {
-    	const uri = this.ormUrl + '/RepaymentSchedule/add';
+    	const uri = this.apiUrl + '/RepaymentSchedule/add';
     	const obj = {
       		installmentNumber: installmentNumber,
       		dueDate: dueDate,
@@ -61,12 +61,10 @@ export class RepaymentScheduleService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getRepaymentSchedules() {
-    	const uri = this.ormUrl + '/RepaymentSchedule';
+    	const uri = this.apiUrl + '/RepaymentSchedule';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -76,11 +74,9 @@ export class RepaymentScheduleService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editRepaymentSchedule(id) {
-    	const uri = this.ormUrl + '/RepaymentSchedule/edit/' + id;
+    	const uri = this.apiUrl + '/RepaymentSchedule/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -89,7 +85,7 @@ export class RepaymentScheduleService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateRepaymentSchedule(installmentNumber, dueDate, principalDue, interestDue, totalDue, LoanAccount, Payment, Status, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/RepaymentSchedule/update/' + id;
+    	const uri = this.apiUrl + '/RepaymentSchedule/update/' + id;
     	const obj = {
       		installmentNumber: installmentNumber,
       		dueDate: dueDate,
@@ -101,7 +97,7 @@ export class RepaymentScheduleService extends HelperBaseService {
 			Status: Status
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -110,9 +106,9 @@ export class RepaymentScheduleService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteRepaymentSchedule(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/RepaymentSchedule/delete/' + id;
+    	const uri = this.apiUrl + '/RepaymentSchedule/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -196,12 +192,12 @@ export class RepaymentScheduleService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/RepaymentSchedule/update/' + this.repaymentSchedule._id;		
+		const uri = this.apiUrl + '/RepaymentSchedule/update/' + this.repaymentSchedule._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.repaymentSchedule)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

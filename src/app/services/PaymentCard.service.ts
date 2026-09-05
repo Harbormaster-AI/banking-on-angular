@@ -14,8 +14,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class PaymentCardService extends HelperBaseService {
 
 	//********************************************************************
@@ -32,7 +32,7 @@ export class PaymentCardService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -41,7 +41,7 @@ export class PaymentCardService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addPaymentCard(cardNumber, embossedName, expiryMonth, expiryYear, Bank, Account, Customer, Transactions, CardType, CardStatus, Network) : Promise<any> {
-    	const uri = this.ormUrl + '/PaymentCard/add';
+    	const uri = this.apiUrl + '/PaymentCard/add';
     	const obj = {
       		cardNumber: cardNumber,
       		embossedName: embossedName,
@@ -66,12 +66,10 @@ export class PaymentCardService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getPaymentCards() {
-    	const uri = this.ormUrl + '/PaymentCard';
+    	const uri = this.apiUrl + '/PaymentCard';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -81,11 +79,9 @@ export class PaymentCardService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editPaymentCard(id) {
-    	const uri = this.ormUrl + '/PaymentCard/edit/' + id;
+    	const uri = this.apiUrl + '/PaymentCard/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -94,7 +90,7 @@ export class PaymentCardService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updatePaymentCard(cardNumber, embossedName, expiryMonth, expiryYear, Bank, Account, Customer, Transactions, CardType, CardStatus, Network, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/PaymentCard/update/' + id;
+    	const uri = this.apiUrl + '/PaymentCard/update/' + id;
     	const obj = {
       		cardNumber: cardNumber,
       		embossedName: embossedName,
@@ -109,7 +105,7 @@ export class PaymentCardService extends HelperBaseService {
 			Network: Network
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -118,9 +114,9 @@ export class PaymentCardService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deletePaymentCard(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/PaymentCard/delete/' + id;
+    	const uri = this.apiUrl + '/PaymentCard/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -299,12 +295,12 @@ export class PaymentCardService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/PaymentCard/update/' + this.paymentCard._id;		
+		const uri = this.apiUrl + '/PaymentCard/update/' + this.paymentCard._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.paymentCard)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

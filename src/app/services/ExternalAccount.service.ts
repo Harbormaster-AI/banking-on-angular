@@ -12,8 +12,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class ExternalAccountService extends HelperBaseService {
 
 	//********************************************************************
@@ -30,7 +30,7 @@ export class ExternalAccountService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -39,7 +39,7 @@ export class ExternalAccountService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions) : Promise<any> {
-    	const uri = this.ormUrl + '/ExternalAccount/add';
+    	const uri = this.apiUrl + '/ExternalAccount/add';
     	const obj = {
       		name: name,
       		iban: iban,
@@ -61,12 +61,10 @@ export class ExternalAccountService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getExternalAccounts() {
-    	const uri = this.ormUrl + '/ExternalAccount';
+    	const uri = this.apiUrl + '/ExternalAccount';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -76,11 +74,9 @@ export class ExternalAccountService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editExternalAccount(id) {
-    	const uri = this.ormUrl + '/ExternalAccount/edit/' + id;
+    	const uri = this.apiUrl + '/ExternalAccount/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -89,7 +85,7 @@ export class ExternalAccountService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/ExternalAccount/update/' + id;
+    	const uri = this.apiUrl + '/ExternalAccount/update/' + id;
     	const obj = {
       		name: name,
       		iban: iban,
@@ -101,7 +97,7 @@ export class ExternalAccountService extends HelperBaseService {
 			Transactions: Transactions != null && Transactions.length > 0 ? Transactions : null
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -110,9 +106,9 @@ export class ExternalAccountService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteExternalAccount(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/ExternalAccount/delete/' + id;
+    	const uri = this.apiUrl + '/ExternalAccount/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -217,12 +213,12 @@ export class ExternalAccountService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/ExternalAccount/update/' + this.externalAccount._id;		
+		const uri = this.apiUrl + '/ExternalAccount/update/' + this.externalAccount._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.externalAccount)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

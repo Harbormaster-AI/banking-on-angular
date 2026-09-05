@@ -11,8 +11,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class CollateralService extends HelperBaseService {
 
 	//********************************************************************
@@ -29,7 +29,7 @@ export class CollateralService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -38,7 +38,7 @@ export class CollateralService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addCollateral(appraisedValue, description, location, LoanAccount, CollateralType) : Promise<any> {
-    	const uri = this.ormUrl + '/Collateral/add';
+    	const uri = this.apiUrl + '/Collateral/add';
     	const obj = {
       		appraisedValue: appraisedValue,
       		description: description,
@@ -57,12 +57,10 @@ export class CollateralService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getCollaterals() {
-    	const uri = this.ormUrl + '/Collateral';
+    	const uri = this.apiUrl + '/Collateral';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -72,11 +70,9 @@ export class CollateralService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editCollateral(id) {
-    	const uri = this.ormUrl + '/Collateral/edit/' + id;
+    	const uri = this.apiUrl + '/Collateral/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -85,7 +81,7 @@ export class CollateralService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateCollateral(appraisedValue, description, location, LoanAccount, CollateralType, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/Collateral/update/' + id;
+    	const uri = this.apiUrl + '/Collateral/update/' + id;
     	const obj = {
       		appraisedValue: appraisedValue,
       		description: description,
@@ -94,7 +90,7 @@ export class CollateralService extends HelperBaseService {
 			CollateralType: CollateralType
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -103,9 +99,9 @@ export class CollateralService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteCollateral(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/Collateral/delete/' + id;
+    	const uri = this.apiUrl + '/Collateral/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -152,12 +148,12 @@ export class CollateralService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/Collateral/update/' + this.collateral._id;		
+		const uri = this.apiUrl + '/Collateral/update/' + this.collateral._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.collateral)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

@@ -14,8 +14,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class FundsTransferService extends HelperBaseService {
 
 	//********************************************************************
@@ -32,7 +32,7 @@ export class FundsTransferService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -41,7 +41,7 @@ export class FundsTransferService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addFundsTransfer(transferReference, amount, requestedDate, executionDate, purpose, feeAmount, SourceAccount, DestinationAccount, ExternalBeneficiary, InitiatedBy, Transactions, Method, Status) : Promise<any> {
-    	const uri = this.ormUrl + '/FundsTransfer/add';
+    	const uri = this.apiUrl + '/FundsTransfer/add';
     	const obj = {
       		transferReference: transferReference,
       		amount: amount,
@@ -68,12 +68,10 @@ export class FundsTransferService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getFundsTransfers() {
-    	const uri = this.ormUrl + '/FundsTransfer';
+    	const uri = this.apiUrl + '/FundsTransfer';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -83,11 +81,9 @@ export class FundsTransferService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editFundsTransfer(id) {
-    	const uri = this.ormUrl + '/FundsTransfer/edit/' + id;
+    	const uri = this.apiUrl + '/FundsTransfer/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -96,7 +92,7 @@ export class FundsTransferService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateFundsTransfer(transferReference, amount, requestedDate, executionDate, purpose, feeAmount, SourceAccount, DestinationAccount, ExternalBeneficiary, InitiatedBy, Transactions, Method, Status, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/FundsTransfer/update/' + id;
+    	const uri = this.apiUrl + '/FundsTransfer/update/' + id;
     	const obj = {
       		transferReference: transferReference,
       		amount: amount,
@@ -113,7 +109,7 @@ export class FundsTransferService extends HelperBaseService {
 			Status: Status
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -122,9 +118,9 @@ export class FundsTransferService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteFundsTransfer(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/FundsTransfer/delete/' + id;
+    	const uri = this.apiUrl + '/FundsTransfer/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -340,12 +336,12 @@ export class FundsTransferService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/FundsTransfer/update/' + this.fundsTransfer._id;		
+		const uri = this.apiUrl + '/FundsTransfer/update/' + this.fundsTransfer._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.fundsTransfer)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

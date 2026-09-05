@@ -11,8 +11,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class IdentityDocumentService extends HelperBaseService {
 
 	//********************************************************************
@@ -29,7 +29,7 @@ export class IdentityDocumentService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -38,7 +38,7 @@ export class IdentityDocumentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addIdentityDocument(documentNumber, issuingCountry, expirationDate, KycProfile, DocumentType) : Promise<any> {
-    	const uri = this.ormUrl + '/IdentityDocument/add';
+    	const uri = this.apiUrl + '/IdentityDocument/add';
     	const obj = {
       		documentNumber: documentNumber,
       		issuingCountry: issuingCountry,
@@ -57,12 +57,10 @@ export class IdentityDocumentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getIdentityDocuments() {
-    	const uri = this.ormUrl + '/IdentityDocument';
+    	const uri = this.apiUrl + '/IdentityDocument';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -72,11 +70,9 @@ export class IdentityDocumentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editIdentityDocument(id) {
-    	const uri = this.ormUrl + '/IdentityDocument/edit/' + id;
+    	const uri = this.apiUrl + '/IdentityDocument/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -85,7 +81,7 @@ export class IdentityDocumentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateIdentityDocument(documentNumber, issuingCountry, expirationDate, KycProfile, DocumentType, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/IdentityDocument/update/' + id;
+    	const uri = this.apiUrl + '/IdentityDocument/update/' + id;
     	const obj = {
       		documentNumber: documentNumber,
       		issuingCountry: issuingCountry,
@@ -94,7 +90,7 @@ export class IdentityDocumentService extends HelperBaseService {
 			DocumentType: DocumentType
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -103,9 +99,9 @@ export class IdentityDocumentService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteIdentityDocument(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/IdentityDocument/delete/' + id;
+    	const uri = this.apiUrl + '/IdentityDocument/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -152,12 +148,12 @@ export class IdentityDocumentService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/IdentityDocument/update/' + this.identityDocument._id;		
+		const uri = this.apiUrl + '/IdentityDocument/update/' + this.identityDocument._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.identityDocument)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

@@ -11,8 +11,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class ATMService extends HelperBaseService {
 
 	//********************************************************************
@@ -29,7 +29,7 @@ export class ATMService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -38,7 +38,7 @@ export class ATMService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addATM(terminalId, location, Branch, Status) : Promise<any> {
-    	const uri = this.ormUrl + '/ATM/add';
+    	const uri = this.apiUrl + '/ATM/add';
     	const obj = {
       		terminalId: terminalId,
       		location: location,
@@ -56,12 +56,10 @@ export class ATMService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getATMs() {
-    	const uri = this.ormUrl + '/ATM';
+    	const uri = this.apiUrl + '/ATM';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -71,11 +69,9 @@ export class ATMService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editATM(id) {
-    	const uri = this.ormUrl + '/ATM/edit/' + id;
+    	const uri = this.apiUrl + '/ATM/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -84,7 +80,7 @@ export class ATMService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateATM(terminalId, location, Branch, Status, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/ATM/update/' + id;
+    	const uri = this.apiUrl + '/ATM/update/' + id;
     	const obj = {
       		terminalId: terminalId,
       		location: location,
@@ -92,7 +88,7 @@ export class ATMService extends HelperBaseService {
 			Status: Status
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -101,9 +97,9 @@ export class ATMService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteATM(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/ATM/delete/' + id;
+    	const uri = this.apiUrl + '/ATM/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -150,12 +146,12 @@ export class ATMService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/ATM/update/' + this.aTM._id;		
+		const uri = this.apiUrl + '/ATM/update/' + this.aTM._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.aTM)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

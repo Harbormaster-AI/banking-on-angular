@@ -14,8 +14,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class BranchService extends HelperBaseService {
 
 	//********************************************************************
@@ -32,7 +32,7 @@ export class BranchService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -41,7 +41,7 @@ export class BranchService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addBranch(name, branchCode, address, phone, openingHours, Bank, Accounts, LoanAccounts, Atms) : Promise<any> {
-    	const uri = this.ormUrl + '/Branch/add';
+    	const uri = this.apiUrl + '/Branch/add';
     	const obj = {
       		name: name,
       		branchCode: branchCode,
@@ -64,12 +64,10 @@ export class BranchService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getBranchs() {
-    	const uri = this.ormUrl + '/Branch';
+    	const uri = this.apiUrl + '/Branch';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -79,11 +77,9 @@ export class BranchService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editBranch(id) {
-    	const uri = this.ormUrl + '/Branch/edit/' + id;
+    	const uri = this.apiUrl + '/Branch/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -92,7 +88,7 @@ export class BranchService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateBranch(name, branchCode, address, phone, openingHours, Bank, Accounts, LoanAccounts, Atms, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/Branch/update/' + id;
+    	const uri = this.apiUrl + '/Branch/update/' + id;
     	const obj = {
       		name: name,
       		branchCode: branchCode,
@@ -105,7 +101,7 @@ export class BranchService extends HelperBaseService {
 			Atms: Atms != null && Atms.length > 0 ? Atms : null
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -114,9 +110,9 @@ export class BranchService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteBranch(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/Branch/delete/' + id;
+    	const uri = this.apiUrl + '/Branch/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -337,12 +333,12 @@ export class BranchService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/Branch/update/' + this.branch._id;		
+		const uri = this.apiUrl + '/Branch/update/' + this.branch._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.branch)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

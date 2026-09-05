@@ -11,8 +11,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class AccountStatementService extends HelperBaseService {
 
 	//********************************************************************
@@ -29,7 +29,7 @@ export class AccountStatementService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -38,7 +38,7 @@ export class AccountStatementService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addAccountStatement(statementNumber, periodStart, periodEnd, openingBalance, closingBalance, Account, DeliveryMethod) : Promise<any> {
-    	const uri = this.ormUrl + '/AccountStatement/add';
+    	const uri = this.apiUrl + '/AccountStatement/add';
     	const obj = {
       		statementNumber: statementNumber,
       		periodStart: periodStart,
@@ -59,12 +59,10 @@ export class AccountStatementService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getAccountStatements() {
-    	const uri = this.ormUrl + '/AccountStatement';
+    	const uri = this.apiUrl + '/AccountStatement';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -74,11 +72,9 @@ export class AccountStatementService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editAccountStatement(id) {
-    	const uri = this.ormUrl + '/AccountStatement/edit/' + id;
+    	const uri = this.apiUrl + '/AccountStatement/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -87,7 +83,7 @@ export class AccountStatementService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateAccountStatement(statementNumber, periodStart, periodEnd, openingBalance, closingBalance, Account, DeliveryMethod, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/AccountStatement/update/' + id;
+    	const uri = this.apiUrl + '/AccountStatement/update/' + id;
     	const obj = {
       		statementNumber: statementNumber,
       		periodStart: periodStart,
@@ -98,7 +94,7 @@ export class AccountStatementService extends HelperBaseService {
 			DeliveryMethod: DeliveryMethod
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -107,9 +103,9 @@ export class AccountStatementService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteAccountStatement(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/AccountStatement/delete/' + id;
+    	const uri = this.apiUrl + '/AccountStatement/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -156,12 +152,12 @@ export class AccountStatementService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/AccountStatement/update/' + this.accountStatement._id;		
+		const uri = this.apiUrl + '/AccountStatement/update/' + this.accountStatement._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.accountStatement)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

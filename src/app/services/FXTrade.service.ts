@@ -15,8 +15,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class FXTradeService extends HelperBaseService {
 
 	//********************************************************************
@@ -33,7 +33,7 @@ export class FXTradeService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -42,7 +42,7 @@ export class FXTradeService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addFXTrade(tradeReference, tradeDate, settlementDate, amountSold, amountBought, rate, Customer, Bank, ExchangeRate, SourceAccount, DestinationAccount, Transaction, Status) : Promise<any> {
-    	const uri = this.ormUrl + '/FXTrade/add';
+    	const uri = this.apiUrl + '/FXTrade/add';
     	const obj = {
       		tradeReference: tradeReference,
       		tradeDate: tradeDate,
@@ -69,12 +69,10 @@ export class FXTradeService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getFXTrades() {
-    	const uri = this.ormUrl + '/FXTrade';
+    	const uri = this.apiUrl + '/FXTrade';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -84,11 +82,9 @@ export class FXTradeService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editFXTrade(id) {
-    	const uri = this.ormUrl + '/FXTrade/edit/' + id;
+    	const uri = this.apiUrl + '/FXTrade/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -97,7 +93,7 @@ export class FXTradeService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateFXTrade(tradeReference, tradeDate, settlementDate, amountSold, amountBought, rate, Customer, Bank, ExchangeRate, SourceAccount, DestinationAccount, Transaction, Status, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/FXTrade/update/' + id;
+    	const uri = this.apiUrl + '/FXTrade/update/' + id;
     	const obj = {
       		tradeReference: tradeReference,
       		tradeDate: tradeDate,
@@ -114,7 +110,7 @@ export class FXTradeService extends HelperBaseService {
 			Status: Status
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -123,9 +119,9 @@ export class FXTradeService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteFXTrade(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/FXTrade/delete/' + id;
+    	const uri = this.apiUrl + '/FXTrade/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -357,12 +353,12 @@ export class FXTradeService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/FXTrade/update/' + this.fXTrade._id;		
+		const uri = this.apiUrl + '/FXTrade/update/' + this.fXTrade._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.fXTrade)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************

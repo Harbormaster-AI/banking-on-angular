@@ -14,8 +14,8 @@ import { HelperBaseService } from './helperbase.service';
 
 @Injectable({
 	providedIn: 'root'
-  })
-    
+})
+
 export class DisputeService extends HelperBaseService {
 
 	//********************************************************************
@@ -32,7 +32,7 @@ export class DisputeService extends HelperBaseService {
 	// sole constructor, injected with the HttpClient
 	//********************************************************************
  	constructor(private http: HttpClient) {
- 	    super();
+		 super();
     }
  	
 	//********************************************************************
@@ -41,7 +41,7 @@ export class DisputeService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	addDispute(disputeReference, raisedOn, reason, Transaction, Customer, Account, PaymentCard, Status) : Promise<any> {
-    	const uri = this.ormUrl + '/Dispute/add';
+    	const uri = this.apiUrl + '/Dispute/add';
     	const obj = {
       		disputeReference: disputeReference,
       		raisedOn: raisedOn,
@@ -63,12 +63,10 @@ export class DisputeService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	getDisputes() {
-    	const uri = this.ormUrl + '/Dispute';
+    	const uri = this.apiUrl + '/Dispute';
     	
     	return this
-            	.http.get(uri).map(res => {
-              						return res;
-            					});
+            	.http.get(uri);
   	}
 
 	//********************************************************************
@@ -78,11 +76,9 @@ export class DisputeService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
   	editDispute(id) {
-    	const uri = this.ormUrl + '/Dispute/edit/' + id;
+    	const uri = this.apiUrl + '/Dispute/edit/' + id;
     	
-    	return this.http.get(uri).map(res => {
-              							return res;
-            						});
+    	return this.http.get(uri);
   	}
 
 	//********************************************************************
@@ -91,7 +87,7 @@ export class DisputeService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	updateDispute(disputeReference, raisedOn, reason, Transaction, Customer, Account, PaymentCard, Status, id)  : Promise<any>  {
-    	const uri = this.ormUrl + '/Dispute/update/' + id;
+    	const uri = this.apiUrl + '/Dispute/update/' + id;
     	const obj = {
       		disputeReference: disputeReference,
       		raisedOn: raisedOn,
@@ -103,7 +99,7 @@ export class DisputeService extends HelperBaseService {
 			Status: Status
     	};
     	
-    	return this.http.post(uri, obj).toPromise();
+    	return firstValueFrom(this.http.post(uri, obj));
   	}
 
 	//********************************************************************
@@ -112,9 +108,9 @@ export class DisputeService extends HelperBaseService {
 	// delegates via URI to an ORM handler
 	//********************************************************************
 	deleteDispute(id)  : Promise<any> {
-    	const uri = this.ormUrl + '/Dispute/delete/' + id;
+    	const uri = this.apiUrl + '/Dispute/delete/' + id;
 
-        return this.http.get(uri).toPromise();
+        return firstValueFrom(this.http.get(uri));
   }
   
     		//********************************************************************
@@ -272,12 +268,12 @@ export class DisputeService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Promise<any> {
 		
-		const uri = this.ormUrl + '/Dispute/update/' + this.dispute._id;		
+		const uri = this.apiUrl + '/Dispute/update/' + this.dispute._id;		
 		
-    	return this
+    	return firstValueFrom( this
       			.http
       			.post(uri, this.dispute)
-				.toPromise();			
+				);
 	}
 
 	//********************************************************************
