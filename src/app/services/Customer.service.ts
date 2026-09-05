@@ -79,7 +79,7 @@ export class CustomerService extends HelperBaseService {
 	// array of Customer models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getCustomers() ): Observable<Customer[]> {
+	getCustomers() : Observable<Customer[]> {
 		const uri = this.apiUrl + '/Customer';
 
 		return this

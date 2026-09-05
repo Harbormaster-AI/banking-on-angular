@@ -60,7 +60,7 @@ export class RepaymentScheduleService extends HelperBaseService {
 	// array of RepaymentSchedule models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getRepaymentSchedules() ): Observable<RepaymentSchedule[]> {
+	getRepaymentSchedules() : Observable<RepaymentSchedule[]> {
 		const uri = this.apiUrl + '/RepaymentSchedule';
 
 		return this

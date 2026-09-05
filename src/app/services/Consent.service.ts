@@ -62,7 +62,7 @@ export class ConsentService extends HelperBaseService {
 	// array of Consent models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getConsents() ): Observable<Consent[]> {
+	getConsents() : Observable<Consent[]> {
 		const uri = this.apiUrl + '/Consent';
 
 		return this

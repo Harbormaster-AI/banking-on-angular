@@ -62,7 +62,7 @@ export class BankingProductService extends HelperBaseService {
 	// array of BankingProduct models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getBankingProducts() ): Observable<BankingProduct[]> {
+	getBankingProducts() : Observable<BankingProduct[]> {
 		const uri = this.apiUrl + '/BankingProduct';
 
 		return this

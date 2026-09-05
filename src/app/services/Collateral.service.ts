@@ -56,7 +56,7 @@ export class CollateralService extends HelperBaseService {
 	// array of Collateral models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getCollaterals() ): Observable<Collateral[]> {
+	getCollaterals() : Observable<Collateral[]> {
 		const uri = this.apiUrl + '/Collateral';
 
 		return this

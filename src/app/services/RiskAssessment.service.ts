@@ -55,7 +55,7 @@ export class RiskAssessmentService extends HelperBaseService {
 	// array of RiskAssessment models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getRiskAssessments() ): Observable<RiskAssessment[]> {
+	getRiskAssessments() : Observable<RiskAssessment[]> {
 		const uri = this.apiUrl + '/RiskAssessment';
 
 		return this

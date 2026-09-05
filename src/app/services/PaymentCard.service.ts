@@ -65,7 +65,7 @@ export class PaymentCardService extends HelperBaseService {
 	// array of PaymentCard models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getPaymentCards() ): Observable<PaymentCard[]> {
+	getPaymentCards() : Observable<PaymentCard[]> {
 		const uri = this.apiUrl + '/PaymentCard';
 
 		return this

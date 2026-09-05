@@ -58,7 +58,7 @@ export class AccountStatementService extends HelperBaseService {
 	// array of AccountStatement models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getAccountStatements() ): Observable<AccountStatement[]> {
+	getAccountStatements() : Observable<AccountStatement[]> {
 		const uri = this.apiUrl + '/AccountStatement';
 
 		return this

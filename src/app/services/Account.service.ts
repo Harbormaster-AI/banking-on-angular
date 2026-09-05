@@ -75,7 +75,7 @@ export class AccountService extends HelperBaseService {
 	// array of Account models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getAccounts() ): Observable<Account[]> {
+	getAccounts() : Observable<Account[]> {
 		const uri = this.apiUrl + '/Account';
 
 		return this

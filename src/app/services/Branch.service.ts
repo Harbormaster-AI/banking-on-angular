@@ -63,7 +63,7 @@ export class BranchService extends HelperBaseService {
 	// array of Branch models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getBranchs() ): Observable<Branch[]> {
+	getBranchs() : Observable<Branch[]> {
 		const uri = this.apiUrl + '/Branch';
 
 		return this

@@ -57,7 +57,7 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	// array of ThirdPartyProvider models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getThirdPartyProviders() ): Observable<ThirdPartyProvider[]> {
+	getThirdPartyProviders() : Observable<ThirdPartyProvider[]> {
 		const uri = this.apiUrl + '/ThirdPartyProvider';
 
 		return this

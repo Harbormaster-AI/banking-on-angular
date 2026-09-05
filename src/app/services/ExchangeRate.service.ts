@@ -59,7 +59,7 @@ export class ExchangeRateService extends HelperBaseService {
 	// array of ExchangeRate models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getExchangeRates() ): Observable<ExchangeRate[]> {
+	getExchangeRates() : Observable<ExchangeRate[]> {
 		const uri = this.apiUrl + '/ExchangeRate';
 
 		return this

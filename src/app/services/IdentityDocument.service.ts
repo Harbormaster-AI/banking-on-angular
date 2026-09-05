@@ -56,7 +56,7 @@ export class IdentityDocumentService extends HelperBaseService {
 	// array of IdentityDocument models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getIdentityDocuments() ): Observable<IdentityDocument[]> {
+	getIdentityDocuments() : Observable<IdentityDocument[]> {
 		const uri = this.apiUrl + '/IdentityDocument';
 
 		return this

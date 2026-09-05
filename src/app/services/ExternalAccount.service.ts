@@ -60,7 +60,7 @@ export class ExternalAccountService extends HelperBaseService {
 	// array of ExternalAccount models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getExternalAccounts() ): Observable<ExternalAccount[]> {
+	getExternalAccounts() : Observable<ExternalAccount[]> {
 		const uri = this.apiUrl + '/ExternalAccount';
 
 		return this

@@ -61,7 +61,7 @@ export class KycProfileService extends HelperBaseService {
 	// array of KycProfile models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getKycProfiles() ): Observable<KycProfile[]> {
+	getKycProfiles() : Observable<KycProfile[]> {
 		const uri = this.apiUrl + '/KycProfile';
 
 		return this

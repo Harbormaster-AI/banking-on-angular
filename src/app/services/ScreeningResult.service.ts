@@ -55,7 +55,7 @@ export class ScreeningResultService extends HelperBaseService {
 	// array of ScreeningResult models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getScreeningResults() ): Observable<ScreeningResult[]> {
+	getScreeningResults() : Observable<ScreeningResult[]> {
 		const uri = this.apiUrl + '/ScreeningResult';
 
 		return this

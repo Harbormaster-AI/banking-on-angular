@@ -59,7 +59,7 @@ export class StandingInstructionService extends HelperBaseService {
 	// array of StandingInstruction models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getStandingInstructions() ): Observable<StandingInstruction[]> {
+	getStandingInstructions() : Observable<StandingInstruction[]> {
 		const uri = this.apiUrl + '/StandingInstruction';
 
 		return this

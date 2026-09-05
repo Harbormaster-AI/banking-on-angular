@@ -55,7 +55,7 @@ export class ATMService extends HelperBaseService {
 	// array of ATM models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getATMs() ): Observable<ATM[]> {
+	getATMs() : Observable<ATM[]> {
 		const uri = this.apiUrl + '/ATM';
 
 		return this

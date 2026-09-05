@@ -70,7 +70,7 @@ export class TransactionService extends HelperBaseService {
 	// array of Transaction models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getTransactions() ): Observable<Transaction[]> {
+	getTransactions() : Observable<Transaction[]> {
 		const uri = this.apiUrl + '/Transaction';
 
 		return this

@@ -68,7 +68,7 @@ export class FXTradeService extends HelperBaseService {
 	// array of FXTrade models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getFXTrades() ): Observable<FXTrade[]> {
+	getFXTrades() : Observable<FXTrade[]> {
 		const uri = this.apiUrl + '/FXTrade';
 
 		return this

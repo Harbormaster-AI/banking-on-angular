@@ -59,7 +59,7 @@ export class LoanPaymentService extends HelperBaseService {
 	// array of LoanPayment models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getLoanPayments() ): Observable<LoanPayment[]> {
+	getLoanPayments() : Observable<LoanPayment[]> {
 		const uri = this.apiUrl + '/LoanPayment';
 
 		return this

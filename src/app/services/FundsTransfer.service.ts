@@ -67,7 +67,7 @@ export class FundsTransferService extends HelperBaseService {
 	// array of FundsTransfer models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getFundsTransfers() ): Observable<FundsTransfer[]> {
+	getFundsTransfers() : Observable<FundsTransfer[]> {
 		const uri = this.apiUrl + '/FundsTransfer';
 
 		return this

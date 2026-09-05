@@ -58,7 +58,7 @@ export class FeeChargeService extends HelperBaseService {
 	// array of FeeCharge models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getFeeCharges() ): Observable<FeeCharge[]> {
+	getFeeCharges() : Observable<FeeCharge[]> {
 		const uri = this.apiUrl + '/FeeCharge';
 
 		return this

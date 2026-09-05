@@ -62,7 +62,7 @@ export class DisputeService extends HelperBaseService {
 	// array of Dispute models
 	// delegates via URI to an ORM handler
 	//********************************************************************
-	getDisputes() ): Observable<Dispute[]> {
+	getDisputes() : Observable<Dispute[]> {
 		const uri = this.apiUrl + '/Dispute';
 
 		return this
