@@ -85,20 +85,20 @@ export class KycProfileService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateKycProfile(profileId, lastReviewedOn, Customer, IdentityDocuments, RiskAssessments, Screenings, Status, id)  : Promise<any>  {
-			const uri = this.apiUrl + '/KycProfile/update/' + id;
-	const obj = {
-		      		profileId: profileId,
+			updateKycProfile(profileId, lastReviewedOn, Customer, IdentityDocuments, RiskAssessments, Screenings, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/KycProfile/update/' + id;
+		const obj = {
+			      		profileId: profileId,
       		lastReviewedOn: lastReviewedOn,
       		Customer: Customer != null && Customer.length > 0 ? Customer : null,
       		IdentityDocuments: IdentityDocuments != null && IdentityDocuments.length > 0 ? IdentityDocuments : null,
       		RiskAssessments: RiskAssessments != null && RiskAssessments.length > 0 ? RiskAssessments : null,
       		Screenings: Screenings != null && Screenings.length > 0 ? Screenings : null,
 			Status: Status
-};
+		};
 
-	return firstValueFrom(this.http.post(uri, obj));
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// delete a KycProfile
@@ -108,7 +108,7 @@ export class KycProfileService extends HelperBaseService {
 	deleteKycProfile(id)  : Observable<any> {
 		const uri = this.apiUrl + '/KycProfile/delete/' + id;
 
-		return firstValueFrom(this.http.get(uri));
+		return this.http.get(uri);
 	}
 
 			//********************************************************************
@@ -331,10 +331,7 @@ export class KycProfileService extends HelperBaseService {
 
 		const uri = this.apiUrl + '/KycProfile/update/' + this.kycProfile;
 
-	return firstValueFrom( this
-		.http
-		.post(uri, this.kycProfile)
-);
+	return  this.http.post(uri, this.kycProfile );
 }
 
 	//********************************************************************

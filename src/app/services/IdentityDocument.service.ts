@@ -80,18 +80,18 @@ export class IdentityDocumentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateIdentityDocument(documentNumber, issuingCountry, expirationDate, KycProfile, DocumentType, id)  : Promise<any>  {
-			const uri = this.apiUrl + '/IdentityDocument/update/' + id;
-	const obj = {
-		      		documentNumber: documentNumber,
+			updateIdentityDocument(documentNumber, issuingCountry, expirationDate, KycProfile, DocumentType, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/IdentityDocument/update/' + id;
+		const obj = {
+			      		documentNumber: documentNumber,
       		issuingCountry: issuingCountry,
       		expirationDate: expirationDate,
       		KycProfile: KycProfile != null && KycProfile.length > 0 ? KycProfile : null,
 			DocumentType: DocumentType
-};
+		};
 
-	return firstValueFrom(this.http.post(uri, obj));
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// delete a IdentityDocument
@@ -101,7 +101,7 @@ export class IdentityDocumentService extends HelperBaseService {
 	deleteIdentityDocument(id)  : Observable<any> {
 		const uri = this.apiUrl + '/IdentityDocument/delete/' + id;
 
-		return firstValueFrom(this.http.get(uri));
+		return this.http.get(uri);
 	}
 
 			//********************************************************************
@@ -150,10 +150,7 @@ export class IdentityDocumentService extends HelperBaseService {
 
 		const uri = this.apiUrl + '/IdentityDocument/update/' + this.identityDocument;
 
-	return firstValueFrom( this
-		.http
-		.post(uri, this.identityDocument)
-);
+	return  this.http.post(uri, this.identityDocument );
 }
 
 	//********************************************************************

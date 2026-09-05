@@ -79,17 +79,17 @@ export class ATMService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateATM(terminalId, location, Branch, Status, id)  : Promise<any>  {
-			const uri = this.apiUrl + '/ATM/update/' + id;
-	const obj = {
-		      		terminalId: terminalId,
+			updateATM(terminalId, location, Branch, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/ATM/update/' + id;
+		const obj = {
+			      		terminalId: terminalId,
       		location: location,
       		Branch: Branch != null && Branch.length > 0 ? Branch : null,
 			Status: Status
-};
+		};
 
-	return firstValueFrom(this.http.post(uri, obj));
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// delete a ATM
@@ -99,7 +99,7 @@ export class ATMService extends HelperBaseService {
 	deleteATM(id)  : Observable<any> {
 		const uri = this.apiUrl + '/ATM/delete/' + id;
 
-		return firstValueFrom(this.http.get(uri));
+		return this.http.get(uri);
 	}
 
 			//********************************************************************
@@ -148,10 +148,7 @@ export class ATMService extends HelperBaseService {
 
 		const uri = this.apiUrl + '/ATM/update/' + this.aTM;
 
-	return firstValueFrom( this
-		.http
-		.post(uri, this.aTM)
-);
+	return  this.http.post(uri, this.aTM );
 }
 
 	//********************************************************************

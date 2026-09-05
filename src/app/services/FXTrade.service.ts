@@ -92,10 +92,10 @@ export class FXTradeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateFXTrade(tradeReference, tradeDate, settlementDate, amountSold, amountBought, rate, Customer, Bank, ExchangeRate, SourceAccount, DestinationAccount, Transaction, Status, id)  : Promise<any>  {
-			const uri = this.apiUrl + '/FXTrade/update/' + id;
-	const obj = {
-		      		tradeReference: tradeReference,
+			updateFXTrade(tradeReference, tradeDate, settlementDate, amountSold, amountBought, rate, Customer, Bank, ExchangeRate, SourceAccount, DestinationAccount, Transaction, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/FXTrade/update/' + id;
+		const obj = {
+			      		tradeReference: tradeReference,
       		tradeDate: tradeDate,
       		settlementDate: settlementDate,
       		amountSold: amountSold,
@@ -108,10 +108,10 @@ export class FXTradeService extends HelperBaseService {
       		DestinationAccount: DestinationAccount != null && DestinationAccount.length > 0 ? DestinationAccount : null,
       		Transaction: Transaction != null && Transaction.length > 0 ? Transaction : null,
 			Status: Status
-};
+		};
 
-	return firstValueFrom(this.http.post(uri, obj));
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// delete a FXTrade
@@ -121,7 +121,7 @@ export class FXTradeService extends HelperBaseService {
 	deleteFXTrade(id)  : Observable<any> {
 		const uri = this.apiUrl + '/FXTrade/delete/' + id;
 
-		return firstValueFrom(this.http.get(uri));
+		return this.http.get(uri);
 	}
 
 			//********************************************************************
@@ -355,10 +355,7 @@ export class FXTradeService extends HelperBaseService {
 
 		const uri = this.apiUrl + '/FXTrade/update/' + this.fXTrade;
 
-	return firstValueFrom( this
-		.http
-		.post(uri, this.fXTrade)
-);
+	return  this.http.post(uri, this.fXTrade );
 }
 
 	//********************************************************************

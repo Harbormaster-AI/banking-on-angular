@@ -79,17 +79,17 @@ export class ScreeningResultService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateScreeningResult(screeningDate, provider, KycProfile, Outcome, id)  : Promise<any>  {
-			const uri = this.apiUrl + '/ScreeningResult/update/' + id;
-	const obj = {
-		      		screeningDate: screeningDate,
+			updateScreeningResult(screeningDate, provider, KycProfile, Outcome, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/ScreeningResult/update/' + id;
+		const obj = {
+			      		screeningDate: screeningDate,
       		provider: provider,
       		KycProfile: KycProfile != null && KycProfile.length > 0 ? KycProfile : null,
 			Outcome: Outcome
-};
+		};
 
-	return firstValueFrom(this.http.post(uri, obj));
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// delete a ScreeningResult
@@ -99,7 +99,7 @@ export class ScreeningResultService extends HelperBaseService {
 	deleteScreeningResult(id)  : Observable<any> {
 		const uri = this.apiUrl + '/ScreeningResult/delete/' + id;
 
-		return firstValueFrom(this.http.get(uri));
+		return this.http.get(uri);
 	}
 
 			//********************************************************************
@@ -148,10 +148,7 @@ export class ScreeningResultService extends HelperBaseService {
 
 		const uri = this.apiUrl + '/ScreeningResult/update/' + this.screeningResult;
 
-	return firstValueFrom( this
-		.http
-		.post(uri, this.screeningResult)
-);
+	return  this.http.post(uri, this.screeningResult );
 }
 
 	//********************************************************************

@@ -84,10 +84,10 @@ export class ExternalAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions, id)  : Promise<any>  {
-			const uri = this.apiUrl + '/ExternalAccount/update/' + id;
-	const obj = {
-		      		name: name,
+			updateExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/ExternalAccount/update/' + id;
+		const obj = {
+			      		name: name,
       		iban: iban,
       		accountNumber: accountNumber,
       		bic: bic,
@@ -95,10 +95,10 @@ export class ExternalAccountService extends HelperBaseService {
       		country: country,
       		Customer: Customer != null && Customer.length > 0 ? Customer : null,
 			Transactions: Transactions != null && Transactions.length > 0 ? Transactions : null
-};
+		};
 
-	return firstValueFrom(this.http.post(uri, obj));
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// delete a ExternalAccount
@@ -108,7 +108,7 @@ export class ExternalAccountService extends HelperBaseService {
 	deleteExternalAccount(id)  : Observable<any> {
 		const uri = this.apiUrl + '/ExternalAccount/delete/' + id;
 
-		return firstValueFrom(this.http.get(uri));
+		return this.http.get(uri);
 	}
 
 			//********************************************************************
@@ -215,10 +215,7 @@ export class ExternalAccountService extends HelperBaseService {
 
 		const uri = this.apiUrl + '/ExternalAccount/update/' + this.externalAccount;
 
-	return firstValueFrom( this
-		.http
-		.post(uri, this.externalAccount)
-);
+	return  this.http.post(uri, this.externalAccount );
 }
 
 	//********************************************************************

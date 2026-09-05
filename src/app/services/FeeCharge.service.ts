@@ -82,19 +82,19 @@ export class FeeChargeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateFeeCharge(feeCode, amount, appliedOn, Account, LoanAccount, FeeType, id)  : Promise<any>  {
-			const uri = this.apiUrl + '/FeeCharge/update/' + id;
-	const obj = {
-		      		feeCode: feeCode,
+			updateFeeCharge(feeCode, amount, appliedOn, Account, LoanAccount, FeeType, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/FeeCharge/update/' + id;
+		const obj = {
+			      		feeCode: feeCode,
       		amount: amount,
       		appliedOn: appliedOn,
       		Account: Account != null && Account.length > 0 ? Account : null,
       		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
 			FeeType: FeeType
-};
+		};
 
-	return firstValueFrom(this.http.post(uri, obj));
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// delete a FeeCharge
@@ -104,7 +104,7 @@ export class FeeChargeService extends HelperBaseService {
 	deleteFeeCharge(id)  : Observable<any> {
 		const uri = this.apiUrl + '/FeeCharge/delete/' + id;
 
-		return firstValueFrom(this.http.get(uri));
+		return this.http.get(uri);
 	}
 
 			//********************************************************************
@@ -190,10 +190,7 @@ export class FeeChargeService extends HelperBaseService {
 
 		const uri = this.apiUrl + '/FeeCharge/update/' + this.feeCharge;
 
-	return firstValueFrom( this
-		.http
-		.post(uri, this.feeCharge)
-);
+	return  this.http.post(uri, this.feeCharge );
 }
 
 	//********************************************************************

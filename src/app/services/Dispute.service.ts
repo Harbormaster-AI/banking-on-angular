@@ -86,10 +86,10 @@ export class DisputeService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateDispute(disputeReference, raisedOn, reason, Transaction, Customer, Account, PaymentCard, Status, id)  : Promise<any>  {
-			const uri = this.apiUrl + '/Dispute/update/' + id;
-	const obj = {
-		      		disputeReference: disputeReference,
+			updateDispute(disputeReference, raisedOn, reason, Transaction, Customer, Account, PaymentCard, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/Dispute/update/' + id;
+		const obj = {
+			      		disputeReference: disputeReference,
       		raisedOn: raisedOn,
       		reason: reason,
       		Transaction: Transaction != null && Transaction.length > 0 ? Transaction : null,
@@ -97,10 +97,10 @@ export class DisputeService extends HelperBaseService {
       		Account: Account != null && Account.length > 0 ? Account : null,
       		PaymentCard: PaymentCard != null && PaymentCard.length > 0 ? PaymentCard : null,
 			Status: Status
-};
+		};
 
-	return firstValueFrom(this.http.post(uri, obj));
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// delete a Dispute
@@ -110,7 +110,7 @@ export class DisputeService extends HelperBaseService {
 	deleteDispute(id)  : Observable<any> {
 		const uri = this.apiUrl + '/Dispute/delete/' + id;
 
-		return firstValueFrom(this.http.get(uri));
+		return this.http.get(uri);
 	}
 
 			//********************************************************************
@@ -270,10 +270,7 @@ export class DisputeService extends HelperBaseService {
 
 		const uri = this.apiUrl + '/Dispute/update/' + this.dispute;
 
-	return firstValueFrom( this
-		.http
-		.post(uri, this.dispute)
-);
+	return  this.http.post(uri, this.dispute );
 }
 
 	//********************************************************************

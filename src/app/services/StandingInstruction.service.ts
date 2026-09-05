@@ -83,20 +83,20 @@ export class StandingInstructionService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateStandingInstruction(instructionId, amount, nextExecutionDate, Account, Beneficiary, Frequency, Status, id)  : Promise<any>  {
-			const uri = this.apiUrl + '/StandingInstruction/update/' + id;
-	const obj = {
-		      		instructionId: instructionId,
+			updateStandingInstruction(instructionId, amount, nextExecutionDate, Account, Beneficiary, Frequency, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/StandingInstruction/update/' + id;
+		const obj = {
+			      		instructionId: instructionId,
       		amount: amount,
       		nextExecutionDate: nextExecutionDate,
       		Account: Account != null && Account.length > 0 ? Account : null,
       		Beneficiary: Beneficiary != null && Beneficiary.length > 0 ? Beneficiary : null,
       		Frequency: Frequency,
 			Status: Status
-};
+		};
 
-	return firstValueFrom(this.http.post(uri, obj));
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// delete a StandingInstruction
@@ -106,7 +106,7 @@ export class StandingInstructionService extends HelperBaseService {
 	deleteStandingInstruction(id)  : Observable<any> {
 		const uri = this.apiUrl + '/StandingInstruction/delete/' + id;
 
-		return firstValueFrom(this.http.get(uri));
+		return this.http.get(uri);
 	}
 
 			//********************************************************************
@@ -192,10 +192,7 @@ export class StandingInstructionService extends HelperBaseService {
 
 		const uri = this.apiUrl + '/StandingInstruction/update/' + this.standingInstruction;
 
-	return firstValueFrom( this
-		.http
-		.post(uri, this.standingInstruction)
-);
+	return  this.http.post(uri, this.standingInstruction );
 }
 
 	//********************************************************************

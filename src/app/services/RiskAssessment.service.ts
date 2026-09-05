@@ -79,17 +79,17 @@ export class RiskAssessmentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateRiskAssessment(score, assessedOn, KycProfile, Rating, id)  : Promise<any>  {
-			const uri = this.apiUrl + '/RiskAssessment/update/' + id;
-	const obj = {
-		      		score: score,
+			updateRiskAssessment(score, assessedOn, KycProfile, Rating, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/RiskAssessment/update/' + id;
+		const obj = {
+			      		score: score,
       		assessedOn: assessedOn,
       		KycProfile: KycProfile != null && KycProfile.length > 0 ? KycProfile : null,
 			Rating: Rating
-};
+		};
 
-	return firstValueFrom(this.http.post(uri, obj));
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// delete a RiskAssessment
@@ -99,7 +99,7 @@ export class RiskAssessmentService extends HelperBaseService {
 	deleteRiskAssessment(id)  : Observable<any> {
 		const uri = this.apiUrl + '/RiskAssessment/delete/' + id;
 
-		return firstValueFrom(this.http.get(uri));
+		return this.http.get(uri);
 	}
 
 			//********************************************************************
@@ -148,10 +148,7 @@ export class RiskAssessmentService extends HelperBaseService {
 
 		const uri = this.apiUrl + '/RiskAssessment/update/' + this.riskAssessment;
 
-	return firstValueFrom( this
-		.http
-		.post(uri, this.riskAssessment)
-);
+	return  this.http.post(uri, this.riskAssessment );
 }
 
 	//********************************************************************

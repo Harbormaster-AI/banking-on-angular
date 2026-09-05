@@ -99,10 +99,10 @@ export class AccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateAccount(accountNumber, iban, accountName, currency, openedOn, closedOn, Bank, Branch, Product, Owners, Transactions, Statements, StandingInstructions, FeeCharges, AccountType, OwnershipType, Status, id)  : Promise<any>  {
-			const uri = this.apiUrl + '/Account/update/' + id;
-	const obj = {
-		      		accountNumber: accountNumber,
+			updateAccount(accountNumber, iban, accountName, currency, openedOn, closedOn, Bank, Branch, Product, Owners, Transactions, Statements, StandingInstructions, FeeCharges, AccountType, OwnershipType, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/Account/update/' + id;
+		const obj = {
+			      		accountNumber: accountNumber,
       		iban: iban,
       		accountName: accountName,
       		currency: currency,
@@ -119,10 +119,10 @@ export class AccountService extends HelperBaseService {
       		AccountType: AccountType,
       		OwnershipType: OwnershipType,
 			Status: Status
-};
+		};
 
-	return firstValueFrom(this.http.post(uri, obj));
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// delete a Account
@@ -132,7 +132,7 @@ export class AccountService extends HelperBaseService {
 	deleteAccount(id)  : Observable<any> {
 		const uri = this.apiUrl + '/Account/delete/' + id;
 
-		return firstValueFrom(this.http.get(uri));
+		return this.http.get(uri);
 	}
 
 			//********************************************************************
@@ -545,10 +545,7 @@ export class AccountService extends HelperBaseService {
 
 		const uri = this.apiUrl + '/Account/update/' + this.account;
 
-	return firstValueFrom( this
-		.http
-		.post(uri, this.account)
-);
+	return  this.http.post(uri, this.account );
 }
 
 	//********************************************************************

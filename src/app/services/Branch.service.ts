@@ -87,10 +87,10 @@ export class BranchService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateBranch(name, branchCode, address, phone, openingHours, Bank, Accounts, LoanAccounts, Atms, id)  : Promise<any>  {
-			const uri = this.apiUrl + '/Branch/update/' + id;
-	const obj = {
-		      		name: name,
+			updateBranch(name, branchCode, address, phone, openingHours, Bank, Accounts, LoanAccounts, Atms, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/Branch/update/' + id;
+		const obj = {
+			      		name: name,
       		branchCode: branchCode,
       		address: address,
       		phone: phone,
@@ -99,10 +99,10 @@ export class BranchService extends HelperBaseService {
       		Accounts: Accounts != null && Accounts.length > 0 ? Accounts : null,
       		LoanAccounts: LoanAccounts != null && LoanAccounts.length > 0 ? LoanAccounts : null,
 			Atms: Atms != null && Atms.length > 0 ? Atms : null
-};
+		};
 
-	return firstValueFrom(this.http.post(uri, obj));
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// delete a Branch
@@ -112,7 +112,7 @@ export class BranchService extends HelperBaseService {
 	deleteBranch(id)  : Observable<any> {
 		const uri = this.apiUrl + '/Branch/delete/' + id;
 
-		return firstValueFrom(this.http.get(uri));
+		return this.http.get(uri);
 	}
 
 			//********************************************************************
@@ -335,10 +335,7 @@ export class BranchService extends HelperBaseService {
 
 		const uri = this.apiUrl + '/Branch/update/' + this.branch;
 
-	return firstValueFrom( this
-		.http
-		.post(uri, this.branch)
-);
+	return  this.http.post(uri, this.branch );
 }
 
 	//********************************************************************

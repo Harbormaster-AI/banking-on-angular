@@ -84,10 +84,10 @@ export class RepaymentScheduleService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateRepaymentSchedule(installmentNumber, dueDate, principalDue, interestDue, totalDue, LoanAccount, Payment, Status, id)  : Promise<any>  {
-			const uri = this.apiUrl + '/RepaymentSchedule/update/' + id;
-	const obj = {
-		      		installmentNumber: installmentNumber,
+			updateRepaymentSchedule(installmentNumber, dueDate, principalDue, interestDue, totalDue, LoanAccount, Payment, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/RepaymentSchedule/update/' + id;
+		const obj = {
+			      		installmentNumber: installmentNumber,
       		dueDate: dueDate,
       		principalDue: principalDue,
       		interestDue: interestDue,
@@ -95,10 +95,10 @@ export class RepaymentScheduleService extends HelperBaseService {
       		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
       		Payment: Payment != null && Payment.length > 0 ? Payment : null,
 			Status: Status
-};
+		};
 
-	return firstValueFrom(this.http.post(uri, obj));
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// delete a RepaymentSchedule
@@ -108,7 +108,7 @@ export class RepaymentScheduleService extends HelperBaseService {
 	deleteRepaymentSchedule(id)  : Observable<any> {
 		const uri = this.apiUrl + '/RepaymentSchedule/delete/' + id;
 
-		return firstValueFrom(this.http.get(uri));
+		return this.http.get(uri);
 	}
 
 			//********************************************************************
@@ -194,10 +194,7 @@ export class RepaymentScheduleService extends HelperBaseService {
 
 		const uri = this.apiUrl + '/RepaymentSchedule/update/' + this.repaymentSchedule;
 
-	return firstValueFrom( this
-		.http
-		.post(uri, this.repaymentSchedule)
-);
+	return  this.http.post(uri, this.repaymentSchedule );
 }
 
 	//********************************************************************

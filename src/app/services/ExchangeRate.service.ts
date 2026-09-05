@@ -83,20 +83,20 @@ export class ExchangeRateService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateExchangeRate(baseCurrency, counterCurrency, rate, asOf, source, Bank, FxTrades, id)  : Promise<any>  {
-			const uri = this.apiUrl + '/ExchangeRate/update/' + id;
-	const obj = {
-		      		baseCurrency: baseCurrency,
+			updateExchangeRate(baseCurrency, counterCurrency, rate, asOf, source, Bank, FxTrades, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/ExchangeRate/update/' + id;
+		const obj = {
+			      		baseCurrency: baseCurrency,
       		counterCurrency: counterCurrency,
       		rate: rate,
       		asOf: asOf,
       		source: source,
       		Bank: Bank != null && Bank.length > 0 ? Bank : null,
 			FxTrades: FxTrades != null && FxTrades.length > 0 ? FxTrades : null
-};
+		};
 
-	return firstValueFrom(this.http.post(uri, obj));
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// delete a ExchangeRate
@@ -106,7 +106,7 @@ export class ExchangeRateService extends HelperBaseService {
 	deleteExchangeRate(id)  : Observable<any> {
 		const uri = this.apiUrl + '/ExchangeRate/delete/' + id;
 
-		return firstValueFrom(this.http.get(uri));
+		return this.http.get(uri);
 	}
 
 			//********************************************************************
@@ -213,10 +213,7 @@ export class ExchangeRateService extends HelperBaseService {
 
 		const uri = this.apiUrl + '/ExchangeRate/update/' + this.exchangeRate;
 
-	return firstValueFrom( this
-		.http
-		.post(uri, this.exchangeRate)
-);
+	return  this.http.post(uri, this.exchangeRate );
 }
 
 	//********************************************************************

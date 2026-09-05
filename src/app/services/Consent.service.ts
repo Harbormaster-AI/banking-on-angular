@@ -86,10 +86,10 @@ export class ConsentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateConsent(grantedOn, expiresOn, Customer, Bank, AuthorizedAccounts, ThirdPartyProvider, ConsentType, Status, id)  : Promise<any>  {
-			const uri = this.apiUrl + '/Consent/update/' + id;
-	const obj = {
-		      		grantedOn: grantedOn,
+			updateConsent(grantedOn, expiresOn, Customer, Bank, AuthorizedAccounts, ThirdPartyProvider, ConsentType, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/Consent/update/' + id;
+		const obj = {
+			      		grantedOn: grantedOn,
       		expiresOn: expiresOn,
       		Customer: Customer != null && Customer.length > 0 ? Customer : null,
       		Bank: Bank != null && Bank.length > 0 ? Bank : null,
@@ -97,10 +97,10 @@ export class ConsentService extends HelperBaseService {
       		ThirdPartyProvider: ThirdPartyProvider != null && ThirdPartyProvider.length > 0 ? ThirdPartyProvider : null,
       		ConsentType: ConsentType,
 			Status: Status
-};
+		};
 
-	return firstValueFrom(this.http.post(uri, obj));
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// delete a Consent
@@ -110,7 +110,7 @@ export class ConsentService extends HelperBaseService {
 	deleteConsent(id)  : Observable<any> {
 		const uri = this.apiUrl + '/Consent/delete/' + id;
 
-		return firstValueFrom(this.http.get(uri));
+		return this.http.get(uri);
 	}
 
 			//********************************************************************
@@ -291,10 +291,7 @@ export class ConsentService extends HelperBaseService {
 
 		const uri = this.apiUrl + '/Consent/update/' + this.consent;
 
-	return firstValueFrom( this
-		.http
-		.post(uri, this.consent)
-);
+	return  this.http.post(uri, this.consent );
 }
 
 	//********************************************************************

@@ -80,18 +80,18 @@ export class CollateralService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateCollateral(appraisedValue, description, location, LoanAccount, CollateralType, id)  : Promise<any>  {
-			const uri = this.apiUrl + '/Collateral/update/' + id;
-	const obj = {
-		      		appraisedValue: appraisedValue,
+			updateCollateral(appraisedValue, description, location, LoanAccount, CollateralType, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/Collateral/update/' + id;
+		const obj = {
+			      		appraisedValue: appraisedValue,
       		description: description,
       		location: location,
       		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
 			CollateralType: CollateralType
-};
+		};
 
-	return firstValueFrom(this.http.post(uri, obj));
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// delete a Collateral
@@ -101,7 +101,7 @@ export class CollateralService extends HelperBaseService {
 	deleteCollateral(id)  : Observable<any> {
 		const uri = this.apiUrl + '/Collateral/delete/' + id;
 
-		return firstValueFrom(this.http.get(uri));
+		return this.http.get(uri);
 	}
 
 			//********************************************************************
@@ -150,10 +150,7 @@ export class CollateralService extends HelperBaseService {
 
 		const uri = this.apiUrl + '/Collateral/update/' + this.collateral;
 
-	return firstValueFrom( this
-		.http
-		.post(uri, this.collateral)
-);
+	return  this.http.post(uri, this.collateral );
 }
 
 	//********************************************************************

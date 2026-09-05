@@ -81,18 +81,18 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateThirdPartyProvider(name, registrationId, website, Bank, Consents, id)  : Promise<any>  {
-			const uri = this.apiUrl + '/ThirdPartyProvider/update/' + id;
-	const obj = {
-		      		name: name,
+			updateThirdPartyProvider(name, registrationId, website, Bank, Consents, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/ThirdPartyProvider/update/' + id;
+		const obj = {
+			      		name: name,
       		registrationId: registrationId,
       		website: website,
       		Bank: Bank != null && Bank.length > 0 ? Bank : null,
 			Consents: Consents != null && Consents.length > 0 ? Consents : null
-};
+		};
 
-	return firstValueFrom(this.http.post(uri, obj));
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// delete a ThirdPartyProvider
@@ -102,7 +102,7 @@ export class ThirdPartyProviderService extends HelperBaseService {
 	deleteThirdPartyProvider(id)  : Observable<any> {
 		const uri = this.apiUrl + '/ThirdPartyProvider/delete/' + id;
 
-		return firstValueFrom(this.http.get(uri));
+		return this.http.get(uri);
 	}
 
 			//********************************************************************
@@ -209,10 +209,7 @@ export class ThirdPartyProviderService extends HelperBaseService {
 
 		const uri = this.apiUrl + '/ThirdPartyProvider/update/' + this.thirdPartyProvider;
 
-	return firstValueFrom( this
-		.http
-		.post(uri, this.thirdPartyProvider)
-);
+	return  this.http.post(uri, this.thirdPartyProvider );
 }
 
 	//********************************************************************

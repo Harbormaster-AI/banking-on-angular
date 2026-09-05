@@ -91,10 +91,10 @@ export class FundsTransferService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateFundsTransfer(transferReference, amount, requestedDate, executionDate, purpose, feeAmount, SourceAccount, DestinationAccount, ExternalBeneficiary, InitiatedBy, Transactions, Method, Status, id)  : Promise<any>  {
-			const uri = this.apiUrl + '/FundsTransfer/update/' + id;
-	const obj = {
-		      		transferReference: transferReference,
+			updateFundsTransfer(transferReference, amount, requestedDate, executionDate, purpose, feeAmount, SourceAccount, DestinationAccount, ExternalBeneficiary, InitiatedBy, Transactions, Method, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/FundsTransfer/update/' + id;
+		const obj = {
+			      		transferReference: transferReference,
       		amount: amount,
       		requestedDate: requestedDate,
       		executionDate: executionDate,
@@ -107,10 +107,10 @@ export class FundsTransferService extends HelperBaseService {
       		Transactions: Transactions != null && Transactions.length > 0 ? Transactions : null,
       		Method: Method,
 			Status: Status
-};
+		};
 
-	return firstValueFrom(this.http.post(uri, obj));
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// delete a FundsTransfer
@@ -120,7 +120,7 @@ export class FundsTransferService extends HelperBaseService {
 	deleteFundsTransfer(id)  : Observable<any> {
 		const uri = this.apiUrl + '/FundsTransfer/delete/' + id;
 
-		return firstValueFrom(this.http.get(uri));
+		return this.http.get(uri);
 	}
 
 			//********************************************************************
@@ -338,10 +338,7 @@ export class FundsTransferService extends HelperBaseService {
 
 		const uri = this.apiUrl + '/FundsTransfer/update/' + this.fundsTransfer;
 
-	return firstValueFrom( this
-		.http
-		.post(uri, this.fundsTransfer)
-);
+	return  this.http.post(uri, this.fundsTransfer );
 }
 
 	//********************************************************************

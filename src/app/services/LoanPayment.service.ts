@@ -83,20 +83,20 @@ export class LoanPaymentService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateLoanPayment(paymentReference, amount, paymentDate, LoanAccount, Transaction, Method, Status, id)  : Promise<any>  {
-			const uri = this.apiUrl + '/LoanPayment/update/' + id;
-	const obj = {
-		      		paymentReference: paymentReference,
+			updateLoanPayment(paymentReference, amount, paymentDate, LoanAccount, Transaction, Method, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/LoanPayment/update/' + id;
+		const obj = {
+			      		paymentReference: paymentReference,
       		amount: amount,
       		paymentDate: paymentDate,
       		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
       		Transaction: Transaction != null && Transaction.length > 0 ? Transaction : null,
       		Method: Method,
 			Status: Status
-};
+		};
 
-	return firstValueFrom(this.http.post(uri, obj));
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// delete a LoanPayment
@@ -106,7 +106,7 @@ export class LoanPaymentService extends HelperBaseService {
 	deleteLoanPayment(id)  : Observable<any> {
 		const uri = this.apiUrl + '/LoanPayment/delete/' + id;
 
-		return firstValueFrom(this.http.get(uri));
+		return this.http.get(uri);
 	}
 
 			//********************************************************************
@@ -192,10 +192,7 @@ export class LoanPaymentService extends HelperBaseService {
 
 		const uri = this.apiUrl + '/LoanPayment/update/' + this.loanPayment;
 
-	return firstValueFrom( this
-		.http
-		.post(uri, this.loanPayment)
-);
+	return  this.http.post(uri, this.loanPayment );
 }
 
 	//********************************************************************

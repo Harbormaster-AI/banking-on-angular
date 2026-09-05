@@ -102,10 +102,10 @@ export class LoanAccountService extends HelperBaseService {
 	// returns a Promise
 	// delegates via URI to an ORM handler
 	//********************************************************************
-			updateLoanAccount(loanNumber, principalAmount, outstandingPrincipal, interestRate, originationDate, maturityDate, paymentDayOfMonth, currency, Bank, Branch, Product, Borrowers, RepaymentSchedule, Payments, Collateral, FeeCharges, LoanType, RateType, Compounding, Status, id)  : Promise<any>  {
-			const uri = this.apiUrl + '/LoanAccount/update/' + id;
-	const obj = {
-		      		loanNumber: loanNumber,
+			updateLoanAccount(loanNumber, principalAmount, outstandingPrincipal, interestRate, originationDate, maturityDate, paymentDayOfMonth, currency, Bank, Branch, Product, Borrowers, RepaymentSchedule, Payments, Collateral, FeeCharges, LoanType, RateType, Compounding, Status, id)  :  Observable<any>  {
+				const uri = this.apiUrl + '/LoanAccount/update/' + id;
+		const obj = {
+			      		loanNumber: loanNumber,
       		principalAmount: principalAmount,
       		outstandingPrincipal: outstandingPrincipal,
       		interestRate: interestRate,
@@ -125,10 +125,10 @@ export class LoanAccountService extends HelperBaseService {
       		RateType: RateType,
       		Compounding: Compounding,
 			Status: Status
-};
+		};
 
-	return firstValueFrom(this.http.post(uri, obj));
-}
+		return this.http.post(uri, obj);
+	}
 
 	//********************************************************************
 	// delete a LoanAccount
@@ -138,7 +138,7 @@ export class LoanAccountService extends HelperBaseService {
 	deleteLoanAccount(id)  : Observable<any> {
 		const uri = this.apiUrl + '/LoanAccount/delete/' + id;
 
-		return firstValueFrom(this.http.get(uri));
+		return this.http.get(uri);
 	}
 
 			//********************************************************************
@@ -551,10 +551,7 @@ export class LoanAccountService extends HelperBaseService {
 
 		const uri = this.apiUrl + '/LoanAccount/update/' + this.loanAccount;
 
-	return firstValueFrom( this
-		.http
-		.post(uri, this.loanAccount)
-);
+	return  this.http.post(uri, this.loanAccount );
 }
 
 	//********************************************************************
