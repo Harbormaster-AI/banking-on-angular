@@ -1,100 +1,103 @@
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-	<h5 class="mb-0">Customer List</h5>
+    <h5 class="mb-0">Customer List</h5>
 
-	<a
-			[routerLink]="['/createCustomer']"
-			class="btn btn-primary btn-sm">
-		Create Customer
-	</a>
+    <a
+            [routerLink]="['/createCustomer']"
+            class="btn btn-primary btn-sm">
+        Create Customer
+    </a>
 </div>
 
 <div class="table-responsive">
-	<table class="table table-hover table-striped table-bordered table-sm">
-		<thead>
-		<tr class="table-dark text-center">
-									<th scope="col">firstName</th>
-						<th scope="col">lastName</th>
-						<th scope="col">legalName</th>
-						<th scope="col">dateOfBirth</th>
-						<th scope="col">taxId</th>
-						<th scope="col">email</th>
-						<th scope="col">phone</th>
-						<th scope="col">address</th>
-						<th scope="col">CustomerType</th>
-						<th scope="col">RiskRating</th>
-						<th scope="col">KycStatus</th>
-						<th scope="col" colspan="2">Actions</th>
-		</tr>
-		</thead>
+    <table class="table table-hover table-striped table-bordered table-sm">
+        <thead>
+        <tr class="table-dark text-center">
+                                    <th scope="col">firstName</th>
+                        <th scope="col">lastName</th>
+                        <th scope="col">legalName</th>
+                        <th scope="col">dateOfBirth</th>
+                        <th scope="col">taxId</th>
+                        <th scope="col">email</th>
+                        <th scope="col">phone</th>
+                        <th scope="col">address</th>
+                        <th scope="col">CustomerType</th>
+                        <th scope="col">RiskRating</th>
+                        <th scope="col">KycStatus</th>
+                        <th scope="col" colspan="2">Actions</th>
+        </tr>
+        </thead>
 
-		<tbody>
-			<tr
-				*ngFor="let customer of customers"
-				class="text-center">
+        <tbody>
+        @for (customer of customers; track customer.customerId) {
+            <tr
+                    class="text-center">
 
-								<td class="align-middle">
-					{{ customer.firstName }}
-				</td>
-								<td class="align-middle">
-					{{ customer.lastName }}
-				</td>
-								<td class="align-middle">
-					{{ customer.legalName }}
-				</td>
-								<td class="align-middle">
-					{{ customer.dateOfBirth }}
-				</td>
-								<td class="align-middle">
-					{{ customer.taxId }}
-				</td>
-								<td class="align-middle">
-					{{ customer.email }}
-				</td>
-								<td class="align-middle">
-					{{ customer.phone }}
-				</td>
-								<td class="align-middle">
-					{{ customer.address }}
-				</td>
-								<td class="align-middle">
-					{{ customer.CustomerType }}
-				</td>
-								<td class="align-middle">
-					{{ customer.RiskRating }}
-				</td>
-								<td class="align-middle">
-					{{ customer.KycStatus }}
-				</td>
-				
-				<td class="align-middle">
-					<a
-							[routerLink]="['/editCustomer', customercustomerId]"
-							class="btn btn-primary btn-sm">
-						Edit
-					</a>
-				</td>
+                                <td class="align-middle">
+                    {{ customer.firstName }}
+                </td>
+                                <td class="align-middle">
+                    {{ customer.lastName }}
+                </td>
+                                <td class="align-middle">
+                    {{ customer.legalName }}
+                </td>
+                                <td class="align-middle">
+                    {{ customer.dateOfBirth }}
+                </td>
+                                <td class="align-middle">
+                    {{ customer.taxId }}
+                </td>
+                                <td class="align-middle">
+                    {{ customer.email }}
+                </td>
+                                <td class="align-middle">
+                    {{ customer.phone }}
+                </td>
+                                <td class="align-middle">
+                    {{ customer.address }}
+                </td>
+                                <td class="align-middle">
+                    {{ customer.CustomerType }}
+                </td>
+                                <td class="align-middle">
+                    {{ customer.RiskRating }}
+                </td>
+                                <td class="align-middle">
+                    {{ customer.KycStatus }}
+                </td>
+                
+                <td class="align-middle">
+                    <a
+                            [routerLink]="['/editCustomer', customercustomerId]"
+                            class="btn btn-primary btn-sm">
+                        Edit
+                    </a>
+                </td>
 
-				<td class="align-middle">
-					<button
-							type="button"
-							(click)="deleteCustomer(customer.customerId)"
-							class="btn btn-danger btn-sm">
-						Delete
-					</button>
-				</td>
+                <td class="align-middle">
+                    <button
+                            type="button"
+                            (click)="deleteCustomer(customer.customerId)"
+                            class="btn btn-danger btn-sm">
+                        Delete
+                    </button>
+                </td>
 
-			</tr>
+            </tr>
+        }
 
-			
-			<tr *ngIf="customers?.length === 0">
-				<td
-						colspan="13"
-						class="text-center">
-					No customers found.
-				</td>
-			</tr>
+        
+        @if (customers?.length === 0) {
+            <tr>
+                <td
+                        colspan="13"
+                        class="text-center">
+                    No customers found.
+                </td>
+            </tr>
+        }
 
-		</tbody>
-	</table>
+        </tbody>
+    </table>
 </div>

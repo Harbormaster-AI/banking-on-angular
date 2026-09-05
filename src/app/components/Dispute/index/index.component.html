@@ -1,72 +1,75 @@
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-	<h5 class="mb-0">Dispute List</h5>
+    <h5 class="mb-0">Dispute List</h5>
 
-	<a
-			[routerLink]="['/createDispute']"
-			class="btn btn-primary btn-sm">
-		Create Dispute
-	</a>
+    <a
+            [routerLink]="['/createDispute']"
+            class="btn btn-primary btn-sm">
+        Create Dispute
+    </a>
 </div>
 
 <div class="table-responsive">
-	<table class="table table-hover table-striped table-bordered table-sm">
-		<thead>
-		<tr class="table-dark text-center">
-									<th scope="col">disputeReference</th>
-						<th scope="col">raisedOn</th>
-						<th scope="col">reason</th>
-						<th scope="col">Status</th>
-						<th scope="col" colspan="2">Actions</th>
-		</tr>
-		</thead>
+    <table class="table table-hover table-striped table-bordered table-sm">
+        <thead>
+        <tr class="table-dark text-center">
+                                    <th scope="col">disputeReference</th>
+                        <th scope="col">raisedOn</th>
+                        <th scope="col">reason</th>
+                        <th scope="col">Status</th>
+                        <th scope="col" colspan="2">Actions</th>
+        </tr>
+        </thead>
 
-		<tbody>
-			<tr
-				*ngFor="let dispute of disputes"
-				class="text-center">
+        <tbody>
+        @for (dispute of disputes; track dispute.disputeId) {
+            <tr
+                    class="text-center">
 
-								<td class="align-middle">
-					{{ dispute.disputeReference }}
-				</td>
-								<td class="align-middle">
-					{{ dispute.raisedOn }}
-				</td>
-								<td class="align-middle">
-					{{ dispute.reason }}
-				</td>
-								<td class="align-middle">
-					{{ dispute.Status }}
-				</td>
-				
-				<td class="align-middle">
-					<a
-							[routerLink]="['/editDispute', disputedisputeId]"
-							class="btn btn-primary btn-sm">
-						Edit
-					</a>
-				</td>
+                                <td class="align-middle">
+                    {{ dispute.disputeReference }}
+                </td>
+                                <td class="align-middle">
+                    {{ dispute.raisedOn }}
+                </td>
+                                <td class="align-middle">
+                    {{ dispute.reason }}
+                </td>
+                                <td class="align-middle">
+                    {{ dispute.Status }}
+                </td>
+                
+                <td class="align-middle">
+                    <a
+                            [routerLink]="['/editDispute', disputedisputeId]"
+                            class="btn btn-primary btn-sm">
+                        Edit
+                    </a>
+                </td>
 
-				<td class="align-middle">
-					<button
-							type="button"
-							(click)="deleteDispute(dispute.disputeId)"
-							class="btn btn-danger btn-sm">
-						Delete
-					</button>
-				</td>
+                <td class="align-middle">
+                    <button
+                            type="button"
+                            (click)="deleteDispute(dispute.disputeId)"
+                            class="btn btn-danger btn-sm">
+                        Delete
+                    </button>
+                </td>
 
-			</tr>
+            </tr>
+        }
 
-			
-			<tr *ngIf="disputes?.length === 0">
-				<td
-						colspan="6"
-						class="text-center">
-					No disputes found.
-				</td>
-			</tr>
+        
+        @if (disputes?.length === 0) {
+            <tr>
+                <td
+                        colspan="6"
+                        class="text-center">
+                    No disputes found.
+                </td>
+            </tr>
+        }
 
-		</tbody>
-	</table>
+        </tbody>
+    </table>
 </div>

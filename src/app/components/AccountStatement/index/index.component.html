@@ -1,80 +1,83 @@
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-	<h5 class="mb-0">AccountStatement List</h5>
+    <h5 class="mb-0">AccountStatement List</h5>
 
-	<a
-			[routerLink]="['/createAccountStatement']"
-			class="btn btn-primary btn-sm">
-		Create AccountStatement
-	</a>
+    <a
+            [routerLink]="['/createAccountStatement']"
+            class="btn btn-primary btn-sm">
+        Create AccountStatement
+    </a>
 </div>
 
 <div class="table-responsive">
-	<table class="table table-hover table-striped table-bordered table-sm">
-		<thead>
-		<tr class="table-dark text-center">
-									<th scope="col">statementNumber</th>
-						<th scope="col">periodStart</th>
-						<th scope="col">periodEnd</th>
-						<th scope="col">openingBalance</th>
-						<th scope="col">closingBalance</th>
-						<th scope="col">DeliveryMethod</th>
-						<th scope="col" colspan="2">Actions</th>
-		</tr>
-		</thead>
+    <table class="table table-hover table-striped table-bordered table-sm">
+        <thead>
+        <tr class="table-dark text-center">
+                                    <th scope="col">statementNumber</th>
+                        <th scope="col">periodStart</th>
+                        <th scope="col">periodEnd</th>
+                        <th scope="col">openingBalance</th>
+                        <th scope="col">closingBalance</th>
+                        <th scope="col">DeliveryMethod</th>
+                        <th scope="col" colspan="2">Actions</th>
+        </tr>
+        </thead>
 
-		<tbody>
-			<tr
-				*ngFor="let accountStatement of accountStatements"
-				class="text-center">
+        <tbody>
+        @for (accountStatement of accountStatements; track accountStatement.accountStatementId) {
+            <tr
+                    class="text-center">
 
-								<td class="align-middle">
-					{{ accountStatement.statementNumber }}
-				</td>
-								<td class="align-middle">
-					{{ accountStatement.periodStart }}
-				</td>
-								<td class="align-middle">
-					{{ accountStatement.periodEnd }}
-				</td>
-								<td class="align-middle">
-					{{ accountStatement.openingBalance }}
-				</td>
-								<td class="align-middle">
-					{{ accountStatement.closingBalance }}
-				</td>
-								<td class="align-middle">
-					{{ accountStatement.DeliveryMethod }}
-				</td>
-				
-				<td class="align-middle">
-					<a
-							[routerLink]="['/editAccountStatement', accountStatementaccountStatementId]"
-							class="btn btn-primary btn-sm">
-						Edit
-					</a>
-				</td>
+                                <td class="align-middle">
+                    {{ accountStatement.statementNumber }}
+                </td>
+                                <td class="align-middle">
+                    {{ accountStatement.periodStart }}
+                </td>
+                                <td class="align-middle">
+                    {{ accountStatement.periodEnd }}
+                </td>
+                                <td class="align-middle">
+                    {{ accountStatement.openingBalance }}
+                </td>
+                                <td class="align-middle">
+                    {{ accountStatement.closingBalance }}
+                </td>
+                                <td class="align-middle">
+                    {{ accountStatement.DeliveryMethod }}
+                </td>
+                
+                <td class="align-middle">
+                    <a
+                            [routerLink]="['/editAccountStatement', accountStatementaccountStatementId]"
+                            class="btn btn-primary btn-sm">
+                        Edit
+                    </a>
+                </td>
 
-				<td class="align-middle">
-					<button
-							type="button"
-							(click)="deleteAccountStatement(accountStatement.accountStatementId)"
-							class="btn btn-danger btn-sm">
-						Delete
-					</button>
-				</td>
+                <td class="align-middle">
+                    <button
+                            type="button"
+                            (click)="deleteAccountStatement(accountStatement.accountStatementId)"
+                            class="btn btn-danger btn-sm">
+                        Delete
+                    </button>
+                </td>
 
-			</tr>
+            </tr>
+        }
 
-			
-			<tr *ngIf="accountStatements?.length === 0">
-				<td
-						colspan="8"
-						class="text-center">
-					No accountStatements found.
-				</td>
-			</tr>
+        
+        @if (accountStatements?.length === 0) {
+            <tr>
+                <td
+                        colspan="8"
+                        class="text-center">
+                    No accountStatements found.
+                </td>
+            </tr>
+        }
 
-		</tbody>
-	</table>
+        </tbody>
+    </table>
 </div>

@@ -1,76 +1,79 @@
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-	<h5 class="mb-0">LoanPayment List</h5>
+    <h5 class="mb-0">LoanPayment List</h5>
 
-	<a
-			[routerLink]="['/createLoanPayment']"
-			class="btn btn-primary btn-sm">
-		Create LoanPayment
-	</a>
+    <a
+            [routerLink]="['/createLoanPayment']"
+            class="btn btn-primary btn-sm">
+        Create LoanPayment
+    </a>
 </div>
 
 <div class="table-responsive">
-	<table class="table table-hover table-striped table-bordered table-sm">
-		<thead>
-		<tr class="table-dark text-center">
-									<th scope="col">paymentReference</th>
-						<th scope="col">amount</th>
-						<th scope="col">paymentDate</th>
-						<th scope="col">Method</th>
-						<th scope="col">Status</th>
-						<th scope="col" colspan="2">Actions</th>
-		</tr>
-		</thead>
+    <table class="table table-hover table-striped table-bordered table-sm">
+        <thead>
+        <tr class="table-dark text-center">
+                                    <th scope="col">paymentReference</th>
+                        <th scope="col">amount</th>
+                        <th scope="col">paymentDate</th>
+                        <th scope="col">Method</th>
+                        <th scope="col">Status</th>
+                        <th scope="col" colspan="2">Actions</th>
+        </tr>
+        </thead>
 
-		<tbody>
-			<tr
-				*ngFor="let loanPayment of loanPayments"
-				class="text-center">
+        <tbody>
+        @for (loanPayment of loanPayments; track loanPayment.loanPaymentId) {
+            <tr
+                    class="text-center">
 
-								<td class="align-middle">
-					{{ loanPayment.paymentReference }}
-				</td>
-								<td class="align-middle">
-					{{ loanPayment.amount }}
-				</td>
-								<td class="align-middle">
-					{{ loanPayment.paymentDate }}
-				</td>
-								<td class="align-middle">
-					{{ loanPayment.Method }}
-				</td>
-								<td class="align-middle">
-					{{ loanPayment.Status }}
-				</td>
-				
-				<td class="align-middle">
-					<a
-							[routerLink]="['/editLoanPayment', loanPaymentloanPaymentId]"
-							class="btn btn-primary btn-sm">
-						Edit
-					</a>
-				</td>
+                                <td class="align-middle">
+                    {{ loanPayment.paymentReference }}
+                </td>
+                                <td class="align-middle">
+                    {{ loanPayment.amount }}
+                </td>
+                                <td class="align-middle">
+                    {{ loanPayment.paymentDate }}
+                </td>
+                                <td class="align-middle">
+                    {{ loanPayment.Method }}
+                </td>
+                                <td class="align-middle">
+                    {{ loanPayment.Status }}
+                </td>
+                
+                <td class="align-middle">
+                    <a
+                            [routerLink]="['/editLoanPayment', loanPaymentloanPaymentId]"
+                            class="btn btn-primary btn-sm">
+                        Edit
+                    </a>
+                </td>
 
-				<td class="align-middle">
-					<button
-							type="button"
-							(click)="deleteLoanPayment(loanPayment.loanPaymentId)"
-							class="btn btn-danger btn-sm">
-						Delete
-					</button>
-				</td>
+                <td class="align-middle">
+                    <button
+                            type="button"
+                            (click)="deleteLoanPayment(loanPayment.loanPaymentId)"
+                            class="btn btn-danger btn-sm">
+                        Delete
+                    </button>
+                </td>
 
-			</tr>
+            </tr>
+        }
 
-			
-			<tr *ngIf="loanPayments?.length === 0">
-				<td
-						colspan="7"
-						class="text-center">
-					No loanPayments found.
-				</td>
-			</tr>
+        
+        @if (loanPayments?.length === 0) {
+            <tr>
+                <td
+                        colspan="7"
+                        class="text-center">
+                    No loanPayments found.
+                </td>
+            </tr>
+        }
 
-		</tbody>
-	</table>
+        </tbody>
+    </table>
 </div>

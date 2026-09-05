@@ -1,68 +1,71 @@
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-	<h5 class="mb-0">ScreeningResult List</h5>
+    <h5 class="mb-0">ScreeningResult List</h5>
 
-	<a
-			[routerLink]="['/createScreeningResult']"
-			class="btn btn-primary btn-sm">
-		Create ScreeningResult
-	</a>
+    <a
+            [routerLink]="['/createScreeningResult']"
+            class="btn btn-primary btn-sm">
+        Create ScreeningResult
+    </a>
 </div>
 
 <div class="table-responsive">
-	<table class="table table-hover table-striped table-bordered table-sm">
-		<thead>
-		<tr class="table-dark text-center">
-									<th scope="col">screeningDate</th>
-						<th scope="col">provider</th>
-						<th scope="col">Outcome</th>
-						<th scope="col" colspan="2">Actions</th>
-		</tr>
-		</thead>
+    <table class="table table-hover table-striped table-bordered table-sm">
+        <thead>
+        <tr class="table-dark text-center">
+                                    <th scope="col">screeningDate</th>
+                        <th scope="col">provider</th>
+                        <th scope="col">Outcome</th>
+                        <th scope="col" colspan="2">Actions</th>
+        </tr>
+        </thead>
 
-		<tbody>
-			<tr
-				*ngFor="let screeningResult of screeningResults"
-				class="text-center">
+        <tbody>
+        @for (screeningResult of screeningResults; track screeningResult.screeningResultId) {
+            <tr
+                    class="text-center">
 
-								<td class="align-middle">
-					{{ screeningResult.screeningDate }}
-				</td>
-								<td class="align-middle">
-					{{ screeningResult.provider }}
-				</td>
-								<td class="align-middle">
-					{{ screeningResult.Outcome }}
-				</td>
-				
-				<td class="align-middle">
-					<a
-							[routerLink]="['/editScreeningResult', screeningResultscreeningResultId]"
-							class="btn btn-primary btn-sm">
-						Edit
-					</a>
-				</td>
+                                <td class="align-middle">
+                    {{ screeningResult.screeningDate }}
+                </td>
+                                <td class="align-middle">
+                    {{ screeningResult.provider }}
+                </td>
+                                <td class="align-middle">
+                    {{ screeningResult.Outcome }}
+                </td>
+                
+                <td class="align-middle">
+                    <a
+                            [routerLink]="['/editScreeningResult', screeningResultscreeningResultId]"
+                            class="btn btn-primary btn-sm">
+                        Edit
+                    </a>
+                </td>
 
-				<td class="align-middle">
-					<button
-							type="button"
-							(click)="deleteScreeningResult(screeningResult.screeningResultId)"
-							class="btn btn-danger btn-sm">
-						Delete
-					</button>
-				</td>
+                <td class="align-middle">
+                    <button
+                            type="button"
+                            (click)="deleteScreeningResult(screeningResult.screeningResultId)"
+                            class="btn btn-danger btn-sm">
+                        Delete
+                    </button>
+                </td>
 
-			</tr>
+            </tr>
+        }
 
-			
-			<tr *ngIf="screeningResults?.length === 0">
-				<td
-						colspan="5"
-						class="text-center">
-					No screeningResults found.
-				</td>
-			</tr>
+        
+        @if (screeningResults?.length === 0) {
+            <tr>
+                <td
+                        colspan="5"
+                        class="text-center">
+                    No screeningResults found.
+                </td>
+            </tr>
+        }
 
-		</tbody>
-	</table>
+        </tbody>
+    </table>
 </div>

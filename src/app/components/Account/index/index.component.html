@@ -1,92 +1,95 @@
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-	<h5 class="mb-0">Account List</h5>
+    <h5 class="mb-0">Account List</h5>
 
-	<a
-			[routerLink]="['/createAccount']"
-			class="btn btn-primary btn-sm">
-		Create Account
-	</a>
+    <a
+            [routerLink]="['/createAccount']"
+            class="btn btn-primary btn-sm">
+        Create Account
+    </a>
 </div>
 
 <div class="table-responsive">
-	<table class="table table-hover table-striped table-bordered table-sm">
-		<thead>
-		<tr class="table-dark text-center">
-									<th scope="col">accountNumber</th>
-						<th scope="col">iban</th>
-						<th scope="col">accountName</th>
-						<th scope="col">currency</th>
-						<th scope="col">openedOn</th>
-						<th scope="col">closedOn</th>
-						<th scope="col">AccountType</th>
-						<th scope="col">OwnershipType</th>
-						<th scope="col">Status</th>
-						<th scope="col" colspan="2">Actions</th>
-		</tr>
-		</thead>
+    <table class="table table-hover table-striped table-bordered table-sm">
+        <thead>
+        <tr class="table-dark text-center">
+                                    <th scope="col">accountNumber</th>
+                        <th scope="col">iban</th>
+                        <th scope="col">accountName</th>
+                        <th scope="col">currency</th>
+                        <th scope="col">openedOn</th>
+                        <th scope="col">closedOn</th>
+                        <th scope="col">AccountType</th>
+                        <th scope="col">OwnershipType</th>
+                        <th scope="col">Status</th>
+                        <th scope="col" colspan="2">Actions</th>
+        </tr>
+        </thead>
 
-		<tbody>
-			<tr
-				*ngFor="let account of accounts"
-				class="text-center">
+        <tbody>
+        @for (account of accounts; track account.accountId) {
+            <tr
+                    class="text-center">
 
-								<td class="align-middle">
-					{{ account.accountNumber }}
-				</td>
-								<td class="align-middle">
-					{{ account.iban }}
-				</td>
-								<td class="align-middle">
-					{{ account.accountName }}
-				</td>
-								<td class="align-middle">
-					{{ account.currency }}
-				</td>
-								<td class="align-middle">
-					{{ account.openedOn }}
-				</td>
-								<td class="align-middle">
-					{{ account.closedOn }}
-				</td>
-								<td class="align-middle">
-					{{ account.AccountType }}
-				</td>
-								<td class="align-middle">
-					{{ account.OwnershipType }}
-				</td>
-								<td class="align-middle">
-					{{ account.Status }}
-				</td>
-				
-				<td class="align-middle">
-					<a
-							[routerLink]="['/editAccount', accountaccountId]"
-							class="btn btn-primary btn-sm">
-						Edit
-					</a>
-				</td>
+                                <td class="align-middle">
+                    {{ account.accountNumber }}
+                </td>
+                                <td class="align-middle">
+                    {{ account.iban }}
+                </td>
+                                <td class="align-middle">
+                    {{ account.accountName }}
+                </td>
+                                <td class="align-middle">
+                    {{ account.currency }}
+                </td>
+                                <td class="align-middle">
+                    {{ account.openedOn }}
+                </td>
+                                <td class="align-middle">
+                    {{ account.closedOn }}
+                </td>
+                                <td class="align-middle">
+                    {{ account.AccountType }}
+                </td>
+                                <td class="align-middle">
+                    {{ account.OwnershipType }}
+                </td>
+                                <td class="align-middle">
+                    {{ account.Status }}
+                </td>
+                
+                <td class="align-middle">
+                    <a
+                            [routerLink]="['/editAccount', accountaccountId]"
+                            class="btn btn-primary btn-sm">
+                        Edit
+                    </a>
+                </td>
 
-				<td class="align-middle">
-					<button
-							type="button"
-							(click)="deleteAccount(account.accountId)"
-							class="btn btn-danger btn-sm">
-						Delete
-					</button>
-				</td>
+                <td class="align-middle">
+                    <button
+                            type="button"
+                            (click)="deleteAccount(account.accountId)"
+                            class="btn btn-danger btn-sm">
+                        Delete
+                    </button>
+                </td>
 
-			</tr>
+            </tr>
+        }
 
-			
-			<tr *ngIf="accounts?.length === 0">
-				<td
-						colspan="11"
-						class="text-center">
-					No accounts found.
-				</td>
-			</tr>
+        
+        @if (accounts?.length === 0) {
+            <tr>
+                <td
+                        colspan="11"
+                        class="text-center">
+                    No accounts found.
+                </td>
+            </tr>
+        }
 
-		</tbody>
-	</table>
+        </tbody>
+    </table>
 </div>

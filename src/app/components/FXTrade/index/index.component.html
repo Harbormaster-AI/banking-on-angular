@@ -1,84 +1,87 @@
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-	<h5 class="mb-0">FXTrade List</h5>
+    <h5 class="mb-0">FXTrade List</h5>
 
-	<a
-			[routerLink]="['/createFXTrade']"
-			class="btn btn-primary btn-sm">
-		Create FXTrade
-	</a>
+    <a
+            [routerLink]="['/createFXTrade']"
+            class="btn btn-primary btn-sm">
+        Create FXTrade
+    </a>
 </div>
 
 <div class="table-responsive">
-	<table class="table table-hover table-striped table-bordered table-sm">
-		<thead>
-		<tr class="table-dark text-center">
-									<th scope="col">tradeReference</th>
-						<th scope="col">tradeDate</th>
-						<th scope="col">settlementDate</th>
-						<th scope="col">amountSold</th>
-						<th scope="col">amountBought</th>
-						<th scope="col">rate</th>
-						<th scope="col">Status</th>
-						<th scope="col" colspan="2">Actions</th>
-		</tr>
-		</thead>
+    <table class="table table-hover table-striped table-bordered table-sm">
+        <thead>
+        <tr class="table-dark text-center">
+                                    <th scope="col">tradeReference</th>
+                        <th scope="col">tradeDate</th>
+                        <th scope="col">settlementDate</th>
+                        <th scope="col">amountSold</th>
+                        <th scope="col">amountBought</th>
+                        <th scope="col">rate</th>
+                        <th scope="col">Status</th>
+                        <th scope="col" colspan="2">Actions</th>
+        </tr>
+        </thead>
 
-		<tbody>
-			<tr
-				*ngFor="let fXTrade of fXTrades"
-				class="text-center">
+        <tbody>
+        @for (fXTrade of fXTrades; track fXTrade.fXTradeId) {
+            <tr
+                    class="text-center">
 
-								<td class="align-middle">
-					{{ fXTrade.tradeReference }}
-				</td>
-								<td class="align-middle">
-					{{ fXTrade.tradeDate }}
-				</td>
-								<td class="align-middle">
-					{{ fXTrade.settlementDate }}
-				</td>
-								<td class="align-middle">
-					{{ fXTrade.amountSold }}
-				</td>
-								<td class="align-middle">
-					{{ fXTrade.amountBought }}
-				</td>
-								<td class="align-middle">
-					{{ fXTrade.rate }}
-				</td>
-								<td class="align-middle">
-					{{ fXTrade.Status }}
-				</td>
-				
-				<td class="align-middle">
-					<a
-							[routerLink]="['/editFXTrade', fXTradefXTradeId]"
-							class="btn btn-primary btn-sm">
-						Edit
-					</a>
-				</td>
+                                <td class="align-middle">
+                    {{ fXTrade.tradeReference }}
+                </td>
+                                <td class="align-middle">
+                    {{ fXTrade.tradeDate }}
+                </td>
+                                <td class="align-middle">
+                    {{ fXTrade.settlementDate }}
+                </td>
+                                <td class="align-middle">
+                    {{ fXTrade.amountSold }}
+                </td>
+                                <td class="align-middle">
+                    {{ fXTrade.amountBought }}
+                </td>
+                                <td class="align-middle">
+                    {{ fXTrade.rate }}
+                </td>
+                                <td class="align-middle">
+                    {{ fXTrade.Status }}
+                </td>
+                
+                <td class="align-middle">
+                    <a
+                            [routerLink]="['/editFXTrade', fXTradefXTradeId]"
+                            class="btn btn-primary btn-sm">
+                        Edit
+                    </a>
+                </td>
 
-				<td class="align-middle">
-					<button
-							type="button"
-							(click)="deleteFXTrade(fXTrade.fXTradeId)"
-							class="btn btn-danger btn-sm">
-						Delete
-					</button>
-				</td>
+                <td class="align-middle">
+                    <button
+                            type="button"
+                            (click)="deleteFXTrade(fXTrade.fXTradeId)"
+                            class="btn btn-danger btn-sm">
+                        Delete
+                    </button>
+                </td>
 
-			</tr>
+            </tr>
+        }
 
-			
-			<tr *ngIf="fXTrades?.length === 0">
-				<td
-						colspan="9"
-						class="text-center">
-					No fXTrades found.
-				</td>
-			</tr>
+        
+        @if (fXTrades?.length === 0) {
+            <tr>
+                <td
+                        colspan="9"
+                        class="text-center">
+                    No fXTrades found.
+                </td>
+            </tr>
+        }
 
-		</tbody>
-	</table>
+        </tbody>
+    </table>
 </div>
