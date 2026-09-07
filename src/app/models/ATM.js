@@ -2,7 +2,7 @@
 // Define collection and schema for ATM
 export interface ATM {
     terminalId:
-	type : String
+	type : string
     location:
 	type : Address
     Branch:

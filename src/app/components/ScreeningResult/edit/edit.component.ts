@@ -52,7 +52,7 @@ export class EditScreeningResultComponent extends SubBaseComponent implements On
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editScreeningResult(params['id']).subscribe(res => {
+            this.service.getScreeningResult(params['id']).subscribe(res => {
                 this.screeningResult = res;
             });
         });

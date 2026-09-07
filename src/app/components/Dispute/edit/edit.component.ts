@@ -56,7 +56,7 @@ export class EditDisputeComponent extends SubBaseComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editDispute(params['id']).subscribe(res => {
+            this.service.getDispute(params['id']).subscribe(res => {
                 this.dispute = res;
             });
         });

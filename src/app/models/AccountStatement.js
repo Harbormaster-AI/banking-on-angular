@@ -2,7 +2,7 @@
 // Define collection and schema for AccountStatement
 export interface AccountStatement {
     statementNumber:
-	type : String
+	type : string
     periodStart:
 	type : Date
     periodEnd:

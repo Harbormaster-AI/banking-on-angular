@@ -59,7 +59,7 @@ export class EditPaymentCardComponent extends SubBaseComponent implements OnInit
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editPaymentCard(params['id']).subscribe(res => {
+            this.service.getPaymentCard(params['id']).subscribe(res => {
                 this.paymentCard = res;
             });
         });

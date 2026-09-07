@@ -35,10 +35,10 @@ export class BranchService extends HelperBaseService {
 		//********************************************************************
 	// add a Branch
 	// returns the results untouched as a JSON representation
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addBranch(name, branchCode, address, phone, openingHours, Bank, Accounts, LoanAccounts, Atms) : Observable<any> {
-		const uri = this.apiUrl + '/Branch/add';
+		const uri_ = this.apiUrl + '/Branch/create';
 		const obj = {
 			      		name: name,
       		branchCode: branchCode,
@@ -51,42 +51,17 @@ export class BranchService extends HelperBaseService {
 			Atms: Atms != null && Atms.length > 0 ? Atms : null
 		};
 
-		return this.http.post(uri, obj);
-	}
-
-	//********************************************************************
-	// gets all Branch
-	// returns the results untouched as JSON representation of an
-	// array of Branch models
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	getBranchs() : Observable<Branch[]> {
-		const uri = this.apiUrl + '/Branch';
-
-		return this
-			.http.get<Branch[]>(uri);
-	}
-
-	//********************************************************************
-	// edit a Branch
-	// returns the results untouched as a JSON representation of a
-	// Branch model
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	editBranch(id) : Observable<Branch> {
-		const uri = this.apiUrl + '/Branch/edit/' + id;
-
-		return this.http.get<Branch>(uri);
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// update a Branch
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 		updateBranch(name, branchCode, address, phone, openingHours, Bank, Accounts, LoanAccounts, Atms, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/Branch/update/' + id;
-			const obj = {
+			const uri_ = this.apiUrl + '/Branch/update/' + id;
+		const obj = {
 				      		name: name,
       		branchCode: branchCode,
       		address: address,
@@ -96,25 +71,50 @@ export class BranchService extends HelperBaseService {
       		Accounts: Accounts != null && Accounts.length > 0 ? Accounts : null,
       		LoanAccounts: LoanAccounts != null && LoanAccounts.length > 0 ? LoanAccounts : null,
 			Atms: Atms != null && Atms.length > 0 ? Atms : null
-			};
-		return this.http.post(uri, obj);
+		};
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// delete a Branch
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	deleteBranch(id)  : Observable<any> {
-		const uri = this.apiUrl + '/Branch/delete/' + id;
+		const uri_ = this.apiUrl + '/Branch/delete/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(uri_);
 	}
+	
+	//********************************************************************
+	// loads a Branch
+	// returns the results untouched as an Observable Branch
+	// Branch model
+	// delegates via URI
+	//********************************************************************
+	getBranch(id) : Observable<Branch> {
+		const uri_ = this.apiUrl + '/Branch/load/' + id;
 
+		return this.http.get<Branch>(uri_);
+	}
+	
+	//********************************************************************
+	// gets all Branch
+	// returns the results untouched as JSON representation of an
+	// Observable array of Branch models
+	// delegates via URI
+	//********************************************************************
+	getBranchs() : Observable<Branch[]> {
+		const uri_ = this.apiUrl + '/Branch/';
+
+		return this
+			.http.get<Branch[]>(uri_);
+	}
+	
 			//********************************************************************
 	// assigns a Bank on a Branch
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	assignBank( branchId, _bankId ): Observable<any> {
 
@@ -122,7 +122,7 @@ export class BranchService extends HelperBaseService {
 		this.loadHelper( branchId );
 
 	// get the Bank from storage
-	var tmp 	= new BankService(this.http).editBank(_bankId);
+	var tmp 	= new BankService(this.http).getBank(_bankId);
 
 	// assign the Bank
 	this.branch.bank = tmp;
@@ -133,8 +133,8 @@ export class BranchService extends HelperBaseService {
 
 	//********************************************************************
 	// unassigns a Bank on a Branch
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	unassignBank( branchId ): Observable<any> {
 
@@ -153,7 +153,7 @@ export class BranchService extends HelperBaseService {
 	// adds one or more accountsIds as a Accounts
 	// to a Branch
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addAccounts( branchId, accountsIds ): Observable<any> {
 
@@ -166,7 +166,7 @@ export class BranchService extends HelperBaseService {
 	// iterate over array of accounts ids
 	idList.forEach(function (id) {
 		// read the Account
-		var account = new AccountService(this.http).editAccount(id);
+		var account = new AccountService(this.http).getAccount(id);
 		// add the Account if not already assigned
 		if ( this.branch.accounts.indexOf(account) == -1 )
 		this.branch.accounts.push(account);
@@ -180,7 +180,7 @@ export class BranchService extends HelperBaseService {
 	// removes one or more accountsIds as a Accounts
 	// from a Branch
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeAccounts( branchId, accountsIds ): Observable<any> {
 
@@ -211,7 +211,7 @@ export class BranchService extends HelperBaseService {
 	// adds one or more loanAccountsIds as a LoanAccounts
 	// to a Branch
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addLoanAccounts( branchId, loanAccountsIds ): Observable<any> {
 
@@ -224,7 +224,7 @@ export class BranchService extends HelperBaseService {
 	// iterate over array of loanAccounts ids
 	idList.forEach(function (id) {
 		// read the LoanAccount
-		var loanAccount = new LoanAccountService(this.http).editLoanAccount(id);
+		var loanAccount = new LoanAccountService(this.http).getLoanAccount(id);
 		// add the LoanAccount if not already assigned
 		if ( this.branch.loanAccounts.indexOf(loanAccount) == -1 )
 		this.branch.loanAccounts.push(loanAccount);
@@ -238,7 +238,7 @@ export class BranchService extends HelperBaseService {
 	// removes one or more loanAccountsIds as a LoanAccounts
 	// from a Branch
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeLoanAccounts( branchId, loanAccountsIds ): Observable<any> {
 
@@ -269,7 +269,7 @@ export class BranchService extends HelperBaseService {
 	// adds one or more atmsIds as a Atms
 	// to a Branch
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addAtms( branchId, atmsIds ): Observable<any> {
 
@@ -282,7 +282,7 @@ export class BranchService extends HelperBaseService {
 	// iterate over array of atms ids
 	idList.forEach(function (id) {
 		// read the ATM
-		var aTM = new ATMService(this.http).editATM(id);
+		var aTM = new ATMService(this.http).getATM(id);
 		// add the ATM if not already assigned
 		if ( this.branch.atms.indexOf(aTM) == -1 )
 		this.branch.atms.push(aTM);
@@ -296,7 +296,7 @@ export class BranchService extends HelperBaseService {
 	// removes one or more atmsIds as a Atms
 	// from a Branch
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeAtms( branchId, atmsIds ): Observable<any> {
 
@@ -329,16 +329,16 @@ export class BranchService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Observable<any> {
 
-		const uri = this.apiUrl + '/Branch/update/' + this.branch;
+		const uri_ = this.apiUrl + '/Branch/update/' + this.branch;
 
-	return  this.http.post(uri, this.branch );
+	return  this.http.post(uri_, this.branch );
 }
 
 	//********************************************************************
 	// loadHelper - internal helper to load a Branch
 	//********************************************************************	
 	loadHelper( id ) {
-		this.editBranch(id)
+		this.getBranch(id)
 			.subscribe((res : Branch) => {
 				this.branch = res;
 			});

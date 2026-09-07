@@ -5,7 +5,7 @@ resource "kubernetes_service" "app-master" {
 
     spec {
         selector = {
-          app  = "bankingonangular"
+          app  = "banking-on-angular"
         }
         port {
             name        = "http"

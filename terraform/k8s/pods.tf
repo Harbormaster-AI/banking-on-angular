@@ -7,7 +7,7 @@ resource "kubernetes_replication_controller" "app-master" {
         replicas = 1
 
         selector = {
-            app  = "bankingonangular"
+            app  = "banking-on-angular"
         }
 
         template {

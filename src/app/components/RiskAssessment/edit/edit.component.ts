@@ -52,7 +52,7 @@ export class EditRiskAssessmentComponent extends SubBaseComponent implements OnI
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editRiskAssessment(params['id']).subscribe(res => {
+            this.service.getRiskAssessment(params['id']).subscribe(res => {
                 this.riskAssessment = res;
             });
         });

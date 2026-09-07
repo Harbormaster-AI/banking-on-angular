@@ -2,7 +2,7 @@
 // Define collection and schema for RepaymentSchedule
 export interface RepaymentSchedule {
     installmentNumber:
-	type : Number
+	type : number
     dueDate:
 	type : Date
     principalDue:

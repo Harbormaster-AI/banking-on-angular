@@ -2,7 +2,7 @@
 // Define collection and schema for ExternalAccount
 export interface ExternalAccount {
     name:
-	type : String
+	type : string
     iban:
 	type : IBAN
     accountNumber:
@@ -10,9 +10,9 @@ export interface ExternalAccount {
     bic:
 	type : BIC
     bankName:
-	type : String
+	type : string
     country:
-	type : String
+	type : string
     Customer:
 	type : Schema.Types.ObjectId
     Transactions:

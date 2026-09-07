@@ -56,7 +56,7 @@ export class EditRepaymentScheduleComponent extends SubBaseComponent implements 
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editRepaymentSchedule(params['id']).subscribe(res => {
+            this.service.getRepaymentSchedule(params['id']).subscribe(res => {
                 this.repaymentSchedule = res;
             });
         });

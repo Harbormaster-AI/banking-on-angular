@@ -61,7 +61,7 @@ export class EditFundsTransferComponent extends SubBaseComponent implements OnIn
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editFundsTransfer(params['id']).subscribe(res => {
+            this.service.getFundsTransfer(params['id']).subscribe(res => {
                 this.fundsTransfer = res;
             });
         });

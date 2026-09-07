@@ -33,10 +33,10 @@ export class StandingInstructionService extends HelperBaseService {
 		//********************************************************************
 	// add a StandingInstruction
 	// returns the results untouched as a JSON representation
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addStandingInstruction(instructionId, amount, nextExecutionDate, Account, Beneficiary, Frequency, Status) : Observable<any> {
-		const uri = this.apiUrl + '/StandingInstruction/add';
+		const uri_ = this.apiUrl + '/StandingInstruction/create';
 		const obj = {
 			      		instructionId: instructionId,
       		amount: amount,
@@ -47,42 +47,17 @@ export class StandingInstructionService extends HelperBaseService {
 			Status: Status
 		};
 
-		return this.http.post(uri, obj);
-	}
-
-	//********************************************************************
-	// gets all StandingInstruction
-	// returns the results untouched as JSON representation of an
-	// array of StandingInstruction models
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	getStandingInstructions() : Observable<StandingInstruction[]> {
-		const uri = this.apiUrl + '/StandingInstruction';
-
-		return this
-			.http.get<StandingInstruction[]>(uri);
-	}
-
-	//********************************************************************
-	// edit a StandingInstruction
-	// returns the results untouched as a JSON representation of a
-	// StandingInstruction model
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	editStandingInstruction(id) : Observable<StandingInstruction> {
-		const uri = this.apiUrl + '/StandingInstruction/edit/' + id;
-
-		return this.http.get<StandingInstruction>(uri);
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// update a StandingInstruction
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 		updateStandingInstruction(instructionId, amount, nextExecutionDate, Account, Beneficiary, Frequency, Status, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/StandingInstruction/update/' + id;
-			const obj = {
+			const uri_ = this.apiUrl + '/StandingInstruction/update/' + id;
+		const obj = {
 				      		instructionId: instructionId,
       		amount: amount,
       		nextExecutionDate: nextExecutionDate,
@@ -90,25 +65,50 @@ export class StandingInstructionService extends HelperBaseService {
       		Beneficiary: Beneficiary != null && Beneficiary.length > 0 ? Beneficiary : null,
       		Frequency: Frequency,
 			Status: Status
-			};
-		return this.http.post(uri, obj);
+		};
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// delete a StandingInstruction
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	deleteStandingInstruction(id)  : Observable<any> {
-		const uri = this.apiUrl + '/StandingInstruction/delete/' + id;
+		const uri_ = this.apiUrl + '/StandingInstruction/delete/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(uri_);
 	}
+	
+	//********************************************************************
+	// loads a StandingInstruction
+	// returns the results untouched as an Observable StandingInstruction
+	// StandingInstruction model
+	// delegates via URI
+	//********************************************************************
+	getStandingInstruction(id) : Observable<StandingInstruction> {
+		const uri_ = this.apiUrl + '/StandingInstruction/load/' + id;
 
+		return this.http.get<StandingInstruction>(uri_);
+	}
+	
+	//********************************************************************
+	// gets all StandingInstruction
+	// returns the results untouched as JSON representation of an
+	// Observable array of StandingInstruction models
+	// delegates via URI
+	//********************************************************************
+	getStandingInstructions() : Observable<StandingInstruction[]> {
+		const uri_ = this.apiUrl + '/StandingInstruction/';
+
+		return this
+			.http.get<StandingInstruction[]>(uri_);
+	}
+	
 			//********************************************************************
 	// assigns a Account on a StandingInstruction
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	assignAccount( standingInstructionId, _accountId ): Observable<any> {
 
@@ -116,7 +116,7 @@ export class StandingInstructionService extends HelperBaseService {
 		this.loadHelper( standingInstructionId );
 
 	// get the Account from storage
-	var tmp 	= new AccountService(this.http).editAccount(_accountId);
+	var tmp 	= new AccountService(this.http).getAccount(_accountId);
 
 	// assign the Account
 	this.standingInstruction.account = tmp;
@@ -127,8 +127,8 @@ export class StandingInstructionService extends HelperBaseService {
 
 	//********************************************************************
 	// unassigns a Account on a StandingInstruction
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	unassignAccount( standingInstructionId ): Observable<any> {
 
@@ -144,8 +144,8 @@ export class StandingInstructionService extends HelperBaseService {
 
 		//********************************************************************
 	// assigns a Beneficiary on a StandingInstruction
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	assignBeneficiary( standingInstructionId, _beneficiaryId ): Observable<any> {
 
@@ -153,7 +153,7 @@ export class StandingInstructionService extends HelperBaseService {
 		this.loadHelper( standingInstructionId );
 
 	// get the ExternalAccount from storage
-	var tmp 	= new ExternalAccountService(this.http).editExternalAccount(_beneficiaryId);
+	var tmp 	= new ExternalAccountService(this.http).getExternalAccount(_beneficiaryId);
 
 	// assign the Beneficiary
 	this.standingInstruction.beneficiary = tmp;
@@ -164,8 +164,8 @@ export class StandingInstructionService extends HelperBaseService {
 
 	//********************************************************************
 	// unassigns a Beneficiary on a StandingInstruction
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	unassignBeneficiary( standingInstructionId ): Observable<any> {
 
@@ -186,16 +186,16 @@ export class StandingInstructionService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Observable<any> {
 
-		const uri = this.apiUrl + '/StandingInstruction/update/' + this.standingInstruction;
+		const uri_ = this.apiUrl + '/StandingInstruction/update/' + this.standingInstruction;
 
-	return  this.http.post(uri, this.standingInstruction );
+	return  this.http.post(uri_, this.standingInstruction );
 }
 
 	//********************************************************************
 	// loadHelper - internal helper to load a StandingInstruction
 	//********************************************************************	
 	loadHelper( id ) {
-		this.editStandingInstruction(id)
+		this.getStandingInstruction(id)
 			.subscribe((res : StandingInstruction) => {
 				this.standingInstruction = res;
 			});

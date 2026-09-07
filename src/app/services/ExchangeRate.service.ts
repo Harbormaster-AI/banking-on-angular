@@ -33,10 +33,10 @@ export class ExchangeRateService extends HelperBaseService {
 		//********************************************************************
 	// add a ExchangeRate
 	// returns the results untouched as a JSON representation
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addExchangeRate(baseCurrency, counterCurrency, rate, asOf, source, Bank, FxTrades) : Observable<any> {
-		const uri = this.apiUrl + '/ExchangeRate/add';
+		const uri_ = this.apiUrl + '/ExchangeRate/create';
 		const obj = {
 			      		baseCurrency: baseCurrency,
       		counterCurrency: counterCurrency,
@@ -47,42 +47,17 @@ export class ExchangeRateService extends HelperBaseService {
 			FxTrades: FxTrades != null && FxTrades.length > 0 ? FxTrades : null
 		};
 
-		return this.http.post(uri, obj);
-	}
-
-	//********************************************************************
-	// gets all ExchangeRate
-	// returns the results untouched as JSON representation of an
-	// array of ExchangeRate models
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	getExchangeRates() : Observable<ExchangeRate[]> {
-		const uri = this.apiUrl + '/ExchangeRate';
-
-		return this
-			.http.get<ExchangeRate[]>(uri);
-	}
-
-	//********************************************************************
-	// edit a ExchangeRate
-	// returns the results untouched as a JSON representation of a
-	// ExchangeRate model
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	editExchangeRate(id) : Observable<ExchangeRate> {
-		const uri = this.apiUrl + '/ExchangeRate/edit/' + id;
-
-		return this.http.get<ExchangeRate>(uri);
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// update a ExchangeRate
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 		updateExchangeRate(baseCurrency, counterCurrency, rate, asOf, source, Bank, FxTrades, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/ExchangeRate/update/' + id;
-			const obj = {
+			const uri_ = this.apiUrl + '/ExchangeRate/update/' + id;
+		const obj = {
 				      		baseCurrency: baseCurrency,
       		counterCurrency: counterCurrency,
       		rate: rate,
@@ -90,25 +65,50 @@ export class ExchangeRateService extends HelperBaseService {
       		source: source,
       		Bank: Bank != null && Bank.length > 0 ? Bank : null,
 			FxTrades: FxTrades != null && FxTrades.length > 0 ? FxTrades : null
-			};
-		return this.http.post(uri, obj);
+		};
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// delete a ExchangeRate
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	deleteExchangeRate(id)  : Observable<any> {
-		const uri = this.apiUrl + '/ExchangeRate/delete/' + id;
+		const uri_ = this.apiUrl + '/ExchangeRate/delete/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(uri_);
 	}
+	
+	//********************************************************************
+	// loads a ExchangeRate
+	// returns the results untouched as an Observable ExchangeRate
+	// ExchangeRate model
+	// delegates via URI
+	//********************************************************************
+	getExchangeRate(id) : Observable<ExchangeRate> {
+		const uri_ = this.apiUrl + '/ExchangeRate/load/' + id;
 
+		return this.http.get<ExchangeRate>(uri_);
+	}
+	
+	//********************************************************************
+	// gets all ExchangeRate
+	// returns the results untouched as JSON representation of an
+	// Observable array of ExchangeRate models
+	// delegates via URI
+	//********************************************************************
+	getExchangeRates() : Observable<ExchangeRate[]> {
+		const uri_ = this.apiUrl + '/ExchangeRate/';
+
+		return this
+			.http.get<ExchangeRate[]>(uri_);
+	}
+	
 			//********************************************************************
 	// assigns a Bank on a ExchangeRate
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	assignBank( exchangeRateId, _bankId ): Observable<any> {
 
@@ -116,7 +116,7 @@ export class ExchangeRateService extends HelperBaseService {
 		this.loadHelper( exchangeRateId );
 
 	// get the Bank from storage
-	var tmp 	= new BankService(this.http).editBank(_bankId);
+	var tmp 	= new BankService(this.http).getBank(_bankId);
 
 	// assign the Bank
 	this.exchangeRate.bank = tmp;
@@ -127,8 +127,8 @@ export class ExchangeRateService extends HelperBaseService {
 
 	//********************************************************************
 	// unassigns a Bank on a ExchangeRate
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	unassignBank( exchangeRateId ): Observable<any> {
 
@@ -147,7 +147,7 @@ export class ExchangeRateService extends HelperBaseService {
 	// adds one or more fxTradesIds as a FxTrades
 	// to a ExchangeRate
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addFxTrades( exchangeRateId, fxTradesIds ): Observable<any> {
 
@@ -160,7 +160,7 @@ export class ExchangeRateService extends HelperBaseService {
 	// iterate over array of fxTrades ids
 	idList.forEach(function (id) {
 		// read the FXTrade
-		var fXTrade = new FXTradeService(this.http).editFXTrade(id);
+		var fXTrade = new FXTradeService(this.http).getFXTrade(id);
 		// add the FXTrade if not already assigned
 		if ( this.exchangeRate.fxTrades.indexOf(fXTrade) == -1 )
 		this.exchangeRate.fxTrades.push(fXTrade);
@@ -174,7 +174,7 @@ export class ExchangeRateService extends HelperBaseService {
 	// removes one or more fxTradesIds as a FxTrades
 	// from a ExchangeRate
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeFxTrades( exchangeRateId, fxTradesIds ): Observable<any> {
 
@@ -207,16 +207,16 @@ export class ExchangeRateService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Observable<any> {
 
-		const uri = this.apiUrl + '/ExchangeRate/update/' + this.exchangeRate;
+		const uri_ = this.apiUrl + '/ExchangeRate/update/' + this.exchangeRate;
 
-	return  this.http.post(uri, this.exchangeRate );
+	return  this.http.post(uri_, this.exchangeRate );
 }
 
 	//********************************************************************
 	// loadHelper - internal helper to load a ExchangeRate
 	//********************************************************************	
 	loadHelper( id ) {
-		this.editExchangeRate(id)
+		this.getExchangeRate(id)
 			.subscribe((res : ExchangeRate) => {
 				this.exchangeRate = res;
 			});

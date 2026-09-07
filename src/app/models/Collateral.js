@@ -4,7 +4,7 @@ export interface Collateral {
     appraisedValue:
 	type : Money
     description:
-	type : String
+	type : string
     location:
 	type : Address
     LoanAccount:

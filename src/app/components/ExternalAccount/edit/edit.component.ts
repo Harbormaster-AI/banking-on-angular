@@ -56,7 +56,7 @@ export class EditExternalAccountComponent extends SubBaseComponent implements On
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editExternalAccount(params['id']).subscribe(res => {
+            this.service.getExternalAccount(params['id']).subscribe(res => {
                 this.externalAccount = res;
             });
         });

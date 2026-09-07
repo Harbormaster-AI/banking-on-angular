@@ -62,7 +62,7 @@ export class EditTransactionComponent extends SubBaseComponent implements OnInit
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editTransaction(params['id']).subscribe(res => {
+            this.service.getTransaction(params['id']).subscribe(res => {
                 this.transaction = res;
             });
         });

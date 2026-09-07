@@ -33,10 +33,10 @@ export class FeeChargeService extends HelperBaseService {
 		//********************************************************************
 	// add a FeeCharge
 	// returns the results untouched as a JSON representation
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addFeeCharge(feeCode, amount, appliedOn, Account, LoanAccount, FeeType) : Observable<any> {
-		const uri = this.apiUrl + '/FeeCharge/add';
+		const uri_ = this.apiUrl + '/FeeCharge/create';
 		const obj = {
 			      		feeCode: feeCode,
       		amount: amount,
@@ -46,67 +46,67 @@ export class FeeChargeService extends HelperBaseService {
 			FeeType: FeeType
 		};
 
-		return this.http.post(uri, obj);
-	}
-
-	//********************************************************************
-	// gets all FeeCharge
-	// returns the results untouched as JSON representation of an
-	// array of FeeCharge models
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	getFeeCharges() : Observable<FeeCharge[]> {
-		const uri = this.apiUrl + '/FeeCharge';
-
-		return this
-			.http.get<FeeCharge[]>(uri);
-	}
-
-	//********************************************************************
-	// edit a FeeCharge
-	// returns the results untouched as a JSON representation of a
-	// FeeCharge model
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	editFeeCharge(id) : Observable<FeeCharge> {
-		const uri = this.apiUrl + '/FeeCharge/edit/' + id;
-
-		return this.http.get<FeeCharge>(uri);
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// update a FeeCharge
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 		updateFeeCharge(feeCode, amount, appliedOn, Account, LoanAccount, FeeType, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/FeeCharge/update/' + id;
-			const obj = {
+			const uri_ = this.apiUrl + '/FeeCharge/update/' + id;
+		const obj = {
 				      		feeCode: feeCode,
       		amount: amount,
       		appliedOn: appliedOn,
       		Account: Account != null && Account.length > 0 ? Account : null,
       		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
 			FeeType: FeeType
-			};
-		return this.http.post(uri, obj);
+		};
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// delete a FeeCharge
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	deleteFeeCharge(id)  : Observable<any> {
-		const uri = this.apiUrl + '/FeeCharge/delete/' + id;
+		const uri_ = this.apiUrl + '/FeeCharge/delete/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(uri_);
 	}
+	
+	//********************************************************************
+	// loads a FeeCharge
+	// returns the results untouched as an Observable FeeCharge
+	// FeeCharge model
+	// delegates via URI
+	//********************************************************************
+	getFeeCharge(id) : Observable<FeeCharge> {
+		const uri_ = this.apiUrl + '/FeeCharge/load/' + id;
 
+		return this.http.get<FeeCharge>(uri_);
+	}
+	
+	//********************************************************************
+	// gets all FeeCharge
+	// returns the results untouched as JSON representation of an
+	// Observable array of FeeCharge models
+	// delegates via URI
+	//********************************************************************
+	getFeeCharges() : Observable<FeeCharge[]> {
+		const uri_ = this.apiUrl + '/FeeCharge/';
+
+		return this
+			.http.get<FeeCharge[]>(uri_);
+	}
+	
 			//********************************************************************
 	// assigns a Account on a FeeCharge
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	assignAccount( feeChargeId, _accountId ): Observable<any> {
 
@@ -114,7 +114,7 @@ export class FeeChargeService extends HelperBaseService {
 		this.loadHelper( feeChargeId );
 
 	// get the Account from storage
-	var tmp 	= new AccountService(this.http).editAccount(_accountId);
+	var tmp 	= new AccountService(this.http).getAccount(_accountId);
 
 	// assign the Account
 	this.feeCharge.account = tmp;
@@ -125,8 +125,8 @@ export class FeeChargeService extends HelperBaseService {
 
 	//********************************************************************
 	// unassigns a Account on a FeeCharge
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	unassignAccount( feeChargeId ): Observable<any> {
 
@@ -142,8 +142,8 @@ export class FeeChargeService extends HelperBaseService {
 
 		//********************************************************************
 	// assigns a LoanAccount on a FeeCharge
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	assignLoanAccount( feeChargeId, _loanAccountId ): Observable<any> {
 
@@ -151,7 +151,7 @@ export class FeeChargeService extends HelperBaseService {
 		this.loadHelper( feeChargeId );
 
 	// get the LoanAccount from storage
-	var tmp 	= new LoanAccountService(this.http).editLoanAccount(_loanAccountId);
+	var tmp 	= new LoanAccountService(this.http).getLoanAccount(_loanAccountId);
 
 	// assign the LoanAccount
 	this.feeCharge.loanAccount = tmp;
@@ -162,8 +162,8 @@ export class FeeChargeService extends HelperBaseService {
 
 	//********************************************************************
 	// unassigns a LoanAccount on a FeeCharge
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	unassignLoanAccount( feeChargeId ): Observable<any> {
 
@@ -184,16 +184,16 @@ export class FeeChargeService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Observable<any> {
 
-		const uri = this.apiUrl + '/FeeCharge/update/' + this.feeCharge;
+		const uri_ = this.apiUrl + '/FeeCharge/update/' + this.feeCharge;
 
-	return  this.http.post(uri, this.feeCharge );
+	return  this.http.post(uri_, this.feeCharge );
 }
 
 	//********************************************************************
 	// loadHelper - internal helper to load a FeeCharge
 	//********************************************************************	
 	loadHelper( id ) {
-		this.editFeeCharge(id)
+		this.getFeeCharge(id)
 			.subscribe((res : FeeCharge) => {
 				this.feeCharge = res;
 			});

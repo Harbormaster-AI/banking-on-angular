@@ -40,10 +40,10 @@ export class CustomerService extends HelperBaseService {
 		//********************************************************************
 	// add a Customer
 	// returns the results untouched as a JSON representation
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addCustomer(firstName, lastName, legalName, dateOfBirth, taxId, email, phone, address, Bank, Accounts, LoanAccounts, PaymentCards, ExternalAccounts, FundsTransfers, Disputes, KycProfiles, Consents, CustomerType, RiskRating, KycStatus) : Observable<any> {
-		const uri = this.apiUrl + '/Customer/add';
+		const uri_ = this.apiUrl + '/Customer/create';
 		const obj = {
 			      		firstName: firstName,
       		lastName: lastName,
@@ -67,42 +67,17 @@ export class CustomerService extends HelperBaseService {
 			KycStatus: KycStatus
 		};
 
-		return this.http.post(uri, obj);
-	}
-
-	//********************************************************************
-	// gets all Customer
-	// returns the results untouched as JSON representation of an
-	// array of Customer models
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	getCustomers() : Observable<Customer[]> {
-		const uri = this.apiUrl + '/Customer';
-
-		return this
-			.http.get<Customer[]>(uri);
-	}
-
-	//********************************************************************
-	// edit a Customer
-	// returns the results untouched as a JSON representation of a
-	// Customer model
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	editCustomer(id) : Observable<Customer> {
-		const uri = this.apiUrl + '/Customer/edit/' + id;
-
-		return this.http.get<Customer>(uri);
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// update a Customer
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 		updateCustomer(firstName, lastName, legalName, dateOfBirth, taxId, email, phone, address, Bank, Accounts, LoanAccounts, PaymentCards, ExternalAccounts, FundsTransfers, Disputes, KycProfiles, Consents, CustomerType, RiskRating, KycStatus, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/Customer/update/' + id;
-			const obj = {
+			const uri_ = this.apiUrl + '/Customer/update/' + id;
+		const obj = {
 				      		firstName: firstName,
       		lastName: lastName,
       		legalName: legalName,
@@ -123,25 +98,50 @@ export class CustomerService extends HelperBaseService {
       		CustomerType: CustomerType,
       		RiskRating: RiskRating,
 			KycStatus: KycStatus
-			};
-		return this.http.post(uri, obj);
+		};
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// delete a Customer
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	deleteCustomer(id)  : Observable<any> {
-		const uri = this.apiUrl + '/Customer/delete/' + id;
+		const uri_ = this.apiUrl + '/Customer/delete/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(uri_);
 	}
+	
+	//********************************************************************
+	// loads a Customer
+	// returns the results untouched as an Observable Customer
+	// Customer model
+	// delegates via URI
+	//********************************************************************
+	getCustomer(id) : Observable<Customer> {
+		const uri_ = this.apiUrl + '/Customer/load/' + id;
 
+		return this.http.get<Customer>(uri_);
+	}
+	
+	//********************************************************************
+	// gets all Customer
+	// returns the results untouched as JSON representation of an
+	// Observable array of Customer models
+	// delegates via URI
+	//********************************************************************
+	getCustomers() : Observable<Customer[]> {
+		const uri_ = this.apiUrl + '/Customer/';
+
+		return this
+			.http.get<Customer[]>(uri_);
+	}
+	
 			//********************************************************************
 	// assigns a Bank on a Customer
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	assignBank( customerId, _bankId ): Observable<any> {
 
@@ -149,7 +149,7 @@ export class CustomerService extends HelperBaseService {
 		this.loadHelper( customerId );
 
 	// get the Bank from storage
-	var tmp 	= new BankService(this.http).editBank(_bankId);
+	var tmp 	= new BankService(this.http).getBank(_bankId);
 
 	// assign the Bank
 	this.customer.bank = tmp;
@@ -160,8 +160,8 @@ export class CustomerService extends HelperBaseService {
 
 	//********************************************************************
 	// unassigns a Bank on a Customer
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	unassignBank( customerId ): Observable<any> {
 
@@ -180,7 +180,7 @@ export class CustomerService extends HelperBaseService {
 	// adds one or more accountsIds as a Accounts
 	// to a Customer
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addAccounts( customerId, accountsIds ): Observable<any> {
 
@@ -193,7 +193,7 @@ export class CustomerService extends HelperBaseService {
 	// iterate over array of accounts ids
 	idList.forEach(function (id) {
 		// read the Account
-		var account = new AccountService(this.http).editAccount(id);
+		var account = new AccountService(this.http).getAccount(id);
 		// add the Account if not already assigned
 		if ( this.customer.accounts.indexOf(account) == -1 )
 		this.customer.accounts.push(account);
@@ -207,7 +207,7 @@ export class CustomerService extends HelperBaseService {
 	// removes one or more accountsIds as a Accounts
 	// from a Customer
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeAccounts( customerId, accountsIds ): Observable<any> {
 
@@ -238,7 +238,7 @@ export class CustomerService extends HelperBaseService {
 	// adds one or more loanAccountsIds as a LoanAccounts
 	// to a Customer
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addLoanAccounts( customerId, loanAccountsIds ): Observable<any> {
 
@@ -251,7 +251,7 @@ export class CustomerService extends HelperBaseService {
 	// iterate over array of loanAccounts ids
 	idList.forEach(function (id) {
 		// read the LoanAccount
-		var loanAccount = new LoanAccountService(this.http).editLoanAccount(id);
+		var loanAccount = new LoanAccountService(this.http).getLoanAccount(id);
 		// add the LoanAccount if not already assigned
 		if ( this.customer.loanAccounts.indexOf(loanAccount) == -1 )
 		this.customer.loanAccounts.push(loanAccount);
@@ -265,7 +265,7 @@ export class CustomerService extends HelperBaseService {
 	// removes one or more loanAccountsIds as a LoanAccounts
 	// from a Customer
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeLoanAccounts( customerId, loanAccountsIds ): Observable<any> {
 
@@ -296,7 +296,7 @@ export class CustomerService extends HelperBaseService {
 	// adds one or more paymentCardsIds as a PaymentCards
 	// to a Customer
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addPaymentCards( customerId, paymentCardsIds ): Observable<any> {
 
@@ -309,7 +309,7 @@ export class CustomerService extends HelperBaseService {
 	// iterate over array of paymentCards ids
 	idList.forEach(function (id) {
 		// read the PaymentCard
-		var paymentCard = new PaymentCardService(this.http).editPaymentCard(id);
+		var paymentCard = new PaymentCardService(this.http).getPaymentCard(id);
 		// add the PaymentCard if not already assigned
 		if ( this.customer.paymentCards.indexOf(paymentCard) == -1 )
 		this.customer.paymentCards.push(paymentCard);
@@ -323,7 +323,7 @@ export class CustomerService extends HelperBaseService {
 	// removes one or more paymentCardsIds as a PaymentCards
 	// from a Customer
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removePaymentCards( customerId, paymentCardsIds ): Observable<any> {
 
@@ -354,7 +354,7 @@ export class CustomerService extends HelperBaseService {
 	// adds one or more externalAccountsIds as a ExternalAccounts
 	// to a Customer
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addExternalAccounts( customerId, externalAccountsIds ): Observable<any> {
 
@@ -367,7 +367,7 @@ export class CustomerService extends HelperBaseService {
 	// iterate over array of externalAccounts ids
 	idList.forEach(function (id) {
 		// read the ExternalAccount
-		var externalAccount = new ExternalAccountService(this.http).editExternalAccount(id);
+		var externalAccount = new ExternalAccountService(this.http).getExternalAccount(id);
 		// add the ExternalAccount if not already assigned
 		if ( this.customer.externalAccounts.indexOf(externalAccount) == -1 )
 		this.customer.externalAccounts.push(externalAccount);
@@ -381,7 +381,7 @@ export class CustomerService extends HelperBaseService {
 	// removes one or more externalAccountsIds as a ExternalAccounts
 	// from a Customer
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeExternalAccounts( customerId, externalAccountsIds ): Observable<any> {
 
@@ -412,7 +412,7 @@ export class CustomerService extends HelperBaseService {
 	// adds one or more fundsTransfersIds as a FundsTransfers
 	// to a Customer
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addFundsTransfers( customerId, fundsTransfersIds ): Observable<any> {
 
@@ -425,7 +425,7 @@ export class CustomerService extends HelperBaseService {
 	// iterate over array of fundsTransfers ids
 	idList.forEach(function (id) {
 		// read the FundsTransfer
-		var fundsTransfer = new FundsTransferService(this.http).editFundsTransfer(id);
+		var fundsTransfer = new FundsTransferService(this.http).getFundsTransfer(id);
 		// add the FundsTransfer if not already assigned
 		if ( this.customer.fundsTransfers.indexOf(fundsTransfer) == -1 )
 		this.customer.fundsTransfers.push(fundsTransfer);
@@ -439,7 +439,7 @@ export class CustomerService extends HelperBaseService {
 	// removes one or more fundsTransfersIds as a FundsTransfers
 	// from a Customer
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeFundsTransfers( customerId, fundsTransfersIds ): Observable<any> {
 
@@ -470,7 +470,7 @@ export class CustomerService extends HelperBaseService {
 	// adds one or more disputesIds as a Disputes
 	// to a Customer
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addDisputes( customerId, disputesIds ): Observable<any> {
 
@@ -483,7 +483,7 @@ export class CustomerService extends HelperBaseService {
 	// iterate over array of disputes ids
 	idList.forEach(function (id) {
 		// read the Dispute
-		var dispute = new DisputeService(this.http).editDispute(id);
+		var dispute = new DisputeService(this.http).getDispute(id);
 		// add the Dispute if not already assigned
 		if ( this.customer.disputes.indexOf(dispute) == -1 )
 		this.customer.disputes.push(dispute);
@@ -497,7 +497,7 @@ export class CustomerService extends HelperBaseService {
 	// removes one or more disputesIds as a Disputes
 	// from a Customer
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeDisputes( customerId, disputesIds ): Observable<any> {
 
@@ -528,7 +528,7 @@ export class CustomerService extends HelperBaseService {
 	// adds one or more kycProfilesIds as a KycProfiles
 	// to a Customer
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addKycProfiles( customerId, kycProfilesIds ): Observable<any> {
 
@@ -541,7 +541,7 @@ export class CustomerService extends HelperBaseService {
 	// iterate over array of kycProfiles ids
 	idList.forEach(function (id) {
 		// read the KycProfile
-		var kycProfile = new KycProfileService(this.http).editKycProfile(id);
+		var kycProfile = new KycProfileService(this.http).getKycProfile(id);
 		// add the KycProfile if not already assigned
 		if ( this.customer.kycProfiles.indexOf(kycProfile) == -1 )
 		this.customer.kycProfiles.push(kycProfile);
@@ -555,7 +555,7 @@ export class CustomerService extends HelperBaseService {
 	// removes one or more kycProfilesIds as a KycProfiles
 	// from a Customer
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeKycProfiles( customerId, kycProfilesIds ): Observable<any> {
 
@@ -586,7 +586,7 @@ export class CustomerService extends HelperBaseService {
 	// adds one or more consentsIds as a Consents
 	// to a Customer
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addConsents( customerId, consentsIds ): Observable<any> {
 
@@ -599,7 +599,7 @@ export class CustomerService extends HelperBaseService {
 	// iterate over array of consents ids
 	idList.forEach(function (id) {
 		// read the Consent
-		var consent = new ConsentService(this.http).editConsent(id);
+		var consent = new ConsentService(this.http).getConsent(id);
 		// add the Consent if not already assigned
 		if ( this.customer.consents.indexOf(consent) == -1 )
 		this.customer.consents.push(consent);
@@ -613,7 +613,7 @@ export class CustomerService extends HelperBaseService {
 	// removes one or more consentsIds as a Consents
 	// from a Customer
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeConsents( customerId, consentsIds ): Observable<any> {
 
@@ -646,16 +646,16 @@ export class CustomerService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Observable<any> {
 
-		const uri = this.apiUrl + '/Customer/update/' + this.customer;
+		const uri_ = this.apiUrl + '/Customer/update/' + this.customer;
 
-	return  this.http.post(uri, this.customer );
+	return  this.http.post(uri_, this.customer );
 }
 
 	//********************************************************************
 	// loadHelper - internal helper to load a Customer
 	//********************************************************************	
 	loadHelper( id ) {
-		this.editCustomer(id)
+		this.getCustomer(id)
 			.subscribe((res : Customer) => {
 				this.customer = res;
 			});

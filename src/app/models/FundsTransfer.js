@@ -2,7 +2,7 @@
 // Define collection and schema for FundsTransfer
 export interface FundsTransfer {
     transferReference:
-	type : String
+	type : string
     amount:
 	type : Money
     requestedDate:
@@ -10,7 +10,7 @@ export interface FundsTransfer {
     executionDate:
 	type : Date
     purpose:
-	type : String
+	type : string
     feeAmount:
 	type : Money
     SourceAccount:

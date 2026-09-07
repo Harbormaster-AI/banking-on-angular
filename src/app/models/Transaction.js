@@ -8,7 +8,7 @@ export interface Transaction {
     amount:
 	type : Money
     description:
-	type : String
+	type : string
     Account:
 	type : Schema.Types.ObjectId
     ExternalCounterparty:

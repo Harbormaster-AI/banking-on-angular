@@ -2,15 +2,15 @@
 // Define collection and schema for Bank
 export interface Bank {
     name:
-	type : String
+	type : string
     legalName:
-	type : String
+	type : string
     swiftBic:
 	type : BIC
     headquartersCountry:
-	type : String
+	type : string
     website:
-	type : String
+	type : string
     Branches:
  	type : [{ type: Schema.Types.ObjectId, ref: 'Branch' }]
     Products:

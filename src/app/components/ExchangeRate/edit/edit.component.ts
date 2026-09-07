@@ -55,7 +55,7 @@ export class EditExchangeRateComponent extends SubBaseComponent implements OnIni
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editExchangeRate(params['id']).subscribe(res => {
+            this.service.getExchangeRate(params['id']).subscribe(res => {
                 this.exchangeRate = res;
             });
         });

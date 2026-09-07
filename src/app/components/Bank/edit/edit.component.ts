@@ -62,7 +62,7 @@ export class EditBankComponent extends SubBaseComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editBank(params['id']).subscribe(res => {
+            this.service.getBank(params['id']).subscribe(res => {
                 this.bank = res;
             });
         });

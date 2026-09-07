@@ -56,7 +56,7 @@ export class EditConsentComponent extends SubBaseComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editConsent(params['id']).subscribe(res => {
+            this.service.getConsent(params['id']).subscribe(res => {
                 this.consent = res;
             });
         });

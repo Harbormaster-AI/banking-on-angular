@@ -56,7 +56,7 @@ export class EditBankingProductComponent extends SubBaseComponent implements OnI
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editBankingProduct(params['id']).subscribe(res => {
+            this.service.getBankingProduct(params['id']).subscribe(res => {
                 this.bankingProduct = res;
             });
         });

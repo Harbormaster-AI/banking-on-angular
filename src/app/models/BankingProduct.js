@@ -2,11 +2,11 @@
 // Define collection and schema for BankingProduct
 export interface BankingProduct {
     productCode:
-	type : String
+	type : string
     name:
-	type : String
+	type : string
     description:
-	type : String
+	type : string
     Bank:
 	type : Schema.Types.ObjectId
     Accounts:

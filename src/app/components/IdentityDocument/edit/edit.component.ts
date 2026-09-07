@@ -53,7 +53,7 @@ export class EditIdentityDocumentComponent extends SubBaseComponent implements O
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editIdentityDocument(params['id']).subscribe(res => {
+            this.service.getIdentityDocument(params['id']).subscribe(res => {
                 this.identityDocument = res;
             });
         });

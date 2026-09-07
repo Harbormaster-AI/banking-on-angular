@@ -53,7 +53,7 @@ export class EditThirdPartyProviderComponent extends SubBaseComponent implements
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editThirdPartyProvider(params['id']).subscribe(res => {
+            this.service.getThirdPartyProvider(params['id']).subscribe(res => {
                 this.thirdPartyProvider = res;
             });
         });

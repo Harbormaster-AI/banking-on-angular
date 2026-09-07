@@ -2,7 +2,7 @@
 // Define collection and schema for KycProfile
 export interface KycProfile {
     profileId:
-	type : String
+	type : string
     lastReviewedOn:
 	type : Date
     Customer:

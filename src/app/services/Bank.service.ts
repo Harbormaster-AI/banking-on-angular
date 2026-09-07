@@ -40,10 +40,10 @@ export class BankService extends HelperBaseService {
 		//********************************************************************
 	// add a Bank
 	// returns the results untouched as a JSON representation
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addBank(name, legalName, swiftBic, headquartersCountry, website, Branches, Products, Customers, Accounts, PaymentCards, LoanAccounts, ExchangeRates, Consents, ThirdPartyProviders) : Observable<any> {
-		const uri = this.apiUrl + '/Bank/add';
+		const uri_ = this.apiUrl + '/Bank/create';
 		const obj = {
 			      		name: name,
       		legalName: legalName,
@@ -61,42 +61,17 @@ export class BankService extends HelperBaseService {
 			ThirdPartyProviders: ThirdPartyProviders != null && ThirdPartyProviders.length > 0 ? ThirdPartyProviders : null
 		};
 
-		return this.http.post(uri, obj);
-	}
-
-	//********************************************************************
-	// gets all Bank
-	// returns the results untouched as JSON representation of an
-	// array of Bank models
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	getBanks() : Observable<Bank[]> {
-		const uri = this.apiUrl + '/Bank';
-
-		return this
-			.http.get<Bank[]>(uri);
-	}
-
-	//********************************************************************
-	// edit a Bank
-	// returns the results untouched as a JSON representation of a
-	// Bank model
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	editBank(id) : Observable<Bank> {
-		const uri = this.apiUrl + '/Bank/edit/' + id;
-
-		return this.http.get<Bank>(uri);
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// update a Bank
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 		updateBank(name, legalName, swiftBic, headquartersCountry, website, Branches, Products, Customers, Accounts, PaymentCards, LoanAccounts, ExchangeRates, Consents, ThirdPartyProviders, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/Bank/update/' + id;
-			const obj = {
+			const uri_ = this.apiUrl + '/Bank/update/' + id;
+		const obj = {
 				      		name: name,
       		legalName: legalName,
       		swiftBic: swiftBic,
@@ -111,27 +86,52 @@ export class BankService extends HelperBaseService {
       		ExchangeRates: ExchangeRates != null && ExchangeRates.length > 0 ? ExchangeRates : null,
       		Consents: Consents != null && Consents.length > 0 ? Consents : null,
 			ThirdPartyProviders: ThirdPartyProviders != null && ThirdPartyProviders.length > 0 ? ThirdPartyProviders : null
-			};
-		return this.http.post(uri, obj);
+		};
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// delete a Bank
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	deleteBank(id)  : Observable<any> {
-		const uri = this.apiUrl + '/Bank/delete/' + id;
+		const uri_ = this.apiUrl + '/Bank/delete/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(uri_);
 	}
+	
+	//********************************************************************
+	// loads a Bank
+	// returns the results untouched as an Observable Bank
+	// Bank model
+	// delegates via URI
+	//********************************************************************
+	getBank(id) : Observable<Bank> {
+		const uri_ = this.apiUrl + '/Bank/load/' + id;
 
+		return this.http.get<Bank>(uri_);
+	}
+	
+	//********************************************************************
+	// gets all Bank
+	// returns the results untouched as JSON representation of an
+	// Observable array of Bank models
+	// delegates via URI
+	//********************************************************************
+	getBanks() : Observable<Bank[]> {
+		const uri_ = this.apiUrl + '/Bank/';
+
+		return this
+			.http.get<Bank[]>(uri_);
+	}
+	
 		
 		//********************************************************************
 	// adds one or more branchesIds as a Branches
 	// to a Bank
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addBranches( bankId, branchesIds ): Observable<any> {
 
@@ -144,7 +144,7 @@ export class BankService extends HelperBaseService {
 	// iterate over array of branches ids
 	idList.forEach(function (id) {
 		// read the Branch
-		var branch = new BranchService(this.http).editBranch(id);
+		var branch = new BranchService(this.http).getBranch(id);
 		// add the Branch if not already assigned
 		if ( this.bank.branches.indexOf(branch) == -1 )
 		this.bank.branches.push(branch);
@@ -158,7 +158,7 @@ export class BankService extends HelperBaseService {
 	// removes one or more branchesIds as a Branches
 	// from a Bank
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeBranches( bankId, branchesIds ): Observable<any> {
 
@@ -189,7 +189,7 @@ export class BankService extends HelperBaseService {
 	// adds one or more productsIds as a Products
 	// to a Bank
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addProducts( bankId, productsIds ): Observable<any> {
 
@@ -202,7 +202,7 @@ export class BankService extends HelperBaseService {
 	// iterate over array of products ids
 	idList.forEach(function (id) {
 		// read the BankingProduct
-		var bankingProduct = new BankingProductService(this.http).editBankingProduct(id);
+		var bankingProduct = new BankingProductService(this.http).getBankingProduct(id);
 		// add the BankingProduct if not already assigned
 		if ( this.bank.products.indexOf(bankingProduct) == -1 )
 		this.bank.products.push(bankingProduct);
@@ -216,7 +216,7 @@ export class BankService extends HelperBaseService {
 	// removes one or more productsIds as a Products
 	// from a Bank
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeProducts( bankId, productsIds ): Observable<any> {
 
@@ -247,7 +247,7 @@ export class BankService extends HelperBaseService {
 	// adds one or more customersIds as a Customers
 	// to a Bank
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addCustomers( bankId, customersIds ): Observable<any> {
 
@@ -260,7 +260,7 @@ export class BankService extends HelperBaseService {
 	// iterate over array of customers ids
 	idList.forEach(function (id) {
 		// read the Customer
-		var customer = new CustomerService(this.http).editCustomer(id);
+		var customer = new CustomerService(this.http).getCustomer(id);
 		// add the Customer if not already assigned
 		if ( this.bank.customers.indexOf(customer) == -1 )
 		this.bank.customers.push(customer);
@@ -274,7 +274,7 @@ export class BankService extends HelperBaseService {
 	// removes one or more customersIds as a Customers
 	// from a Bank
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeCustomers( bankId, customersIds ): Observable<any> {
 
@@ -305,7 +305,7 @@ export class BankService extends HelperBaseService {
 	// adds one or more accountsIds as a Accounts
 	// to a Bank
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addAccounts( bankId, accountsIds ): Observable<any> {
 
@@ -318,7 +318,7 @@ export class BankService extends HelperBaseService {
 	// iterate over array of accounts ids
 	idList.forEach(function (id) {
 		// read the Account
-		var account = new AccountService(this.http).editAccount(id);
+		var account = new AccountService(this.http).getAccount(id);
 		// add the Account if not already assigned
 		if ( this.bank.accounts.indexOf(account) == -1 )
 		this.bank.accounts.push(account);
@@ -332,7 +332,7 @@ export class BankService extends HelperBaseService {
 	// removes one or more accountsIds as a Accounts
 	// from a Bank
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeAccounts( bankId, accountsIds ): Observable<any> {
 
@@ -363,7 +363,7 @@ export class BankService extends HelperBaseService {
 	// adds one or more paymentCardsIds as a PaymentCards
 	// to a Bank
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addPaymentCards( bankId, paymentCardsIds ): Observable<any> {
 
@@ -376,7 +376,7 @@ export class BankService extends HelperBaseService {
 	// iterate over array of paymentCards ids
 	idList.forEach(function (id) {
 		// read the PaymentCard
-		var paymentCard = new PaymentCardService(this.http).editPaymentCard(id);
+		var paymentCard = new PaymentCardService(this.http).getPaymentCard(id);
 		// add the PaymentCard if not already assigned
 		if ( this.bank.paymentCards.indexOf(paymentCard) == -1 )
 		this.bank.paymentCards.push(paymentCard);
@@ -390,7 +390,7 @@ export class BankService extends HelperBaseService {
 	// removes one or more paymentCardsIds as a PaymentCards
 	// from a Bank
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removePaymentCards( bankId, paymentCardsIds ): Observable<any> {
 
@@ -421,7 +421,7 @@ export class BankService extends HelperBaseService {
 	// adds one or more loanAccountsIds as a LoanAccounts
 	// to a Bank
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addLoanAccounts( bankId, loanAccountsIds ): Observable<any> {
 
@@ -434,7 +434,7 @@ export class BankService extends HelperBaseService {
 	// iterate over array of loanAccounts ids
 	idList.forEach(function (id) {
 		// read the LoanAccount
-		var loanAccount = new LoanAccountService(this.http).editLoanAccount(id);
+		var loanAccount = new LoanAccountService(this.http).getLoanAccount(id);
 		// add the LoanAccount if not already assigned
 		if ( this.bank.loanAccounts.indexOf(loanAccount) == -1 )
 		this.bank.loanAccounts.push(loanAccount);
@@ -448,7 +448,7 @@ export class BankService extends HelperBaseService {
 	// removes one or more loanAccountsIds as a LoanAccounts
 	// from a Bank
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeLoanAccounts( bankId, loanAccountsIds ): Observable<any> {
 
@@ -479,7 +479,7 @@ export class BankService extends HelperBaseService {
 	// adds one or more exchangeRatesIds as a ExchangeRates
 	// to a Bank
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addExchangeRates( bankId, exchangeRatesIds ): Observable<any> {
 
@@ -492,7 +492,7 @@ export class BankService extends HelperBaseService {
 	// iterate over array of exchangeRates ids
 	idList.forEach(function (id) {
 		// read the ExchangeRate
-		var exchangeRate = new ExchangeRateService(this.http).editExchangeRate(id);
+		var exchangeRate = new ExchangeRateService(this.http).getExchangeRate(id);
 		// add the ExchangeRate if not already assigned
 		if ( this.bank.exchangeRates.indexOf(exchangeRate) == -1 )
 		this.bank.exchangeRates.push(exchangeRate);
@@ -506,7 +506,7 @@ export class BankService extends HelperBaseService {
 	// removes one or more exchangeRatesIds as a ExchangeRates
 	// from a Bank
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeExchangeRates( bankId, exchangeRatesIds ): Observable<any> {
 
@@ -537,7 +537,7 @@ export class BankService extends HelperBaseService {
 	// adds one or more consentsIds as a Consents
 	// to a Bank
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addConsents( bankId, consentsIds ): Observable<any> {
 
@@ -550,7 +550,7 @@ export class BankService extends HelperBaseService {
 	// iterate over array of consents ids
 	idList.forEach(function (id) {
 		// read the Consent
-		var consent = new ConsentService(this.http).editConsent(id);
+		var consent = new ConsentService(this.http).getConsent(id);
 		// add the Consent if not already assigned
 		if ( this.bank.consents.indexOf(consent) == -1 )
 		this.bank.consents.push(consent);
@@ -564,7 +564,7 @@ export class BankService extends HelperBaseService {
 	// removes one or more consentsIds as a Consents
 	// from a Bank
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeConsents( bankId, consentsIds ): Observable<any> {
 
@@ -595,7 +595,7 @@ export class BankService extends HelperBaseService {
 	// adds one or more thirdPartyProvidersIds as a ThirdPartyProviders
 	// to a Bank
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addThirdPartyProviders( bankId, thirdPartyProvidersIds ): Observable<any> {
 
@@ -608,7 +608,7 @@ export class BankService extends HelperBaseService {
 	// iterate over array of thirdPartyProviders ids
 	idList.forEach(function (id) {
 		// read the ThirdPartyProvider
-		var thirdPartyProvider = new ThirdPartyProviderService(this.http).editThirdPartyProvider(id);
+		var thirdPartyProvider = new ThirdPartyProviderService(this.http).getThirdPartyProvider(id);
 		// add the ThirdPartyProvider if not already assigned
 		if ( this.bank.thirdPartyProviders.indexOf(thirdPartyProvider) == -1 )
 		this.bank.thirdPartyProviders.push(thirdPartyProvider);
@@ -622,7 +622,7 @@ export class BankService extends HelperBaseService {
 	// removes one or more thirdPartyProvidersIds as a ThirdPartyProviders
 	// from a Bank
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeThirdPartyProviders( bankId, thirdPartyProvidersIds ): Observable<any> {
 
@@ -655,16 +655,16 @@ export class BankService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Observable<any> {
 
-		const uri = this.apiUrl + '/Bank/update/' + this.bank;
+		const uri_ = this.apiUrl + '/Bank/update/' + this.bank;
 
-	return  this.http.post(uri, this.bank );
+	return  this.http.post(uri_, this.bank );
 }
 
 	//********************************************************************
 	// loadHelper - internal helper to load a Bank
 	//********************************************************************	
 	loadHelper( id ) {
-		this.editBank(id)
+		this.getBank(id)
 			.subscribe((res : Bank) => {
 				this.bank = res;
 			});

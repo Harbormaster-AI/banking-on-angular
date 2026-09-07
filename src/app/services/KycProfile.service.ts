@@ -35,10 +35,10 @@ export class KycProfileService extends HelperBaseService {
 		//********************************************************************
 	// add a KycProfile
 	// returns the results untouched as a JSON representation
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addKycProfile(profileId, lastReviewedOn, Customer, IdentityDocuments, RiskAssessments, Screenings, Status) : Observable<any> {
-		const uri = this.apiUrl + '/KycProfile/add';
+		const uri_ = this.apiUrl + '/KycProfile/create';
 		const obj = {
 			      		profileId: profileId,
       		lastReviewedOn: lastReviewedOn,
@@ -49,42 +49,17 @@ export class KycProfileService extends HelperBaseService {
 			Status: Status
 		};
 
-		return this.http.post(uri, obj);
-	}
-
-	//********************************************************************
-	// gets all KycProfile
-	// returns the results untouched as JSON representation of an
-	// array of KycProfile models
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	getKycProfiles() : Observable<KycProfile[]> {
-		const uri = this.apiUrl + '/KycProfile';
-
-		return this
-			.http.get<KycProfile[]>(uri);
-	}
-
-	//********************************************************************
-	// edit a KycProfile
-	// returns the results untouched as a JSON representation of a
-	// KycProfile model
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	editKycProfile(id) : Observable<KycProfile> {
-		const uri = this.apiUrl + '/KycProfile/edit/' + id;
-
-		return this.http.get<KycProfile>(uri);
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// update a KycProfile
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 		updateKycProfile(profileId, lastReviewedOn, Customer, IdentityDocuments, RiskAssessments, Screenings, Status, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/KycProfile/update/' + id;
-			const obj = {
+			const uri_ = this.apiUrl + '/KycProfile/update/' + id;
+		const obj = {
 				      		profileId: profileId,
       		lastReviewedOn: lastReviewedOn,
       		Customer: Customer != null && Customer.length > 0 ? Customer : null,
@@ -92,25 +67,50 @@ export class KycProfileService extends HelperBaseService {
       		RiskAssessments: RiskAssessments != null && RiskAssessments.length > 0 ? RiskAssessments : null,
       		Screenings: Screenings != null && Screenings.length > 0 ? Screenings : null,
 			Status: Status
-			};
-		return this.http.post(uri, obj);
+		};
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// delete a KycProfile
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	deleteKycProfile(id)  : Observable<any> {
-		const uri = this.apiUrl + '/KycProfile/delete/' + id;
+		const uri_ = this.apiUrl + '/KycProfile/delete/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(uri_);
 	}
+	
+	//********************************************************************
+	// loads a KycProfile
+	// returns the results untouched as an Observable KycProfile
+	// KycProfile model
+	// delegates via URI
+	//********************************************************************
+	getKycProfile(id) : Observable<KycProfile> {
+		const uri_ = this.apiUrl + '/KycProfile/load/' + id;
 
+		return this.http.get<KycProfile>(uri_);
+	}
+	
+	//********************************************************************
+	// gets all KycProfile
+	// returns the results untouched as JSON representation of an
+	// Observable array of KycProfile models
+	// delegates via URI
+	//********************************************************************
+	getKycProfiles() : Observable<KycProfile[]> {
+		const uri_ = this.apiUrl + '/KycProfile/';
+
+		return this
+			.http.get<KycProfile[]>(uri_);
+	}
+	
 			//********************************************************************
 	// assigns a Customer on a KycProfile
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	assignCustomer( kycProfileId, _customerId ): Observable<any> {
 
@@ -118,7 +118,7 @@ export class KycProfileService extends HelperBaseService {
 		this.loadHelper( kycProfileId );
 
 	// get the Customer from storage
-	var tmp 	= new CustomerService(this.http).editCustomer(_customerId);
+	var tmp 	= new CustomerService(this.http).getCustomer(_customerId);
 
 	// assign the Customer
 	this.kycProfile.customer = tmp;
@@ -129,8 +129,8 @@ export class KycProfileService extends HelperBaseService {
 
 	//********************************************************************
 	// unassigns a Customer on a KycProfile
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	unassignCustomer( kycProfileId ): Observable<any> {
 
@@ -149,7 +149,7 @@ export class KycProfileService extends HelperBaseService {
 	// adds one or more identityDocumentsIds as a IdentityDocuments
 	// to a KycProfile
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addIdentityDocuments( kycProfileId, identityDocumentsIds ): Observable<any> {
 
@@ -162,7 +162,7 @@ export class KycProfileService extends HelperBaseService {
 	// iterate over array of identityDocuments ids
 	idList.forEach(function (id) {
 		// read the IdentityDocument
-		var identityDocument = new IdentityDocumentService(this.http).editIdentityDocument(id);
+		var identityDocument = new IdentityDocumentService(this.http).getIdentityDocument(id);
 		// add the IdentityDocument if not already assigned
 		if ( this.kycProfile.identityDocuments.indexOf(identityDocument) == -1 )
 		this.kycProfile.identityDocuments.push(identityDocument);
@@ -176,7 +176,7 @@ export class KycProfileService extends HelperBaseService {
 	// removes one or more identityDocumentsIds as a IdentityDocuments
 	// from a KycProfile
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeIdentityDocuments( kycProfileId, identityDocumentsIds ): Observable<any> {
 
@@ -207,7 +207,7 @@ export class KycProfileService extends HelperBaseService {
 	// adds one or more riskAssessmentsIds as a RiskAssessments
 	// to a KycProfile
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addRiskAssessments( kycProfileId, riskAssessmentsIds ): Observable<any> {
 
@@ -220,7 +220,7 @@ export class KycProfileService extends HelperBaseService {
 	// iterate over array of riskAssessments ids
 	idList.forEach(function (id) {
 		// read the RiskAssessment
-		var riskAssessment = new RiskAssessmentService(this.http).editRiskAssessment(id);
+		var riskAssessment = new RiskAssessmentService(this.http).getRiskAssessment(id);
 		// add the RiskAssessment if not already assigned
 		if ( this.kycProfile.riskAssessments.indexOf(riskAssessment) == -1 )
 		this.kycProfile.riskAssessments.push(riskAssessment);
@@ -234,7 +234,7 @@ export class KycProfileService extends HelperBaseService {
 	// removes one or more riskAssessmentsIds as a RiskAssessments
 	// from a KycProfile
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeRiskAssessments( kycProfileId, riskAssessmentsIds ): Observable<any> {
 
@@ -265,7 +265,7 @@ export class KycProfileService extends HelperBaseService {
 	// adds one or more screeningsIds as a Screenings
 	// to a KycProfile
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addScreenings( kycProfileId, screeningsIds ): Observable<any> {
 
@@ -278,7 +278,7 @@ export class KycProfileService extends HelperBaseService {
 	// iterate over array of screenings ids
 	idList.forEach(function (id) {
 		// read the ScreeningResult
-		var screeningResult = new ScreeningResultService(this.http).editScreeningResult(id);
+		var screeningResult = new ScreeningResultService(this.http).getScreeningResult(id);
 		// add the ScreeningResult if not already assigned
 		if ( this.kycProfile.screenings.indexOf(screeningResult) == -1 )
 		this.kycProfile.screenings.push(screeningResult);
@@ -292,7 +292,7 @@ export class KycProfileService extends HelperBaseService {
 	// removes one or more screeningsIds as a Screenings
 	// from a KycProfile
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeScreenings( kycProfileId, screeningsIds ): Observable<any> {
 
@@ -325,16 +325,16 @@ export class KycProfileService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Observable<any> {
 
-		const uri = this.apiUrl + '/KycProfile/update/' + this.kycProfile;
+		const uri_ = this.apiUrl + '/KycProfile/update/' + this.kycProfile;
 
-	return  this.http.post(uri, this.kycProfile );
+	return  this.http.post(uri_, this.kycProfile );
 }
 
 	//********************************************************************
 	// loadHelper - internal helper to load a KycProfile
 	//********************************************************************	
 	loadHelper( id ) {
-		this.editKycProfile(id)
+		this.getKycProfile(id)
 			.subscribe((res : KycProfile) => {
 				this.kycProfile = res;
 			});

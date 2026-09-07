@@ -4,11 +4,11 @@ export interface PaymentCard {
     cardNumber:
 	type : CardPAN
     embossedName:
-	type : String
+	type : string
     expiryMonth:
-	type : Number
+	type : number
     expiryYear:
-	type : Number
+	type : number
     Bank:
 	type : Schema.Types.ObjectId
     Account:

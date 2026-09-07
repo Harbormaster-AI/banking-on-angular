@@ -52,7 +52,7 @@ export class EditATMComponent extends SubBaseComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editATM(params['id']).subscribe(res => {
+            this.service.getATM(params['id']).subscribe(res => {
                 this.aTM = res;
             });
         });

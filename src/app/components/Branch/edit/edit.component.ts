@@ -57,7 +57,7 @@ export class EditBranchComponent extends SubBaseComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editBranch(params['id']).subscribe(res => {
+            this.service.getBranch(params['id']).subscribe(res => {
                 this.branch = res;
             });
         });

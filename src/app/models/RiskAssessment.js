@@ -2,7 +2,7 @@
 // Define collection and schema for RiskAssessment
 export interface RiskAssessment {
     score:
-	type : Number
+	type : number
     assessedOn:
 	type : Date
     KycProfile:

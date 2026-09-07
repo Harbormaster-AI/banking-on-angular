@@ -4,7 +4,7 @@ export interface ScreeningResult {
     screeningDate:
 	type : Date
     provider:
-	type : String
+	type : string
     KycProfile:
 	type : Schema.Types.ObjectId
     Outcome:

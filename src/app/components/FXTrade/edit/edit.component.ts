@@ -61,7 +61,7 @@ export class EditFXTradeComponent extends SubBaseComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editFXTrade(params['id']).subscribe(res => {
+            this.service.getFXTrade(params['id']).subscribe(res => {
                 this.fXTrade = res;
             });
         });

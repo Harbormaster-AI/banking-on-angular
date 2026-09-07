@@ -39,10 +39,10 @@ export class LoanAccountService extends HelperBaseService {
 		//********************************************************************
 	// add a LoanAccount
 	// returns the results untouched as a JSON representation
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addLoanAccount(loanNumber, principalAmount, outstandingPrincipal, interestRate, originationDate, maturityDate, paymentDayOfMonth, currency, Bank, Branch, Product, Borrowers, RepaymentSchedule, Payments, Collateral, FeeCharges, LoanType, RateType, Compounding, Status) : Observable<any> {
-		const uri = this.apiUrl + '/LoanAccount/add';
+		const uri_ = this.apiUrl + '/LoanAccount/create';
 		const obj = {
 			      		loanNumber: loanNumber,
       		principalAmount: principalAmount,
@@ -66,42 +66,17 @@ export class LoanAccountService extends HelperBaseService {
 			Status: Status
 		};
 
-		return this.http.post(uri, obj);
-	}
-
-	//********************************************************************
-	// gets all LoanAccount
-	// returns the results untouched as JSON representation of an
-	// array of LoanAccount models
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	getLoanAccounts() : Observable<LoanAccount[]> {
-		const uri = this.apiUrl + '/LoanAccount';
-
-		return this
-			.http.get<LoanAccount[]>(uri);
-	}
-
-	//********************************************************************
-	// edit a LoanAccount
-	// returns the results untouched as a JSON representation of a
-	// LoanAccount model
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	editLoanAccount(id) : Observable<LoanAccount> {
-		const uri = this.apiUrl + '/LoanAccount/edit/' + id;
-
-		return this.http.get<LoanAccount>(uri);
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// update a LoanAccount
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 		updateLoanAccount(loanNumber, principalAmount, outstandingPrincipal, interestRate, originationDate, maturityDate, paymentDayOfMonth, currency, Bank, Branch, Product, Borrowers, RepaymentSchedule, Payments, Collateral, FeeCharges, LoanType, RateType, Compounding, Status, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/LoanAccount/update/' + id;
-			const obj = {
+			const uri_ = this.apiUrl + '/LoanAccount/update/' + id;
+		const obj = {
 				      		loanNumber: loanNumber,
       		principalAmount: principalAmount,
       		outstandingPrincipal: outstandingPrincipal,
@@ -122,25 +97,50 @@ export class LoanAccountService extends HelperBaseService {
       		RateType: RateType,
       		Compounding: Compounding,
 			Status: Status
-			};
-		return this.http.post(uri, obj);
+		};
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// delete a LoanAccount
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	deleteLoanAccount(id)  : Observable<any> {
-		const uri = this.apiUrl + '/LoanAccount/delete/' + id;
+		const uri_ = this.apiUrl + '/LoanAccount/delete/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(uri_);
 	}
+	
+	//********************************************************************
+	// loads a LoanAccount
+	// returns the results untouched as an Observable LoanAccount
+	// LoanAccount model
+	// delegates via URI
+	//********************************************************************
+	getLoanAccount(id) : Observable<LoanAccount> {
+		const uri_ = this.apiUrl + '/LoanAccount/load/' + id;
 
+		return this.http.get<LoanAccount>(uri_);
+	}
+	
+	//********************************************************************
+	// gets all LoanAccount
+	// returns the results untouched as JSON representation of an
+	// Observable array of LoanAccount models
+	// delegates via URI
+	//********************************************************************
+	getLoanAccounts() : Observable<LoanAccount[]> {
+		const uri_ = this.apiUrl + '/LoanAccount/';
+
+		return this
+			.http.get<LoanAccount[]>(uri_);
+	}
+	
 			//********************************************************************
 	// assigns a Bank on a LoanAccount
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	assignBank( loanAccountId, _bankId ): Observable<any> {
 
@@ -148,7 +148,7 @@ export class LoanAccountService extends HelperBaseService {
 		this.loadHelper( loanAccountId );
 
 	// get the Bank from storage
-	var tmp 	= new BankService(this.http).editBank(_bankId);
+	var tmp 	= new BankService(this.http).getBank(_bankId);
 
 	// assign the Bank
 	this.loanAccount.bank = tmp;
@@ -159,8 +159,8 @@ export class LoanAccountService extends HelperBaseService {
 
 	//********************************************************************
 	// unassigns a Bank on a LoanAccount
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	unassignBank( loanAccountId ): Observable<any> {
 
@@ -176,8 +176,8 @@ export class LoanAccountService extends HelperBaseService {
 
 		//********************************************************************
 	// assigns a Branch on a LoanAccount
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	assignBranch( loanAccountId, _branchId ): Observable<any> {
 
@@ -185,7 +185,7 @@ export class LoanAccountService extends HelperBaseService {
 		this.loadHelper( loanAccountId );
 
 	// get the Branch from storage
-	var tmp 	= new BranchService(this.http).editBranch(_branchId);
+	var tmp 	= new BranchService(this.http).getBranch(_branchId);
 
 	// assign the Branch
 	this.loanAccount.branch = tmp;
@@ -196,8 +196,8 @@ export class LoanAccountService extends HelperBaseService {
 
 	//********************************************************************
 	// unassigns a Branch on a LoanAccount
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	unassignBranch( loanAccountId ): Observable<any> {
 
@@ -213,8 +213,8 @@ export class LoanAccountService extends HelperBaseService {
 
 		//********************************************************************
 	// assigns a Product on a LoanAccount
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	assignProduct( loanAccountId, _productId ): Observable<any> {
 
@@ -222,7 +222,7 @@ export class LoanAccountService extends HelperBaseService {
 		this.loadHelper( loanAccountId );
 
 	// get the BankingProduct from storage
-	var tmp 	= new BankingProductService(this.http).editBankingProduct(_productId);
+	var tmp 	= new BankingProductService(this.http).getBankingProduct(_productId);
 
 	// assign the Product
 	this.loanAccount.product = tmp;
@@ -233,8 +233,8 @@ export class LoanAccountService extends HelperBaseService {
 
 	//********************************************************************
 	// unassigns a Product on a LoanAccount
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	unassignProduct( loanAccountId ): Observable<any> {
 
@@ -253,7 +253,7 @@ export class LoanAccountService extends HelperBaseService {
 	// adds one or more borrowersIds as a Borrowers
 	// to a LoanAccount
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addBorrowers( loanAccountId, borrowersIds ): Observable<any> {
 
@@ -266,7 +266,7 @@ export class LoanAccountService extends HelperBaseService {
 	// iterate over array of borrowers ids
 	idList.forEach(function (id) {
 		// read the Customer
-		var customer = new CustomerService(this.http).editCustomer(id);
+		var customer = new CustomerService(this.http).getCustomer(id);
 		// add the Customer if not already assigned
 		if ( this.loanAccount.borrowers.indexOf(customer) == -1 )
 		this.loanAccount.borrowers.push(customer);
@@ -280,7 +280,7 @@ export class LoanAccountService extends HelperBaseService {
 	// removes one or more borrowersIds as a Borrowers
 	// from a LoanAccount
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeBorrowers( loanAccountId, borrowersIds ): Observable<any> {
 
@@ -311,7 +311,7 @@ export class LoanAccountService extends HelperBaseService {
 	// adds one or more repaymentScheduleIds as a RepaymentSchedule
 	// to a LoanAccount
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addRepaymentSchedule( loanAccountId, repaymentScheduleIds ): Observable<any> {
 
@@ -324,7 +324,7 @@ export class LoanAccountService extends HelperBaseService {
 	// iterate over array of repaymentSchedule ids
 	idList.forEach(function (id) {
 		// read the RepaymentSchedule
-		var repaymentSchedule = new RepaymentScheduleService(this.http).editRepaymentSchedule(id);
+		var repaymentSchedule = new RepaymentScheduleService(this.http).getRepaymentSchedule(id);
 		// add the RepaymentSchedule if not already assigned
 		if ( this.loanAccount.repaymentSchedule.indexOf(repaymentSchedule) == -1 )
 		this.loanAccount.repaymentSchedule.push(repaymentSchedule);
@@ -338,7 +338,7 @@ export class LoanAccountService extends HelperBaseService {
 	// removes one or more repaymentScheduleIds as a RepaymentSchedule
 	// from a LoanAccount
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeRepaymentSchedule( loanAccountId, repaymentScheduleIds ): Observable<any> {
 
@@ -369,7 +369,7 @@ export class LoanAccountService extends HelperBaseService {
 	// adds one or more paymentsIds as a Payments
 	// to a LoanAccount
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addPayments( loanAccountId, paymentsIds ): Observable<any> {
 
@@ -382,7 +382,7 @@ export class LoanAccountService extends HelperBaseService {
 	// iterate over array of payments ids
 	idList.forEach(function (id) {
 		// read the LoanPayment
-		var loanPayment = new LoanPaymentService(this.http).editLoanPayment(id);
+		var loanPayment = new LoanPaymentService(this.http).getLoanPayment(id);
 		// add the LoanPayment if not already assigned
 		if ( this.loanAccount.payments.indexOf(loanPayment) == -1 )
 		this.loanAccount.payments.push(loanPayment);
@@ -396,7 +396,7 @@ export class LoanAccountService extends HelperBaseService {
 	// removes one or more paymentsIds as a Payments
 	// from a LoanAccount
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removePayments( loanAccountId, paymentsIds ): Observable<any> {
 
@@ -427,7 +427,7 @@ export class LoanAccountService extends HelperBaseService {
 	// adds one or more collateralIds as a Collateral
 	// to a LoanAccount
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addCollateral( loanAccountId, collateralIds ): Observable<any> {
 
@@ -440,7 +440,7 @@ export class LoanAccountService extends HelperBaseService {
 	// iterate over array of collateral ids
 	idList.forEach(function (id) {
 		// read the Collateral
-		var collateral = new CollateralService(this.http).editCollateral(id);
+		var collateral = new CollateralService(this.http).getCollateral(id);
 		// add the Collateral if not already assigned
 		if ( this.loanAccount.collateral.indexOf(collateral) == -1 )
 		this.loanAccount.collateral.push(collateral);
@@ -454,7 +454,7 @@ export class LoanAccountService extends HelperBaseService {
 	// removes one or more collateralIds as a Collateral
 	// from a LoanAccount
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeCollateral( loanAccountId, collateralIds ): Observable<any> {
 
@@ -485,7 +485,7 @@ export class LoanAccountService extends HelperBaseService {
 	// adds one or more feeChargesIds as a FeeCharges
 	// to a LoanAccount
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addFeeCharges( loanAccountId, feeChargesIds ): Observable<any> {
 
@@ -498,7 +498,7 @@ export class LoanAccountService extends HelperBaseService {
 	// iterate over array of feeCharges ids
 	idList.forEach(function (id) {
 		// read the FeeCharge
-		var feeCharge = new FeeChargeService(this.http).editFeeCharge(id);
+		var feeCharge = new FeeChargeService(this.http).getFeeCharge(id);
 		// add the FeeCharge if not already assigned
 		if ( this.loanAccount.feeCharges.indexOf(feeCharge) == -1 )
 		this.loanAccount.feeCharges.push(feeCharge);
@@ -512,7 +512,7 @@ export class LoanAccountService extends HelperBaseService {
 	// removes one or more feeChargesIds as a FeeCharges
 	// from a LoanAccount
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeFeeCharges( loanAccountId, feeChargesIds ): Observable<any> {
 
@@ -545,16 +545,16 @@ export class LoanAccountService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Observable<any> {
 
-		const uri = this.apiUrl + '/LoanAccount/update/' + this.loanAccount;
+		const uri_ = this.apiUrl + '/LoanAccount/update/' + this.loanAccount;
 
-	return  this.http.post(uri, this.loanAccount );
+	return  this.http.post(uri_, this.loanAccount );
 }
 
 	//********************************************************************
 	// loadHelper - internal helper to load a LoanAccount
 	//********************************************************************	
 	loadHelper( id ) {
-		this.editLoanAccount(id)
+		this.getLoanAccount(id)
 			.subscribe((res : LoanAccount) => {
 				this.loanAccount = res;
 			});

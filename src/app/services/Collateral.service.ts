@@ -32,10 +32,10 @@ export class CollateralService extends HelperBaseService {
 		//********************************************************************
 	// add a Collateral
 	// returns the results untouched as a JSON representation
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addCollateral(appraisedValue, description, location, LoanAccount, CollateralType) : Observable<any> {
-		const uri = this.apiUrl + '/Collateral/add';
+		const uri_ = this.apiUrl + '/Collateral/create';
 		const obj = {
 			      		appraisedValue: appraisedValue,
       		description: description,
@@ -44,66 +44,66 @@ export class CollateralService extends HelperBaseService {
 			CollateralType: CollateralType
 		};
 
-		return this.http.post(uri, obj);
-	}
-
-	//********************************************************************
-	// gets all Collateral
-	// returns the results untouched as JSON representation of an
-	// array of Collateral models
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	getCollaterals() : Observable<Collateral[]> {
-		const uri = this.apiUrl + '/Collateral';
-
-		return this
-			.http.get<Collateral[]>(uri);
-	}
-
-	//********************************************************************
-	// edit a Collateral
-	// returns the results untouched as a JSON representation of a
-	// Collateral model
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	editCollateral(id) : Observable<Collateral> {
-		const uri = this.apiUrl + '/Collateral/edit/' + id;
-
-		return this.http.get<Collateral>(uri);
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// update a Collateral
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 		updateCollateral(appraisedValue, description, location, LoanAccount, CollateralType, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/Collateral/update/' + id;
-			const obj = {
+			const uri_ = this.apiUrl + '/Collateral/update/' + id;
+		const obj = {
 				      		appraisedValue: appraisedValue,
       		description: description,
       		location: location,
       		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
 			CollateralType: CollateralType
-			};
-		return this.http.post(uri, obj);
+		};
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// delete a Collateral
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	deleteCollateral(id)  : Observable<any> {
-		const uri = this.apiUrl + '/Collateral/delete/' + id;
+		const uri_ = this.apiUrl + '/Collateral/delete/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(uri_);
 	}
+	
+	//********************************************************************
+	// loads a Collateral
+	// returns the results untouched as an Observable Collateral
+	// Collateral model
+	// delegates via URI
+	//********************************************************************
+	getCollateral(id) : Observable<Collateral> {
+		const uri_ = this.apiUrl + '/Collateral/load/' + id;
 
+		return this.http.get<Collateral>(uri_);
+	}
+	
+	//********************************************************************
+	// gets all Collateral
+	// returns the results untouched as JSON representation of an
+	// Observable array of Collateral models
+	// delegates via URI
+	//********************************************************************
+	getCollaterals() : Observable<Collateral[]> {
+		const uri_ = this.apiUrl + '/Collateral/';
+
+		return this
+			.http.get<Collateral[]>(uri_);
+	}
+	
 			//********************************************************************
 	// assigns a LoanAccount on a Collateral
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	assignLoanAccount( collateralId, _loanAccountId ): Observable<any> {
 
@@ -111,7 +111,7 @@ export class CollateralService extends HelperBaseService {
 		this.loadHelper( collateralId );
 
 	// get the LoanAccount from storage
-	var tmp 	= new LoanAccountService(this.http).editLoanAccount(_loanAccountId);
+	var tmp 	= new LoanAccountService(this.http).getLoanAccount(_loanAccountId);
 
 	// assign the LoanAccount
 	this.collateral.loanAccount = tmp;
@@ -122,8 +122,8 @@ export class CollateralService extends HelperBaseService {
 
 	//********************************************************************
 	// unassigns a LoanAccount on a Collateral
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	unassignLoanAccount( collateralId ): Observable<any> {
 
@@ -144,16 +144,16 @@ export class CollateralService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Observable<any> {
 
-		const uri = this.apiUrl + '/Collateral/update/' + this.collateral;
+		const uri_ = this.apiUrl + '/Collateral/update/' + this.collateral;
 
-	return  this.http.post(uri, this.collateral );
+	return  this.http.post(uri_, this.collateral );
 }
 
 	//********************************************************************
 	// loadHelper - internal helper to load a Collateral
 	//********************************************************************	
 	loadHelper( id ) {
-		this.editCollateral(id)
+		this.getCollateral(id)
 			.subscribe((res : Collateral) => {
 				this.collateral = res;
 			});

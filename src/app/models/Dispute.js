@@ -2,11 +2,11 @@
 // Define collection and schema for Dispute
 export interface Dispute {
     disputeReference:
-	type : String
+	type : string
     raisedOn:
 	type : Date
     reason:
-	type : String
+	type : string
     Transaction:
 	type : Schema.Types.ObjectId
     Customer:

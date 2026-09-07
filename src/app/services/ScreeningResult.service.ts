@@ -32,10 +32,10 @@ export class ScreeningResultService extends HelperBaseService {
 		//********************************************************************
 	// add a ScreeningResult
 	// returns the results untouched as a JSON representation
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addScreeningResult(screeningDate, provider, KycProfile, Outcome) : Observable<any> {
-		const uri = this.apiUrl + '/ScreeningResult/add';
+		const uri_ = this.apiUrl + '/ScreeningResult/create';
 		const obj = {
 			      		screeningDate: screeningDate,
       		provider: provider,
@@ -43,65 +43,65 @@ export class ScreeningResultService extends HelperBaseService {
 			Outcome: Outcome
 		};
 
-		return this.http.post(uri, obj);
-	}
-
-	//********************************************************************
-	// gets all ScreeningResult
-	// returns the results untouched as JSON representation of an
-	// array of ScreeningResult models
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	getScreeningResults() : Observable<ScreeningResult[]> {
-		const uri = this.apiUrl + '/ScreeningResult';
-
-		return this
-			.http.get<ScreeningResult[]>(uri);
-	}
-
-	//********************************************************************
-	// edit a ScreeningResult
-	// returns the results untouched as a JSON representation of a
-	// ScreeningResult model
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	editScreeningResult(id) : Observable<ScreeningResult> {
-		const uri = this.apiUrl + '/ScreeningResult/edit/' + id;
-
-		return this.http.get<ScreeningResult>(uri);
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// update a ScreeningResult
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 		updateScreeningResult(screeningDate, provider, KycProfile, Outcome, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/ScreeningResult/update/' + id;
-			const obj = {
+			const uri_ = this.apiUrl + '/ScreeningResult/update/' + id;
+		const obj = {
 				      		screeningDate: screeningDate,
       		provider: provider,
       		KycProfile: KycProfile != null && KycProfile.length > 0 ? KycProfile : null,
 			Outcome: Outcome
-			};
-		return this.http.post(uri, obj);
+		};
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// delete a ScreeningResult
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	deleteScreeningResult(id)  : Observable<any> {
-		const uri = this.apiUrl + '/ScreeningResult/delete/' + id;
+		const uri_ = this.apiUrl + '/ScreeningResult/delete/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(uri_);
 	}
+	
+	//********************************************************************
+	// loads a ScreeningResult
+	// returns the results untouched as an Observable ScreeningResult
+	// ScreeningResult model
+	// delegates via URI
+	//********************************************************************
+	getScreeningResult(id) : Observable<ScreeningResult> {
+		const uri_ = this.apiUrl + '/ScreeningResult/load/' + id;
 
+		return this.http.get<ScreeningResult>(uri_);
+	}
+	
+	//********************************************************************
+	// gets all ScreeningResult
+	// returns the results untouched as JSON representation of an
+	// Observable array of ScreeningResult models
+	// delegates via URI
+	//********************************************************************
+	getScreeningResults() : Observable<ScreeningResult[]> {
+		const uri_ = this.apiUrl + '/ScreeningResult/';
+
+		return this
+			.http.get<ScreeningResult[]>(uri_);
+	}
+	
 			//********************************************************************
 	// assigns a KycProfile on a ScreeningResult
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	assignKycProfile( screeningResultId, _kycProfileId ): Observable<any> {
 
@@ -109,7 +109,7 @@ export class ScreeningResultService extends HelperBaseService {
 		this.loadHelper( screeningResultId );
 
 	// get the KycProfile from storage
-	var tmp 	= new KycProfileService(this.http).editKycProfile(_kycProfileId);
+	var tmp 	= new KycProfileService(this.http).getKycProfile(_kycProfileId);
 
 	// assign the KycProfile
 	this.screeningResult.kycProfile = tmp;
@@ -120,8 +120,8 @@ export class ScreeningResultService extends HelperBaseService {
 
 	//********************************************************************
 	// unassigns a KycProfile on a ScreeningResult
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	unassignKycProfile( screeningResultId ): Observable<any> {
 
@@ -142,16 +142,16 @@ export class ScreeningResultService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Observable<any> {
 
-		const uri = this.apiUrl + '/ScreeningResult/update/' + this.screeningResult;
+		const uri_ = this.apiUrl + '/ScreeningResult/update/' + this.screeningResult;
 
-	return  this.http.post(uri, this.screeningResult );
+	return  this.http.post(uri_, this.screeningResult );
 }
 
 	//********************************************************************
 	// loadHelper - internal helper to load a ScreeningResult
 	//********************************************************************	
 	loadHelper( id ) {
-		this.editScreeningResult(id)
+		this.getScreeningResult(id)
 			.subscribe((res : ScreeningResult) => {
 				this.screeningResult = res;
 			});

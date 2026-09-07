@@ -2,19 +2,19 @@
 // Define collection and schema for Customer
 export interface Customer {
     firstName:
-	type : String
+	type : string
     lastName:
-	type : String
+	type : string
     legalName:
-	type : String
+	type : string
     dateOfBirth:
 	type : Date
     taxId:
-	type : String
+	type : string
     email:
-	type : String
+	type : string
     phone:
-	type : String
+	type : string
     address:
 	type : Address
     Bank:

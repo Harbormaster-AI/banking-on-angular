@@ -55,7 +55,7 @@ export class EditLoanPaymentComponent extends SubBaseComponent implements OnInit
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editLoanPayment(params['id']).subscribe(res => {
+            this.service.getLoanPayment(params['id']).subscribe(res => {
                 this.loanPayment = res;
             });
         });

@@ -33,10 +33,10 @@ export class ExternalAccountService extends HelperBaseService {
 		//********************************************************************
 	// add a ExternalAccount
 	// returns the results untouched as a JSON representation
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions) : Observable<any> {
-		const uri = this.apiUrl + '/ExternalAccount/add';
+		const uri_ = this.apiUrl + '/ExternalAccount/create';
 		const obj = {
 			      		name: name,
       		iban: iban,
@@ -48,42 +48,17 @@ export class ExternalAccountService extends HelperBaseService {
 			Transactions: Transactions != null && Transactions.length > 0 ? Transactions : null
 		};
 
-		return this.http.post(uri, obj);
-	}
-
-	//********************************************************************
-	// gets all ExternalAccount
-	// returns the results untouched as JSON representation of an
-	// array of ExternalAccount models
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	getExternalAccounts() : Observable<ExternalAccount[]> {
-		const uri = this.apiUrl + '/ExternalAccount';
-
-		return this
-			.http.get<ExternalAccount[]>(uri);
-	}
-
-	//********************************************************************
-	// edit a ExternalAccount
-	// returns the results untouched as a JSON representation of a
-	// ExternalAccount model
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	editExternalAccount(id) : Observable<ExternalAccount> {
-		const uri = this.apiUrl + '/ExternalAccount/edit/' + id;
-
-		return this.http.get<ExternalAccount>(uri);
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// update a ExternalAccount
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 		updateExternalAccount(name, iban, accountNumber, bic, bankName, country, Customer, Transactions, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/ExternalAccount/update/' + id;
-			const obj = {
+			const uri_ = this.apiUrl + '/ExternalAccount/update/' + id;
+		const obj = {
 				      		name: name,
       		iban: iban,
       		accountNumber: accountNumber,
@@ -92,25 +67,50 @@ export class ExternalAccountService extends HelperBaseService {
       		country: country,
       		Customer: Customer != null && Customer.length > 0 ? Customer : null,
 			Transactions: Transactions != null && Transactions.length > 0 ? Transactions : null
-			};
-		return this.http.post(uri, obj);
+		};
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// delete a ExternalAccount
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	deleteExternalAccount(id)  : Observable<any> {
-		const uri = this.apiUrl + '/ExternalAccount/delete/' + id;
+		const uri_ = this.apiUrl + '/ExternalAccount/delete/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(uri_);
 	}
+	
+	//********************************************************************
+	// loads a ExternalAccount
+	// returns the results untouched as an Observable ExternalAccount
+	// ExternalAccount model
+	// delegates via URI
+	//********************************************************************
+	getExternalAccount(id) : Observable<ExternalAccount> {
+		const uri_ = this.apiUrl + '/ExternalAccount/load/' + id;
 
+		return this.http.get<ExternalAccount>(uri_);
+	}
+	
+	//********************************************************************
+	// gets all ExternalAccount
+	// returns the results untouched as JSON representation of an
+	// Observable array of ExternalAccount models
+	// delegates via URI
+	//********************************************************************
+	getExternalAccounts() : Observable<ExternalAccount[]> {
+		const uri_ = this.apiUrl + '/ExternalAccount/';
+
+		return this
+			.http.get<ExternalAccount[]>(uri_);
+	}
+	
 			//********************************************************************
 	// assigns a Customer on a ExternalAccount
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	assignCustomer( externalAccountId, _customerId ): Observable<any> {
 
@@ -118,7 +118,7 @@ export class ExternalAccountService extends HelperBaseService {
 		this.loadHelper( externalAccountId );
 
 	// get the Customer from storage
-	var tmp 	= new CustomerService(this.http).editCustomer(_customerId);
+	var tmp 	= new CustomerService(this.http).getCustomer(_customerId);
 
 	// assign the Customer
 	this.externalAccount.customer = tmp;
@@ -129,8 +129,8 @@ export class ExternalAccountService extends HelperBaseService {
 
 	//********************************************************************
 	// unassigns a Customer on a ExternalAccount
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	unassignCustomer( externalAccountId ): Observable<any> {
 
@@ -149,7 +149,7 @@ export class ExternalAccountService extends HelperBaseService {
 	// adds one or more transactionsIds as a Transactions
 	// to a ExternalAccount
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addTransactions( externalAccountId, transactionsIds ): Observable<any> {
 
@@ -162,7 +162,7 @@ export class ExternalAccountService extends HelperBaseService {
 	// iterate over array of transactions ids
 	idList.forEach(function (id) {
 		// read the Transaction
-		var transaction = new TransactionService(this.http).editTransaction(id);
+		var transaction = new TransactionService(this.http).getTransaction(id);
 		// add the Transaction if not already assigned
 		if ( this.externalAccount.transactions.indexOf(transaction) == -1 )
 		this.externalAccount.transactions.push(transaction);
@@ -176,7 +176,7 @@ export class ExternalAccountService extends HelperBaseService {
 	// removes one or more transactionsIds as a Transactions
 	// from a ExternalAccount
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeTransactions( externalAccountId, transactionsIds ): Observable<any> {
 
@@ -209,16 +209,16 @@ export class ExternalAccountService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Observable<any> {
 
-		const uri = this.apiUrl + '/ExternalAccount/update/' + this.externalAccount;
+		const uri_ = this.apiUrl + '/ExternalAccount/update/' + this.externalAccount;
 
-	return  this.http.post(uri, this.externalAccount );
+	return  this.http.post(uri_, this.externalAccount );
 }
 
 	//********************************************************************
 	// loadHelper - internal helper to load a ExternalAccount
 	//********************************************************************	
 	loadHelper( id ) {
-		this.editExternalAccount(id)
+		this.getExternalAccount(id)
 			.subscribe((res : ExternalAccount) => {
 				this.externalAccount = res;
 			});

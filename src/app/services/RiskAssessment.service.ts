@@ -32,10 +32,10 @@ export class RiskAssessmentService extends HelperBaseService {
 		//********************************************************************
 	// add a RiskAssessment
 	// returns the results untouched as a JSON representation
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addRiskAssessment(score, assessedOn, KycProfile, Rating) : Observable<any> {
-		const uri = this.apiUrl + '/RiskAssessment/add';
+		const uri_ = this.apiUrl + '/RiskAssessment/create';
 		const obj = {
 			      		score: score,
       		assessedOn: assessedOn,
@@ -43,65 +43,65 @@ export class RiskAssessmentService extends HelperBaseService {
 			Rating: Rating
 		};
 
-		return this.http.post(uri, obj);
-	}
-
-	//********************************************************************
-	// gets all RiskAssessment
-	// returns the results untouched as JSON representation of an
-	// array of RiskAssessment models
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	getRiskAssessments() : Observable<RiskAssessment[]> {
-		const uri = this.apiUrl + '/RiskAssessment';
-
-		return this
-			.http.get<RiskAssessment[]>(uri);
-	}
-
-	//********************************************************************
-	// edit a RiskAssessment
-	// returns the results untouched as a JSON representation of a
-	// RiskAssessment model
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	editRiskAssessment(id) : Observable<RiskAssessment> {
-		const uri = this.apiUrl + '/RiskAssessment/edit/' + id;
-
-		return this.http.get<RiskAssessment>(uri);
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// update a RiskAssessment
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 		updateRiskAssessment(score, assessedOn, KycProfile, Rating, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/RiskAssessment/update/' + id;
-			const obj = {
+			const uri_ = this.apiUrl + '/RiskAssessment/update/' + id;
+		const obj = {
 				      		score: score,
       		assessedOn: assessedOn,
       		KycProfile: KycProfile != null && KycProfile.length > 0 ? KycProfile : null,
 			Rating: Rating
-			};
-		return this.http.post(uri, obj);
+		};
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// delete a RiskAssessment
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	deleteRiskAssessment(id)  : Observable<any> {
-		const uri = this.apiUrl + '/RiskAssessment/delete/' + id;
+		const uri_ = this.apiUrl + '/RiskAssessment/delete/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(uri_);
 	}
+	
+	//********************************************************************
+	// loads a RiskAssessment
+	// returns the results untouched as an Observable RiskAssessment
+	// RiskAssessment model
+	// delegates via URI
+	//********************************************************************
+	getRiskAssessment(id) : Observable<RiskAssessment> {
+		const uri_ = this.apiUrl + '/RiskAssessment/load/' + id;
 
+		return this.http.get<RiskAssessment>(uri_);
+	}
+	
+	//********************************************************************
+	// gets all RiskAssessment
+	// returns the results untouched as JSON representation of an
+	// Observable array of RiskAssessment models
+	// delegates via URI
+	//********************************************************************
+	getRiskAssessments() : Observable<RiskAssessment[]> {
+		const uri_ = this.apiUrl + '/RiskAssessment/';
+
+		return this
+			.http.get<RiskAssessment[]>(uri_);
+	}
+	
 			//********************************************************************
 	// assigns a KycProfile on a RiskAssessment
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	assignKycProfile( riskAssessmentId, _kycProfileId ): Observable<any> {
 
@@ -109,7 +109,7 @@ export class RiskAssessmentService extends HelperBaseService {
 		this.loadHelper( riskAssessmentId );
 
 	// get the KycProfile from storage
-	var tmp 	= new KycProfileService(this.http).editKycProfile(_kycProfileId);
+	var tmp 	= new KycProfileService(this.http).getKycProfile(_kycProfileId);
 
 	// assign the KycProfile
 	this.riskAssessment.kycProfile = tmp;
@@ -120,8 +120,8 @@ export class RiskAssessmentService extends HelperBaseService {
 
 	//********************************************************************
 	// unassigns a KycProfile on a RiskAssessment
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	unassignKycProfile( riskAssessmentId ): Observable<any> {
 
@@ -142,16 +142,16 @@ export class RiskAssessmentService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Observable<any> {
 
-		const uri = this.apiUrl + '/RiskAssessment/update/' + this.riskAssessment;
+		const uri_ = this.apiUrl + '/RiskAssessment/update/' + this.riskAssessment;
 
-	return  this.http.post(uri, this.riskAssessment );
+	return  this.http.post(uri_, this.riskAssessment );
 }
 
 	//********************************************************************
 	// loadHelper - internal helper to load a RiskAssessment
 	//********************************************************************	
 	loadHelper( id ) {
-		this.editRiskAssessment(id)
+		this.getRiskAssessment(id)
 			.subscribe((res : RiskAssessment) => {
 				this.riskAssessment = res;
 			});

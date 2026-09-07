@@ -6,9 +6,9 @@ export interface Account {
     iban:
 	type : IBAN
     accountName:
-	type : String
+	type : string
     currency:
-	type : String
+	type : string
     openedOn:
 	type : Date
     closedOn:

@@ -55,7 +55,7 @@ export class EditKycProfileComponent extends SubBaseComponent implements OnInit 
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editKycProfile(params['id']).subscribe(res => {
+            this.service.getKycProfile(params['id']).subscribe(res => {
                 this.kycProfile = res;
             });
         });

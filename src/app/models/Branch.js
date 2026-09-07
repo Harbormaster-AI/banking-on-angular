@@ -2,15 +2,15 @@
 // Define collection and schema for Branch
 export interface Branch {
     name:
-	type : String
+	type : string
     branchCode:
-	type : String
+	type : string
     address:
 	type : Address
     phone:
-	type : String
+	type : string
     openingHours:
-	type : String
+	type : string
     Bank:
 	type : Schema.Types.ObjectId
     Accounts:

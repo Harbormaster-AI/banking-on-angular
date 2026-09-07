@@ -2,15 +2,15 @@
 // Define collection and schema for ExchangeRate
 export interface ExchangeRate {
     baseCurrency:
-	type : String
+	type : string
     counterCurrency:
-	type : String
+	type : string
     rate:
 	type : String
     asOf:
 	type : Date
     source:
-	type : String
+	type : string
     Bank:
 	type : Schema.Types.ObjectId
     FxTrades:

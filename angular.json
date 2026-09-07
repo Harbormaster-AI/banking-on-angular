@@ -7,7 +7,7 @@
 "newProjectRoot": "projects",
 
 "projects": {
-"bankingonangular": {
+"banking-on-angular": {
 "root": "",
 "sourceRoot": "src",
 "projectType": "application",
@@ -24,7 +24,7 @@
 "builder": "@angular/build:application",
 
 "options": {
-"outputPath": "dist/bankingonangular",
+"outputPath": "dist/banking-on-angular",
 "index": "src/index.html",
 "browser": "src/main.ts",
 "tsConfig": "src/tsconfig.app.json",
@@ -74,11 +74,11 @@
 
 "configurations": {
 "production": {
-"buildTarget": "bankingonangular:build:production"
+"buildTarget": "banking-on-angular:build:production"
 },
 
 "development": {
-"buildTarget": "bankingonangular:build:development"
+"buildTarget": "banking-on-angular:build:development"
 }
 },
 
@@ -89,7 +89,7 @@
 "builder": "@angular-devkit/build-angular:extract-i18n",
 
 "options": {
-"buildTarget": "bankingonangular:build"
+"buildTarget": "banking-on-angular:build"
 }
 }
 }

@@ -2,7 +2,7 @@
 // Define collection and schema for LoanAccount
 export interface LoanAccount {
     loanNumber:
-	type : String
+	type : string
     principalAmount:
 	type : Money
     outstandingPrincipal:
@@ -14,9 +14,9 @@ export interface LoanAccount {
     maturityDate:
 	type : Date
     paymentDayOfMonth:
-	type : Number
+	type : number
     currency:
-	type : String
+	type : string
     Bank:
 	type : Schema.Types.ObjectId
     Branch:

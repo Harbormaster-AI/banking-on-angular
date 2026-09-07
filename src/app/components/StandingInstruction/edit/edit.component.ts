@@ -55,7 +55,7 @@ export class EditStandingInstructionComponent extends SubBaseComponent implement
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editStandingInstruction(params['id']).subscribe(res => {
+            this.service.getStandingInstruction(params['id']).subscribe(res => {
                 this.standingInstruction = res;
             });
         });

@@ -2,9 +2,9 @@
 // Define collection and schema for IdentityDocument
 export interface IdentityDocument {
     documentNumber:
-	type : String
+	type : string
     issuingCountry:
-	type : String
+	type : string
     expirationDate:
 	type : Date
     KycProfile:

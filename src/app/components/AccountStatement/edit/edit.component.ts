@@ -55,7 +55,7 @@ export class EditAccountStatementComponent extends SubBaseComponent implements O
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editAccountStatement(params['id']).subscribe(res => {
+            this.service.getAccountStatement(params['id']).subscribe(res => {
                 this.accountStatement = res;
             });
         });

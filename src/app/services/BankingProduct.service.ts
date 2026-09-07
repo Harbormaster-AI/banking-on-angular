@@ -35,10 +35,10 @@ export class BankingProductService extends HelperBaseService {
 		//********************************************************************
 	// add a BankingProduct
 	// returns the results untouched as a JSON representation
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addBankingProduct(productCode, name, description, Bank, Accounts, LoanAccounts, PaymentCards, ProductCategory) : Observable<any> {
-		const uri = this.apiUrl + '/BankingProduct/add';
+		const uri_ = this.apiUrl + '/BankingProduct/create';
 		const obj = {
 			      		productCode: productCode,
       		name: name,
@@ -50,42 +50,17 @@ export class BankingProductService extends HelperBaseService {
 			ProductCategory: ProductCategory
 		};
 
-		return this.http.post(uri, obj);
-	}
-
-	//********************************************************************
-	// gets all BankingProduct
-	// returns the results untouched as JSON representation of an
-	// array of BankingProduct models
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	getBankingProducts() : Observable<BankingProduct[]> {
-		const uri = this.apiUrl + '/BankingProduct';
-
-		return this
-			.http.get<BankingProduct[]>(uri);
-	}
-
-	//********************************************************************
-	// edit a BankingProduct
-	// returns the results untouched as a JSON representation of a
-	// BankingProduct model
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	editBankingProduct(id) : Observable<BankingProduct> {
-		const uri = this.apiUrl + '/BankingProduct/edit/' + id;
-
-		return this.http.get<BankingProduct>(uri);
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// update a BankingProduct
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 		updateBankingProduct(productCode, name, description, Bank, Accounts, LoanAccounts, PaymentCards, ProductCategory, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/BankingProduct/update/' + id;
-			const obj = {
+			const uri_ = this.apiUrl + '/BankingProduct/update/' + id;
+		const obj = {
 				      		productCode: productCode,
       		name: name,
       		description: description,
@@ -94,25 +69,50 @@ export class BankingProductService extends HelperBaseService {
       		LoanAccounts: LoanAccounts != null && LoanAccounts.length > 0 ? LoanAccounts : null,
       		PaymentCards: PaymentCards != null && PaymentCards.length > 0 ? PaymentCards : null,
 			ProductCategory: ProductCategory
-			};
-		return this.http.post(uri, obj);
+		};
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// delete a BankingProduct
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	deleteBankingProduct(id)  : Observable<any> {
-		const uri = this.apiUrl + '/BankingProduct/delete/' + id;
+		const uri_ = this.apiUrl + '/BankingProduct/delete/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(uri_);
 	}
+	
+	//********************************************************************
+	// loads a BankingProduct
+	// returns the results untouched as an Observable BankingProduct
+	// BankingProduct model
+	// delegates via URI
+	//********************************************************************
+	getBankingProduct(id) : Observable<BankingProduct> {
+		const uri_ = this.apiUrl + '/BankingProduct/load/' + id;
 
+		return this.http.get<BankingProduct>(uri_);
+	}
+	
+	//********************************************************************
+	// gets all BankingProduct
+	// returns the results untouched as JSON representation of an
+	// Observable array of BankingProduct models
+	// delegates via URI
+	//********************************************************************
+	getBankingProducts() : Observable<BankingProduct[]> {
+		const uri_ = this.apiUrl + '/BankingProduct/';
+
+		return this
+			.http.get<BankingProduct[]>(uri_);
+	}
+	
 			//********************************************************************
 	// assigns a Bank on a BankingProduct
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	assignBank( bankingProductId, _bankId ): Observable<any> {
 
@@ -120,7 +120,7 @@ export class BankingProductService extends HelperBaseService {
 		this.loadHelper( bankingProductId );
 
 	// get the Bank from storage
-	var tmp 	= new BankService(this.http).editBank(_bankId);
+	var tmp 	= new BankService(this.http).getBank(_bankId);
 
 	// assign the Bank
 	this.bankingProduct.bank = tmp;
@@ -131,8 +131,8 @@ export class BankingProductService extends HelperBaseService {
 
 	//********************************************************************
 	// unassigns a Bank on a BankingProduct
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	unassignBank( bankingProductId ): Observable<any> {
 
@@ -151,7 +151,7 @@ export class BankingProductService extends HelperBaseService {
 	// adds one or more accountsIds as a Accounts
 	// to a BankingProduct
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addAccounts( bankingProductId, accountsIds ): Observable<any> {
 
@@ -164,7 +164,7 @@ export class BankingProductService extends HelperBaseService {
 	// iterate over array of accounts ids
 	idList.forEach(function (id) {
 		// read the Account
-		var account = new AccountService(this.http).editAccount(id);
+		var account = new AccountService(this.http).getAccount(id);
 		// add the Account if not already assigned
 		if ( this.bankingProduct.accounts.indexOf(account) == -1 )
 		this.bankingProduct.accounts.push(account);
@@ -178,7 +178,7 @@ export class BankingProductService extends HelperBaseService {
 	// removes one or more accountsIds as a Accounts
 	// from a BankingProduct
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeAccounts( bankingProductId, accountsIds ): Observable<any> {
 
@@ -209,7 +209,7 @@ export class BankingProductService extends HelperBaseService {
 	// adds one or more loanAccountsIds as a LoanAccounts
 	// to a BankingProduct
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addLoanAccounts( bankingProductId, loanAccountsIds ): Observable<any> {
 
@@ -222,7 +222,7 @@ export class BankingProductService extends HelperBaseService {
 	// iterate over array of loanAccounts ids
 	idList.forEach(function (id) {
 		// read the LoanAccount
-		var loanAccount = new LoanAccountService(this.http).editLoanAccount(id);
+		var loanAccount = new LoanAccountService(this.http).getLoanAccount(id);
 		// add the LoanAccount if not already assigned
 		if ( this.bankingProduct.loanAccounts.indexOf(loanAccount) == -1 )
 		this.bankingProduct.loanAccounts.push(loanAccount);
@@ -236,7 +236,7 @@ export class BankingProductService extends HelperBaseService {
 	// removes one or more loanAccountsIds as a LoanAccounts
 	// from a BankingProduct
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removeLoanAccounts( bankingProductId, loanAccountsIds ): Observable<any> {
 
@@ -267,7 +267,7 @@ export class BankingProductService extends HelperBaseService {
 	// adds one or more paymentCardsIds as a PaymentCards
 	// to a BankingProduct
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addPaymentCards( bankingProductId, paymentCardsIds ): Observable<any> {
 
@@ -280,7 +280,7 @@ export class BankingProductService extends HelperBaseService {
 	// iterate over array of paymentCards ids
 	idList.forEach(function (id) {
 		// read the PaymentCard
-		var paymentCard = new PaymentCardService(this.http).editPaymentCard(id);
+		var paymentCard = new PaymentCardService(this.http).getPaymentCard(id);
 		// add the PaymentCard if not already assigned
 		if ( this.bankingProduct.paymentCards.indexOf(paymentCard) == -1 )
 		this.bankingProduct.paymentCards.push(paymentCard);
@@ -294,7 +294,7 @@ export class BankingProductService extends HelperBaseService {
 	// removes one or more paymentCardsIds as a PaymentCards
 	// from a BankingProduct
 	// returns a Promise
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	removePaymentCards( bankingProductId, paymentCardsIds ): Observable<any> {
 
@@ -327,16 +327,16 @@ export class BankingProductService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Observable<any> {
 
-		const uri = this.apiUrl + '/BankingProduct/update/' + this.bankingProduct;
+		const uri_ = this.apiUrl + '/BankingProduct/update/' + this.bankingProduct;
 
-	return  this.http.post(uri, this.bankingProduct );
+	return  this.http.post(uri_, this.bankingProduct );
 }
 
 	//********************************************************************
 	// loadHelper - internal helper to load a BankingProduct
 	//********************************************************************	
 	loadHelper( id ) {
-		this.editBankingProduct(id)
+		this.getBankingProduct(id)
 			.subscribe((res : BankingProduct) => {
 				this.bankingProduct = res;
 			});

@@ -2,7 +2,7 @@
 // Define collection and schema for FeeCharge
 export interface FeeCharge {
     feeCode:
-	type : String
+	type : string
     amount:
 	type : Money
     appliedOn:

@@ -65,7 +65,7 @@ export class EditAccountComponent extends SubBaseComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editAccount(params['id']).subscribe(res => {
+            this.service.getAccount(params['id']).subscribe(res => {
                 this.account = res;
             });
         });

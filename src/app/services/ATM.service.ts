@@ -32,10 +32,10 @@ export class ATMService extends HelperBaseService {
 		//********************************************************************
 	// add a ATM
 	// returns the results untouched as a JSON representation
-	// delegates via URI to an ORM handler
+	// delegates via URI
 	//********************************************************************
 	addATM(terminalId, location, Branch, Status) : Observable<any> {
-		const uri = this.apiUrl + '/ATM/add';
+		const uri_ = this.apiUrl + '/ATM/create';
 		const obj = {
 			      		terminalId: terminalId,
       		location: location,
@@ -43,65 +43,65 @@ export class ATMService extends HelperBaseService {
 			Status: Status
 		};
 
-		return this.http.post(uri, obj);
-	}
-
-	//********************************************************************
-	// gets all ATM
-	// returns the results untouched as JSON representation of an
-	// array of ATM models
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	getATMs() : Observable<ATM[]> {
-		const uri = this.apiUrl + '/ATM';
-
-		return this
-			.http.get<ATM[]>(uri);
-	}
-
-	//********************************************************************
-	// edit a ATM
-	// returns the results untouched as a JSON representation of a
-	// ATM model
-	// delegates via URI to an ORM handler
-	//********************************************************************
-	editATM(id) : Observable<ATM> {
-		const uri = this.apiUrl + '/ATM/edit/' + id;
-
-		return this.http.get<ATM>(uri);
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// update a ATM
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 		updateATM(terminalId, location, Branch, Status, id)  :  Observable<any>  {
-				const uri = this.apiUrl + '/ATM/update/' + id;
-			const obj = {
+			const uri_ = this.apiUrl + '/ATM/update/' + id;
+		const obj = {
 				      		terminalId: terminalId,
       		location: location,
       		Branch: Branch != null && Branch.length > 0 ? Branch : null,
 			Status: Status
-			};
-		return this.http.post(uri, obj);
+		};
+		return this.http.post(uri_, obj);
 	}
 
 	//********************************************************************
 	// delete a ATM
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	deleteATM(id)  : Observable<any> {
-		const uri = this.apiUrl + '/ATM/delete/' + id;
+		const uri_ = this.apiUrl + '/ATM/delete/' + id;
 
-		return this.http.get(uri);
+		return this.http.get(uri_);
 	}
+	
+	//********************************************************************
+	// loads a ATM
+	// returns the results untouched as an Observable ATM
+	// ATM model
+	// delegates via URI
+	//********************************************************************
+	getATM(id) : Observable<ATM> {
+		const uri_ = this.apiUrl + '/ATM/load/' + id;
 
+		return this.http.get<ATM>(uri_);
+	}
+	
+	//********************************************************************
+	// gets all ATM
+	// returns the results untouched as JSON representation of an
+	// Observable array of ATM models
+	// delegates via URI
+	//********************************************************************
+	getATMs() : Observable<ATM[]> {
+		const uri_ = this.apiUrl + '/ATM/';
+
+		return this
+			.http.get<ATM[]>(uri_);
+	}
+	
 			//********************************************************************
 	// assigns a Branch on a ATM
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	assignBranch( aTMId, _branchId ): Observable<any> {
 
@@ -109,7 +109,7 @@ export class ATMService extends HelperBaseService {
 		this.loadHelper( aTMId );
 
 	// get the Branch from storage
-	var tmp 	= new BranchService(this.http).editBranch(_branchId);
+	var tmp 	= new BranchService(this.http).getBranch(_branchId);
 
 	// assign the Branch
 	this.aTM.branch = tmp;
@@ -120,8 +120,8 @@ export class ATMService extends HelperBaseService {
 
 	//********************************************************************
 	// unassigns a Branch on a ATM
-	// returns a Promise
-	// delegates via URI to an ORM handler
+	// returns an Observable
+	// delegates via URI
 	//********************************************************************
 	unassignBranch( aTMId ): Observable<any> {
 
@@ -142,16 +142,16 @@ export class ATMService extends HelperBaseService {
 	//********************************************************************
 	saveHelper() : Observable<any> {
 
-		const uri = this.apiUrl + '/ATM/update/' + this.aTM;
+		const uri_ = this.apiUrl + '/ATM/update/' + this.aTM;
 
-	return  this.http.post(uri, this.aTM );
+	return  this.http.post(uri_, this.aTM );
 }
 
 	//********************************************************************
 	// loadHelper - internal helper to load a ATM
 	//********************************************************************	
 	loadHelper( id ) {
-		this.editATM(id)
+		this.getATM(id)
 			.subscribe((res : ATM) => {
 				this.aTM = res;
 			});

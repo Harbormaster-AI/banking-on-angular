@@ -53,7 +53,7 @@ export class EditCollateralComponent extends SubBaseComponent implements OnInit 
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
-            this.service.editCollateral(params['id']).subscribe(res => {
+            this.service.getCollateral(params['id']).subscribe(res => {
                 this.collateral = res;
             });
         });
