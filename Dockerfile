@@ -1,7 +1,7 @@
 FROM nginx:alpine
 
 RUN rm -rf /usr/share/nginx/html/*
-COPY packaged-application/${$appName}/browser/ /usr/share/nginx/html/
+COPY packaged-application/bankingonangular/browser/ /usr/share/nginx/html/
 
 RUN printf '%s\n' \
     'server {' \

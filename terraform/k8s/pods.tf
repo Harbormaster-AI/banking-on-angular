@@ -20,11 +20,11 @@ resource "kubernetes_replication_controller" "app-master" {
 
             spec {
                 container {
-                    image = ":latest"
+                    image = "${dbEngine}:latest"
                     name  = "db-container"
 
                     port {
-                        container_port = unset-value
+                        container_port = ${dbPort}
                     }
 
                     resources {
@@ -35,12 +35,13 @@ resource "kubernetes_replication_controller" "app-master" {
                     }
                 }
                 container {
-                    image = "theharbormaster/banking-on-angular:latest"
+                    image = "#DockerComposePlatformImage()"
                     name  = "app-container"
 
                 port {
                     container_port = #DefaultPort()
                 }
+#DockerComposeDBEnvironment()
                 resources {
                     requests {
                         cpu    = "100m"
