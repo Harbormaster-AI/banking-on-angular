@@ -1,3 +1,4 @@
+
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -32,7 +33,8 @@ export class EditCollateralComponent extends SubBaseComponent implements OnInit 
 
     createForm(): FormGroup {
         return this.fb.group({
-                  appraisedValue: ['', Validators.required],
+                  collateralIdentifier: ['', Validators.required],
+      appraisedValue: ['', Validators.required],
       description: ['', Validators.required],
       location: ['', Validators.required],
       LoanAccount: ['', ],
@@ -41,10 +43,10 @@ export class EditCollateralComponent extends SubBaseComponent implements OnInit 
     }
 
     
-    updateCollateral(appraisedValue, description, location, LoanAccount, CollateralType): void {
+    updateCollateral(collateralIdentifier, appraisedValue, description, location, LoanAccount, CollateralType): void {
         this.route.params.subscribe((params) => {
 
-                        this.service.updateCollateral(appraisedValue, description, location, LoanAccount, CollateralType, params['id'])
+                        this.service.updateCollateral(collateralIdentifier, appraisedValue, description, location, LoanAccount, CollateralType, params['id'])
                             .subscribe(() => {
                     this.router.navigate(['/indexCollateral']);
                 });

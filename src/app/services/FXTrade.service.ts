@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -120,7 +121,8 @@ export class FXTradeService extends HelperBaseService {
 			.http.get<FXTrade[]>(uri_);
 	}
 	
-			//********************************************************************
+		
+	//********************************************************************
 	// assigns a Customer on a FXTrade
 	// returns an Observable
 	// delegates via URI
@@ -157,7 +159,8 @@ export class FXTradeService extends HelperBaseService {
 	return this.saveHelper();
 }
 
-		//********************************************************************
+	
+	//********************************************************************
 	// assigns a Bank on a FXTrade
 	// returns an Observable
 	// delegates via URI
@@ -194,7 +197,8 @@ export class FXTradeService extends HelperBaseService {
 	return this.saveHelper();
 }
 
-		//********************************************************************
+	
+	//********************************************************************
 	// assigns a ExchangeRate on a FXTrade
 	// returns an Observable
 	// delegates via URI
@@ -231,7 +235,8 @@ export class FXTradeService extends HelperBaseService {
 	return this.saveHelper();
 }
 
-		//********************************************************************
+	
+	//********************************************************************
 	// assigns a SourceAccount on a FXTrade
 	// returns an Observable
 	// delegates via URI
@@ -268,7 +273,8 @@ export class FXTradeService extends HelperBaseService {
 	return this.saveHelper();
 }
 
-		//********************************************************************
+	
+	//********************************************************************
 	// assigns a DestinationAccount on a FXTrade
 	// returns an Observable
 	// delegates via URI
@@ -305,7 +311,8 @@ export class FXTradeService extends HelperBaseService {
 	return this.saveHelper();
 }
 
-		//********************************************************************
+	
+	//********************************************************************
 	// assigns a Transaction on a FXTrade
 	// returns an Observable
 	// delegates via URI

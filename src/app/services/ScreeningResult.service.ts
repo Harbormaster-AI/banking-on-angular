@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -98,7 +99,8 @@ export class ScreeningResultService extends HelperBaseService {
 			.http.get<ScreeningResult[]>(uri_);
 	}
 	
-			//********************************************************************
+		
+	//********************************************************************
 	// assigns a KycProfile on a ScreeningResult
 	// returns an Observable
 	// delegates via URI

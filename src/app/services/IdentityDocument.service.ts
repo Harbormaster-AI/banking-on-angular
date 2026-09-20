@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -100,7 +101,8 @@ export class IdentityDocumentService extends HelperBaseService {
 			.http.get<IdentityDocument[]>(uri_);
 	}
 	
-			//********************************************************************
+		
+	//********************************************************************
 	// assigns a KycProfile on a IdentityDocument
 	// returns an Observable
 	// delegates via URI

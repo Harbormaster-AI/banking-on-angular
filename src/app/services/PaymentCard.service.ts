@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -115,7 +116,8 @@ export class PaymentCardService extends HelperBaseService {
 			.http.get<PaymentCard[]>(uri_);
 	}
 	
-			//********************************************************************
+		
+	//********************************************************************
 	// assigns a Bank on a PaymentCard
 	// returns an Observable
 	// delegates via URI
@@ -152,7 +154,8 @@ export class PaymentCardService extends HelperBaseService {
 	return this.saveHelper();
 }
 
-		//********************************************************************
+	
+	//********************************************************************
 	// assigns a Account on a PaymentCard
 	// returns an Observable
 	// delegates via URI
@@ -189,7 +192,8 @@ export class PaymentCardService extends HelperBaseService {
 	return this.saveHelper();
 }
 
-		//********************************************************************
+	
+	//********************************************************************
 	// assigns a Customer on a PaymentCard
 	// returns an Observable
 	// delegates via URI

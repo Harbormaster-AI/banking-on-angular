@@ -1,4 +1,5 @@
 
+
 // Define collection and schema for Bank
 export interface Bank {
     name:

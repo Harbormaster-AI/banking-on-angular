@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -109,7 +110,8 @@ export class ConsentService extends HelperBaseService {
 			.http.get<Consent[]>(uri_);
 	}
 	
-			//********************************************************************
+		
+	//********************************************************************
 	// assigns a Customer on a Consent
 	// returns an Observable
 	// delegates via URI
@@ -146,7 +148,8 @@ export class ConsentService extends HelperBaseService {
 	return this.saveHelper();
 }
 
-		//********************************************************************
+	
+	//********************************************************************
 	// assigns a Bank on a Consent
 	// returns an Observable
 	// delegates via URI
@@ -183,7 +186,8 @@ export class ConsentService extends HelperBaseService {
 	return this.saveHelper();
 }
 
-		//********************************************************************
+	
+	//********************************************************************
 	// assigns a ThirdPartyProvider on a Consent
 	// returns an Observable
 	// delegates via URI

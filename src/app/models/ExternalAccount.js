@@ -1,4 +1,5 @@
 
+
 // Define collection and schema for ExternalAccount
 export interface ExternalAccount {
     name:

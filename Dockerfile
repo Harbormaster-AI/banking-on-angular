@@ -1,20 +1,12 @@
-FROM nginx:alpine
 
-RUN rm -rf /usr/share/nginx/html/*
-COPY . /usr/share/nginx/html/
+FROM node:22-alpine
 
-RUN printf '%s\n' \
-    'server {' \
-    '    listen 80;' \
-    '    server_name _;' \
-    '    root /usr/share/nginx/html;' \
-    '    index index.html;' \
-    '    location / {' \
-    '        try_files $uri $uri/ /index.html;' \
-    '    }' \
-    '}' \
-    > /etc/nginx/conf.d/default.conf
+#dockerHeader()
 
-EXPOSE 80
+WORKDIR /app
 
-CMD ["nginx", "-g", "daemon off;"]
+COPY . .
+
+EXPOSE 4000
+
+CMD ["node", "dist/server.js"]

@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -34,10 +35,11 @@ export class CollateralService extends HelperBaseService {
 	// returns the results untouched as a JSON representation
 	// delegates via URI
 	//********************************************************************
-	addCollateral(appraisedValue, description, location, LoanAccount, CollateralType) : Observable<any> {
+	addCollateral(collateralIdentifier, appraisedValue, description, location, LoanAccount, CollateralType) : Observable<any> {
 		const uri_ = this.apiUrl + '/Collateral/create';
 		const obj = {
-			      		appraisedValue: appraisedValue,
+			      		collateralIdentifier: collateralIdentifier,
+      		appraisedValue: appraisedValue,
       		description: description,
       		location: location,
       		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
@@ -52,10 +54,11 @@ export class CollateralService extends HelperBaseService {
 	// returns an Observable
 	// delegates via URI
 	//********************************************************************
-		updateCollateral(appraisedValue, description, location, LoanAccount, CollateralType, id)  :  Observable<any>  {
+		updateCollateral(collateralIdentifier, appraisedValue, description, location, LoanAccount, CollateralType, id)  :  Observable<any>  {
 			const uri_ = this.apiUrl + '/Collateral/update/' + id;
 		const obj = {
-				      		appraisedValue: appraisedValue,
+				      		collateralIdentifier: collateralIdentifier,
+      		appraisedValue: appraisedValue,
       		description: description,
       		location: location,
       		LoanAccount: LoanAccount != null && LoanAccount.length > 0 ? LoanAccount : null,
@@ -100,7 +103,8 @@ export class CollateralService extends HelperBaseService {
 			.http.get<Collateral[]>(uri_);
 	}
 	
-			//********************************************************************
+		
+	//********************************************************************
 	// assigns a LoanAccount on a Collateral
 	// returns an Observable
 	// delegates via URI

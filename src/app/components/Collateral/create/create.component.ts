@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -30,7 +31,8 @@ export class CreateCollateralComponent extends SubBaseComponent implements OnIni
 
     createForm(): FormGroup {
         return this.fb.group({
-                  appraisedValue: ['', Validators.required],
+                  collateralIdentifier: ['', Validators.required],
+      appraisedValue: ['', Validators.required],
       description: ['', Validators.required],
       location: ['', Validators.required],
       LoanAccount: ['', ],
@@ -39,9 +41,9 @@ export class CreateCollateralComponent extends SubBaseComponent implements OnIni
     }
 
     
-    addCollateral(appraisedValue, description, location, LoanAccount, CollateralType): void {
+    addCollateral(collateralIdentifier, appraisedValue, description, location, LoanAccount, CollateralType): void {
         this.collateralService
-        .addCollateral(appraisedValue, description, location, LoanAccount, CollateralType)
+        .addCollateral(collateralIdentifier, appraisedValue, description, location, LoanAccount, CollateralType)
             .subscribe(() => {
                 this.router.navigate(['/indexCollateral']);
             });

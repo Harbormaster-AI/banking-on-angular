@@ -1,4 +1,5 @@
 
+
 // Define collection and schema for FXTrade
 export interface FXTrade {
     tradeReference:

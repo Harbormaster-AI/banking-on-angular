@@ -13,7 +13,8 @@
     <table class="table table-hover table-striped table-bordered table-sm">
         <thead>
         <tr class="table-dark text-center">
-                                    <th scope="col">appraisedValue</th>
+                                    <th scope="col">collateralIdentifier</th>
+                        <th scope="col">appraisedValue</th>
                         <th scope="col">description</th>
                         <th scope="col">location</th>
                         <th scope="col">CollateralType</th>
@@ -26,6 +27,9 @@
             <tr
                     class="text-center">
 
+                                <td class="align-middle">
+                    {{ collateral.collateralIdentifier }}
+                </td>
                                 <td class="align-middle">
                     {{ collateral.appraisedValue }}
                 </td>
@@ -63,7 +67,7 @@
         @if (collaterals?.length === 0) {
             <tr>
                 <td
-                        colspan="6"
+                        colspan="7"
                         class="text-center">
                     No collaterals found.
                 </td>

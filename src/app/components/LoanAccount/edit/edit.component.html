@@ -130,7 +130,7 @@
 						@for (collateral of collaterals; track collateral.collateralId) {
 							<mat-option name="loanAccount.Collateral" ngDefaultControl
 							            [value]="collateral.collateralId">
-								{{collateral.appraisedValue}}
+								{{collateral.collateralIdentifier}}
 							</mat-option>
 						}
 					</mat-select>

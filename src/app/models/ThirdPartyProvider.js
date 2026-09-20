@@ -1,4 +1,5 @@
 
+
 // Define collection and schema for ThirdPartyProvider
 export interface ThirdPartyProvider {
     name:

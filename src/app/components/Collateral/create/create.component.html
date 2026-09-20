@@ -5,6 +5,12 @@
 
 	<div class="card-body">
 																																																																																																<mat-form-field appearance="outline">
+								<mat-label>collateralIdentifier</mat-label>
+								<input matInput ngDefaultControl placeholder="collateralIdentifier" name="collateral.collateralIdentifier" [(ngModel)]="collateral.collateralIdentifier">
+								<mat-hint></mat-hint>
+							</mat-form-field>
+																																												<p>
+																																																																																				<mat-form-field appearance="outline">
 								<mat-label>appraisedValue</mat-label>
 								<input matInput ngDefaultControl placeholder="appraisedValue" name="collateral.appraisedValue" [(ngModel)]="collateral.appraisedValue">
 								<mat-hint></mat-hint>
@@ -45,8 +51,8 @@
 						</mat-select>
 					</mat-form-field>
 																																	<p>
-																						 																							 																							 																										 																							 										<button
-				(click)="addCollateral(collateral.appraisedValue, collateral.description, collateral.location, collateral.LoanAccount, collateral.CollateralType)"
+																						 																							 																							 																							 																										 																							 										<button
+				(click)="addCollateral(collateral.collateralIdentifier, collateral.appraisedValue, collateral.description, collateral.location, collateral.LoanAccount, collateral.CollateralType)"
 							class="btn btn-primary">add
 		</button>
 	</div> <!-- panel body -->

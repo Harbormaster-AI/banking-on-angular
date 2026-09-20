@@ -1,4 +1,5 @@
 
+
 // Define collection and schema for ScreeningResult
 export interface ScreeningResult {
     screeningDate:

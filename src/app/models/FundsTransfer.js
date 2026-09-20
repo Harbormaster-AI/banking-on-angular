@@ -1,4 +1,5 @@
 
+
 // Define collection and schema for FundsTransfer
 export interface FundsTransfer {
     transferReference:

@@ -1,6 +1,9 @@
 
+
 // Define collection and schema for Collateral
 export interface Collateral {
+    collateralIdentifier:
+	type : string
     appraisedValue:
 	type : Money
     description:

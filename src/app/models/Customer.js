@@ -1,4 +1,5 @@
 
+
 // Define collection and schema for Customer
 export interface Customer {
     firstName:

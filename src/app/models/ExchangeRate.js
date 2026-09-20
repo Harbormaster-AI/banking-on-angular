@@ -1,4 +1,5 @@
 
+
 // Define collection and schema for ExchangeRate
 export interface ExchangeRate {
     baseCurrency:

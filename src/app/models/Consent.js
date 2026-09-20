@@ -1,4 +1,5 @@
 
+
 // Define collection and schema for Consent
 export interface Consent {
     grantedOn:

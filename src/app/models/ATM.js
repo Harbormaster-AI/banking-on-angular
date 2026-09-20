@@ -1,4 +1,5 @@
 
+
 // Define collection and schema for ATM
 export interface ATM {
     terminalId:

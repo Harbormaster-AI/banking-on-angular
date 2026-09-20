@@ -8,5 +8,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Welcome to banking-on-angular';
+  title = 'Welcome to bankingOnAngular';
 }

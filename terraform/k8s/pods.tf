@@ -7,45 +7,57 @@ resource "kubernetes_replication_controller" "app-master" {
         replicas = 1
 
         selector = {
-            app  = "banking-on-angular"
+            app  = "bankingOnAngular"
         }
 
         template {
 
             metadata {
                 labels = {
-                    app  = "bankingbackend"
+                    app  = "bankingOnAngular"
                 }
             }
 
             spec {
                 container {
-                    image = "${dbEngine}:latest"
+                    image = "mysql:latest"
                     name  = "db-container"
 
                     port {
-                        container_port = ${dbPort}
+                        container_port = 3306
                     }
 
                     resources {
-                        requests {
+                        requests = {
                             cpu    = "100m"
                             memory = "100Mi"
                         }
                     }
                 }
                 container {
-                    image = "#DockerComposePlatformImage()"
+                    image = "theharbormaster/banking-on-angular:latest"
                     name  = "app-container"
 
-                port {
-                    container_port = #DefaultPort()
-                }
-#DockerComposeDBEnvironment()
-                resources {
-                    requests {
-                        cpu    = "100m"
-                        memory = "100Mi"
+                    port {
+                        container_port = ${appPort}
+                    }
+                    env {
+                        name  = "DATABASE_DIALECT"
+                        value = "com.mysql.cj.jdbc.Driver"
+                    }
+                    env {
+                        name  = "DATABASE_URL"
+                        value = "jdbc:mysql://db:3306/developmentdb?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true"
+                    }
+                    env {
+                        name  = "DATABASE_PASSWORD"
+                        value = "letmein2"
+                    }
+                    resources {
+                        requests = {
+                            cpu    = "100m"
+                            memory = "100Mi"
+                        }
                     }
                 }
             }

@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -105,7 +106,8 @@ export class LoanPaymentService extends HelperBaseService {
 			.http.get<LoanPayment[]>(uri_);
 	}
 	
-			//********************************************************************
+		
+	//********************************************************************
 	// assigns a LoanAccount on a LoanPayment
 	// returns an Observable
 	// delegates via URI
@@ -142,7 +144,8 @@ export class LoanPaymentService extends HelperBaseService {
 	return this.saveHelper();
 }
 
-		//********************************************************************
+	
+	//********************************************************************
 	// assigns a Transaction on a LoanPayment
 	// returns an Observable
 	// delegates via URI

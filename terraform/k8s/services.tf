@@ -5,27 +5,27 @@ resource "kubernetes_service" "app-master" {
 
     spec {
         selector = {
-          app  = "banking-on-angular"
+          app  = "bankingOnAngular"
         }
         port {
             name        = "http"
             port        = 80
-            target_port = #DefaultPort()
+            target_port = ${}appPort}
         }
 
         port {
             name        = "db-port"
-            port        = 
-            target_port = 
+            port        = 3306
+            target_port = 3306
         }
 
         port {
-            port        = #DefaultPort()
-            target_port = #DefaultPort()
+            port        = 4000
+            target_port = 4000
             name        = "app-port"
         }
 
-        type = ""
+        type = "LoadBalancer"
     }
   
 }

@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -123,7 +124,8 @@ export class TransactionService extends HelperBaseService {
 			.http.get<Transaction[]>(uri_);
 	}
 	
-			//********************************************************************
+		
+	//********************************************************************
 	// assigns a Account on a Transaction
 	// returns an Observable
 	// delegates via URI
@@ -160,7 +162,8 @@ export class TransactionService extends HelperBaseService {
 	return this.saveHelper();
 }
 
-		//********************************************************************
+	
+	//********************************************************************
 	// assigns a ExternalCounterparty on a Transaction
 	// returns an Observable
 	// delegates via URI
@@ -197,7 +200,8 @@ export class TransactionService extends HelperBaseService {
 	return this.saveHelper();
 }
 
-		//********************************************************************
+	
+	//********************************************************************
 	// assigns a PaymentCard on a Transaction
 	// returns an Observable
 	// delegates via URI
@@ -234,7 +238,8 @@ export class TransactionService extends HelperBaseService {
 	return this.saveHelper();
 }
 
-		//********************************************************************
+	
+	//********************************************************************
 	// assigns a FundsTransfer on a Transaction
 	// returns an Observable
 	// delegates via URI
@@ -271,7 +276,8 @@ export class TransactionService extends HelperBaseService {
 	return this.saveHelper();
 }
 
-		//********************************************************************
+	
+	//********************************************************************
 	// assigns a FxTrade on a Transaction
 	// returns an Observable
 	// delegates via URI
@@ -308,7 +314,8 @@ export class TransactionService extends HelperBaseService {
 	return this.saveHelper();
 }
 
-		//********************************************************************
+	
+	//********************************************************************
 	// assigns a Dispute on a Transaction
 	// returns an Observable
 	// delegates via URI
