@@ -9,6 +9,5 @@ export  StandingInstruction {
     Beneficiary: Schema.Types.ObjectId
     Frequency:  String
     Status:  String
-#
     collection: 'standingInstructions'
 }

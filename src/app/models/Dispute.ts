@@ -10,6 +10,5 @@ export  Dispute {
     Account: Schema.Types.ObjectId
     PaymentCard: Schema.Types.ObjectId
     Status:  String
-#
     collection: 'disputes'
 }

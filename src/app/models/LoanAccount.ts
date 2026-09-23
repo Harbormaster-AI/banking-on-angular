@@ -22,6 +22,5 @@ export  LoanAccount {
     RateType:  String
     Compounding:  String
     Status:  String
-#
     collection: 'loanAccounts'
 }

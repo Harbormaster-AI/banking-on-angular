@@ -7,6 +7,5 @@ export  IdentityDocument {
     expirationDate: Date
     KycProfile: Schema.Types.ObjectId
     DocumentType:  String
-#
     collection: 'identityDocuments'
 }

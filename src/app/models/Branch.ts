@@ -11,6 +11,5 @@ export  Branch {
     Accounts:  [{ type: Schema.Types.ObjectId, ref: 'Account' }]
     LoanAccounts:  [{ type: Schema.Types.ObjectId, ref: 'LoanAccount' }]
     Atms:  [{ type: Schema.Types.ObjectId, ref: 'ATM' }]
-#
     collection: 'branchs'
 }

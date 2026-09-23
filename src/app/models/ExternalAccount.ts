@@ -10,6 +10,5 @@ export  ExternalAccount {
     country: string
     Customer: Schema.Types.ObjectId
     Transactions:  [{ type: Schema.Types.ObjectId, ref: 'Transaction' }]
-#
     collection: 'externalAccounts'
 }

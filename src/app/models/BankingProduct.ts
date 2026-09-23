@@ -10,6 +10,5 @@ export  BankingProduct {
     LoanAccounts:  [{ type: Schema.Types.ObjectId, ref: 'LoanAccount' }]
     PaymentCards:  [{ type: Schema.Types.ObjectId, ref: 'PaymentCard' }]
     ProductCategory:  String
-#
     collection: 'bankingProducts'
 }

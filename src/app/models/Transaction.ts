@@ -16,6 +16,5 @@ export  Transaction {
     TransactionType:  String
     Status:  String
     Channel:  String
-#
     collection: 'transactions'
 }

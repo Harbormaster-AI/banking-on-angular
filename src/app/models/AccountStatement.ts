@@ -9,6 +9,5 @@ export  AccountStatement {
     closingBalance: Money
     Account: Schema.Types.ObjectId
     DeliveryMethod:  String
-#
     collection: 'accountStatements'
 }

@@ -19,6 +19,5 @@ export  Account {
     AccountType:  String
     OwnershipType:  String
     Status:  String
-#
     collection: 'accounts'
 }

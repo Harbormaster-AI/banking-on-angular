@@ -10,6 +10,5 @@ export  Consent {
     ThirdPartyProvider: Schema.Types.ObjectId
     ConsentType:  String
     Status:  String
-#
     collection: 'consents'
 }

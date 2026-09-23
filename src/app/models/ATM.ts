@@ -6,6 +6,5 @@ export  ATM {
     location: Address
     Branch: Schema.Types.ObjectId
     Status:  String
-#
     collection: 'aTMs'
 }

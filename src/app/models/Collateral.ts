@@ -8,6 +8,5 @@ export  Collateral {
     location: Address
     LoanAccount: Schema.Types.ObjectId
     CollateralType:  String
-#
     collection: 'collaterals'
 }

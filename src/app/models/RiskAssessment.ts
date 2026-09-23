@@ -6,6 +6,5 @@ export  RiskAssessment {
     assessedOn: Date
     KycProfile: Schema.Types.ObjectId
     Rating:  String
-#
     collection: 'riskAssessments'
 }

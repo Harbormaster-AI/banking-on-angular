@@ -13,6 +13,5 @@ export  PaymentCard {
     CardType:  String
     CardStatus:  String
     Network:  String
-#
     collection: 'paymentCards'
 }

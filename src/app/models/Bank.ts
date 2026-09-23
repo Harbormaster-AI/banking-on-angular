@@ -16,6 +16,5 @@ export  Bank {
     ExchangeRates:  [{ type: Schema.Types.ObjectId, ref: 'ExchangeRate' }]
     Consents:  [{ type: Schema.Types.ObjectId, ref: 'Consent' }]
     ThirdPartyProviders:  [{ type: Schema.Types.ObjectId, ref: 'ThirdPartyProvider' }]
-#
     collection: 'banks'
 }

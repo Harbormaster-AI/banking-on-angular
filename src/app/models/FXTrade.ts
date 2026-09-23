@@ -15,6 +15,5 @@ export  FXTrade {
     DestinationAccount: Schema.Types.ObjectId
     Transaction: Schema.Types.ObjectId
     Status:  String
-#
     collection: 'fXTrades'
 }

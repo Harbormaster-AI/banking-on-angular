@@ -10,6 +10,5 @@ export  RepaymentSchedule {
     LoanAccount: Schema.Types.ObjectId
     Payment: Schema.Types.ObjectId
     Status:  String
-#
     collection: 'repaymentSchedules'
 }

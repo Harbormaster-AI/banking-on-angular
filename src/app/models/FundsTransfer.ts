@@ -15,6 +15,5 @@ export  FundsTransfer {
     Transactions:  [{ type: Schema.Types.ObjectId, ref: 'Transaction' }]
     Method:  String
     Status:  String
-#
     collection: 'fundsTransfers'
 }

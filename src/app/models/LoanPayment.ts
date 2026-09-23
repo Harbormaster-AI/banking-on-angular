@@ -9,6 +9,5 @@ export  LoanPayment {
     Transaction: Schema.Types.ObjectId
     Method:  String
     Status:  String
-#
     collection: 'loanPayments'
 }

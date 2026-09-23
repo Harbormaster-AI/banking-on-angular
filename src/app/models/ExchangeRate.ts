@@ -9,6 +9,5 @@ export  ExchangeRate {
     source: string
     Bank: Schema.Types.ObjectId
     FxTrades:  [{ type: Schema.Types.ObjectId, ref: 'FXTrade' }]
-#
     collection: 'exchangeRates'
 }

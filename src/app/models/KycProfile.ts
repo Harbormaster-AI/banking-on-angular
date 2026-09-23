@@ -9,6 +9,5 @@ export  KycProfile {
     RiskAssessments:  [{ type: Schema.Types.ObjectId, ref: 'RiskAssessment' }]
     Screenings:  [{ type: Schema.Types.ObjectId, ref: 'ScreeningResult' }]
     Status:  String
-#
     collection: 'kycProfiles'
 }

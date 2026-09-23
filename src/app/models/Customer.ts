@@ -22,6 +22,5 @@ export  Customer {
     CustomerType:  String
     RiskRating:  String
     KycStatus:  String
-#
     collection: 'customers'
 }

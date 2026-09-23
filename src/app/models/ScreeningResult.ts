@@ -6,6 +6,5 @@ export  ScreeningResult {
     provider: string
     KycProfile: Schema.Types.ObjectId
     Outcome:  String
-#
     collection: 'screeningResults'
 }

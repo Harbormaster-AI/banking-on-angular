@@ -8,6 +8,5 @@ export  FeeCharge {
     Account: Schema.Types.ObjectId
     LoanAccount: Schema.Types.ObjectId
     FeeType:  String
-#
     collection: 'feeCharges'
 }

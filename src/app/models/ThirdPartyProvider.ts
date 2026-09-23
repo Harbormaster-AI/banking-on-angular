@@ -7,6 +7,5 @@ export  ThirdPartyProvider {
     website: string
     Bank: Schema.Types.ObjectId
     Consents:  [{ type: Schema.Types.ObjectId, ref: 'Consent' }]
-#
     collection: 'thirdPartyProviders'
 }
