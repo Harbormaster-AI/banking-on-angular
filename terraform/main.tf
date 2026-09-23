@@ -12,7 +12,7 @@ provider "aws" {
       CreatedBy = "Harbormaster"
       Blueprint = "Angular-22"
       DomainModel = "Banking Industry Domain Model"
-      CertificationId = "aedb64a0-83f6-401d-bba7-3723c0be9684"
+      CertificationId = "82cd73f0-1901-4458-9a61-28448be644a9"
     }
   }
 }
@@ -39,7 +39,7 @@ resource "local_file" "private_key_pem" {
 }
 
 resource "aws_key_pair" "generated" {
-  key_name   = "pjsk-sshtest-0.5734969187474175"
+  key_name   = "pjsk-sshtest-0.20636243451594627"
   public_key = tls_private_key.generated.public_key_openssh
 
   lifecycle {
@@ -92,7 +92,7 @@ resource "aws_route_table_association" "default" {
 
 # bug: RDS must use DB subnet group in same VPC
 resource "aws_db_subnet_group" "default" {
-  name       = "bankingOnAngular-db-subnet"
+  name       = "bankingonangular-db-subnet"
   subnet_ids = [aws_subnet.default.id, aws_subnet.secondary.id]
 }
 
@@ -102,8 +102,8 @@ resource "aws_db_subnet_group" "default" {
 # -------------------------------------------------------
 
 resource "aws_security_group" "web" {
-#  name        = "bankingOnAngular-security-group-from-terraform" #optional, when omitted, terraform creates a random name
-  description = "security group for application bankingOnAngular created from terraform"
+#  name        = "bankingonangular-security-group-from-terraform" #optional, when omitted, terraform creates a random name
+  description = "security group for application bankingonangular created from terraform"
   vpc_id      = aws_vpc.default.id
 
   # SSH access from anywhere
@@ -144,7 +144,7 @@ resource "aws_security_group" "web" {
 # -------------------------------------------------------
 
 resource "aws_security_group" "db" {
-  description = "security group for bankingOnAngular and mysql created from terraform"
+  description = "security group for bankingonangular and mysql created from terraform"
   vpc_id      = aws_vpc.default.id
 
   # mysql access from anywhere
@@ -166,11 +166,11 @@ resource "aws_security_group" "db" {
 
 resource "aws_db_instance" "default" {
   depends_on             = [aws_security_group.db]
-#  identifier             = "bankingOnAngular-rds" # Terraform will create a unique id if not assigned
+#  identifier             = "bankingonangular-rds" # Terraform will create a unique id if not assigned
   allocated_storage      = 20
   engine                 = "mysql"
   instance_class         = "db.t3.medium"
-  db_name                = "bankingOnAngular"
+  db_name                = "bankingonangular"
   username               = "no_user_name"
   password               = "no_password"
   vpc_security_group_ids = [aws_security_group.db.id]
@@ -204,7 +204,7 @@ resource "aws_iam_role_policy_attachment" "eks_cluster_policy" {
 }
 
 resource "aws_eks_cluster" "this" {
-  name     = "eks_cluster_bankingOnAngular"
+  name     = "eks_cluster_bankingonangular"
   role_arn = aws_iam_role.eks.arn
   vpc_config {
     # EKS requires subnet IDs in at least 2 AZs
@@ -233,7 +233,7 @@ resource "aws_instance" "web" {
 
   instance_type = "t2.medium"
   
-  tags = { Name = "bankingOnAngular instance" } 
+  tags = { Name = "bankingonangular instance" } 
 
   # -------------------------------------------------------
   # standard harbormaster community AMI with docker pre-installed
@@ -270,7 +270,7 @@ resource "aws_instance" "web" {
       "sudo systemctl enable --now docker",
       "sudo docker login --username tylertravismya --password 69Cutlass",
       "sudo docker pull theharbormaster/banking-on-angular:latest",
-      "sudo docker run -d -p 8000:8000 -p 8080:8080 -e DATABASE_URL=jdbc:mysql://${aws_db_instance.default.endpoint}/bankingOnAngular theharbormaster/banking-on-angular:latest"
+      "sudo docker run -d -p 8000:8000 -p 8080:8080 -e DATABASE_URL=jdbc:mysql://${aws_db_instance.default.endpoint}/bankingonangular theharbormaster/banking-on-angular:latest"
     ]
   }
 }
