@@ -8,6 +8,6 @@ export  ExchangeRate {
     asOf: Date
     source: string
     Bank: Schema.Types.ObjectId
-    FxTrades:  [{ type: Schema.Types.ObjectId, ref: 'FXTrade' }]
+    FxTrades:  Schema.Types.ObjectId[]
     collection: 'exchangeRates'
 }

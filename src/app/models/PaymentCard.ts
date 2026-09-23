@@ -9,7 +9,7 @@ export  PaymentCard {
     Bank: Schema.Types.ObjectId
     Account: Schema.Types.ObjectId
     Customer: Schema.Types.ObjectId
-    Transactions:  [{ type: Schema.Types.ObjectId, ref: 'Transaction' }]
+    Transactions:  Schema.Types.ObjectId[]
     CardType:  String
     CardStatus:  String
     Network:  String

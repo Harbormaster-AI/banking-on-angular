@@ -6,6 +6,6 @@ export  ThirdPartyProvider {
     registrationId: string
     website: string
     Bank: Schema.Types.ObjectId
-    Consents:  [{ type: Schema.Types.ObjectId, ref: 'Consent' }]
+    Consents:  Schema.Types.ObjectId[]
     collection: 'thirdPartyProviders'
 }

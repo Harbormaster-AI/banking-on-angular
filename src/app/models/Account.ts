@@ -11,11 +11,11 @@ export  Account {
     Bank: Schema.Types.ObjectId
     Branch: Schema.Types.ObjectId
     Product: Schema.Types.ObjectId
-    Owners:  [{ type: Schema.Types.ObjectId, ref: 'Customer' }]
-    Transactions:  [{ type: Schema.Types.ObjectId, ref: 'Transaction' }]
-    Statements:  [{ type: Schema.Types.ObjectId, ref: 'AccountStatement' }]
-    StandingInstructions:  [{ type: Schema.Types.ObjectId, ref: 'StandingInstruction' }]
-    FeeCharges:  [{ type: Schema.Types.ObjectId, ref: 'FeeCharge' }]
+    Owners:  Schema.Types.ObjectId[]
+    Transactions:  Schema.Types.ObjectId[]
+    Statements:  Schema.Types.ObjectId[]
+    StandingInstructions:  Schema.Types.ObjectId[]
+    FeeCharges:  Schema.Types.ObjectId[]
     AccountType:  String
     OwnershipType:  String
     Status:  String

@@ -8,8 +8,8 @@ export  Branch {
     phone: string
     openingHours: string
     Bank: Schema.Types.ObjectId
-    Accounts:  [{ type: Schema.Types.ObjectId, ref: 'Account' }]
-    LoanAccounts:  [{ type: Schema.Types.ObjectId, ref: 'LoanAccount' }]
-    Atms:  [{ type: Schema.Types.ObjectId, ref: 'ATM' }]
+    Accounts:  Schema.Types.ObjectId[]
+    LoanAccounts:  Schema.Types.ObjectId[]
+    Atms:  Schema.Types.ObjectId[]
     collection: 'branchs'
 }

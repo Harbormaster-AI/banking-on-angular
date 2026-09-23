@@ -5,9 +5,9 @@ export  KycProfile {
     profileId: string
     lastReviewedOn: Date
     Customer: Schema.Types.ObjectId
-    IdentityDocuments:  [{ type: Schema.Types.ObjectId, ref: 'IdentityDocument' }]
-    RiskAssessments:  [{ type: Schema.Types.ObjectId, ref: 'RiskAssessment' }]
-    Screenings:  [{ type: Schema.Types.ObjectId, ref: 'ScreeningResult' }]
+    IdentityDocuments:  Schema.Types.ObjectId[]
+    RiskAssessments:  Schema.Types.ObjectId[]
+    Screenings:  Schema.Types.ObjectId[]
     Status:  String
     collection: 'kycProfiles'
 }

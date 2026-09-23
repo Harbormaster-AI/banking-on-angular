@@ -13,11 +13,11 @@ export  LoanAccount {
     Bank: Schema.Types.ObjectId
     Branch: Schema.Types.ObjectId
     Product: Schema.Types.ObjectId
-    Borrowers:  [{ type: Schema.Types.ObjectId, ref: 'Customer' }]
-    RepaymentSchedule:  [{ type: Schema.Types.ObjectId, ref: 'RepaymentSchedule' }]
-    Payments:  [{ type: Schema.Types.ObjectId, ref: 'LoanPayment' }]
-    Collateral:  [{ type: Schema.Types.ObjectId, ref: 'Collateral' }]
-    FeeCharges:  [{ type: Schema.Types.ObjectId, ref: 'FeeCharge' }]
+    Borrowers:  Schema.Types.ObjectId[]
+    RepaymentSchedule:  Schema.Types.ObjectId[]
+    Payments:  Schema.Types.ObjectId[]
+    Collateral:  Schema.Types.ObjectId[]
+    FeeCharges:  Schema.Types.ObjectId[]
     LoanType:  String
     RateType:  String
     Compounding:  String

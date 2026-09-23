@@ -9,6 +9,6 @@ export  ExternalAccount {
     bankName: string
     country: string
     Customer: Schema.Types.ObjectId
-    Transactions:  [{ type: Schema.Types.ObjectId, ref: 'Transaction' }]
+    Transactions:  Schema.Types.ObjectId[]
     collection: 'externalAccounts'
 }

@@ -12,7 +12,7 @@ export  FundsTransfer {
     DestinationAccount: Schema.Types.ObjectId
     ExternalBeneficiary: Schema.Types.ObjectId
     InitiatedBy: Schema.Types.ObjectId
-    Transactions:  [{ type: Schema.Types.ObjectId, ref: 'Transaction' }]
+    Transactions:  Schema.Types.ObjectId[]
     Method:  String
     Status:  String
     collection: 'fundsTransfers'

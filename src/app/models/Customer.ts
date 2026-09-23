@@ -11,14 +11,14 @@ export  Customer {
     phone: string
     address: Address
     Bank: Schema.Types.ObjectId
-    Accounts:  [{ type: Schema.Types.ObjectId, ref: 'Account' }]
-    LoanAccounts:  [{ type: Schema.Types.ObjectId, ref: 'LoanAccount' }]
-    PaymentCards:  [{ type: Schema.Types.ObjectId, ref: 'PaymentCard' }]
-    ExternalAccounts:  [{ type: Schema.Types.ObjectId, ref: 'ExternalAccount' }]
-    FundsTransfers:  [{ type: Schema.Types.ObjectId, ref: 'FundsTransfer' }]
-    Disputes:  [{ type: Schema.Types.ObjectId, ref: 'Dispute' }]
-    KycProfiles:  [{ type: Schema.Types.ObjectId, ref: 'KycProfile' }]
-    Consents:  [{ type: Schema.Types.ObjectId, ref: 'Consent' }]
+    Accounts:  Schema.Types.ObjectId[]
+    LoanAccounts:  Schema.Types.ObjectId[]
+    PaymentCards:  Schema.Types.ObjectId[]
+    ExternalAccounts:  Schema.Types.ObjectId[]
+    FundsTransfers:  Schema.Types.ObjectId[]
+    Disputes:  Schema.Types.ObjectId[]
+    KycProfiles:  Schema.Types.ObjectId[]
+    Consents:  Schema.Types.ObjectId[]
     CustomerType:  String
     RiskRating:  String
     KycStatus:  String

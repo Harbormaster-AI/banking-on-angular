@@ -7,14 +7,14 @@ export  Bank {
     swiftBic: BIC
     headquartersCountry: string
     website: string
-    Branches:  [{ type: Schema.Types.ObjectId, ref: 'Branch' }]
-    Products:  [{ type: Schema.Types.ObjectId, ref: 'BankingProduct' }]
-    Customers:  [{ type: Schema.Types.ObjectId, ref: 'Customer' }]
-    Accounts:  [{ type: Schema.Types.ObjectId, ref: 'Account' }]
-    PaymentCards:  [{ type: Schema.Types.ObjectId, ref: 'PaymentCard' }]
-    LoanAccounts:  [{ type: Schema.Types.ObjectId, ref: 'LoanAccount' }]
-    ExchangeRates:  [{ type: Schema.Types.ObjectId, ref: 'ExchangeRate' }]
-    Consents:  [{ type: Schema.Types.ObjectId, ref: 'Consent' }]
-    ThirdPartyProviders:  [{ type: Schema.Types.ObjectId, ref: 'ThirdPartyProvider' }]
+    Branches:  Schema.Types.ObjectId[]
+    Products:  Schema.Types.ObjectId[]
+    Customers:  Schema.Types.ObjectId[]
+    Accounts:  Schema.Types.ObjectId[]
+    PaymentCards:  Schema.Types.ObjectId[]
+    LoanAccounts:  Schema.Types.ObjectId[]
+    ExchangeRates:  Schema.Types.ObjectId[]
+    Consents:  Schema.Types.ObjectId[]
+    ThirdPartyProviders:  Schema.Types.ObjectId[]
     collection: 'banks'
 }

@@ -6,7 +6,7 @@ export  Consent {
     expiresOn: Date
     Customer: Schema.Types.ObjectId
     Bank: Schema.Types.ObjectId
-    AuthorizedAccounts:  [{ type: Schema.Types.ObjectId, ref: 'Account' }]
+    AuthorizedAccounts:  Schema.Types.ObjectId[]
     ThirdPartyProvider: Schema.Types.ObjectId
     ConsentType:  String
     Status:  String

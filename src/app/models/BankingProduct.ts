@@ -6,9 +6,9 @@ export  BankingProduct {
     name: string
     description: string
     Bank: Schema.Types.ObjectId
-    Accounts:  [{ type: Schema.Types.ObjectId, ref: 'Account' }]
-    LoanAccounts:  [{ type: Schema.Types.ObjectId, ref: 'LoanAccount' }]
-    PaymentCards:  [{ type: Schema.Types.ObjectId, ref: 'PaymentCard' }]
+    Accounts:  Schema.Types.ObjectId[]
+    LoanAccounts:  Schema.Types.ObjectId[]
+    PaymentCards:  Schema.Types.ObjectId[]
     ProductCategory:  String
     collection: 'bankingProducts'
 }
