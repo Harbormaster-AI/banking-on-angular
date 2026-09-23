@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for ThirdPartyProvider
-export  ThirdPartyProvider {
+export interface ThirdPartyProvider {
     name: string
     registrationId: string
     website: string

@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for ExternalAccount
-export  ExternalAccount {
+export interface ExternalAccount {
     name: string
     iban: IBAN
     accountNumber: AccountNumber

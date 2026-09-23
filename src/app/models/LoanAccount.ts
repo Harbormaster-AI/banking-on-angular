@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for LoanAccount
-export  LoanAccount {
+export interface LoanAccount {
     loanNumber: string
     principalAmount: Money
     outstandingPrincipal: Money

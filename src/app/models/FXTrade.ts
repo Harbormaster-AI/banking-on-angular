@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for FXTrade
-export  FXTrade {
+export interface FXTrade {
     tradeReference: string
     tradeDate: Date
     settlementDate: Date

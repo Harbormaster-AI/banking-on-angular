@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for ExchangeRate
-export  ExchangeRate {
+export interface ExchangeRate {
     baseCurrency: string
     counterCurrency: string
     rate: String

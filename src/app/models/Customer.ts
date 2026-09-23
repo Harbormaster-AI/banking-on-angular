@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for Customer
-export  Customer {
+export interface Customer {
     firstName: string
     lastName: string
     legalName: string

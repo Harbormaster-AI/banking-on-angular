@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for ScreeningResult
-export  ScreeningResult {
+export interface ScreeningResult {
     screeningDate: Date
     provider: string
     KycProfile: Schema.Types.ObjectId

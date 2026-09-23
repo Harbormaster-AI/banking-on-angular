@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for Bank
-export  Bank {
+export interface Bank {
     name: string
     legalName: string
     swiftBic: BIC

@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for Consent
-export  Consent {
+export interface Consent {
     grantedOn: Date
     expiresOn: Date
     Customer: Schema.Types.ObjectId

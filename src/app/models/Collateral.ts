@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for Collateral
-export  Collateral {
+export interface Collateral {
     collateralIdentifier: string
     appraisedValue: Money
     description: string

@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for StandingInstruction
-export  StandingInstruction {
+export interface StandingInstruction {
     instructionId: string
     amount: Money
     nextExecutionDate: Date

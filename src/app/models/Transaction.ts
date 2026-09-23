@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for Transaction
-export  Transaction {
+export interface Transaction {
     bookingDate: Date
     valueDate: Date
     amount: Money

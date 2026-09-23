@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for Dispute
-export  Dispute {
+export interface Dispute {
     disputeReference: string
     raisedOn: Date
     reason: string

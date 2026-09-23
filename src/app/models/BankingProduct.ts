@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for BankingProduct
-export  BankingProduct {
+export interface BankingProduct {
     productCode: string
     name: string
     description: string

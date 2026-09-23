@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for RiskAssessment
-export  RiskAssessment {
+export interface RiskAssessment {
     score: number
     assessedOn: Date
     KycProfile: Schema.Types.ObjectId

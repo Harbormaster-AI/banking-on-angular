@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for Branch
-export  Branch {
+export interface Branch {
     name: string
     branchCode: string
     address: Address

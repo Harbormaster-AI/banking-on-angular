@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for KycProfile
-export  KycProfile {
+export interface KycProfile {
     profileId: string
     lastReviewedOn: Date
     Customer: Schema.Types.ObjectId

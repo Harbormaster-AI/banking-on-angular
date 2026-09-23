@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for RepaymentSchedule
-export  RepaymentSchedule {
+export interface RepaymentSchedule {
     installmentNumber: number
     dueDate: Date
     principalDue: Money

@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for LoanPayment
-export  LoanPayment {
+export interface LoanPayment {
     paymentReference: string
     amount: Money
     paymentDate: Date

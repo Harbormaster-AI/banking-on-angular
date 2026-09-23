@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for AccountStatement
-export  AccountStatement {
+export interface AccountStatement {
     statementNumber: string
     periodStart: Date
     periodEnd: Date

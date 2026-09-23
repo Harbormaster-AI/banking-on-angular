@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for Account
-export  Account {
+export interface Account {
     accountNumber: AccountNumber
     iban: IBAN
     accountName: string

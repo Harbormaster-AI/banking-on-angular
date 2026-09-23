@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for IdentityDocument
-export  IdentityDocument {
+export interface IdentityDocument {
     documentNumber: string
     issuingCountry: string
     expirationDate: Date

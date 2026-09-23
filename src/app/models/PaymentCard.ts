@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for PaymentCard
-export  PaymentCard {
+export interface PaymentCard {
     cardNumber: CardPAN
     embossedName: string
     expiryMonth: number

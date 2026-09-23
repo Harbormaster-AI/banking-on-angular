@@ -1,7 +1,7 @@
 
 
 // Define collection and schema for FundsTransfer
-export  FundsTransfer {
+export interface FundsTransfer {
     transferReference: string
     amount: Money
     requestedDate: Date
