@@ -1,0 +1,69 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h5 class="mb-0">Collateral List</h5>
+
+  <a [routerLink]="['/createCollateral']" class="btn btn-primary btn-sm">
+    Create Collateral
+  </a>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover table-striped table-bordered table-sm">
+    <thead>
+      <tr class="table-dark text-center">
+        <th scope="col">COLLATERALIDENTIFIER</th>
+        <th scope="col">APPRAISEDVALUE</th>
+        <th scope="col">DESCRIPTION</th>
+        <th scope="col">LOCATION</th>
+        <th scope="col">COLLATERALTYPE</th>
+        <th scope="col" colspan="2">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (collateral of collaterals; track collateral.collateralId) {
+        <tr class="text-center">
+          <td class="align-middle">
+            {{ collateral.collateralIdentifier }}
+          </td>
+          <td class="align-middle">
+            {{ collateral.appraisedValue }}
+          </td>
+          <td class="align-middle">
+            {{ collateral.description }}
+          </td>
+          <td class="align-middle">
+            {{ collateral.location }}
+          </td>
+          <td class="align-middle">
+            {{ collateral.collateralType }}
+          </td>
+
+          <td class="align-middle">
+            <a
+              [routerLink]="['/loadCollateral', collateral.collateralId]"
+              class="btn btn-primary btn-sm"
+            >
+              Edit
+            </a>
+          </td>
+
+          <td class="align-middle">
+            <button
+              type="button"
+              (click)="deleteCollateral(collateral.collateralId)"
+              class="btn btn-danger btn-sm"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      }
+
+      @if (collaterals?.length === 0) {
+        <tr>
+          <td colspan="7" class="text-center">No collaterals found.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

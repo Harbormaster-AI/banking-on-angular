@@ -1,0 +1,85 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h5 class="mb-0">Account List</h5>
+
+  <a [routerLink]="['/createAccount']" class="btn btn-primary btn-sm">
+    Create Account
+  </a>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover table-striped table-bordered table-sm">
+    <thead>
+      <tr class="table-dark text-center">
+        <th scope="col">ACCOUNTNUMBER</th>
+        <th scope="col">IBAN</th>
+        <th scope="col">ACCOUNTNAME</th>
+        <th scope="col">CURRENCY</th>
+        <th scope="col">OPENEDON</th>
+        <th scope="col">CLOSEDON</th>
+        <th scope="col">ACCOUNTTYPE</th>
+        <th scope="col">OWNERSHIPTYPE</th>
+        <th scope="col">STATUS</th>
+        <th scope="col" colspan="2">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (account of accounts; track account.accountId) {
+        <tr class="text-center">
+          <td class="align-middle">
+            {{ account.accountNumber }}
+          </td>
+          <td class="align-middle">
+            {{ account.iban }}
+          </td>
+          <td class="align-middle">
+            {{ account.accountName }}
+          </td>
+          <td class="align-middle">
+            {{ account.currency }}
+          </td>
+          <td class="align-middle">
+            {{ account.openedOn }}
+          </td>
+          <td class="align-middle">
+            {{ account.closedOn }}
+          </td>
+          <td class="align-middle">
+            {{ account.accountType }}
+          </td>
+          <td class="align-middle">
+            {{ account.ownershipType }}
+          </td>
+          <td class="align-middle">
+            {{ account.status }}
+          </td>
+
+          <td class="align-middle">
+            <a
+              [routerLink]="['/loadAccount', account.accountId]"
+              class="btn btn-primary btn-sm"
+            >
+              Edit
+            </a>
+          </td>
+
+          <td class="align-middle">
+            <button
+              type="button"
+              (click)="deleteAccount(account.accountId)"
+              class="btn btn-danger btn-sm"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      }
+
+      @if (accounts?.length === 0) {
+        <tr>
+          <td colspan="11" class="text-center">No accounts found.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

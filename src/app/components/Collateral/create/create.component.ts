@@ -1,0 +1,68 @@
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { CollateralService } from "../../../services/Collateral.service";
+import { Collateral } from "../../../models/Collateral";
+import { SubBaseComponent } from "../../Collateral/sub.base.component";
+
+@Component({
+  selector: "app-create-collateral",
+  standalone: false,
+  templateUrl: "./create.component.html",
+  styleUrls: ["./create.component.css"],
+})
+export class CreateCollateralComponent
+  extends SubBaseComponent
+  implements OnInit
+{
+  title = "Add Collateral";
+
+  collateralForm: FormGroup;
+  collateral: Collateral;
+
+  constructor(
+    http: HttpClient,
+    private collateralService: CollateralService,
+    private fb: FormBuilder,
+    private router: Router,
+  ) {
+    super(http);
+    this.collateralForm = this.createForm();
+  }
+
+  createForm(): FormGroup {
+    return this.fb.group({
+      collateralIdentifier: ["", Validators.required],
+      appraisedValue: ["", Validators.required],
+      description: ["", Validators.required],
+      location: ["", Validators.required],
+      LoanAccount: [""],
+      CollateralType: [""],
+    });
+  }
+
+  addCollateral(
+    collateralIdentifier,
+    appraisedValue,
+    description,
+    location,
+    LoanAccount,
+    CollateralType,
+  ): void {
+    this.collateralService
+      .addCollateral(
+        collateralIdentifier,
+        appraisedValue,
+        description,
+        location,
+        LoanAccount,
+        CollateralType,
+      )
+      .subscribe(() => {
+        this.router.navigate(["/indexCollateral"]);
+      });
+  }
+
+  ngOnInit(): void {}
+}

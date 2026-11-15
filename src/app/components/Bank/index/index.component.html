@@ -1,0 +1,69 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h5 class="mb-0">Bank List</h5>
+
+  <a [routerLink]="['/createBank']" class="btn btn-primary btn-sm">
+    Create Bank
+  </a>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover table-striped table-bordered table-sm">
+    <thead>
+      <tr class="table-dark text-center">
+        <th scope="col">NAME</th>
+        <th scope="col">LEGALNAME</th>
+        <th scope="col">SWIFTBIC</th>
+        <th scope="col">HEADQUARTERSCOUNTRY</th>
+        <th scope="col">WEBSITE</th>
+        <th scope="col" colspan="2">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (bank of banks; track bank.bankId) {
+        <tr class="text-center">
+          <td class="align-middle">
+            {{ bank.name }}
+          </td>
+          <td class="align-middle">
+            {{ bank.legalName }}
+          </td>
+          <td class="align-middle">
+            {{ bank.swiftBic }}
+          </td>
+          <td class="align-middle">
+            {{ bank.headquartersCountry }}
+          </td>
+          <td class="align-middle">
+            {{ bank.website }}
+          </td>
+
+          <td class="align-middle">
+            <a
+              [routerLink]="['/loadBank', bank.bankId]"
+              class="btn btn-primary btn-sm"
+            >
+              Edit
+            </a>
+          </td>
+
+          <td class="align-middle">
+            <button
+              type="button"
+              (click)="deleteBank(bank.bankId)"
+              class="btn btn-danger btn-sm"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      }
+
+      @if (banks?.length === 0) {
+        <tr>
+          <td colspan="7" class="text-center">No banks found.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

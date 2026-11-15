@@ -1,0 +1,99 @@
+import { HttpClient } from "@angular/common/http";
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+
+import { FundsTransferService } from "../../../services/FundsTransfer.service";
+import { SubBaseComponent } from "../../FundsTransfer/sub.base.component";
+
+@Component({
+  selector: "app-edit-fundsTransfer",
+  standalone: false,
+  templateUrl: "./edit.component.html",
+  styleUrls: ["./edit.component.css"],
+})
+export class EditFundsTransferComponent
+  extends SubBaseComponent
+  implements OnInit
+{
+  title = "Edit FundsTransfer";
+
+  fundsTransferForm: FormGroup;
+  fundsTransfer: any;
+
+  constructor(
+    http: HttpClient,
+    private route: ActivatedRoute,
+    private router: Router,
+    private service: FundsTransferService,
+    private fb: FormBuilder,
+  ) {
+    super(http);
+    this.fundsTransferForm = this.createForm();
+  }
+
+  createForm(): FormGroup {
+    return this.fb.group({
+      transferReference: ["", Validators.required],
+      amount: ["", Validators.required],
+      requestedDate: ["", Validators.required],
+      executionDate: ["", Validators.required],
+      purpose: ["", Validators.required],
+      feeAmount: ["", Validators.required],
+      SourceAccount: [""],
+      DestinationAccount: [""],
+      ExternalBeneficiary: [""],
+      InitiatedBy: [""],
+      Transactions: [""],
+      Method: [""],
+      Status: [""],
+    });
+  }
+
+  updateFundsTransfer(
+    transferReference,
+    amount,
+    requestedDate,
+    executionDate,
+    purpose,
+    feeAmount,
+    SourceAccount,
+    DestinationAccount,
+    ExternalBeneficiary,
+    InitiatedBy,
+    Transactions,
+    Method,
+    Status,
+  ): void {
+    this.route.params.subscribe((params) => {
+      this.service
+        .updateFundsTransfer(
+          transferReference,
+          amount,
+          requestedDate,
+          executionDate,
+          purpose,
+          feeAmount,
+          SourceAccount,
+          DestinationAccount,
+          ExternalBeneficiary,
+          InitiatedBy,
+          Transactions,
+          Method,
+          Status,
+          params["id"],
+        )
+        .subscribe(() => {
+          this.router.navigate(["/indexFundsTransfer"]);
+        });
+    });
+  }
+
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this.service.getFundsTransfer(params["id"]).subscribe((res) => {
+        this.fundsTransfer = res;
+      });
+    });
+  }
+}

@@ -1,0 +1,77 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h5 class="mb-0">PaymentCard List</h5>
+
+  <a [routerLink]="['/createPaymentCard']" class="btn btn-primary btn-sm">
+    Create PaymentCard
+  </a>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover table-striped table-bordered table-sm">
+    <thead>
+      <tr class="table-dark text-center">
+        <th scope="col">CARDNUMBER</th>
+        <th scope="col">EMBOSSEDNAME</th>
+        <th scope="col">EXPIRYMONTH</th>
+        <th scope="col">EXPIRYYEAR</th>
+        <th scope="col">CARDTYPE</th>
+        <th scope="col">CARDSTATUS</th>
+        <th scope="col">NETWORK</th>
+        <th scope="col" colspan="2">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (paymentCard of paymentCards; track paymentCard.paymentCardId) {
+        <tr class="text-center">
+          <td class="align-middle">
+            {{ paymentCard.cardNumber }}
+          </td>
+          <td class="align-middle">
+            {{ paymentCard.embossedName }}
+          </td>
+          <td class="align-middle">
+            {{ paymentCard.expiryMonth }}
+          </td>
+          <td class="align-middle">
+            {{ paymentCard.expiryYear }}
+          </td>
+          <td class="align-middle">
+            {{ paymentCard.cardType }}
+          </td>
+          <td class="align-middle">
+            {{ paymentCard.cardStatus }}
+          </td>
+          <td class="align-middle">
+            {{ paymentCard.network }}
+          </td>
+
+          <td class="align-middle">
+            <a
+              [routerLink]="['/loadPaymentCard', paymentCard.paymentCardId]"
+              class="btn btn-primary btn-sm"
+            >
+              Edit
+            </a>
+          </td>
+
+          <td class="align-middle">
+            <button
+              type="button"
+              (click)="deletePaymentCard(paymentCard.paymentCardId)"
+              class="btn btn-danger btn-sm"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      }
+
+      @if (paymentCards?.length === 0) {
+        <tr>
+          <td colspan="9" class="text-center">No paymentCards found.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

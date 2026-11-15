@@ -1,0 +1,65 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h5 class="mb-0">FeeCharge List</h5>
+
+  <a [routerLink]="['/createFeeCharge']" class="btn btn-primary btn-sm">
+    Create FeeCharge
+  </a>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover table-striped table-bordered table-sm">
+    <thead>
+      <tr class="table-dark text-center">
+        <th scope="col">FEECODE</th>
+        <th scope="col">AMOUNT</th>
+        <th scope="col">APPLIEDON</th>
+        <th scope="col">FEETYPE</th>
+        <th scope="col" colspan="2">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (feeCharge of feeCharges; track feeCharge.feeChargeId) {
+        <tr class="text-center">
+          <td class="align-middle">
+            {{ feeCharge.feeCode }}
+          </td>
+          <td class="align-middle">
+            {{ feeCharge.amount }}
+          </td>
+          <td class="align-middle">
+            {{ feeCharge.appliedOn }}
+          </td>
+          <td class="align-middle">
+            {{ feeCharge.feeType }}
+          </td>
+
+          <td class="align-middle">
+            <a
+              [routerLink]="['/loadFeeCharge', feeCharge.feeChargeId]"
+              class="btn btn-primary btn-sm"
+            >
+              Edit
+            </a>
+          </td>
+
+          <td class="align-middle">
+            <button
+              type="button"
+              (click)="deleteFeeCharge(feeCharge.feeChargeId)"
+              class="btn btn-danger btn-sm"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      }
+
+      @if (feeCharges?.length === 0) {
+        <tr>
+          <td colspan="6" class="text-center">No feeCharges found.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

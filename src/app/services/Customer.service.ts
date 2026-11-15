@@ -1,0 +1,666 @@
+import { Injectable } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { HttpClient } from "@angular/common/http";
+import { Observable, Subject, switchMap } from "rxjs";
+import { Customer } from "../models/Customer";
+import { Bank } from "../models/Bank";
+import { Account } from "../models/Account";
+import { LoanAccount } from "../models/LoanAccount";
+import { PaymentCard } from "../models/PaymentCard";
+import { ExternalAccount } from "../models/ExternalAccount";
+import { FundsTransfer } from "../models/FundsTransfer";
+import { Dispute } from "../models/Dispute";
+import { KycProfile } from "../models/KycProfile";
+import { Consent } from "../models/Consent";
+import { BankService } from "../services/Bank.service";
+import { AccountService } from "../services/Account.service";
+import { LoanAccountService } from "../services/LoanAccount.service";
+import { PaymentCardService } from "../services/PaymentCard.service";
+import { ExternalAccountService } from "../services/ExternalAccount.service";
+import { FundsTransferService } from "../services/FundsTransfer.service";
+import { DisputeService } from "../services/Dispute.service";
+import { KycProfileService } from "../services/KycProfile.service";
+import { ConsentService } from "../services/Consent.service";
+import { HelperBaseService } from "./helperbase.service";
+
+@Injectable({
+  providedIn: "root",
+})
+export class CustomerService extends HelperBaseService {
+  //********************************************************************
+  // general holder
+  //********************************************************************
+  customer: Customer;
+
+  //********************************************************************
+  // Catch all for the return value of a service call
+  //********************************************************************
+  result: any;
+
+  //********************************************************************
+  // sole constructor, injected with the HttpClient
+  //********************************************************************
+  constructor(private http: HttpClient) {
+    super();
+  }
+
+  //********************************************************************
+  // add a Customer
+  // returns the results untouched as a JSON representation
+  // delegates via URI
+  //********************************************************************
+  addCustomer(
+    firstName,
+    lastName,
+    legalName,
+    dateOfBirth,
+    taxId,
+    email,
+    phone,
+    address,
+    Bank,
+    Accounts,
+    LoanAccounts,
+    PaymentCards,
+    ExternalAccounts,
+    FundsTransfers,
+    Disputes,
+    KycProfiles,
+    Consents,
+    CustomerType,
+    RiskRating,
+    KycStatus,
+  ): Observable<any> {
+    const uri_ = this.apiUrl + "/Customer/create";
+    const obj = {
+      firstName: firstName,
+      lastName: lastName,
+      legalName: legalName,
+      dateOfBirth: dateOfBirth,
+      taxId: taxId,
+      email: email,
+      phone: phone,
+      address: address,
+      Bank: Bank != null && Bank.length > 0 ? Bank : null,
+      Accounts: Accounts != null && Accounts.length > 0 ? Accounts : null,
+      LoanAccounts:
+        LoanAccounts != null && LoanAccounts.length > 0 ? LoanAccounts : null,
+      PaymentCards:
+        PaymentCards != null && PaymentCards.length > 0 ? PaymentCards : null,
+      ExternalAccounts:
+        ExternalAccounts != null && ExternalAccounts.length > 0
+          ? ExternalAccounts
+          : null,
+      FundsTransfers:
+        FundsTransfers != null && FundsTransfers.length > 0
+          ? FundsTransfers
+          : null,
+      Disputes: Disputes != null && Disputes.length > 0 ? Disputes : null,
+      KycProfiles:
+        KycProfiles != null && KycProfiles.length > 0 ? KycProfiles : null,
+      Consents: Consents != null && Consents.length > 0 ? Consents : null,
+      CustomerType: CustomerType,
+      RiskRating: RiskRating,
+      KycStatus: KycStatus,
+    };
+
+    return this.http.post(uri_, obj);
+  }
+
+  //********************************************************************
+  // update a Customer
+  // returns an Observable
+  // delegates via URI
+  //********************************************************************
+  updateCustomer(
+    firstName,
+    lastName,
+    legalName,
+    dateOfBirth,
+    taxId,
+    email,
+    phone,
+    address,
+    Bank,
+    Accounts,
+    LoanAccounts,
+    PaymentCards,
+    ExternalAccounts,
+    FundsTransfers,
+    Disputes,
+    KycProfiles,
+    Consents,
+    CustomerType,
+    RiskRating,
+    KycStatus,
+    id,
+  ): Observable<any> {
+    const uri_ = this.apiUrl + "/Customer/update/" + id;
+    const obj = {
+      firstName: firstName,
+      lastName: lastName,
+      legalName: legalName,
+      dateOfBirth: dateOfBirth,
+      taxId: taxId,
+      email: email,
+      phone: phone,
+      address: address,
+      Bank: Bank != null && Bank.length > 0 ? Bank : null,
+      Accounts: Accounts != null && Accounts.length > 0 ? Accounts : null,
+      LoanAccounts:
+        LoanAccounts != null && LoanAccounts.length > 0 ? LoanAccounts : null,
+      PaymentCards:
+        PaymentCards != null && PaymentCards.length > 0 ? PaymentCards : null,
+      ExternalAccounts:
+        ExternalAccounts != null && ExternalAccounts.length > 0
+          ? ExternalAccounts
+          : null,
+      FundsTransfers:
+        FundsTransfers != null && FundsTransfers.length > 0
+          ? FundsTransfers
+          : null,
+      Disputes: Disputes != null && Disputes.length > 0 ? Disputes : null,
+      KycProfiles:
+        KycProfiles != null && KycProfiles.length > 0 ? KycProfiles : null,
+      Consents: Consents != null && Consents.length > 0 ? Consents : null,
+      CustomerType: CustomerType,
+      RiskRating: RiskRating,
+      KycStatus: KycStatus,
+    };
+    return this.http.post(uri_, obj);
+  }
+
+  //********************************************************************
+  // delete a Customer
+  // returns an Observable
+  // delegates via URI
+  //********************************************************************
+  deleteCustomer(id): Observable<any> {
+    const uri_ = this.apiUrl + "/Customer/delete/" + id;
+
+    return this.http.get(uri_);
+  }
+
+  //********************************************************************
+  // loads a Customer
+  // returns the results untouched as an Observable Customer
+  // Customer model
+  // delegates via URI
+  //********************************************************************
+  getCustomer(id): Observable<Customer> {
+    const uri_ = this.apiUrl + "/Customer/load/" + id;
+
+    return this.http.get<Customer>(uri_);
+  }
+
+  //********************************************************************
+  // gets all Customer
+  // returns the results untouched as JSON representation of an
+  // Observable array of Customer models
+  // delegates via URI
+  //********************************************************************
+  getCustomers(): Observable<Customer[]> {
+    const uri_ = this.apiUrl + "/Customer/";
+
+    return this.http.get<Customer[]>(uri_);
+  }
+
+  //********************************************************************
+  // assigns a Bank on a Customer
+  // returns an Observable
+  // delegates via URI
+  //********************************************************************
+  assignBank(customerId, _bankId): Observable<any> {
+    // get the Customer from storage
+    this.loadHelper(customerId);
+
+    return new BankService(this.http).getBank(_bankId).pipe(
+      switchMap((tmp: Bank) => {
+        this.customer.bank = tmp.bankId;
+        return this.saveHelper();
+      }),
+    );
+  }
+
+  //********************************************************************
+  // unassigns a Bank on a Customer
+  // returns an Observable
+  // delegates via URI
+  //********************************************************************
+  unassignBank(customerId): Observable<any> {
+    // get the Customer from storage
+    this.loadHelper(customerId);
+
+    // assign Bank to null
+    this.customer.bank = null;
+
+    // save the Customer
+    return this.saveHelper();
+  }
+
+  //********************************************************************
+  // adds one or more accountsIds as a Accounts
+  // to a Customer
+  // returns a Promise
+  // delegates via URI
+  //********************************************************************
+  addAccounts(customerId, accountsIds): Observable<any> {
+    // get the Customer
+    this.loadHelper(customerId);
+
+    // split on a comma with no spaces
+    var idList = accountsIds.split(",");
+
+    // iterate over array of accounts ids
+    idList.forEach(function (id) {
+      // add the Account Id if not already assigned
+      if (this.customer.accounts.indexOf(id) == -1)
+        this.customer.accounts.push(id);
+    });
+
+    // save it
+    return this.saveHelper();
+  }
+
+  //********************************************************************
+  // removes one or more accountsIds as a Accounts
+  // from a Customer
+  // returns a Promise
+  // delegates via URI
+  //********************************************************************
+  removeAccounts(customerId, accountsIds): Observable<any> {
+    // get the Customer
+    this.loadHelper(customerId);
+
+    // split on a comma with no spaces
+    var idList = accountsIds.split(",");
+    var accounts = this.customer.accounts;
+
+    if (accounts != null && accountsIds != null) {
+      // iterate over array of provided accounts ids and only remove if already assigned
+      idList.forEach(function (id) {
+        if (accountsIds.indexOf(id) > -1) {
+          this.customer.accounts.pop(id);
+        }
+      });
+
+      // save it
+      return this.saveHelper();
+    }
+  }
+
+  //********************************************************************
+  // adds one or more loanAccountsIds as a LoanAccounts
+  // to a Customer
+  // returns a Promise
+  // delegates via URI
+  //********************************************************************
+  addLoanAccounts(customerId, loanAccountsIds): Observable<any> {
+    // get the Customer
+    this.loadHelper(customerId);
+
+    // split on a comma with no spaces
+    var idList = loanAccountsIds.split(",");
+
+    // iterate over array of loanAccounts ids
+    idList.forEach(function (id) {
+      // add the LoanAccount Id if not already assigned
+      if (this.customer.loanAccounts.indexOf(id) == -1)
+        this.customer.loanAccounts.push(id);
+    });
+
+    // save it
+    return this.saveHelper();
+  }
+
+  //********************************************************************
+  // removes one or more loanAccountsIds as a LoanAccounts
+  // from a Customer
+  // returns a Promise
+  // delegates via URI
+  //********************************************************************
+  removeLoanAccounts(customerId, loanAccountsIds): Observable<any> {
+    // get the Customer
+    this.loadHelper(customerId);
+
+    // split on a comma with no spaces
+    var idList = loanAccountsIds.split(",");
+    var loanAccounts = this.customer.loanAccounts;
+
+    if (loanAccounts != null && loanAccountsIds != null) {
+      // iterate over array of provided loanAccounts ids and only remove if already assigned
+      idList.forEach(function (id) {
+        if (loanAccountsIds.indexOf(id) > -1) {
+          this.customer.loanAccounts.pop(id);
+        }
+      });
+
+      // save it
+      return this.saveHelper();
+    }
+  }
+
+  //********************************************************************
+  // adds one or more paymentCardsIds as a PaymentCards
+  // to a Customer
+  // returns a Promise
+  // delegates via URI
+  //********************************************************************
+  addPaymentCards(customerId, paymentCardsIds): Observable<any> {
+    // get the Customer
+    this.loadHelper(customerId);
+
+    // split on a comma with no spaces
+    var idList = paymentCardsIds.split(",");
+
+    // iterate over array of paymentCards ids
+    idList.forEach(function (id) {
+      // add the PaymentCard Id if not already assigned
+      if (this.customer.paymentCards.indexOf(id) == -1)
+        this.customer.paymentCards.push(id);
+    });
+
+    // save it
+    return this.saveHelper();
+  }
+
+  //********************************************************************
+  // removes one or more paymentCardsIds as a PaymentCards
+  // from a Customer
+  // returns a Promise
+  // delegates via URI
+  //********************************************************************
+  removePaymentCards(customerId, paymentCardsIds): Observable<any> {
+    // get the Customer
+    this.loadHelper(customerId);
+
+    // split on a comma with no spaces
+    var idList = paymentCardsIds.split(",");
+    var paymentCards = this.customer.paymentCards;
+
+    if (paymentCards != null && paymentCardsIds != null) {
+      // iterate over array of provided paymentCards ids and only remove if already assigned
+      idList.forEach(function (id) {
+        if (paymentCardsIds.indexOf(id) > -1) {
+          this.customer.paymentCards.pop(id);
+        }
+      });
+
+      // save it
+      return this.saveHelper();
+    }
+  }
+
+  //********************************************************************
+  // adds one or more externalAccountsIds as a ExternalAccounts
+  // to a Customer
+  // returns a Promise
+  // delegates via URI
+  //********************************************************************
+  addExternalAccounts(customerId, externalAccountsIds): Observable<any> {
+    // get the Customer
+    this.loadHelper(customerId);
+
+    // split on a comma with no spaces
+    var idList = externalAccountsIds.split(",");
+
+    // iterate over array of externalAccounts ids
+    idList.forEach(function (id) {
+      // add the ExternalAccount Id if not already assigned
+      if (this.customer.externalAccounts.indexOf(id) == -1)
+        this.customer.externalAccounts.push(id);
+    });
+
+    // save it
+    return this.saveHelper();
+  }
+
+  //********************************************************************
+  // removes one or more externalAccountsIds as a ExternalAccounts
+  // from a Customer
+  // returns a Promise
+  // delegates via URI
+  //********************************************************************
+  removeExternalAccounts(customerId, externalAccountsIds): Observable<any> {
+    // get the Customer
+    this.loadHelper(customerId);
+
+    // split on a comma with no spaces
+    var idList = externalAccountsIds.split(",");
+    var externalAccounts = this.customer.externalAccounts;
+
+    if (externalAccounts != null && externalAccountsIds != null) {
+      // iterate over array of provided externalAccounts ids and only remove if already assigned
+      idList.forEach(function (id) {
+        if (externalAccountsIds.indexOf(id) > -1) {
+          this.customer.externalAccounts.pop(id);
+        }
+      });
+
+      // save it
+      return this.saveHelper();
+    }
+  }
+
+  //********************************************************************
+  // adds one or more fundsTransfersIds as a FundsTransfers
+  // to a Customer
+  // returns a Promise
+  // delegates via URI
+  //********************************************************************
+  addFundsTransfers(customerId, fundsTransfersIds): Observable<any> {
+    // get the Customer
+    this.loadHelper(customerId);
+
+    // split on a comma with no spaces
+    var idList = fundsTransfersIds.split(",");
+
+    // iterate over array of fundsTransfers ids
+    idList.forEach(function (id) {
+      // add the FundsTransfer Id if not already assigned
+      if (this.customer.fundsTransfers.indexOf(id) == -1)
+        this.customer.fundsTransfers.push(id);
+    });
+
+    // save it
+    return this.saveHelper();
+  }
+
+  //********************************************************************
+  // removes one or more fundsTransfersIds as a FundsTransfers
+  // from a Customer
+  // returns a Promise
+  // delegates via URI
+  //********************************************************************
+  removeFundsTransfers(customerId, fundsTransfersIds): Observable<any> {
+    // get the Customer
+    this.loadHelper(customerId);
+
+    // split on a comma with no spaces
+    var idList = fundsTransfersIds.split(",");
+    var fundsTransfers = this.customer.fundsTransfers;
+
+    if (fundsTransfers != null && fundsTransfersIds != null) {
+      // iterate over array of provided fundsTransfers ids and only remove if already assigned
+      idList.forEach(function (id) {
+        if (fundsTransfersIds.indexOf(id) > -1) {
+          this.customer.fundsTransfers.pop(id);
+        }
+      });
+
+      // save it
+      return this.saveHelper();
+    }
+  }
+
+  //********************************************************************
+  // adds one or more disputesIds as a Disputes
+  // to a Customer
+  // returns a Promise
+  // delegates via URI
+  //********************************************************************
+  addDisputes(customerId, disputesIds): Observable<any> {
+    // get the Customer
+    this.loadHelper(customerId);
+
+    // split on a comma with no spaces
+    var idList = disputesIds.split(",");
+
+    // iterate over array of disputes ids
+    idList.forEach(function (id) {
+      // add the Dispute Id if not already assigned
+      if (this.customer.disputes.indexOf(id) == -1)
+        this.customer.disputes.push(id);
+    });
+
+    // save it
+    return this.saveHelper();
+  }
+
+  //********************************************************************
+  // removes one or more disputesIds as a Disputes
+  // from a Customer
+  // returns a Promise
+  // delegates via URI
+  //********************************************************************
+  removeDisputes(customerId, disputesIds): Observable<any> {
+    // get the Customer
+    this.loadHelper(customerId);
+
+    // split on a comma with no spaces
+    var idList = disputesIds.split(",");
+    var disputes = this.customer.disputes;
+
+    if (disputes != null && disputesIds != null) {
+      // iterate over array of provided disputes ids and only remove if already assigned
+      idList.forEach(function (id) {
+        if (disputesIds.indexOf(id) > -1) {
+          this.customer.disputes.pop(id);
+        }
+      });
+
+      // save it
+      return this.saveHelper();
+    }
+  }
+
+  //********************************************************************
+  // adds one or more kycProfilesIds as a KycProfiles
+  // to a Customer
+  // returns a Promise
+  // delegates via URI
+  //********************************************************************
+  addKycProfiles(customerId, kycProfilesIds): Observable<any> {
+    // get the Customer
+    this.loadHelper(customerId);
+
+    // split on a comma with no spaces
+    var idList = kycProfilesIds.split(",");
+
+    // iterate over array of kycProfiles ids
+    idList.forEach(function (id) {
+      // add the KycProfile Id if not already assigned
+      if (this.customer.kycProfiles.indexOf(id) == -1)
+        this.customer.kycProfiles.push(id);
+    });
+
+    // save it
+    return this.saveHelper();
+  }
+
+  //********************************************************************
+  // removes one or more kycProfilesIds as a KycProfiles
+  // from a Customer
+  // returns a Promise
+  // delegates via URI
+  //********************************************************************
+  removeKycProfiles(customerId, kycProfilesIds): Observable<any> {
+    // get the Customer
+    this.loadHelper(customerId);
+
+    // split on a comma with no spaces
+    var idList = kycProfilesIds.split(",");
+    var kycProfiles = this.customer.kycProfiles;
+
+    if (kycProfiles != null && kycProfilesIds != null) {
+      // iterate over array of provided kycProfiles ids and only remove if already assigned
+      idList.forEach(function (id) {
+        if (kycProfilesIds.indexOf(id) > -1) {
+          this.customer.kycProfiles.pop(id);
+        }
+      });
+
+      // save it
+      return this.saveHelper();
+    }
+  }
+
+  //********************************************************************
+  // adds one or more consentsIds as a Consents
+  // to a Customer
+  // returns a Promise
+  // delegates via URI
+  //********************************************************************
+  addConsents(customerId, consentsIds): Observable<any> {
+    // get the Customer
+    this.loadHelper(customerId);
+
+    // split on a comma with no spaces
+    var idList = consentsIds.split(",");
+
+    // iterate over array of consents ids
+    idList.forEach(function (id) {
+      // add the Consent Id if not already assigned
+      if (this.customer.consents.indexOf(id) == -1)
+        this.customer.consents.push(id);
+    });
+
+    // save it
+    return this.saveHelper();
+  }
+
+  //********************************************************************
+  // removes one or more consentsIds as a Consents
+  // from a Customer
+  // returns a Promise
+  // delegates via URI
+  //********************************************************************
+  removeConsents(customerId, consentsIds): Observable<any> {
+    // get the Customer
+    this.loadHelper(customerId);
+
+    // split on a comma with no spaces
+    var idList = consentsIds.split(",");
+    var consents = this.customer.consents;
+
+    if (consents != null && consentsIds != null) {
+      // iterate over array of provided consents ids and only remove if already assigned
+      idList.forEach(function (id) {
+        if (consentsIds.indexOf(id) > -1) {
+          this.customer.consents.pop(id);
+        }
+      });
+
+      // save it
+      return this.saveHelper();
+    }
+  }
+
+  //********************************************************************
+  // saveHelper - internal helper to save a Customer
+  //********************************************************************
+  saveHelper(): Observable<any> {
+    const uri_ = this.apiUrl + "/Customer/update/" + this.customer;
+
+    return this.http.post(uri_, this.customer);
+  }
+
+  //********************************************************************
+  // loadHelper - internal helper to load a Customer
+  //********************************************************************
+  loadHelper(id) {
+    this.getCustomer(id).subscribe((res: Customer) => {
+      this.customer = res;
+    });
+  }
+}

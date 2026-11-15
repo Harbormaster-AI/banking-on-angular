@@ -1,0 +1,69 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h5 class="mb-0">ExchangeRate List</h5>
+
+  <a [routerLink]="['/createExchangeRate']" class="btn btn-primary btn-sm">
+    Create ExchangeRate
+  </a>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover table-striped table-bordered table-sm">
+    <thead>
+      <tr class="table-dark text-center">
+        <th scope="col">BASECURRENCY</th>
+        <th scope="col">COUNTERCURRENCY</th>
+        <th scope="col">RATE</th>
+        <th scope="col">ASOF</th>
+        <th scope="col">SOURCE</th>
+        <th scope="col" colspan="2">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (exchangeRate of exchangeRates; track exchangeRate.exchangeRateId) {
+        <tr class="text-center">
+          <td class="align-middle">
+            {{ exchangeRate.baseCurrency }}
+          </td>
+          <td class="align-middle">
+            {{ exchangeRate.counterCurrency }}
+          </td>
+          <td class="align-middle">
+            {{ exchangeRate.rate }}
+          </td>
+          <td class="align-middle">
+            {{ exchangeRate.asOf }}
+          </td>
+          <td class="align-middle">
+            {{ exchangeRate.source }}
+          </td>
+
+          <td class="align-middle">
+            <a
+              [routerLink]="['/loadExchangeRate', exchangeRate.exchangeRateId]"
+              class="btn btn-primary btn-sm"
+            >
+              Edit
+            </a>
+          </td>
+
+          <td class="align-middle">
+            <button
+              type="button"
+              (click)="deleteExchangeRate(exchangeRate.exchangeRateId)"
+              class="btn btn-danger btn-sm"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      }
+
+      @if (exchangeRates?.length === 0) {
+        <tr>
+          <td colspan="7" class="text-center">No exchangeRates found.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
